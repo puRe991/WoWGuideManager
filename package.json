@@ -1,0 +1,17 @@
+{
+  "name": "wow-guide-manager",
+  "version": "0.1.0",
+  "description": "Dependency-free portable Windows MVP for a World of Warcraft guide manager.",
+  "author": "WoW Guide Manager",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs",
+    "dist:win": "node scripts/build.mjs --portable",
+    "package:handoff": "node scripts/package-handoff.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
