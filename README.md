@@ -18,7 +18,7 @@ Portable Windows desktop MVP for a World of Warcraft guide platform. The first c
 
 ## One-click Windows setup
 
-On Windows, double-click `setup-windows.bat`. The batch file verifies that Node.js/npm are actually startable, tries to install Node.js LTS with `winget` or a PowerShell MSI download if needed, refreshes PATH, then runs install, tests, build, portable packaging and source handoff packaging. If Windows blocks the installer, start the batch as administrator or install Node.js LTS manually from `https://nodejs.org/`.
+On Windows, double-click `setup-windows.bat`. The batch file verifies that Node.js/npm are actually startable, tries `winget`, and if that fails downloads the official Node.js LTS portable ZIP into `.tools/node` without MSI/admin rights. It refreshes PATH and then runs install, tests, build, portable packaging and source handoff packaging.
 
 ## Getting started
 
@@ -40,7 +40,7 @@ npm run dist:win
 
 ## Cloud-only publishing
 
-If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`. Merge conflict notes are documented in `docs/merge-conflicts.md`.
+If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`. This also works from a downloaded GitHub ZIP without `.git` metadata because the packager falls back to scanning project files. Merge conflict notes are documented in `docs/merge-conflicts.md`.
 
 ## Classic dungeon atlas
 
