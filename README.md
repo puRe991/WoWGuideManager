@@ -36,11 +36,11 @@ npm run build
 npm run dist:win
 ```
 
-`npm run build` creates the app bundle in `dist/`. `npm run dist:win` additionally creates `release/WoW-Guide-Manager-0.1.0-portable/` with a Windows `.cmd` launcher and all app files.
+`npm run build` creates the app bundle in `dist/`. The build emits `src/app.bundle.js` and rewrites the built HTML to a non-module script so the portable `file://` launcher works in Chrome and Edge. `npm run dist:win` additionally creates `release/WoW-Guide-Manager-0.1.0-portable/` with a Windows `.cmd` launcher and all app files.
 
 ## Cloud-only publishing
 
-If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`.
+If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`. Merge conflict notes are documented in `docs/merge-conflicts.md`.
 
 ## Content model
 
