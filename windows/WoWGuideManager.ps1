@@ -5,7 +5,7 @@ param(
 Add-Type -AssemblyName PresentationFramework, PresentationCore, WindowsBase
 
 if (-not (Test-Path -LiteralPath $DataPath)) {
-  [System.Windows.MessageBox]::Show("App-Daten nicht gefunden: $DataPath`nBitte zuerst npm run dist:win ausführen.", 'WoW Guide Manager', 'OK', 'Error') | Out-Null
+  [System.Windows.MessageBox]::Show("App data not found: $DataPath`nPlease run npm run dist:win first.", 'WoW Guide Manager', 'OK', 'Error') | Out-Null
   exit 1
 }
 
@@ -27,7 +27,7 @@ function New-Section($title, $items) {
   $panel.Margin = '0,0,16,16'
   $panel.Children.Add((New-TextBlock $title 16 'Bold' '#ffc86b')) | Out-Null
   foreach ($item in @($items)) {
-    $panel.Children.Add((New-TextBlock "• $item" 13 'Normal' '#d7d0c4')) | Out-Null
+    $panel.Children.Add((New-TextBlock "- $item" 13 'Normal' '#d7d0c4')) | Out-Null
   }
   return $panel
 }
@@ -45,13 +45,13 @@ function Show-Class($classGuide) {
   $build = $data.classBuildGuides.($classGuide.id)
   $specs = @($data.specGuides.($classGuide.id))
   $sections = @(
-    @{ Title = 'Rollen'; Items = @($classGuide.roles) },
-    @{ Title = 'Basis-Rotation'; Items = @($classGuide.rotation) },
+    @{ Title = 'Roles'; Items = @($classGuide.roles) },
+    @{ Title = 'Core rotation'; Items = @($classGuide.rotation) },
     @{ Title = 'Stats'; Items = @($classGuide.statPriority) },
-    @{ Title = 'Leveling Rotation'; Items = @($build.rotations.leveling) },
-    @{ Title = 'Dungeon Rotation'; Items = @($build.rotations.dungeon) },
-    @{ Title = 'Raid Rotation'; Items = @($build.rotations.raid) },
-    @{ Title = 'Best in Slot Ziele'; Items = @($build.bestInSlot) }
+    @{ Title = 'Leveling rotation'; Items = @($build.rotations.leveling) },
+    @{ Title = 'Dungeon rotation'; Items = @($build.rotations.dungeon) },
+    @{ Title = 'Raid rotation'; Items = @($build.rotations.raid) },
+    @{ Title = 'Best-in-slot targets'; Items = @($build.bestInSlot) }
   )
   foreach ($spec in $specs) {
     $sections += @{ Title = "Spec: $($spec.name) - $($spec.role)"; Items = @($spec.rotation + $spec.gear + $spec.consumables) }
@@ -60,20 +60,20 @@ function Show-Class($classGuide) {
 }
 
 function Show-Dungeon($dungeon) {
-  Set-Details "$($dungeon.name)" "$($dungeon.levelRange) · $($dungeon.zone) · $($dungeon.time)" @(
+  Set-Details "$($dungeon.name)" "$($dungeon.levelRange) - $($dungeon.zone) - $($dungeon.time)" @(
     @{ Title = 'Route'; Items = @($dungeon.route) },
-    @{ Title = 'Bosse'; Items = @($dungeon.bosses) },
-    @{ Title = 'Loot-Ziele'; Items = @($dungeon.loot) },
-    @{ Title = 'Quests / Vorbereitung'; Items = @($dungeon.quests) },
-    @{ Title = 'Gruppen-Setup'; Items = @($dungeon.composition) },
-    @{ Title = 'Gruppen-Tipps'; Items = @($dungeon.tips) }
+    @{ Title = 'Bosses'; Items = @($dungeon.bosses) },
+    @{ Title = 'Loot targets'; Items = @($dungeon.loot) },
+    @{ Title = 'Quests / prep'; Items = @($dungeon.quests) },
+    @{ Title = 'Group setup'; Items = @($dungeon.composition) },
+    @{ Title = 'Group tips'; Items = @($dungeon.tips) }
   )
 }
 
 function Show-Guide($guide) {
-  Set-Details $guide.title "$($guide.category) · $($guide.audience) · $($guide.minutes) Min." @(
-    @{ Title = 'Zusammenfassung'; Items = @($guide.summary) },
-    @{ Title = 'Checkliste'; Items = @($guide.checklist) },
+  Set-Details $guide.title "$($guide.category) - $($guide.audience) - $($guide.minutes) min." @(
+    @{ Title = 'Summary'; Items = @($guide.summary) },
+    @{ Title = 'Checklist'; Items = @($guide.checklist) },
     @{ Title = 'Tags'; Items = @($guide.tags) }
   )
 }
@@ -96,7 +96,7 @@ $left.Margin = '0,0,18,0'
 [System.Windows.Controls.Grid]::SetColumn($left, 0)
 
 $left.Children.Add((New-TextBlock 'WoW Guide Manager' 30 'Bold' '#ffe39a')) | Out-Null
-$left.Children.Add((New-TextBlock 'Professionelle Windows-Software · Classic Content Pack' 14 'Normal' '#c8c0b5')) | Out-Null
+$left.Children.Add((New-TextBlock 'Portable Windows app - Classic content pack' 14 'Normal' '#c8c0b5')) | Out-Null
 
 $tabs = New-Object System.Windows.Controls.TabControl
 $tabs.Background = [System.Windows.Media.BrushConverter]::new().ConvertFromString('#111827')
@@ -111,13 +111,14 @@ function Add-ListTab($header, $items, $display, $handler) {
   $list.BorderThickness = 0
   $list.DisplayMemberPath = $display
   foreach ($item in @($items)) { $list.Items.Add($item) | Out-Null }
-  $list.Add_SelectionChanged({ if ($this.SelectedItem) { & $handler $this.SelectedItem } })
+  $onSelectionChanged = { if ($this.SelectedItem) { & $handler $this.SelectedItem } }.GetNewClosure()
+  $list.Add_SelectionChanged($onSelectionChanged)
   $tab.Content = $list
   $tabs.Items.Add($tab) | Out-Null
   return $list
 }
 
-$classList = Add-ListTab 'Klassen' $data.classGuides 'name' ${function:Show-Class}
+$classList = Add-ListTab 'Classes' $data.classGuides 'name' ${function:Show-Class}
 $dungeonList = Add-ListTab 'Dungeons' $data.dungeonGuides 'name' ${function:Show-Dungeon}
 $guideList = Add-ListTab 'Guides' $data.guideCards 'title' ${function:Show-Guide}
 

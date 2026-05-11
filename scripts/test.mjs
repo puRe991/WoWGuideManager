@@ -53,6 +53,10 @@ assert.match(buildScript, /Start-WoWGuideManager\.cmd/, 'portable build must lau
 const windowsShell = readFileSync('windows/WoWGuideManager.ps1', 'utf8');
 assert.match(windowsShell, /PresentationFramework/, 'Windows shell must use native WPF assemblies');
 assert.match(windowsShell, /Show-Class/, 'Windows shell must render class guides natively');
+assert.match(windowsShell, /GetNewClosure/, 'Windows shell event handlers must capture per-tab selection callbacks');
+
+const windowsLauncher = readFileSync('windows/Start-WoWGuideManager.cmd', 'utf8');
+assert.match(windowsLauncher, /-STA/, 'Windows launcher must start PowerShell in STA mode for WPF');
 
 const handoffScript = readFileSync('scripts/package-handoff.mjs', 'utf8');
 assert.match(handoffScript, /Git tracked files unavailable/, 'handoff packaging must work without git metadata');
