@@ -10,7 +10,9 @@
     "build": "node scripts/build.mjs",
     "test": "node scripts/test.mjs",
     "dist:win": "node scripts/build.mjs --portable",
-    "package:handoff": "node scripts/package-handoff.mjs"
+    "package:handoff": "node scripts/package-handoff.mjs",
+    "assets:check": "node scripts/validate-assets.mjs",
+    "assets:download": "node scripts/download-assets.mjs"
   },
   "dependencies": {},
   "devDependencies": {}

@@ -1,6 +1,9 @@
 import { categories, expansions, guideCards } from './data/guides.js';
 import { classGuides } from './data/classGuides.js';
+import { classBuildGuides } from './data/classBuildGuides.js';
+import { specGuides } from './data/specGuides.js';
 import { dungeonGuides } from './data/dungeonGuides.js';
+import { assetManifest } from './data/assetManifest.js';
 import { subscriptionTiers } from './data/subscriptions.js';
 import { filterGuides } from './lib/filterGuides.js';
 
@@ -41,10 +44,10 @@ const expansionOptions = [
 ];
 
 const expansionArtwork = {
-  classic: { icon: '⚔️', theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
-  'the-burning-crusade': { icon: '🟢', theme: 'Outland', art: 'linear-gradient(135deg, rgba(73,255,125,.22), rgba(81,41,112,.38))' },
-  'wrath-of-the-lich-king': { icon: '❄️', theme: 'Northrend', art: 'linear-gradient(135deg, rgba(120,206,255,.28), rgba(31,54,104,.45))' },
-  future: { icon: '🌌', theme: 'Content Packs', art: 'linear-gradient(135deg, rgba(211,181,255,.28), rgba(255,255,255,.08))' }
+  classic: { theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
+  'the-burning-crusade': { theme: 'Outland', art: 'linear-gradient(135deg, rgba(73,255,125,.22), rgba(81,41,112,.38))' },
+  'wrath-of-the-lich-king': { theme: 'Northrend', art: 'linear-gradient(135deg, rgba(120,206,255,.28), rgba(31,54,104,.45))' },
+  future: { theme: 'Content Packs', art: 'linear-gradient(135deg, rgba(211,181,255,.28), rgba(255,255,255,.08))' }
 };
 
 function escapeHtml(value) {
@@ -57,6 +60,11 @@ function escapeHtml(value) {
 }
 
 
+
+function renderAssetImage(src, alt, className = 'asset-image') {
+  return `<span class="asset-slot ${className}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" onerror="this.parentElement.classList.add('missing-asset'); this.remove();" /><span class="asset-missing">Asset fehlt</span></span>`;
+}
+
 function getExpansionArtwork(key) {
   return expansionArtwork[key] ?? expansionArtwork.future;
 }
@@ -68,7 +76,7 @@ function renderExpansionSelector() {
       const isActive = state.selectedExpansion === item.key;
       return `
         <button class="expansion-tile ${isActive ? 'active' : ''}" data-expansion="${escapeHtml(item.key)}" style="--tile-art: ${escapeHtml(art.art)}">
-          <span class="expansion-icon">${escapeHtml(art.icon)}</span>
+          ${renderAssetImage(assetManifest.expansions[item.key]?.hero ?? assetManifest.expansions.future.hero, item.name, 'expansion-image')}
           <span class="expansion-status">${escapeHtml(item.status)}</span>
           <strong>${escapeHtml(item.name)}</strong>
           <small>${escapeHtml(art.theme)}</small>
@@ -97,7 +105,7 @@ function renderClassGuides() {
     .map(
       (classGuide) => `
         <button class="class-tab ${classGuide.id === state.selectedClassId ? 'active' : ''}" data-class="${escapeHtml(classGuide.id)}" style="--class-color: ${escapeHtml(classGuide.color)}">
-          <span>${escapeHtml(classGuide.icon)}</span>${escapeHtml(classGuide.name)}
+          ${renderAssetImage(assetManifest.classes[classGuide.id], classGuide.name, 'class-tab-image')}${escapeHtml(classGuide.name)}
         </button>`
     )
     .join('');
@@ -110,9 +118,11 @@ function renderClassGuides() {
   });
 
   const guide = classGuides.find((item) => item.id === state.selectedClassId) ?? classGuides[0];
+  const build = classBuildGuides[guide.id];
+  const specs = specGuides[guide.id] ?? [];
   classDetail.innerHTML = `
     <article class="class-panel" style="--class-color: ${escapeHtml(guide.color)}">
-      <div class="class-portrait"><span>${escapeHtml(guide.icon)}</span></div>
+      <div class="class-portrait">${renderAssetImage(assetManifest.classes[guide.id], guide.name, 'class-portrait-image')}</div>
       <div class="class-copy">
         <div class="card-meta"><span>${escapeHtml(guide.levelingSpec)}</span><span>${escapeHtml(guide.difficulty)}</span></div>
         <h3>${escapeHtml(guide.name)} Classic Master Guide</h3>
@@ -120,13 +130,47 @@ function renderClassGuides() {
         <div class="class-pill-row">${guide.roles.map((role) => `<span>${escapeHtml(role)}</span>`).join('')}</div>
       </div>
       <div class="class-columns">
-        ${renderClassList('Rotation / Ablauf', guide.rotation)}
+        ${renderClassList('Basis-Rotation', guide.rotation)}
         ${renderClassList('Stat-Priorität', guide.statPriority)}
         ${renderClassList('Talente', guide.talents)}
         ${renderClassList('Berufe', guide.professions)}
         ${renderClassList('Power-Tipps', guide.powerTips)}
       </div>
+      <div class="rotation-lab">
+        <h4>Rotation Guide nach Content</h4>
+        <div class="rotation-grid">
+          ${renderRotationBlock('Leveling', build.rotations.leveling)}
+          ${renderRotationBlock('Dungeon', build.rotations.dungeon)}
+          ${renderRotationBlock('Raid / Endgame', build.rotations.raid)}
+        </div>
+      </div>
+      <div class="bis-panel">
+        <h4>Best in Slot Ziele</h4>
+        <div class="bis-list">${build.bestInSlot.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>
+      </div>
+      <div class="spec-guides">
+        <h4>Spec Guides</h4>
+        <div class="spec-grid">${specs.map(renderSpecGuide).join('')}</div>
+      </div>
     </article>`;
+}
+
+function renderSpecGuide(spec) {
+  return `
+    <article class="spec-card">
+      <div class="card-meta"><span>${escapeHtml(spec.role)}</span><span>${escapeHtml(spec.name)}</span></div>
+      <h5>${escapeHtml(spec.name)}</h5>
+      <p>${escapeHtml(spec.summary)}</p>
+      ${renderClassList('Spec-Rotation', spec.rotation)}
+      ${renderClassList('Spec-Stats', spec.statPriority)}
+      ${renderClassList('Spec-Talente', spec.talents)}
+      ${renderClassList('Spec-BiS / Gear', spec.gear)}
+      ${renderClassList('Consumables', spec.consumables)}
+    </article>`;
+}
+
+function renderRotationBlock(title, items) {
+  return `<section><h5>${escapeHtml(title)}</h5><ol>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ol></section>`;
 }
 
 function renderClassList(title, items) {
@@ -140,7 +184,7 @@ function renderDungeonGuides() {
     .map(
       (dungeon) => `
         <button class="dungeon-chip ${dungeon.id === state.selectedDungeonId ? 'active' : ''}" data-dungeon="${escapeHtml(dungeon.id)}" style="--dungeon-color: ${escapeHtml(dungeon.theme)}">
-          <span>${escapeHtml(dungeon.icon)}</span>
+          ${renderAssetImage(assetManifest.dungeons[dungeon.id], dungeon.name, 'dungeon-chip-image')}
           <strong>${escapeHtml(dungeon.name)}</strong>
           <small>${escapeHtml(dungeon.levelRange)} · ${escapeHtml(dungeon.zone)}</small>
         </button>`
@@ -158,20 +202,23 @@ function renderDungeonGuides() {
   dungeonDetail.innerHTML = `
     <article class="dungeon-panel" style="--dungeon-color: ${escapeHtml(dungeon.theme)}">
       <div class="dungeon-art">
-        <span>${escapeHtml(dungeon.icon)}</span>
+        ${renderAssetImage(assetManifest.dungeonMaps[dungeon.id], `${dungeon.name} Karte`, 'dungeon-map-image')}
         <strong>${escapeHtml(dungeon.wing)}</strong>
       </div>
       <div class="dungeon-main">
         <div class="card-meta"><span>${escapeHtml(dungeon.faction)}</span><span>Level ${escapeHtml(dungeon.levelRange)}</span></div>
         <h3>${escapeHtml(dungeon.name)}</h3>
         <p>${escapeHtml(dungeon.summary)}</p>
-        <div class="class-pill-row"><span>${escapeHtml(dungeon.zone)}</span><span>${escapeHtml(dungeon.wing)}</span></div>
+        <div class="class-pill-row"><span>${escapeHtml(dungeon.zone)}</span><span>${escapeHtml(dungeon.wing)}</span><span>${escapeHtml(dungeon.time)}</span></div>
+        ${dungeon.subDungeons ? `<div class="sub-dungeon-row">${dungeon.subDungeons.map((wing) => `<span>${escapeHtml(wing)}</span>`).join('')}</div>` : ''}
       </div>
       <div class="dungeon-guide-grid">
         ${renderClassList('Optimale Route', dungeon.route)}
         ${renderClassList('Bosse', dungeon.bosses)}
         ${renderClassList('Loot-Ziele', dungeon.loot)}
         ${renderClassList('Gruppen-Tipps', dungeon.tips)}
+        ${renderClassList('Quests / Vorbereitung', dungeon.quests)}
+        ${renderClassList('Gruppen-Setup', dungeon.composition)}
       </div>
     </article>`;
 }
@@ -207,7 +254,7 @@ function renderGuides() {
           <div class="tag-row">${guide.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
           <div class="card-footer">
             <span class="audience">${escapeHtml(guide.audience)}</span>
-            ${guide.premium ? '<span class="premium">💎 Premium</span>' : '<span class="free">Free</span>'}
+            ${guide.premium ? '<span class="premium">Premium</span>' : '<span class="free">Free</span>'}
           </div>
         </article>`
     )

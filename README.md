@@ -42,9 +42,17 @@ npm run dist:win
 
 If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`. This also works from a downloaded GitHub ZIP without `.git` metadata because the packager falls back to scanning project files. Merge conflict notes are documented in `docs/merge-conflicts.md`.
 
+## WoW assets
+
+Real WoW artwork slots are defined in `src/data/assetManifest.js` and expected under `assets/wow/`. The repository does not commit Blizzard-owned image files; place licensed assets there and run `npm run assets:check`. See `docs/assets.md`.
+
+## Per-spec class guides
+
+Classic class guides now include separate spec guides in `src/data/specGuides.js`, covering role-specific rotations, stat priorities, talents, gear/BiS targets and consumables for tanks, healers, melee DPS, caster DPS, leveling and PvP-oriented specs.
+
 ## Classic dungeon atlas
 
-The app includes a Classic Dungeon Atlas covering the leveling and endgame dungeon path with route steps, boss lists, loot goals and group tips for each dungeon. Dungeon data lives in `src/data/dungeonGuides.js`.
+The app includes a Classic Dungeon Atlas covering all 20 Classic dungeon entries, including combined wing hubs like Scarlet Monastery, Maraudon, Dire Maul and Stratholme. Each guide includes route steps, boss lists, loot goals, quests/prep, group setup, time planning and group tips. Dungeon data lives in `src/data/dungeonGuides.js`.
 
 ## Classic class guide research
 

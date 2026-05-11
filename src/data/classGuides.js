@@ -2,7 +2,6 @@ export const classGuides = [
   {
     id: 'druid',
     name: 'Druide',
-    icon: '🌿',
     color: '#ff7c0a',
     roles: ['Tank', 'Heiler', 'Melee DPS', 'Caster DPS'],
     levelingSpec: 'Feral 1-60',
@@ -17,7 +16,6 @@ export const classGuides = [
   {
     id: 'hunter',
     name: 'Jäger',
-    icon: '🏹',
     color: '#aad372',
     roles: ['Ranged DPS', 'Solo-Farmer'],
     levelingSpec: 'Beast Mastery 1-60',
@@ -32,7 +30,6 @@ export const classGuides = [
   {
     id: 'mage',
     name: 'Magier',
-    icon: '❄️',
     color: '#3fc7eb',
     roles: ['Caster DPS', 'AoE-Farmer', 'Portale/Utility'],
     levelingSpec: 'Frost 1-60',
@@ -47,7 +44,6 @@ export const classGuides = [
   {
     id: 'paladin',
     name: 'Paladin',
-    icon: '🔨',
     color: '#f48cba',
     roles: ['Heiler', 'Support', 'Tank-Dungeons', 'Melee DPS'],
     levelingSpec: 'Retribution 1-60',
@@ -62,7 +58,6 @@ export const classGuides = [
   {
     id: 'priest',
     name: 'Priester',
-    icon: '✨',
     color: '#ffffff',
     roles: ['Heiler', 'Caster DPS'],
     levelingSpec: 'Shadow mit Wand-Synergie',
@@ -77,7 +72,6 @@ export const classGuides = [
   {
     id: 'rogue',
     name: 'Schurke',
-    icon: '🗡️',
     color: '#fff468',
     roles: ['Melee DPS', 'PvP', 'Lockpicking'],
     levelingSpec: 'Combat Swords',
@@ -92,7 +86,6 @@ export const classGuides = [
   {
     id: 'shaman',
     name: 'Schamane',
-    icon: '⚡',
     color: '#0070dd',
     roles: ['Heiler', 'Melee DPS', 'Caster DPS', 'Support'],
     levelingSpec: 'Enhancement 1-40+, flexibel danach',
@@ -107,7 +100,6 @@ export const classGuides = [
   {
     id: 'warlock',
     name: 'Hexenmeister',
-    icon: '🔥',
     color: '#8788ee',
     roles: ['Caster DPS', 'Solo-Farmer', 'Summon Utility'],
     levelingSpec: 'Affliction/Drain Tank',
@@ -122,7 +114,6 @@ export const classGuides = [
   {
     id: 'warrior',
     name: 'Krieger',
-    icon: '🛡️',
     color: '#c69b6d',
     roles: ['Tank', 'Melee DPS'],
     levelingSpec: 'Arms 1-60',
