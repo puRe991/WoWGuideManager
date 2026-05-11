@@ -6,6 +6,16 @@ const root = process.cwd();
 const dist = path.join(root, 'dist');
 const portable = path.join(root, 'release', 'WoW-Guide-Manager-0.1.0-portable');
 const makePortable = process.argv.includes('--portable');
+const portableLauncher = '@echo off\r\nsetlocal\r\ncall "%~dp0windows\\Start-WoWGuideManager.cmd"\r\n';
+const portableReadme = [
+  'WoW Guide Manager portable MVP',
+  '',
+  'Start: Doppelklicke "WoW Guide Manager.cmd".',
+  'Die Windows-App startet ueber PowerShell/WPF.',
+  'Der Browser-Build liegt zusaetzlich in app\\index.html.',
+  'Alle Dateien bleiben im portablen Ordner.',
+  ''
+].join('\r\n');
 
 function stripExports(source) {
   return source.replaceAll('export const ', 'const ').replaceAll('export function ', 'function ');
@@ -32,7 +42,6 @@ async function createBundle(target) {
 
   await writeFile(path.join(target, 'src/app.bundle.js'), bundle, 'utf8');
 }
-
 
 async function createWindowsData(target) {
   const [guidesModule, classModule, buildModule, specModule, dungeonModule, subscriptionModule, assetModule] = await Promise.all([
@@ -89,16 +98,8 @@ async function main() {
     await copyApp(path.join(portable, 'app'), { bundleForFileProtocol: true });
     await cp(path.join(root, 'windows'), path.join(portable, 'windows'), { recursive: true });
     await createWindowsData(path.join(portable, 'windows'));
-    await writeFile(
-      path.join(portable, 'WoW Guide Manager.cmd'),
-      '@echo off\r\nsetlocal\r\ncall "%~dp0windows\\Start-WoWGuideManager.cmd"\r\n',
-      'utf8'
-    );
-    await writeFile(
-      path.join(portable, 'README-PORTABLE.txt'),
-      'WoW Guide Manager portable MVP\r\n\r\nStart: Doppelklicke "WoW Guide Manager.cmd". Die Windows-App startet ueber PowerShell/WPF. Der Browser-Build liegt zusaetzlich in app\\index.html.\r\nAlle Dateien bleiben im portablen Ordner.\r\n',
-      'utf8'
-    );
+    await writeFile(path.join(portable, 'WoW Guide Manager.cmd'), portableLauncher, 'utf8');
+    await writeFile(path.join(portable, 'README-PORTABLE.txt'), portableReadme, 'utf8');
   }
 
   if (!existsSync(path.join(dist, 'index.html'))) {

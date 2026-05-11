@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { guideCards } from '../src/data/guides.js';
 import { classGuides } from '../src/data/classGuides.js';
 import { classBuildGuides } from '../src/data/classBuildGuides.js';
@@ -30,6 +31,13 @@ function listProjectTextFiles(directory = '.') {
 
 const filesWithMergeMarkers = listProjectTextFiles().filter((file) => mergeConflictPattern.test(readFileSync(file, 'utf8')));
 assert.deepEqual(filesWithMergeMarkers, [], `Unresolved merge-conflict markers found in: ${filesWithMergeMarkers.join(', ')}`);
+
+const buildSyntaxCheck = spawnSync(process.execPath, ['--check', 'scripts/build.mjs'], { encoding: 'utf8' });
+assert.equal(
+  buildSyntaxCheck.status,
+  0,
+  `scripts/build.mjs must parse before setup runs npm run build.\n${buildSyntaxCheck.stderr}${buildSyntaxCheck.stdout}`
+);
 
 const auction = filterGuides(guideCards, {
   search: 'auction',
