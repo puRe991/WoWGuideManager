@@ -42,40 +42,29 @@ pause
 exit /b 0
 
 :ensure_node
-where node >nul 2>nul
-set NODE_FOUND=%ERRORLEVEL%
-where npm >nul 2>nul
-set NPM_FOUND=%ERRORLEVEL%
+call :refresh_path
+call :verify_node "vorhandene Installation"
+if not errorlevel 1 exit /b 0
 
-if "%NODE_FOUND%"=="0" if "%NPM_FOUND%"=="0" (
-  echo Node.js und npm wurden gefunden.
-  node --version
-  npm --version
-  exit /b 0
-)
-
-echo Node.js/npm wurde nicht gefunden. Installation wird versucht ...
+echo Node.js/npm wurde nicht gefunden oder ist nicht startbar. Installation wird versucht ...
 
 where winget >nul 2>nul
 if "%ERRORLEVEL%"=="0" (
   echo winget gefunden. Installiere Node.js LTS ueber winget ...
-  winget install --id OpenJS.NodeJS.LTS --exact --silent --accept-package-agreements --accept-source-agreements
-  set "PATH=%ProgramFiles%\nodejs;%PATH%"
-  where node >nul 2>nul
-  set NODE_FOUND=%ERRORLEVEL%
-  where npm >nul 2>nul
-  set NPM_FOUND=%ERRORLEVEL%
-  if "!NODE_FOUND!"=="0" if "!NPM_FOUND!"=="0" (
-    echo Node.js und npm wurden erfolgreich installiert.
-    node --version
-    npm --version
-    exit /b 0
+  winget install --id OpenJS.NodeJS.LTS --exact --source winget --silent --accept-package-agreements --accept-source-agreements
+  if errorlevel 1 (
+    echo winget konnte Node.js LTS nicht installieren. Fallback wird versucht ...
+  ) else (
+    echo winget Installation beendet. Pruefe Node.js/npm ...
   )
+  call :refresh_path
+  call :verify_node "winget Installation"
+  if not errorlevel 1 exit /b 0
 )
 
 echo winget war nicht verfuegbar oder die Installation war nicht erfolgreich.
 echo Versuche Node.js LTS MSI automatisch per PowerShell herunterzuladen ...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'; $releases=Invoke-RestMethod 'https://nodejs.org/dist/index.json'; $lts=$releases | Where-Object { $_.lts -ne $false } | Select-Object -First 1; if (-not $lts) { throw 'No LTS release found.' }; $url='https://nodejs.org/dist/' + $lts.version + '/node-' + $lts.version + '-x64.msi'; $installer=Join-Path $env:TEMP ('node-' + $lts.version + '-x64.msi'); Write-Host ('Downloading ' + $url); Invoke-WebRequest $url -OutFile $installer; Start-Process msiexec.exe -Wait -ArgumentList @('/i', $installer, '/qn', '/norestart')"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'; $releases=Invoke-RestMethod 'https://nodejs.org/dist/index.json'; $lts=$releases | Where-Object { $_.lts -ne $false } | Select-Object -First 1; if (-not $lts) { throw 'No LTS release found.' }; $url='https://nodejs.org/dist/' + $lts.version + '/node-' + $lts.version + '-x64.msi'; $installer=Join-Path $env:TEMP ('node-' + $lts.version + '-x64.msi'); Write-Host ('Downloading ' + $url); Invoke-WebRequest $url -OutFile $installer; $process=Start-Process msiexec.exe -Wait -PassThru -ArgumentList @('/i', $installer, '/qn', '/norestart'); if ($process.ExitCode -ne 0) { throw ('msiexec failed with exit code ' + $process.ExitCode) }"
 if errorlevel 1 (
   echo Automatischer Node.js Download ist fehlgeschlagen.
   echo Bitte oeffne https://nodejs.org/ und installiere Node.js LTS manuell.
@@ -83,21 +72,34 @@ if errorlevel 1 (
   exit /b 1
 )
 
-set "PATH=%ProgramFiles%\nodejs;%PATH%"
-where node >nul 2>nul
-set NODE_FOUND=%ERRORLEVEL%
-where npm >nul 2>nul
-set NPM_FOUND=%ERRORLEVEL%
-if "%NODE_FOUND%"=="0" if "%NPM_FOUND%"=="0" (
-  echo Node.js und npm wurden erfolgreich installiert.
-  node --version
-  npm --version
-  exit /b 0
-)
+call :refresh_path
+call :verify_node "MSI Installation"
+if not errorlevel 1 exit /b 0
 
-echo Node.js/npm ist nach der Installation noch nicht im PATH.
+echo Node.js/npm ist nach der Installation noch nicht startbar.
 echo Starte dieses Fenster neu oder installiere Node.js LTS manuell.
 exit /b 1
+
+:refresh_path
+set "PATH=%ProgramFiles%\nodejs;%ProgramFiles(x86)%\nodejs;%LocalAppData%\Programs\nodejs;%AppData%\npm;%PATH%"
+exit /b 0
+
+:verify_node
+set "VERIFY_SOURCE=%~1"
+where node >nul 2>nul
+if errorlevel 1 exit /b 1
+where npm >nul 2>nul
+if errorlevel 1 exit /b 1
+
+call node --version >nul 2>nul
+if errorlevel 1 exit /b 1
+call npm --version >nul 2>nul
+if errorlevel 1 exit /b 1
+
+echo Node.js und npm sind startbar (%VERIFY_SOURCE%).
+call node --version
+call npm --version
+exit /b 0
 
 :run
 echo.
@@ -105,7 +107,8 @@ echo ------------------------------------------------------------
 echo  Fuehre aus: %~1
 echo ------------------------------------------------------------
 set "STEP_NAME=%~1"
-%~2 %~3 %~4 %~5 %~6 %~7 %~8 %~9
+shift
+call %1 %2 %3 %4 %5 %6 %7 %8 %9
 if errorlevel 1 (
   echo Fehler bei: %STEP_NAME%
   exit /b 1

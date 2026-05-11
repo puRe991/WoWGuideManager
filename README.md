@@ -18,7 +18,7 @@ Portable Windows desktop MVP for a World of Warcraft guide platform. The first c
 
 ## One-click Windows setup
 
-On Windows, double-click `setup-windows.bat`. The batch file checks for Node.js/npm, tries to install Node.js LTS with `winget` or a PowerShell MSI download if needed, then runs install, tests, build, portable packaging and source handoff packaging.
+On Windows, double-click `setup-windows.bat`. The batch file verifies that Node.js/npm are actually startable, tries to install Node.js LTS with `winget` or a PowerShell MSI download if needed, refreshes PATH, then runs install, tests, build, portable packaging and source handoff packaging. If Windows blocks the installer, start the batch as administrator or install Node.js LTS manually from `https://nodejs.org/`.
 
 ## Getting started
 

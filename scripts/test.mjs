@@ -26,4 +26,8 @@ assert.ok(guideCards.length >= 8, 'MVP should include at least eight guide cards
 const buildScript = readFileSync('scripts/build.mjs', 'utf8');
 assert.match(buildScript, /app\.bundle\.js/, 'build must emit a browser-safe bundle for file protocol usage');
 
+const setupBatch = readFileSync('setup-windows.bat', 'utf8');
+assert.match(setupBatch, /:verify_node/, 'Windows setup must verify that node and npm are startable');
+assert.match(setupBatch, /call npm --version/, 'Windows setup must call npm.cmd safely from batch files');
+
 console.log('All tests passed.');

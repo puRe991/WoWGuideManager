@@ -12,7 +12,7 @@ https://github.com/puRe991/WoWGuideManager
 
 ## One-click Windows batch
 
-If you open this project in a Windows cloud desktop, run `setup-windows.bat`. It will check whether Node.js/npm exists, install Node.js LTS when possible, run the test/build commands and create the handoff ZIP automatically.
+If you open this project in a Windows cloud desktop, run `setup-windows.bat`. It verifies that Node.js/npm are actually startable, installs Node.js LTS when possible, refreshes PATH, runs the test/build commands and creates the handoff ZIP automatically. If `winget` reports that no applicable installer exists, the batch falls back to the official Node.js LTS MSI download.
 
 ## Option A: Push from this cloud once credentials/network are available
 
