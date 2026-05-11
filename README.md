@@ -40,7 +40,7 @@ npm run dist:win
 
 ## Cloud-only publishing
 
-If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`. Merge conflict notes are documented in `docs/merge-conflicts.md`.
+If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`. This also works from a downloaded GitHub ZIP without `.git` metadata because the packager falls back to scanning project files. Merge conflict notes are documented in `docs/merge-conflicts.md`.
 
 ## Classic dungeon atlas
 

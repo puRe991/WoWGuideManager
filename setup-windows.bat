@@ -24,8 +24,7 @@ if errorlevel 1 goto :failed
 call :run "npm run dist:win" npm run dist:win
 if errorlevel 1 goto :failed
 
-call :run "npm run package:handoff" npm run package:handoff
-if errorlevel 1 goto :failed
+call :run_optional "npm run package:handoff" npm run package:handoff
 
 echo.
 echo ============================================================
@@ -116,6 +115,20 @@ call %1 %2 %3 %4 %5 %6 %7 %8 %9
 if errorlevel 1 (
   echo Fehler bei: %STEP_NAME%
   exit /b 1
+)
+exit /b 0
+
+:run_optional
+echo.
+echo ------------------------------------------------------------
+echo  Fuehre optional aus: %~1
+echo ------------------------------------------------------------
+set "STEP_NAME=%~1"
+shift
+call %1 %2 %3 %4 %5 %6 %7 %8 %9
+if errorlevel 1 (
+  echo Warnung: Optionaler Schritt fehlgeschlagen: %STEP_NAME%
+  echo Das portable Build wurde bereits erstellt. Du kannst handoff spaeter erneut ausfuehren.
 )
 exit /b 0
 

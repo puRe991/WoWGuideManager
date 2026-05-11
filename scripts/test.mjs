@@ -37,6 +37,10 @@ const buildScript = readFileSync('scripts/build.mjs', 'utf8');
 assert.match(buildScript, /app\.bundle\.js/, 'build must emit a browser-safe bundle for file protocol usage');
 assert.match(buildScript, /dungeonGuides\.js/, 'build must include dungeon guide data in the portable bundle');
 
+const handoffScript = readFileSync('scripts/package-handoff.mjs', 'utf8');
+assert.match(handoffScript, /Git tracked files unavailable/, 'handoff packaging must work without git metadata');
+assert.match(handoffScript, /listProjectFiles/, 'handoff packaging must fall back to a directory scan');
+
 const setupBatch = readFileSync('setup-windows.bat', 'utf8');
 assert.match(setupBatch, /:verify_node/, 'Windows setup must verify that node and npm are startable');
 assert.match(setupBatch, /call npm --version/, 'Windows setup must call npm.cmd safely from batch files');
