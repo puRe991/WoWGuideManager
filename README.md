@@ -1,6 +1,6 @@
 # WoW Guide Manager
 
-Portable Windows desktop MVP for a World of Warcraft guide platform. The first content pack focuses on WoW Classic; the data model is prepared for later expansions and subscription-gated premium content.
+Portable Windows desktop MVP for a World of Warcraft guide platform. The primary portable release starts a native Windows PowerShell/WPF shell; the browser bundle remains as a fallback preview. The first content pack focuses on WoW Classic; the data model is prepared for later expansions and subscription-gated premium content.
 
 ## Product goals
 
@@ -28,6 +28,10 @@ npm run build
 ```
 
 Open `dist/index.html` in a modern browser.
+
+## Windows desktop app
+
+`npm run dist:win` now creates `release/WoW-Guide-Manager-0.1.0-portable/` with `WoW Guide Manager.cmd`, which launches a native Windows WPF/PowerShell shell from `windows/WoWGuideManager.ps1` and `windows/app-data.json`. The file-protocol browser bundle is still copied as a fallback preview, but the intended user entry point is the Windows launcher.
 
 ## Build commands
 
