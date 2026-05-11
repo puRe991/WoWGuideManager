@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WoW Guide Manager</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+
+      <section class="expansion-picker panel" id="expansion-picker">
+        <div class="section-heading compact">
+          <span class="eyebrow">🧭 Erweiterung auswählen</span>
+          <h2>Wähle zuerst deine WoW-Ära.</h2>
+          <p>Jede Erweiterung bekommt eigene Grafiken, Module und später eigene Content-Packs. Classic ist aktuell aktiv.</p>
+        </div>
+        <div class="expansion-layout">
+          <div class="expansion-hero-grid" id="expansion-hero-grid"></div>
+          <aside class="active-expansion-card">
+            <span class="eyebrow">Aktives Paket</span>
+            <h3 id="active-expansion-name">World of Warcraft Classic</h3>
+            <p id="active-expansion-focus"></p>
+            <div class="module-list" id="active-expansion-modules"></div>
+          </aside>
+        </div>
+      </section>
+      <section class="hero panel">
+        <div class="hero-copy">
+          <span class="eyebrow">✦ Portable Windows MVP</span>
+          <h1>WoW Guide Manager: die Zentrale für Classic Guides von A bis Z.</h1>
+          <p>
+            Eine erweiterbare Desktop-Software für Leveling, Dungeons, Raids, Berufe, Gold, PvP, Klassen, Ruf, Addons und
+            Geheimnisse. Classic ist als Startkatalog vorbereitet; weitere Erweiterungen können als Content-Packs ergänzt werden.
+          </p>
+          <div class="hero-actions">
+            <a href="#guides" class="button primary">📚 Guides ansehen</a>
+            <a href="#subscriptions" class="button secondary">👑 Abo-Modell planen</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top"><span>🛡️</span><span>Strategisches Ziel</span></div>
+          <strong>Weltweit Nummer 1 für WoW Guides</strong>
+          <p>Content-Tiefe, schnelle Suche, Premium-Freischaltung und Erweiterungs-Roadmap in einer portablen App.</p>
+          <div class="metric-grid">
+            <div><b id="metric-guides">0</b><span>Startguides</span></div>
+            <div><b id="metric-categories">0</b><span>Kategorien</span></div>
+            <div><b id="metric-premium">0</b><span>Premium</span></div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="panel class-guides" id="class-guides">
+        <div class="section-heading">
+          <span class="eyebrow">⚔️ Ausführliche Klassen-Guides</span>
+          <h2>Classic Klassen kompakt, visuell und spielbereit.</h2>
+          <p>Die Guides verdichten Leveling-Specs, Rollen, Stat-Prioritäten, Rotationen, Berufe und Power-Tipps aus etablierten Classic-Guide-Strukturen.</p>
+        </div>
+        <div class="class-tabs" id="class-tabs"></div>
+        <div class="class-detail" id="class-detail"></div>
+      </section>
+
+
+      <section class="panel dungeon-guides" id="dungeon-guides">
+        <div class="section-heading dungeon-heading">
+          <div>
+            <span class="eyebrow">🏰 Classic Dungeon Atlas</span>
+            <h2>Alle Classic Dungeons mit Route, Bossen, Loot und Gruppen-Tipps.</h2>
+            <p>Ein übersichtlicher Dungeon-Bereich für schnelle Run-Planung: Levelbereich wählen, Route lesen, Bossziele markieren und Loot-Fokus setzen.</p>
+          </div>
+          <div class="dungeon-counter"><b id="dungeon-count">0</b><span>Dungeons</span></div>
+        </div>
+        <div class="dungeon-layout">
+          <nav class="dungeon-rail" id="dungeon-rail" aria-label="Classic Dungeon Auswahl"></nav>
+          <div class="dungeon-detail" id="dungeon-detail"></div>
+        </div>
+      </section>
+
+      <section class="panel command-center" id="guides">
+        <div class="section-heading">
+          <span class="eyebrow">⚙ Guide Command Center</span>
+          <h2>Suche, filtere und priorisiere Content.</h2>
+        </div>
+        <div class="filters">
+          <label class="search-field">
+            🔎
+            <input id="search" placeholder="Suche nach Auction, BiS, Secrets ..." />
+          </label>
+          <select id="category"></select>
+          <select id="expansion"></select>
+          <button class="toggle" id="premium-toggle">🔒 Nur Premium</button>
+        </div>
+        <div class="guide-grid" id="guide-grid"></div>
+        <p class="empty-state hidden" id="empty-state">Keine Guides gefunden. Passe Suche oder Filter an.</p>
+      </section>
+
+      <section class="roadmap panel">
+        <div class="section-heading">
+          <span class="eyebrow">🗺 Erweiterungsarchitektur</span>
+          <h2>Classic zuerst, jede WoW-Erweiterung später modular.</h2>
+        </div>
+        <div class="roadmap-grid" id="roadmap-grid"></div>
+      </section>
+
+      <section class="panel business" id="subscriptions">
+        <div class="section-heading">
+          <span class="eyebrow">🌍 Monetarisierung</span>
+          <h2>Abo-Modell vorbereitet, Payment später integrierbar.</h2>
+          <p>Die Oberfläche trennt Free- und Premium-Content bereits sichtbar. Der nächste Schritt ist ein Lizenzserver mit Stripe- oder Paddle-Anbindung.</p>
+        </div>
+        <div class="pricing-grid" id="pricing-grid"></div>
+      </section>
+
+      <section class="panel portable">
+        <span>⬇️</span>
+        <div>
+          <h2>Portable Windows Build</h2>
+          <p>Mit <code>npm run dist:win</code> wird ein portabler Ordner mit Windows-Startdateien ohne externe NPM-Abhängigkeiten erzeugt.</p>
+        </div>
+        <span>🚀</span>
+      </section>
+    </main>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
