@@ -33,6 +33,7 @@ async function createBundle(target) {
   await writeFile(path.join(target, 'src/app.bundle.js'), bundle, 'utf8');
 }
 
+<<<<<<< codex/erstelle-portable-wow-guide-manager-software-hugylk
 
 async function createWindowsData(target) {
   const [guidesModule, classModule, buildModule, specModule, dungeonModule, subscriptionModule, assetModule] = await Promise.all([
@@ -62,6 +63,8 @@ async function createWindowsData(target) {
   await writeFile(path.join(target, 'app-data.json'), JSON.stringify(data, null, 2), 'utf8');
 }
 
+=======
+>>>>>>> main
 async function copyApp(target, { bundleForFileProtocol } = { bundleForFileProtocol: false }) {
   await mkdir(target, { recursive: true });
   await cp(path.join(root, 'index.html'), path.join(target, 'index.html'));
@@ -87,16 +90,26 @@ async function main() {
   if (makePortable) {
     await rm(portable, { recursive: true, force: true });
     await copyApp(path.join(portable, 'app'), { bundleForFileProtocol: true });
+<<<<<<< codex/erstelle-portable-wow-guide-manager-software-hugylk
     await cp(path.join(root, 'windows'), path.join(portable, 'windows'), { recursive: true });
     await createWindowsData(path.join(portable, 'windows'));
     await writeFile(
       path.join(portable, 'WoW Guide Manager.cmd'),
       '@echo off\r\nsetlocal\r\ncall "%~dp0windows\\Start-WoWGuideManager.cmd"\r\n',
+=======
+    await writeFile(
+      path.join(portable, 'WoW Guide Manager.cmd'),
+      '@echo off\r\nsetlocal\r\nstart "WoW Guide Manager" "%~dp0app\\index.html"\r\n',
+>>>>>>> main
       'utf8'
     );
     await writeFile(
       path.join(portable, 'README-PORTABLE.txt'),
+<<<<<<< codex/erstelle-portable-wow-guide-manager-software-hugylk
       'WoW Guide Manager portable MVP\r\n\r\nStart: Doppelklicke "WoW Guide Manager.cmd". Die Windows-App startet ueber PowerShell/WPF. Der Browser-Build liegt zusaetzlich in app\\index.html.\r\nAlle Dateien bleiben im portablen Ordner.\r\n',
+=======
+      'WoW Guide Manager portable MVP\r\n\r\nStart: Doppelklicke "WoW Guide Manager.cmd" oder öffne app\\index.html in einem modernen Browser.\r\nAlle Dateien bleiben im portablen Ordner.\r\n',
+>>>>>>> main
       'utf8'
     );
   }
