@@ -1,4 +1,6 @@
 import { categories, expansions, guideCards } from './data/guides.js';
+import { classGuides } from './data/classGuides.js';
+import { dungeonGuides } from './data/dungeonGuides.js';
 import { subscriptionTiers } from './data/subscriptions.js';
 import { filterGuides } from './lib/filterGuides.js';
 
@@ -6,9 +8,21 @@ const state = {
   search: '',
   category: 'Alle',
   expansion: 'classic',
-  showPremiumOnly: false
+  showPremiumOnly: false,
+  selectedExpansion: 'classic',
+  selectedClassId: 'warrior',
+  selectedDungeonId: 'blackrock-depths'
 };
 
+const expansionHeroGrid = document.querySelector('#expansion-hero-grid');
+const activeExpansionName = document.querySelector('#active-expansion-name');
+const activeExpansionFocus = document.querySelector('#active-expansion-focus');
+const activeExpansionModules = document.querySelector('#active-expansion-modules');
+const classTabs = document.querySelector('#class-tabs');
+const classDetail = document.querySelector('#class-detail');
+const dungeonRail = document.querySelector('#dungeon-rail');
+const dungeonDetail = document.querySelector('#dungeon-detail');
+const dungeonCount = document.querySelector('#dungeon-count');
 const guideGrid = document.querySelector('#guide-grid');
 const roadmapGrid = document.querySelector('#roadmap-grid');
 const pricingGrid = document.querySelector('#pricing-grid');
@@ -26,6 +40,13 @@ const expansionOptions = [
   ['future', 'Zukunft']
 ];
 
+const expansionArtwork = {
+  classic: { icon: '⚔️', theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
+  'the-burning-crusade': { icon: '🟢', theme: 'Outland', art: 'linear-gradient(135deg, rgba(73,255,125,.22), rgba(81,41,112,.38))' },
+  'wrath-of-the-lich-king': { icon: '❄️', theme: 'Northrend', art: 'linear-gradient(135deg, rgba(120,206,255,.28), rgba(31,54,104,.45))' },
+  future: { icon: '🌌', theme: 'Content Packs', art: 'linear-gradient(135deg, rgba(211,181,255,.28), rgba(255,255,255,.08))' }
+};
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -35,8 +56,128 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
+
+function getExpansionArtwork(key) {
+  return expansionArtwork[key] ?? expansionArtwork.future;
+}
+
+function renderExpansionSelector() {
+  expansionHeroGrid.innerHTML = expansions
+    .map((item) => {
+      const art = getExpansionArtwork(item.key);
+      const isActive = state.selectedExpansion === item.key;
+      return `
+        <button class="expansion-tile ${isActive ? 'active' : ''}" data-expansion="${escapeHtml(item.key)}" style="--tile-art: ${escapeHtml(art.art)}">
+          <span class="expansion-icon">${escapeHtml(art.icon)}</span>
+          <span class="expansion-status">${escapeHtml(item.status)}</span>
+          <strong>${escapeHtml(item.name)}</strong>
+          <small>${escapeHtml(art.theme)}</small>
+        </button>`;
+    })
+    .join('');
+
+  expansionHeroGrid.querySelectorAll('[data-expansion]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.selectedExpansion = button.dataset.expansion;
+      state.expansion = state.selectedExpansion;
+      expansionSelect.value = state.expansion;
+      renderExpansionSelector();
+      renderGuides();
+    });
+  });
+
+  const active = expansions.find((item) => item.key === state.selectedExpansion) ?? expansions[0];
+  activeExpansionName.textContent = active.name;
+  activeExpansionFocus.textContent = active.launchFocus;
+  activeExpansionModules.innerHTML = active.modules.map((module) => `<span>${escapeHtml(module)}</span>`).join('');
+}
+
+function renderClassGuides() {
+  classTabs.innerHTML = classGuides
+    .map(
+      (classGuide) => `
+        <button class="class-tab ${classGuide.id === state.selectedClassId ? 'active' : ''}" data-class="${escapeHtml(classGuide.id)}" style="--class-color: ${escapeHtml(classGuide.color)}">
+          <span>${escapeHtml(classGuide.icon)}</span>${escapeHtml(classGuide.name)}
+        </button>`
+    )
+    .join('');
+
+  classTabs.querySelectorAll('[data-class]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.selectedClassId = button.dataset.class;
+      renderClassGuides();
+    });
+  });
+
+  const guide = classGuides.find((item) => item.id === state.selectedClassId) ?? classGuides[0];
+  classDetail.innerHTML = `
+    <article class="class-panel" style="--class-color: ${escapeHtml(guide.color)}">
+      <div class="class-portrait"><span>${escapeHtml(guide.icon)}</span></div>
+      <div class="class-copy">
+        <div class="card-meta"><span>${escapeHtml(guide.levelingSpec)}</span><span>${escapeHtml(guide.difficulty)}</span></div>
+        <h3>${escapeHtml(guide.name)} Classic Master Guide</h3>
+        <p>${escapeHtml(guide.summary)}</p>
+        <div class="class-pill-row">${guide.roles.map((role) => `<span>${escapeHtml(role)}</span>`).join('')}</div>
+      </div>
+      <div class="class-columns">
+        ${renderClassList('Rotation / Ablauf', guide.rotation)}
+        ${renderClassList('Stat-Priorität', guide.statPriority)}
+        ${renderClassList('Talente', guide.talents)}
+        ${renderClassList('Berufe', guide.professions)}
+        ${renderClassList('Power-Tipps', guide.powerTips)}
+      </div>
+    </article>`;
+}
+
+function renderClassList(title, items) {
+  return `<section><h4>${escapeHtml(title)}</h4><ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`;
+}
+
+
+function renderDungeonGuides() {
+  dungeonCount.textContent = dungeonGuides.length;
+  dungeonRail.innerHTML = dungeonGuides
+    .map(
+      (dungeon) => `
+        <button class="dungeon-chip ${dungeon.id === state.selectedDungeonId ? 'active' : ''}" data-dungeon="${escapeHtml(dungeon.id)}" style="--dungeon-color: ${escapeHtml(dungeon.theme)}">
+          <span>${escapeHtml(dungeon.icon)}</span>
+          <strong>${escapeHtml(dungeon.name)}</strong>
+          <small>${escapeHtml(dungeon.levelRange)} · ${escapeHtml(dungeon.zone)}</small>
+        </button>`
+    )
+    .join('');
+
+  dungeonRail.querySelectorAll('[data-dungeon]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.selectedDungeonId = button.dataset.dungeon;
+      renderDungeonGuides();
+    });
+  });
+
+  const dungeon = dungeonGuides.find((item) => item.id === state.selectedDungeonId) ?? dungeonGuides[0];
+  dungeonDetail.innerHTML = `
+    <article class="dungeon-panel" style="--dungeon-color: ${escapeHtml(dungeon.theme)}">
+      <div class="dungeon-art">
+        <span>${escapeHtml(dungeon.icon)}</span>
+        <strong>${escapeHtml(dungeon.wing)}</strong>
+      </div>
+      <div class="dungeon-main">
+        <div class="card-meta"><span>${escapeHtml(dungeon.faction)}</span><span>Level ${escapeHtml(dungeon.levelRange)}</span></div>
+        <h3>${escapeHtml(dungeon.name)}</h3>
+        <p>${escapeHtml(dungeon.summary)}</p>
+        <div class="class-pill-row"><span>${escapeHtml(dungeon.zone)}</span><span>${escapeHtml(dungeon.wing)}</span></div>
+      </div>
+      <div class="dungeon-guide-grid">
+        ${renderClassList('Optimale Route', dungeon.route)}
+        ${renderClassList('Bosse', dungeon.bosses)}
+        ${renderClassList('Loot-Ziele', dungeon.loot)}
+        ${renderClassList('Gruppen-Tipps', dungeon.tips)}
+      </div>
+    </article>`;
+}
+
 function renderMetrics() {
-  document.querySelector('#metric-guides').textContent = guideCards.length;
+  document.querySelector('#metric-guides').textContent = guideCards.length + dungeonGuides.length;
   document.querySelector('#metric-categories').textContent = categories.length;
   document.querySelector('#metric-premium').textContent = guideCards.filter((guide) => guide.premium).length;
 }
@@ -115,6 +256,10 @@ categorySelect.addEventListener('change', (event) => {
 
 expansionSelect.addEventListener('change', (event) => {
   state.expansion = event.target.value;
+  if (state.expansion !== 'all') {
+    state.selectedExpansion = state.expansion;
+    renderExpansionSelector();
+  }
   renderGuides();
 });
 
@@ -126,6 +271,9 @@ premiumToggle.addEventListener('click', () => {
 
 renderMetrics();
 renderSelects();
+renderExpansionSelector();
+renderClassGuides();
+renderDungeonGuides();
 renderGuides();
 renderRoadmap();
 renderPricing();

@@ -42,6 +42,14 @@ npm run dist:win
 
 If direct GitHub push is blocked in the cloud environment, use `npm run package:handoff` to create `handoff/WoWGuideManager-source-handoff.zip` and follow `docs/cloud-publishing.md`. Merge conflict notes are documented in `docs/merge-conflicts.md`.
 
+## Classic dungeon atlas
+
+The app includes a Classic Dungeon Atlas covering the leveling and endgame dungeon path with route steps, boss lists, loot goals and group tips for each dungeon. Dungeon data lives in `src/data/dungeonGuides.js`.
+
+## Classic class guide research
+
+The app now includes detailed WoW Classic class cards for all nine Classic classes. Research notes and source links are kept in `docs/class-guide-research.md`; production guide text should keep citations and patch/version metadata next to each content pack.
+
 ## Content model
 
 Guide content currently lives in `src/data/guides.js`. Each guide has an expansion key, category, audience level, estimated reading time, checklist items, premium flag and tags. New expansions can be added by extending the `expansions` roadmap array and guide data.

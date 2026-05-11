@@ -8,6 +8,23 @@
   </head>
   <body>
     <main class="app-shell">
+
+      <section class="expansion-picker panel" id="expansion-picker">
+        <div class="section-heading compact">
+          <span class="eyebrow">🧭 Erweiterung auswählen</span>
+          <h2>Wähle zuerst deine WoW-Ära.</h2>
+          <p>Jede Erweiterung bekommt eigene Grafiken, Module und später eigene Content-Packs. Classic ist aktuell aktiv.</p>
+        </div>
+        <div class="expansion-layout">
+          <div class="expansion-hero-grid" id="expansion-hero-grid"></div>
+          <aside class="active-expansion-card">
+            <span class="eyebrow">Aktives Paket</span>
+            <h3 id="active-expansion-name">World of Warcraft Classic</h3>
+            <p id="active-expansion-focus"></p>
+            <div class="module-list" id="active-expansion-modules"></div>
+          </aside>
+        </div>
+      </section>
       <section class="hero panel">
         <div class="hero-copy">
           <span class="eyebrow">✦ Portable Windows MVP</span>
@@ -30,6 +47,33 @@
             <div><b id="metric-categories">0</b><span>Kategorien</span></div>
             <div><b id="metric-premium">0</b><span>Premium</span></div>
           </div>
+        </div>
+      </section>
+
+
+      <section class="panel class-guides" id="class-guides">
+        <div class="section-heading">
+          <span class="eyebrow">⚔️ Ausführliche Klassen-Guides</span>
+          <h2>Classic Klassen kompakt, visuell und spielbereit.</h2>
+          <p>Die Guides verdichten Leveling-Specs, Rollen, Stat-Prioritäten, Rotationen, Berufe und Power-Tipps aus etablierten Classic-Guide-Strukturen.</p>
+        </div>
+        <div class="class-tabs" id="class-tabs"></div>
+        <div class="class-detail" id="class-detail"></div>
+      </section>
+
+
+      <section class="panel dungeon-guides" id="dungeon-guides">
+        <div class="section-heading dungeon-heading">
+          <div>
+            <span class="eyebrow">🏰 Classic Dungeon Atlas</span>
+            <h2>Alle Classic Dungeons mit Route, Bossen, Loot und Gruppen-Tipps.</h2>
+            <p>Ein übersichtlicher Dungeon-Bereich für schnelle Run-Planung: Levelbereich wählen, Route lesen, Bossziele markieren und Loot-Fokus setzen.</p>
+          </div>
+          <div class="dungeon-counter"><b id="dungeon-count">0</b><span>Dungeons</span></div>
+        </div>
+        <div class="dungeon-layout">
+          <nav class="dungeon-rail" id="dungeon-rail" aria-label="Classic Dungeon Auswahl"></nav>
+          <div class="dungeon-detail" id="dungeon-detail"></div>
         </div>
       </section>
 
