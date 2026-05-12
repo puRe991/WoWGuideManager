@@ -122,13 +122,55 @@ function renderClassGuides() {
   const specs = specGuides[guide.id] ?? [];
   classDetail.innerHTML = `
     <article class="class-panel" style="--class-color: ${escapeHtml(guide.color)}">
-      <div class="class-portrait">${renderAssetImage(assetManifest.classes[guide.id], guide.name, 'class-portrait-image')}</div>
-      <div class="class-copy">
-        <div class="card-meta"><span>${escapeHtml(guide.levelingSpec)}</span><span>${escapeHtml(guide.difficulty)}</span></div>
-        <h3>${escapeHtml(guide.name)} Classic Master Guide</h3>
-        <p>${escapeHtml(guide.summary)}</p>
-        <div class="class-pill-row">${guide.roles.map((role) => `<span>${escapeHtml(role)}</span>`).join('')}</div>
-      </div>
+      <header class="class-guide-hero">
+        <div class="class-breadcrumb">Home / World of Warcraft / Classes / ${escapeHtml(guide.name)}</div>
+        <div class="class-guide-title">
+          <div class="class-portrait">${renderAssetImage(assetManifest.classes[guide.id], guide.name, 'class-portrait-image')}</div>
+          <div class="class-copy">
+            <div class="card-meta"><span>${escapeHtml(guide.levelingSpec)}</span><span>${escapeHtml(guide.difficulty)}</span></div>
+            <h3>${escapeHtml(guide.name)} Classic Class Guide</h3>
+            <p>${escapeHtml(guide.summary)}</p>
+            <div class="class-pill-row">${guide.roles.map((role) => `<span>${escapeHtml(role)}</span>`).join('')}</div>
+          </div>
+        </div>
+        <div class="guide-update-card">
+          <span>Zuletzt geprüft</span>
+          <strong>Classic Launch-Katalog</strong>
+          <small>Redaktionelles Layout mit Schnellnavigation, Overview und kompakten Detailseiten.</small>
+        </div>
+      </header>
+      <nav class="class-guide-nav" aria-label="${escapeHtml(guide.name)} Guide Schnellnavigation">
+        <a href="#class-guides">Übersicht</a>
+        <a href="#class-guides">Talente</a>
+        <a href="#class-guides">Rotation</a>
+        <a href="#class-guides">Stats</a>
+        <a href="#class-guides">BiS & Gear</a>
+        <a href="#class-guides">Berufe</a>
+        <a href="#class-guides">Specs</a>
+      </nav>
+      <aside class="class-toc">
+        <span>Inhaltsverzeichnis</span>
+        <ol>
+          <li>Overview und Rollenprofil</li>
+          <li>Basis-Rotation und Prioritäten</li>
+          <li>Talente, Berufe und Power-Tipps</li>
+          <li>Content-Rotation nach Leveling, Dungeon und Raid</li>
+          <li>Best-in-Slot Ziele und Spec Guides</li>
+        </ol>
+      </aside>
+      <section class="class-overview-card">
+        <div>
+          <span class="eyebrow">${escapeHtml(guide.name)} Overview</span>
+          <h4>Spielplan in 60 Sekunden</h4>
+          <p>${escapeHtml(guide.summary)}</p>
+        </div>
+        <div class="class-score-grid">
+          ${renderScoreCard('Leveling', guide.rotation.length, 'Tempo')}
+          ${renderScoreCard('Dungeons', build.rotations.dungeon.length, 'Praxis')}
+          ${renderScoreCard('Raid', build.rotations.raid.length, 'Tiefe')}
+          ${renderScoreCard('Utility', guide.powerTips.length, 'Tools')}
+        </div>
+      </section>
       <div class="class-columns">
         ${renderClassList('Basis-Rotation', guide.rotation)}
         ${renderClassList('Stat-Priorität', guide.statPriority)}
@@ -137,7 +179,7 @@ function renderClassGuides() {
         ${renderClassList('Power-Tipps', guide.powerTips)}
       </div>
       <div class="rotation-lab">
-        <h4>Rotation Guide nach Content</h4>
+        <div class="guide-section-heading"><span>Prioritätsliste</span><h4>Rotation Guide nach Content</h4></div>
         <div class="rotation-grid">
           ${renderRotationBlock('Leveling', build.rotations.leveling)}
           ${renderRotationBlock('Dungeon', build.rotations.dungeon)}
@@ -145,14 +187,20 @@ function renderClassGuides() {
         </div>
       </div>
       <div class="bis-panel">
-        <h4>Best in Slot Ziele</h4>
+        <div class="guide-section-heading"><span>Gear Planner</span><h4>Best in Slot Ziele</h4></div>
         <div class="bis-list">${build.bestInSlot.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>
       </div>
       <div class="spec-guides">
-        <h4>Spec Guides</h4>
+        <div class="guide-section-heading"><span>Spezialisierungen</span><h4>Spec Guides</h4></div>
         <div class="spec-grid">${specs.map(renderSpecGuide).join('')}</div>
       </div>
     </article>`;
+}
+
+
+function renderScoreCard(title, value, label) {
+  const score = Math.min(5, Math.max(3, value - 1));
+  return `<section><strong>${escapeHtml(title)}</strong><span>${'★'.repeat(score)}${'☆'.repeat(5 - score)}</span><small>${escapeHtml(label)}</small></section>`;
 }
 
 function renderSpecGuide(spec) {

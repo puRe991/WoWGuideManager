@@ -33,7 +33,6 @@ async function createBundle(target) {
   await writeFile(path.join(target, 'src/app.bundle.js'), bundle, 'utf8');
 }
 
-
 async function createWindowsData(target) {
   const [guidesModule, classModule, buildModule, specModule, dungeonModule, subscriptionModule, assetModule] = await Promise.all([
     import('../src/data/guides.js'),

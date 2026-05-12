@@ -159,3 +159,40 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
 .spec-card p { margin-bottom: 12px; }
 .spec-card .class-columns section, .spec-card section { margin-top: 10px; }
 @media (max-width: 1200px) { .spec-grid { grid-template-columns: 1fr; } }
+
+/* Icy-style editorial class guide presentation: dense navigation, clear content hierarchy and guide cards. */
+.class-panel { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 0; overflow: hidden; background: radial-gradient(circle at top right, color-mix(in srgb, var(--class-color), transparent 70%), transparent 34rem), linear-gradient(180deg, rgba(17,21,36,.96), rgba(8,11,20,.96)); }
+.class-guide-hero { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 22px; padding: 26px; border-bottom: 1px solid rgba(255,255,255,.09); background: linear-gradient(135deg, color-mix(in srgb, var(--class-color), transparent 86%), rgba(255,255,255,.035)); }
+.class-breadcrumb { grid-column: 1 / -1; color: #a9a195; font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.class-guide-title { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 22px; align-items: center; }
+.class-copy h3 { color: #f7efe0; font-size: clamp(2.2rem, 4vw, 4rem); line-height: .94; letter-spacing: -.055em; margin-bottom: 16px; }
+.guide-update-card { align-self: stretch; padding: 18px; border-radius: 22px; background: rgba(0,0,0,.26); border: 1px solid color-mix(in srgb, var(--class-color), transparent 54%); display: grid; align-content: center; gap: 8px; }
+.guide-update-card span, .guide-update-card small, .class-toc span, .guide-section-heading span { color: #a9a195; font-size: .78rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+.guide-update-card strong { color: var(--class-color); font-size: 1.18rem; }
+.class-guide-nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 22px; background: rgba(0,0,0,.22); border-bottom: 1px solid rgba(255,255,255,.08); }
+.class-guide-nav a { padding: 10px 12px; border-radius: 999px; color: #f7efe0; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); font-weight: 900; font-size: .84rem; }
+.class-guide-nav a:hover { color: var(--class-color); border-color: color-mix(in srgb, var(--class-color), transparent 48%); background: color-mix(in srgb, var(--class-color), transparent 86%); }
+.class-toc, .class-overview-card, .class-columns, .rotation-lab, .bis-panel, .spec-guides { margin-inline: 22px; }
+.class-toc { padding: 18px; border-radius: 20px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.045); }
+.class-toc ol { margin: 12px 0 0; padding-left: 22px; columns: 2; color: #ddd3c5; line-height: 1.7; }
+.class-overview-card { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 18px; padding: 20px; border-radius: 22px; background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(0,0,0,.18)); border: 1px solid color-mix(in srgb, var(--class-color), transparent 68%); }
+.class-overview-card h4 { margin: 8px 0 10px; color: #ffe39a; font-size: 1.45rem; }
+.class-score-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.class-score-grid section { padding: 13px; border-radius: 16px; background: rgba(0,0,0,.24); border: 1px solid rgba(255,255,255,.08); }
+.class-score-grid strong, .class-score-grid span, .class-score-grid small { display: block; }
+.class-score-grid strong { color: #f7efe0; margin-bottom: 6px; }
+.class-score-grid span { color: var(--class-color); letter-spacing: .04em; }
+.class-score-grid small { color: #a9a195; margin-top: 4px; font-weight: 800; }
+.class-columns, .rotation-lab, .bis-panel, .spec-guides { padding: 18px; }
+.class-columns { border-radius: 22px; background: rgba(0,0,0,.14); border: 1px solid rgba(255,255,255,.075); }
+.class-columns section, .rotation-grid section, .spec-card { position: relative; overflow: hidden; }
+.class-columns section::before, .rotation-grid section::before, .spec-card::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--class-color); opacity: .72; }
+.guide-section-heading { display: flex; justify-content: space-between; gap: 12px; align-items: end; margin-bottom: 14px; }
+.guide-section-heading h4 { margin: 0; color: #ffe39a; font-size: 1.35rem; }
+.spec-guides { margin-bottom: 22px; }
+.spec-card h5 { font-size: 1.3rem; }
+
+@media (max-width: 1200px) {
+  .class-guide-hero, .class-guide-title, .class-overview-card { grid-template-columns: 1fr; }
+  .class-toc ol { columns: 1; }
+}
