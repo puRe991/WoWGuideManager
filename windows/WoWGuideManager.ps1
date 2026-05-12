@@ -111,7 +111,12 @@ function Add-ListTab($header, $items, $display, $handler) {
   $list.BorderThickness = 0
   $list.DisplayMemberPath = $display
   foreach ($item in @($items)) { $list.Items.Add($item) | Out-Null }
-  $onSelectionChanged = { if ($this.SelectedItem) { & $handler $this.SelectedItem } }.GetNewClosure()
+  $selectionHandler = $handler
+  $onSelectionChanged = {
+    if ($this.SelectedItem) {
+      & $selectionHandler $this.SelectedItem
+    }
+  }.GetNewClosure()
   $list.Add_SelectionChanged($onSelectionChanged)
   $tab.Content = $list
   $tabs.Items.Add($tab) | Out-Null
