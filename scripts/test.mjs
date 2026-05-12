@@ -58,6 +58,8 @@ assert.equal(premiumRaid[0].premium, true);
 
 assert.ok(existsSync('index.html'), 'index.html must exist');
 const indexHtml = readFileSync('index.html', 'utf8');
+assert.match(indexHtml, /startup-version-overlay/, 'startup screen must force WoW version selection first');
+assert.match(indexHtml, /startup-version-grid/, 'startup screen must render selectable WoW versions');
 assert.match(indexHtml, /expansion-picker/, 'home screen must include an expansion selector');
 assert.match(indexHtml, /class-guides/, 'home screen must include class guide navigation');
 assert.match(indexHtml, /dungeon-guides/, 'home screen must include the Classic dungeon atlas');
@@ -84,6 +86,7 @@ assert.match(buildScript, /Start-WoWGuideManager\.cmd/, 'portable build must lau
 const windowsShell = readFileSync('windows/WoWGuideManager.ps1', 'utf8');
 assert.match(windowsShell, /PresentationFramework/, 'Windows shell must use native WPF assemblies');
 assert.match(windowsShell, /Show-Class/, 'Windows shell must render class guides natively');
+assert.match(windowsShell, /Select-WowVersion/, 'Windows shell must ask for the desired WoW version before opening guides');
 assert.match(windowsShell, /GetNewClosure/, 'Windows shell event handlers must capture per-tab selection callbacks');
 
 const windowsLauncher = readFileSync('windows/Start-WoWGuideManager.cmd', 'utf8');

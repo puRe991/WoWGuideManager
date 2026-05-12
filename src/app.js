@@ -10,13 +10,18 @@ import { filterGuides } from './lib/filterGuides.js';
 const state = {
   search: '',
   category: 'Alle',
-  expansion: 'classic',
+  expansion: 'all',
   showPremiumOnly: false,
-  selectedExpansion: 'classic',
+  selectedExpansion: '',
   selectedClassId: 'warrior',
   selectedDungeonId: 'blackrock-depths'
 };
 
+const appShell = document.querySelector('#app-shell');
+const startupOverlay = document.querySelector('#startup-version-overlay');
+const startupVersionGrid = document.querySelector('#startup-version-grid');
+const startupSelectedName = document.querySelector('#startup-selected-name');
+const startupContinue = document.querySelector('#startup-continue');
 const expansionHeroGrid = document.querySelector('#expansion-hero-grid');
 const activeExpansionName = document.querySelector('#active-expansion-name');
 const activeExpansionFocus = document.querySelector('#active-expansion-focus');
@@ -69,6 +74,48 @@ function getExpansionArtwork(key) {
   return expansionArtwork[key] ?? expansionArtwork.future;
 }
 
+function selectExpansion(key) {
+  state.selectedExpansion = key;
+  state.expansion = key;
+  expansionSelect.value = key;
+  renderStartupVersionPicker();
+  renderExpansionSelector();
+  renderGuides();
+}
+
+function finishStartupSelection() {
+  if (!state.selectedExpansion) {
+    return;
+  }
+
+  startupOverlay.classList.add('hidden');
+  appShell.classList.remove('startup-hidden');
+  document.body.classList.remove('startup-active');
+}
+
+function renderStartupVersionPicker() {
+  startupVersionGrid.innerHTML = expansions
+    .map((item) => {
+      const art = getExpansionArtwork(item.key);
+      const isActive = state.selectedExpansion === item.key;
+      return `
+        <button class="startup-version-option ${isActive ? 'active' : ''}" data-start-expansion="${escapeHtml(item.key)}" style="--tile-art: ${escapeHtml(art.art)}">
+          <span>${escapeHtml(item.status)}</span>
+          <strong>${escapeHtml(item.name)}</strong>
+          <small>${escapeHtml(item.launchFocus)}</small>
+        </button>`;
+    })
+    .join('');
+
+  startupVersionGrid.querySelectorAll('[data-start-expansion]').forEach((button) => {
+    button.addEventListener('click', () => selectExpansion(button.dataset.startExpansion));
+  });
+
+  const selected = expansions.find((item) => item.key === state.selectedExpansion);
+  startupSelectedName.textContent = selected ? `${selected.name} ist ausgewählt` : 'Noch keine Version ausgewählt';
+  startupContinue.disabled = !selected;
+}
+
 function renderExpansionSelector() {
   expansionHeroGrid.innerHTML = expansions
     .map((item) => {
@@ -86,18 +133,14 @@ function renderExpansionSelector() {
 
   expansionHeroGrid.querySelectorAll('[data-expansion]').forEach((button) => {
     button.addEventListener('click', () => {
-      state.selectedExpansion = button.dataset.expansion;
-      state.expansion = state.selectedExpansion;
-      expansionSelect.value = state.expansion;
-      renderExpansionSelector();
-      renderGuides();
+      selectExpansion(button.dataset.expansion);
     });
   });
 
-  const active = expansions.find((item) => item.key === state.selectedExpansion) ?? expansions[0];
-  activeExpansionName.textContent = active.name;
-  activeExpansionFocus.textContent = active.launchFocus;
-  activeExpansionModules.innerHTML = active.modules.map((module) => `<span>${escapeHtml(module)}</span>`).join('');
+  const active = expansions.find((item) => item.key === state.selectedExpansion);
+  activeExpansionName.textContent = active?.name ?? 'Bitte zuerst WoW-Version auswählen';
+  activeExpansionFocus.textContent = active?.launchFocus ?? 'Wähle beim Start eine Ära, damit Guides und Filter auf deine gewünschte WoW-Version ausgerichtet werden.';
+  activeExpansionModules.innerHTML = (active?.modules ?? ['Startauswahl erforderlich']).map((module) => `<span>${escapeHtml(module)}</span>`).join('');
 }
 
 function renderClassGuides() {
@@ -316,8 +359,11 @@ premiumToggle.addEventListener('click', () => {
   renderGuides();
 });
 
+startupContinue.addEventListener('click', finishStartupSelection);
+
 renderMetrics();
 renderSelects();
+renderStartupVersionPicker();
 renderExpansionSelector();
 renderClassGuides();
 renderDungeonGuides();

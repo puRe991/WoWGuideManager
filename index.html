@@ -6,8 +6,21 @@
     <title>WoW Guide Manager</title>
     <link rel="stylesheet" href="./src/styles.css" />
   </head>
-  <body>
-    <main class="app-shell">
+  <body class="startup-active">
+    <section class="startup-version-overlay" id="startup-version-overlay" aria-labelledby="startup-version-title" role="dialog" aria-modal="true">
+      <div class="startup-version-card panel">
+        <span class="eyebrow">Startauswahl</span>
+        <h1 id="startup-version-title">Welche WoW-Version möchtest du spielen?</h1>
+        <p>Wähle zuerst deine gewünschte WoW-Ära. Danach öffnet der Manager automatisch die passenden Guides und Filter.</p>
+        <div class="startup-version-grid" id="startup-version-grid"></div>
+        <div class="startup-version-footer">
+          <span id="startup-selected-name">Noch keine Version ausgewählt</span>
+          <button class="button primary" id="startup-continue" disabled>Mit dieser Version starten</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="app-shell startup-hidden" id="app-shell">
 
       <section class="expansion-picker panel" id="expansion-picker">
         <div class="section-heading compact">

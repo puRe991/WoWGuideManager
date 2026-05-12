@@ -78,6 +78,51 @@ function Show-Guide($guide) {
   )
 }
 
+function Select-WowVersion {
+  $selectionWindow = New-Object System.Windows.Window
+  $selectionWindow.Title = 'WoW version selection'
+  $selectionWindow.Width = 720
+  $selectionWindow.Height = 520
+  $selectionWindow.WindowStartupLocation = 'CenterScreen'
+  $selectionWindow.Background = [System.Windows.Media.BrushConverter]::new().ConvertFromString('#080b14')
+
+  $panel = New-Object System.Windows.Controls.StackPanel
+  $panel.Margin = '26'
+  $panel.Children.Add((New-TextBlock 'Choose your WoW version first' 28 'Bold' '#ffe39a')) | Out-Null
+  $panel.Children.Add((New-TextBlock 'Select the expansion/content pack you want to open. The guide filters will start with this version.' 14 'Normal' '#c8c0b5')) | Out-Null
+
+  $list = New-Object System.Windows.Controls.ListBox
+  $list.Margin = '0,12,0,18'
+  $list.MinHeight = 260
+  $list.Background = [System.Windows.Media.BrushConverter]::new().ConvertFromString('#111827')
+  $list.Foreground = [System.Windows.Media.BrushConverter]::new().ConvertFromString('#f7efe0')
+  $list.DisplayMemberPath = 'name'
+  foreach ($expansion in @($data.expansions)) { $list.Items.Add($expansion) | Out-Null }
+  $list.SelectedIndex = 0
+  $panel.Children.Add($list) | Out-Null
+
+  $startButton = New-Object System.Windows.Controls.Button
+  $startButton.Content = 'Start with selected version'
+  $startButton.MinHeight = 44
+  $startButton.FontWeight = 'Bold'
+  $script:SelectedWowVersion = $null
+  $startButton.Add_Click({
+    if ($list.SelectedItem) {
+      $script:SelectedWowVersion = $list.SelectedItem
+      $selectionWindow.DialogResult = $true
+      $selectionWindow.Close()
+    }
+  }.GetNewClosure())
+  $panel.Children.Add($startButton) | Out-Null
+
+  $selectionWindow.Content = $panel
+  $selectionWindow.ShowDialog() | Out-Null
+  return $script:SelectedWowVersion
+}
+
+$selectedExpansion = Select-WowVersion
+if (-not $selectedExpansion) { exit 0 }
+
 $window = New-Object System.Windows.Window
 $window.Title = 'WoW Guide Manager'
 $window.Width = 1380
@@ -96,7 +141,7 @@ $left.Margin = '0,0,18,0'
 [System.Windows.Controls.Grid]::SetColumn($left, 0)
 
 $left.Children.Add((New-TextBlock 'WoW Guide Manager' 30 'Bold' '#ffe39a')) | Out-Null
-$left.Children.Add((New-TextBlock 'Portable Windows app - Classic content pack' 14 'Normal' '#c8c0b5')) | Out-Null
+$left.Children.Add((New-TextBlock "Selected version: $($selectedExpansion.name)" 14 'Normal' '#c8c0b5')) | Out-Null
 
 $tabs = New-Object System.Windows.Controls.TabControl
 $tabs.Background = [System.Windows.Media.BrushConverter]::new().ConvertFromString('#111827')
