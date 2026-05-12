@@ -53,6 +53,7 @@ assert.match(buildScript, /Start-WoWGuideManager\.cmd/, 'portable build must lau
 const windowsShell = readFileSync('windows/WoWGuideManager.ps1', 'utf8');
 assert.match(windowsShell, /PresentationFramework/, 'Windows shell must use native WPF assemblies');
 assert.match(windowsShell, /Show-Class/, 'Windows shell must render class guides natively');
+assert.match(windowsShell, /\$selectionHandler = \$handler/, 'Windows shell must copy per-tab selection callbacks into a closure-local variable');
 assert.match(windowsShell, /GetNewClosure/, 'Windows shell event handlers must capture per-tab selection callbacks');
 
 const windowsLauncher = readFileSync('windows/Start-WoWGuideManager.cmd', 'utf8');
