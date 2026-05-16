@@ -93,6 +93,18 @@ export const guideCards = [
     tags: ['Crafting', 'Farming', 'Planner']
   },
   {
+    id: 'classic-alchemy-1-300',
+    title: 'Alchemie 1-300 Classic Guide',
+    category: 'Professions',
+    expansion: 'classic',
+    audience: 'Einsteiger',
+    minutes: 32,
+    summary: 'Eigenständig formulierter Alchemie-Fahrplan mit Trainerstufen, Einkaufszettel, Händlerrezepten und Crafting-Schritten bis Skill 300.',
+    checklist: ['Kräuter und Phiolen bündeln', 'Trainerstopps bei 50/125/225 einplanen', 'Händlerrezepte vor 265 und 285 kaufen', 'Gelbe Skillpunkte mit Reserve kalkulieren'],
+    premium: false,
+    tags: ['Alchemie', 'Berufe', 'Classic']
+  },
+  {
     id: 'classic-secrets-azeroth',
     title: 'Azeroth Geheimnisse & Rare Spawns',
     category: 'Secrets',

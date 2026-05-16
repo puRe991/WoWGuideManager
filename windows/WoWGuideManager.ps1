@@ -59,6 +59,30 @@ function Show-Class($classGuide) {
   Set-Details "$($classGuide.name) Classic Guide" $classGuide.summary $sections
 }
 
+
+function Show-Profession($profession) {
+  $trainerItems = @()
+  foreach ($trainer in @($profession.trainers)) {
+    $trainerItems += "$($trainer.rank) ($($trainer.range)) - $($trainer.requirement)"
+    $trainerItems += "Allianz: $([string]::Join('; ', @($trainer.alliance)))"
+    $trainerItems += "Horde: $([string]::Join('; ', @($trainer.horde)))"
+  }
+  $stepItems = @()
+  foreach ($step in @($profession.steps)) {
+    $line = "$($step.range): $($step.craft) - $($step.materials)"
+    if ($step.note) { $line = "$line ($($step.note))" }
+    $stepItems += $line
+  }
+  Set-Details "$($profession.name) Classic $($profession.skillRange)" $profession.summary @(
+    @{ Title = 'Allgemeines'; Items = @($profession.intro) },
+    @{ Title = 'Trainer'; Items = $trainerItems },
+    @{ Title = 'Einkaufszettel'; Items = @($profession.shoppingList) },
+    @{ Title = 'Benötigte Rezepte'; Items = @($profession.recipes) },
+    @{ Title = 'Skillroute'; Items = $stepItems },
+    @{ Title = 'Tipps'; Items = @($profession.tips) }
+  )
+}
+
 function Show-Dungeon($dungeon) {
   Set-Details "$($dungeon.name)" "$($dungeon.levelRange) - $($dungeon.zone) - $($dungeon.time)" @(
     @{ Title = 'Route'; Items = @($dungeon.route) },
@@ -120,6 +144,7 @@ function Add-ListTab($header, $items, $display, $handler) {
 
 $classList = Add-ListTab 'Classes' $data.classGuides 'name' ${function:Show-Class}
 $dungeonList = Add-ListTab 'Dungeons' $data.dungeonGuides 'name' ${function:Show-Dungeon}
+$professionList = Add-ListTab 'Berufe' $data.professionGuides 'name' ${function:Show-Profession}
 $guideList = Add-ListTab 'Guides' $data.guideCards 'title' ${function:Show-Guide}
 
 $left.Children.Add($tabs) | Out-Null

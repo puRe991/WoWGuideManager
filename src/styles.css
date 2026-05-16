@@ -196,3 +196,51 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
   .class-guide-hero, .class-guide-title, .class-overview-card { grid-template-columns: 1fr; }
   .class-toc ol { columns: 1; }
 }
+
+/* Profession guide pages: editorial crafting layout with icon, trainers, shopping list and route. */
+.profession-guides { overflow: hidden; }
+.profession-tabs { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+.profession-tab { display: inline-grid; grid-template-columns: 46px auto; grid-template-rows: auto auto; gap: 2px 12px; align-items: center; min-width: 190px; padding: 12px 14px; border-radius: 18px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.055); color: #f7efe0; cursor: pointer; text-align: left; }
+.profession-tab.active, .profession-tab:hover { border-color: color-mix(in srgb, var(--profession-color), transparent 35%); background: color-mix(in srgb, var(--profession-color), transparent 84%); }
+.profession-tab .asset-slot { grid-row: 1 / span 2; }
+.profession-tab span { font-weight: 900; }
+.profession-tab small { color: #a9a195; font-weight: 800; }
+.profession-icon-image { width: 46px; height: 46px; border-radius: 14px; }
+.profession-panel { border-radius: 28px; overflow: hidden; background: radial-gradient(circle at top left, color-mix(in srgb, var(--profession-color), transparent 75%), transparent 32rem), linear-gradient(180deg, rgba(18,24,34,.97), rgba(7,9,18,.98)); border: 1px solid color-mix(in srgb, var(--profession-color), transparent 72%); }
+.profession-hero { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 22px; padding: 26px; border-bottom: 1px solid rgba(255,255,255,.09); }
+.profession-title { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 20px; align-items: center; }
+.profession-hero-icon { width: 110px; height: 110px; border-radius: 24px; border-color: color-mix(in srgb, var(--profession-color), transparent 42%); }
+.profession-title h3 { margin: 10px 0 12px; font-size: clamp(2.2rem, 4vw, 4rem); line-height: .92; letter-spacing: -.055em; color: #f7efe0; }
+.profession-title p, .profession-intro p, .profession-card p, .profession-step p { color: #d7d0c4; line-height: 1.65; }
+.profession-stat-card { align-self: stretch; display: grid; align-content: center; gap: 8px; padding: 18px; border-radius: 22px; background: rgba(0,0,0,.24); border: 1px solid color-mix(in srgb, var(--profession-color), transparent 54%); }
+.profession-stat-card span, .profession-stat-card small { color: #a9a195; font-size: .8rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.profession-stat-card strong { color: var(--profession-color); font-size: 2rem; }
+.profession-nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 22px; background: rgba(0,0,0,.22); border-bottom: 1px solid rgba(255,255,255,.08); }
+.profession-nav a { padding: 10px 12px; border-radius: 999px; color: #f7efe0; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); font-weight: 900; font-size: .84rem; }
+.profession-nav a:hover { color: var(--profession-color); border-color: color-mix(in srgb, var(--profession-color), transparent 48%); background: color-mix(in srgb, var(--profession-color), transparent 86%); }
+.profession-intro, .profession-grid, .profession-route { margin: 22px; }
+.profession-intro { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.profession-intro p { margin: 0; padding: 16px; border-radius: 18px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); }
+.profession-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); gap: 16px; }
+.profession-card, .profession-route { padding: 18px; border-radius: 22px; background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.085); }
+.trainers-card { grid-row: span 3; }
+.trainer-list { display: grid; gap: 14px; }
+.trainer-list article { padding: 14px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+.trainer-list h5, .profession-step h5 { margin: 0 0 8px; color: var(--profession-color); font-size: 1.04rem; }
+.trainer-list h5 span { color: #ffe39a; font-size: .86rem; }
+.trainer-list p { margin: 0 0 12px; color: #a9a195; font-weight: 800; }
+.trainer-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.trainer-columns strong { display: block; color: #ffe39a; margin-bottom: 6px; }
+.trainer-columns ul, .profession-card ul { margin: 0; padding-left: 18px; color: #d7d0c4; line-height: 1.65; }
+.material-list { display: flex; flex-wrap: wrap; gap: 9px; }
+.material-list span { padding: 8px 10px; border-radius: 999px; background: color-mix(in srgb, var(--profession-color), transparent 84%); border: 1px solid color-mix(in srgb, var(--profession-color), transparent 62%); color: #f7efe0; font-weight: 850; font-size: .86rem; }
+.profession-note { margin-top: 0; }
+.profession-step-list { display: grid; gap: 10px; }
+.profession-step { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 14px; padding: 14px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+.profession-step > strong { display: grid; place-items: center; min-height: 70px; border-radius: 16px; color: #07120c; background: var(--profession-color); font-size: 1.1rem; }
+.profession-step p { margin: 0; }
+.profession-step small { display: block; margin-top: 8px; color: #ffe39a; font-weight: 800; line-height: 1.5; }
+@media (max-width: 1200px) {
+  .profession-hero, .profession-title, .profession-grid, .profession-intro, .trainer-columns { grid-template-columns: 1fr; }
+  .trainers-card { grid-row: auto; }
+}

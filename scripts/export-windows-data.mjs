@@ -4,6 +4,7 @@ import { classGuides } from '../src/data/classGuides.js';
 import { classBuildGuides } from '../src/data/classBuildGuides.js';
 import { specGuides } from '../src/data/specGuides.js';
 import { dungeonGuides } from '../src/data/dungeonGuides.js';
+import { professionGuides } from '../src/data/professionGuides.js';
 import { subscriptionTiers } from '../src/data/subscriptions.js';
 import { assetManifest } from '../src/data/assetManifest.js';
 
@@ -16,6 +17,7 @@ const output = {
   classBuildGuides,
   specGuides,
   dungeonGuides,
+  professionGuides,
   subscriptionTiers,
   assetManifest
 };

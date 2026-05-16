@@ -5,6 +5,7 @@ import { classGuides } from '../src/data/classGuides.js';
 import { classBuildGuides } from '../src/data/classBuildGuides.js';
 import { specGuides } from '../src/data/specGuides.js';
 import { dungeonGuides } from '../src/data/dungeonGuides.js';
+import { professionGuides } from '../src/data/professionGuides.js';
 import { assetManifest, assetSources } from '../src/data/assetManifest.js';
 import { filterGuides } from '../src/lib/filterGuides.js';
 
@@ -30,11 +31,17 @@ const indexHtml = readFileSync('index.html', 'utf8');
 assert.match(indexHtml, /expansion-picker/, 'home screen must include an expansion selector');
 assert.match(indexHtml, /class-guides/, 'home screen must include class guide navigation');
 assert.match(indexHtml, /dungeon-guides/, 'home screen must include the Classic dungeon atlas');
+assert.match(indexHtml, /profession-guides/, 'home screen must include Classic profession guides');
 assert.ok(guideCards.length >= 8, 'MVP should include at least eight guide cards');
 assert.equal(classGuides.length, 9, 'Classic should include all nine original classes');
 assert.ok(dungeonGuides.length >= 20, 'Classic dungeon atlas should include the main leveling and endgame dungeons');
 assert.equal(dungeonGuides.length, 20, 'Classic dungeon atlas should cover all 20 Classic dungeon entries including combined wing hubs');
 assert.ok(dungeonGuides.every((dungeon) => dungeon.route.length >= 5 && dungeon.bosses.length >= 4), 'Each dungeon guide should include route steps and boss targets');
+assert.equal(professionGuides.length, 1, 'Classic profession guide pack should include Alchemy');
+assert.equal(professionGuides[0].id, 'classic-alchemy', 'Alchemy guide should use a stable id');
+assert.ok(professionGuides[0].shoppingList.length >= 15 && professionGuides[0].steps.length >= 12, 'Alchemy guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.alchemy, 'Alchemy profession must reference a real asset slot');
+assert.ok(assetSources.professions.alchemy, 'Alchemy profession must have an optional real icon source URL');
 assert.ok(dungeonGuides.every((dungeon) => dungeon.loot.length >= 3 && dungeon.tips.length >= 3 && dungeon.quests.length >= 3 && dungeon.composition.length >= 3 && dungeon.time), 'Each dungeon guide should include loot, group tips, quests, composition and time planning');
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]), 'Each class must reference a real asset slot');
@@ -44,6 +51,7 @@ assert.ok(classGuides.every((classGuide) => assetSources.classes[classGuide.id])
 const buildScript = readFileSync('scripts/build.mjs', 'utf8');
 assert.match(buildScript, /app\.bundle\.js/, 'build must emit a browser-safe bundle for file protocol usage');
 assert.match(buildScript, /dungeonGuides\.js/, 'build must include dungeon guide data in the portable bundle');
+assert.match(buildScript, /professionGuides\.js/, 'build must include profession guide data in the portable bundle');
 assert.match(buildScript, /assetManifest\.js/, 'build must include real asset manifest data in the portable bundle');
 assert.match(buildScript, /classBuildGuides\.js/, 'build must include advanced rotation and BiS data in the portable bundle');
 assert.match(buildScript, /specGuides\.js/, 'build must include per-spec guide data in the portable bundle');
@@ -53,6 +61,7 @@ assert.match(buildScript, /Start-WoWGuideManager\.cmd/, 'portable build must lau
 const windowsShell = readFileSync('windows/WoWGuideManager.ps1', 'utf8');
 assert.match(windowsShell, /PresentationFramework/, 'Windows shell must use native WPF assemblies');
 assert.match(windowsShell, /Show-Class/, 'Windows shell must render class guides natively');
+assert.match(windowsShell, /Show-Profession/, 'Windows shell must render profession guides natively');
 assert.match(windowsShell, /GetNewClosure/, 'Windows shell event handlers must capture per-tab selection callbacks');
 
 const windowsLauncher = readFileSync('windows/Start-WoWGuideManager.cmd', 'utf8');

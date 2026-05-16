@@ -3,6 +3,7 @@ import { classGuides } from './data/classGuides.js';
 import { classBuildGuides } from './data/classBuildGuides.js';
 import { specGuides } from './data/specGuides.js';
 import { dungeonGuides } from './data/dungeonGuides.js';
+import { professionGuides } from './data/professionGuides.js';
 import { assetManifest } from './data/assetManifest.js';
 import { subscriptionTiers } from './data/subscriptions.js';
 import { filterGuides } from './lib/filterGuides.js';
@@ -14,7 +15,8 @@ const state = {
   showPremiumOnly: false,
   selectedExpansion: 'classic',
   selectedClassId: 'warrior',
-  selectedDungeonId: 'blackrock-depths'
+  selectedDungeonId: 'blackrock-depths',
+  selectedProfessionId: 'classic-alchemy'
 };
 
 const expansionHeroGrid = document.querySelector('#expansion-hero-grid');
@@ -26,6 +28,8 @@ const classDetail = document.querySelector('#class-detail');
 const dungeonRail = document.querySelector('#dungeon-rail');
 const dungeonDetail = document.querySelector('#dungeon-detail');
 const dungeonCount = document.querySelector('#dungeon-count');
+const professionTabs = document.querySelector('#profession-tabs');
+const professionDetail = document.querySelector('#profession-detail');
 const guideGrid = document.querySelector('#guide-grid');
 const roadmapGrid = document.querySelector('#roadmap-grid');
 const pricingGrid = document.querySelector('#pricing-grid');
@@ -271,8 +275,103 @@ function renderDungeonGuides() {
     </article>`;
 }
 
+function renderProfessionGuides() {
+  professionTabs.innerHTML = professionGuides
+    .map(
+      (profession) => `
+        <button class="profession-tab ${profession.id === state.selectedProfessionId ? 'active' : ''}" data-profession="${escapeHtml(profession.id)}" style="--profession-color: ${escapeHtml(profession.theme)}">
+          ${renderAssetImage(assetManifest.professions?.[profession.icon], `${profession.name} Icon`, 'profession-icon-image')}
+          <span>${escapeHtml(profession.name)}</span>
+          <small>${escapeHtml(profession.skillRange)}</small>
+        </button>`
+    )
+    .join('');
+
+  professionTabs.querySelectorAll('[data-profession]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.selectedProfessionId = button.dataset.profession;
+      renderProfessionGuides();
+    });
+  });
+
+  const profession = professionGuides.find((item) => item.id === state.selectedProfessionId) ?? professionGuides[0];
+  professionDetail.innerHTML = `
+    <article class="profession-panel" style="--profession-color: ${escapeHtml(profession.theme)}">
+      <header class="profession-hero">
+        <div class="profession-title">
+          ${renderAssetImage(assetManifest.professions?.[profession.icon], `${profession.name} Icon`, 'profession-hero-icon')}
+          <div>
+            <div class="card-meta"><span>WoW Classic</span><span>${escapeHtml(profession.skillRange)}</span><span>${escapeHtml(profession.audience)}</span></div>
+            <h3>${escapeHtml(profession.name)} ${escapeHtml(profession.skillRange)}</h3>
+            <p>${escapeHtml(profession.summary)}</p>
+          </div>
+        </div>
+        <div class="profession-stat-card">
+          <span>Guide-Dauer</span>
+          <strong>${profession.minutes} Min.</strong>
+          <small>Materialcheck, Trainer, Rezepte und Skillroute in einem Ablauf.</small>
+        </div>
+      </header>
+      <nav class="profession-nav" aria-label="${escapeHtml(profession.name)} Guide Schnellnavigation">
+        <a href="#profession-guides">Allgemeines</a>
+        <a href="#profession-guides">Lehrer</a>
+        <a href="#profession-guides">Einkaufszettel</a>
+        <a href="#profession-guides">Rezepte</a>
+        <a href="#profession-guides">1-300 Route</a>
+      </nav>
+      <section class="profession-intro">${profession.intro.map((item) => `<p>${escapeHtml(item)}</p>`).join('')}</section>
+      <div class="profession-grid">
+        <section class="profession-card trainers-card">
+          <div class="guide-section-heading"><span>Trainer</span><h4>Alchemie-Lehrer nach Rang</h4></div>
+          <div class="trainer-list">${profession.trainers.map(renderTrainerBlock).join('')}</div>
+        </section>
+        <section class="profession-card">
+          <div class="guide-section-heading"><span>Materialien</span><h4>Einkaufszettel</h4></div>
+          <p class="profession-note">Richtwerte für den kompletten Weg bis 300. Plane Reserven ein, wenn gelbe oder grüne Rezepte Pechsträhnen verursachen.</p>
+          <div class="material-list">${profession.shoppingList.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>
+        </section>
+        <section class="profession-card">
+          <div class="guide-section-heading"><span>Rezepte</span><h4>Vor dem Skillen besorgen</h4></div>
+          <ul>${profession.recipes.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+        </section>
+        <section class="profession-card">
+          <div class="guide-section-heading"><span>Tipps</span><h4>Effizienter leveln</h4></div>
+          <ul>${profession.tips.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+        </section>
+      </div>
+      <section class="profession-route">
+        <div class="guide-section-heading"><span>Skillroute</span><h4>Schritt für Schritt zu ${escapeHtml(profession.name)} 300</h4></div>
+        <div class="profession-step-list">${profession.steps.map(renderProfessionStep).join('')}</div>
+      </section>
+    </article>`;
+}
+
+function renderTrainerBlock(trainer) {
+  return `
+    <article>
+      <h5>${escapeHtml(trainer.rank)} <span>${escapeHtml(trainer.range)}</span></h5>
+      <p>${escapeHtml(trainer.requirement)}</p>
+      <div class="trainer-columns">
+        <div><strong>Allianz</strong><ul>${trainer.alliance.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>
+        <div><strong>Horde</strong><ul>${trainer.horde.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>
+      </div>
+    </article>`;
+}
+
+function renderProfessionStep(step) {
+  return `
+    <article class="profession-step">
+      <strong>${escapeHtml(step.range)}</strong>
+      <div>
+        <h5>${escapeHtml(step.craft)}</h5>
+        <p>${escapeHtml(step.materials)}</p>
+        ${step.note ? `<small>${escapeHtml(step.note)}</small>` : ''}
+      </div>
+    </article>`;
+}
+
 function renderMetrics() {
-  document.querySelector('#metric-guides').textContent = guideCards.length + dungeonGuides.length;
+  document.querySelector('#metric-guides').textContent = guideCards.length + dungeonGuides.length + professionGuides.length;
   document.querySelector('#metric-categories').textContent = categories.length;
   document.querySelector('#metric-premium').textContent = guideCards.filter((guide) => guide.premium).length;
 }
@@ -369,6 +468,7 @@ renderSelects();
 renderExpansionSelector();
 renderClassGuides();
 renderDungeonGuides();
+renderProfessionGuides();
 renderGuides();
 renderRoadmap();
 renderPricing();
