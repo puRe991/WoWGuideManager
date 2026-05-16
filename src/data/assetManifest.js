@@ -17,6 +17,9 @@ export const assetManifest = {
       map: './assets/wow/maps/future-content-pack.jpg'
     }
   },
+  professions: {
+    alchemy: './assets/wow/icons/professions/alchemy.png'
+  },
   classes: {
     druid: './assets/wow/icons/classes/druid.png',
     hunter: './assets/wow/icons/classes/hunter.png',
@@ -77,6 +80,9 @@ export const assetManifest = {
 
 export const assetSources = {
   note: 'Optional public CDN source hints for users who have rights to use these images. Run scripts/download-assets.mjs to populate local asset slots.',
+  professions: {
+    alchemy: 'https://wow.zamimg.com/images/wow/icons/large/trade_alchemy.jpg'
+  },
   classes: {
     druid: 'https://wow.zamimg.com/images/wow/icons/large/classicon_druid.jpg',
     hunter: 'https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg',
