@@ -66,7 +66,7 @@ function escapeHtml(value) {
 
 
 function renderAssetImage(src, alt, className = 'asset-image') {
-  return `<span class="asset-slot ${className}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" onerror="this.parentElement.classList.add('missing-asset'); this.remove();" /><span class="asset-missing">Asset fehlt</span></span>`;
+  return `<span class="asset-slot ${className}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" onerror="this.parentElement.classList.add('missing-asset'); this.remove();" /></span>`;
 }
 
 function getExpansionArtwork(key) {

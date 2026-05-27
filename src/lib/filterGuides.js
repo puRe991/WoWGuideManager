@@ -1,16 +1,17 @@
-export function filterGuides(guides, filters) {
-  const query = filters.search.trim().toLowerCase();
-
+export function filterGuides(guides, state) {
   return guides.filter((guide) => {
     const matchesSearch =
-      query.length === 0 ||
-      [guide.title, guide.summary, guide.category, guide.audience, ...guide.tags]
-        .join(' ')
-        .toLowerCase()
-        .includes(query);
-    const matchesCategory = filters.category === 'Alle' || guide.category === filters.category;
-    const matchesExpansion = filters.expansion === 'all' || guide.expansion === filters.expansion;
-    const matchesPremium = !filters.showPremiumOnly || guide.premium;
+      state.search === '' ||
+      guide.title.toLowerCase().includes(state.search.toLowerCase()) ||
+      guide.summary.toLowerCase().includes(state.search.toLowerCase()) ||
+      guide.category.toLowerCase().includes(state.search.toLowerCase()) ||
+      guide.tags.some((tag) => tag.toLowerCase().includes(state.search.toLowerCase()));
+
+    const matchesCategory = state.category === 'Alle' || guide.category === state.category;
+
+    const matchesExpansion = state.expansion === 'all' || guide.expansion === state.expansion;
+
+    const matchesPremium = !state.showPremiumOnly || guide.premium;
 
     return matchesSearch && matchesCategory && matchesExpansion && matchesPremium;
   });
