@@ -33,6 +33,17 @@ assert.match(indexHtml, /class-guides/, 'home screen must include class guide na
 assert.match(indexHtml, /dungeon-guides/, 'home screen must include the Classic dungeon atlas');
 assert.match(indexHtml, /profession-guides/, 'home screen must include Classic profession guides');
 assert.ok(guideCards.length >= 8, 'MVP should include at least eight guide cards');
+
+const tbcGuides = guideCards.filter((guide) => guide.expansion === 'the-burning-crusade');
+assert.ok(tbcGuides.length >= 8, 'The Burning Crusade should ship a first guide pack with at least eight cards');
+assert.ok(
+  new Set(tbcGuides.map((guide) => guide.category)).size >= 6,
+  'The Burning Crusade guide pack should span multiple categories, not just leveling'
+);
+assert.ok(
+  tbcGuides.every((guide) => guide.checklist.length >= 4 && guide.summary.length > 0),
+  'Every The Burning Crusade guide card should include a summary and a full checklist'
+);
 assert.equal(classGuides.length, 9, 'Classic should include all nine original classes');
 assert.ok(dungeonGuides.length >= 20, 'Classic dungeon atlas should include the main leveling and endgame dungeons');
 assert.equal(dungeonGuides.length, 20, 'Classic dungeon atlas should cover all 20 Classic dungeon entries including combined wing hubs');
@@ -79,5 +90,10 @@ assert.match(setupBatch, /:verify_node/, 'Windows setup must verify that node an
 assert.match(setupBatch, /call npm --version/, 'Windows setup must call npm.cmd safely from batch files');
 assert.match(setupBatch, /:install_portable_node/, 'Windows setup must fall back to a portable Node.js ZIP instead of MSI-only installation');
 assert.match(setupBatch, /\.tools\\node/, 'Windows setup must add the portable Node.js folder to PATH');
+
+const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
+assert.ok(packageJson.scripts.lint, 'package.json must expose a lint script for CI');
+assert.ok(existsSync('scripts/lint.mjs'), 'lint script must exist');
+assert.ok(existsSync('.github/workflows/ci.yml'), 'CI workflow must exist so lint/test/build run on every push and PR');
 
 console.log('All tests passed.');

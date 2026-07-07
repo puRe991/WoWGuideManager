@@ -122,7 +122,11 @@ function renderClassGuides() {
   });
 
   const guide = classGuides.find((item) => item.id === state.selectedClassId) ?? classGuides[0];
-  const build = classBuildGuides[guide.id];
+  if (!guide) {
+    classDetail.innerHTML = '<p class="empty-state">Keine Klassendaten verfügbar.</p>';
+    return;
+  }
+  const build = classBuildGuides[guide.id] ?? { rotations: { leveling: [], dungeon: [], raid: [] }, bestInSlot: [] };
   const specs = specGuides[guide.id] ?? [];
   classDetail.innerHTML = `
     <article class="class-panel" style="--class-color: ${escapeHtml(guide.color)}">
@@ -251,6 +255,10 @@ function renderDungeonGuides() {
   });
 
   const dungeon = dungeonGuides.find((item) => item.id === state.selectedDungeonId) ?? dungeonGuides[0];
+  if (!dungeon) {
+    dungeonDetail.innerHTML = '<p class="empty-state">Keine Dungeon-Daten verfügbar.</p>';
+    return;
+  }
   dungeonDetail.innerHTML = `
     <article class="dungeon-panel" style="--dungeon-color: ${escapeHtml(dungeon.theme)}">
       <div class="dungeon-art">
@@ -295,6 +303,10 @@ function renderProfessionGuides() {
   });
 
   const profession = professionGuides.find((item) => item.id === state.selectedProfessionId) ?? professionGuides[0];
+  if (!profession) {
+    professionDetail.innerHTML = '<p class="empty-state">Keine Berufsdaten verfügbar.</p>';
+    return;
+  }
   professionDetail.innerHTML = `
     <article class="profession-panel" style="--profession-color: ${escapeHtml(profession.theme)}">
       <header class="profession-hero">
@@ -463,12 +475,37 @@ premiumToggle.addEventListener('click', () => {
   renderGuides();
 });
 
-renderMetrics();
-renderSelects();
-renderExpansionSelector();
-renderClassGuides();
-renderDungeonGuides();
-renderProfessionGuides();
-renderGuides();
-renderRoadmap();
-renderPricing();
+function showFatalError(error) {
+  console.error('WoW Guide Manager failed to start:', error);
+  const appShell = document.querySelector('.app-shell');
+  if (!appShell) return;
+  const banner = document.createElement('div');
+  banner.className = 'fatal-error-banner';
+  banner.setAttribute('role', 'alert');
+  banner.innerHTML = `
+    <strong>Die App konnte nicht vollständig geladen werden.</strong>
+    <p>Bitte lade die Seite neu. Wenn der Fehler bestehen bleibt, melde ihn mit den Details aus der Konsole.</p>`;
+  appShell.prepend(banner);
+}
+
+function init() {
+  renderMetrics();
+  renderSelects();
+  renderExpansionSelector();
+  renderClassGuides();
+  renderDungeonGuides();
+  renderProfessionGuides();
+  renderGuides();
+  renderRoadmap();
+  renderPricing();
+}
+
+try {
+  init();
+} catch (error) {
+  showFatalError(error);
+}
+
+window.addEventListener('error', (event) => {
+  console.error('Unhandled error:', event.error ?? event.message);
+});

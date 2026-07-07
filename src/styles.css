@@ -54,10 +54,13 @@ option { color: #141414; }
 .free { background: rgba(74, 222, 128, .13); color: #a8f2c0; }
 .empty-state { padding: 28px; text-align: center; border: 1px dashed rgba(255,255,255,.2); border-radius: 20px; }
 .hidden { display: none; }
+.fatal-error-banner { margin: 20px 24px 0; padding: 18px 22px; border-radius: 16px; background: rgba(255, 92, 92, .16); border: 1px solid rgba(255, 92, 92, .4); color: #ffd3d3; }
+.fatal-error-banner strong { display: block; margin-bottom: 6px; }
 .roadmap-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .status { display: inline-block; margin-bottom: 16px; color: #111; background: #ffe39a; }
 .status.geplant { background: #9bc9ff; }
 .status.template { background: #d3b5ff; }
+.status.startpaket { background: #ffb28c; }
 .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .price-card strong { display: block; font-size: 2.2rem; color: #ffe39a; margin-bottom: 10px; }
 .price-card.highlighted { background: linear-gradient(145deg, rgba(111, 70, 16, .7), rgba(35, 23, 54, .84)); border-color: rgba(255, 200, 107, .56); transform: translateY(-8px); }

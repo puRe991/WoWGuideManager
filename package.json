@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "lint": "node scripts/lint.mjs",
     "test": "node scripts/test.mjs",
     "dist:win": "node scripts/build.mjs --portable",
     "package:handoff": "node scripts/package-handoff.mjs",
