@@ -62,6 +62,16 @@ The app includes a Classic Dungeon Atlas covering all 20 Classic dungeon entries
 
 The app now includes detailed WoW Classic class cards for all nine Classic classes. Research notes and source links are kept in `docs/class-guide-research.md`; production guide text should keep citations and patch/version metadata next to each content pack.
 
+## The Burning Crusade guide pack
+
+The Guide Command Center now includes a first The Burning Crusade content pack (Leveling, Attunements, Heroics, Reputation, Professions, Gold, PvP and Classes) so the expansion is a live, filterable catalog rather than a roadmap placeholder. Class, dungeon and profession deep-dive pages (the format Classic has today) are the next step for this content pack; see `docs/product-roadmap.md`.
+
+## Quality gates
+
+- `npm run lint` runs a dependency-free syntax and style check (`scripts/lint.mjs`) over `src/` and `scripts/`.
+- `npm test` runs `scripts/test.mjs`, which asserts content coverage (guide counts, categories, checklist depth) and build/script wiring.
+- `.github/workflows/ci.yml` runs lint, test, build and the asset check on every push and pull request.
+
 ## Content model
 
 Guide content currently lives in `src/data/guides.js`. Each guide has an expansion key, category, audience level, estimated reading time, checklist items, premium flag and tags. New expansions can be added by extending the `expansions` roadmap array and guide data.
