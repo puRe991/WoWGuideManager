@@ -143,7 +143,7 @@ function Add-ListTab($header, $items, $display, $handler) {
 }
 
 $classList = Add-ListTab 'Classes' $data.classGuides 'name' ${function:Show-Class}
-$dungeonList = Add-ListTab 'Dungeons' $data.dungeonGuides 'name' ${function:Show-Dungeon}
+$dungeonList = Add-ListTab 'Dungeons' $data.dungeonGuides.classic 'name' ${function:Show-Dungeon}
 $professionList = Add-ListTab 'Berufe' $data.professionGuides 'name' ${function:Show-Profession}
 $guideList = Add-ListTab 'Guides' $data.guideCards 'title' ${function:Show-Guide}
 

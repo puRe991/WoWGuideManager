@@ -26,7 +26,9 @@
 
 ## Phase 4: Expansion scale-out
 
-- The Burning Crusade guide pack: **started**. Guide Command Center cards for Leveling, Attunements, Heroics, Reputation, Professions, Gold, PvP and Classes are live in `src/data/guides.js`. Still open: per-class TBC guides (`classGuides`/`classBuildGuides`/`specGuides` equivalent), a TBC dungeon atlas, and TBC profession deep guides — today those sections still only render Classic data in `src/app.js`.
+- The Burning Crusade guide pack: **in progress**.
+  - Done: Guide Command Center cards for Leveling, Attunements, Heroics, Reputation, Professions, Gold, PvP and Classes (`src/data/guides.js`); a full 16-instance TBC Dungeon Atlas (`src/data/dungeonGuides.js`) with the Dungeon Atlas UI now expansion-aware (`src/app.js` switches rail/heading/count by selected expansion, with an honest empty state for expansions without data yet).
+  - Still open: per-class TBC guides (`classGuides`/`classBuildGuides`/`specGuides` equivalent) and TBC profession deep guides. Those sections currently show Classic content with an explicit "Classic-only for now" scope note when a non-Classic expansion is selected, rather than silently mislabeling Classic data as TBC.
 - Wrath of the Lich King guide pack.
 - Retail expansion packs.
 - Regional localization.

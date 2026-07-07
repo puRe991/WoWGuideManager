@@ -45,18 +45,31 @@ assert.ok(
   'Every The Burning Crusade guide card should include a summary and a full checklist'
 );
 assert.equal(classGuides.length, 9, 'Classic should include all nine original classes');
-assert.ok(dungeonGuides.length >= 20, 'Classic dungeon atlas should include the main leveling and endgame dungeons');
-assert.equal(dungeonGuides.length, 20, 'Classic dungeon atlas should cover all 20 Classic dungeon entries including combined wing hubs');
-assert.ok(dungeonGuides.every((dungeon) => dungeon.route.length >= 5 && dungeon.bosses.length >= 4), 'Each dungeon guide should include route steps and boss targets');
+
+assert.ok(dungeonGuides.classic, 'dungeonGuides must expose a classic expansion key');
+assert.ok(dungeonGuides['the-burning-crusade'], 'dungeonGuides must expose a the-burning-crusade expansion key');
+
+const classicDungeons = dungeonGuides.classic;
+assert.ok(classicDungeons.length >= 20, 'Classic dungeon atlas should include the main leveling and endgame dungeons');
+assert.equal(classicDungeons.length, 20, 'Classic dungeon atlas should cover all 20 Classic dungeon entries including combined wing hubs');
+assert.ok(classicDungeons.every((dungeon) => dungeon.route.length >= 5 && dungeon.bosses.length >= 4), 'Each Classic dungeon guide should include route steps and boss targets');
+
+const tbcDungeons = dungeonGuides['the-burning-crusade'];
+assert.equal(tbcDungeons.length, 16, 'The Burning Crusade dungeon atlas should cover all 16 TBC 5-player instances');
+assert.ok(tbcDungeons.every((dungeon) => dungeon.route.length >= 5 && dungeon.bosses.length >= 2), 'Each TBC dungeon guide should include route steps and boss targets (TBC instances are smaller than Classic wing hubs)');
+assert.ok(new Set(tbcDungeons.map((dungeon) => dungeon.id)).size === tbcDungeons.length, 'TBC dungeon ids must be unique');
+
+const allDungeons = [...classicDungeons, ...tbcDungeons];
+assert.ok(allDungeons.every((dungeon) => dungeon.loot.length >= 3 && dungeon.tips.length >= 3 && dungeon.quests.length >= 3 && dungeon.composition.length >= 3 && dungeon.time), 'Each dungeon guide should include loot, group tips, quests, composition and time planning');
+assert.ok(allDungeons.every((dungeon) => assetManifest.dungeons[dungeon.id] && assetManifest.dungeonMaps[dungeon.id]), 'Each dungeon must reference icon and map asset slots');
+
 assert.equal(professionGuides.length, 1, 'Classic profession guide pack should include Alchemy');
 assert.equal(professionGuides[0].id, 'classic-alchemy', 'Alchemy guide should use a stable id');
 assert.ok(professionGuides[0].shoppingList.length >= 15 && professionGuides[0].steps.length >= 12, 'Alchemy guide should include material planning and a full 1-300 route');
 assert.ok(assetManifest.professions.alchemy, 'Alchemy profession must reference a real asset slot');
 assert.ok(assetSources.professions.alchemy, 'Alchemy profession must have an optional real icon source URL');
-assert.ok(dungeonGuides.every((dungeon) => dungeon.loot.length >= 3 && dungeon.tips.length >= 3 && dungeon.quests.length >= 3 && dungeon.composition.length >= 3 && dungeon.time), 'Each dungeon guide should include loot, group tips, quests, composition and time planning');
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]), 'Each class must reference a real asset slot');
-assert.ok(dungeonGuides.every((dungeon) => assetManifest.dungeons[dungeon.id] && assetManifest.dungeonMaps[dungeon.id]), 'Each dungeon must reference icon and map asset slots');
 assert.ok(classGuides.every((classGuide) => assetSources.classes[classGuide.id]), 'Each class must have an optional real icon source URL');
 
 const buildScript = readFileSync('scripts/build.mjs', 'utf8');

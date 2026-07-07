@@ -25,11 +25,16 @@ const activeExpansionFocus = document.querySelector('#active-expansion-focus');
 const activeExpansionModules = document.querySelector('#active-expansion-modules');
 const classTabs = document.querySelector('#class-tabs');
 const classDetail = document.querySelector('#class-detail');
+const classScopeNote = document.querySelector('#class-guides-scope-note');
 const dungeonRail = document.querySelector('#dungeon-rail');
 const dungeonDetail = document.querySelector('#dungeon-detail');
 const dungeonCount = document.querySelector('#dungeon-count');
+const dungeonEyebrow = document.querySelector('#dungeon-eyebrow');
+const dungeonHeadingTitle = document.querySelector('#dungeon-heading-title');
+const dungeonHeadingCopy = document.querySelector('#dungeon-heading-copy');
 const professionTabs = document.querySelector('#profession-tabs');
 const professionDetail = document.querySelector('#profession-detail');
+const professionScopeNote = document.querySelector('#profession-guides-scope-note');
 const guideGrid = document.querySelector('#guide-grid');
 const roadmapGrid = document.querySelector('#roadmap-grid');
 const pricingGrid = document.querySelector('#pricing-grid');
@@ -46,6 +51,19 @@ const expansionOptions = [
   ['wrath-of-the-lich-king', 'Wrath of the Lich King'],
   ['future', 'Zukunft']
 ];
+
+const dungeonAtlasCopy = {
+  classic: {
+    eyebrow: 'Classic Dungeon Atlas',
+    title: 'Alle Classic Dungeons mit Route, Bossen, Loot und Gruppen-Tipps.',
+    copy: 'Ein übersichtlicher Dungeon-Bereich für schnelle Run-Planung: Levelbereich wählen, Route lesen, Bossziele markieren und Loot-Fokus setzen.'
+  },
+  'the-burning-crusade': {
+    eyebrow: 'The Burning Crusade Dungeon Atlas',
+    title: 'Alle Outland-Heroics und -Dungeons mit Route, Bossen, Loot und Gruppen-Tipps.',
+    copy: 'Von Hellfeuerzitadelle bis Magierviertel: Levelbereich wählen, Route lesen, Bossziele markieren und Attunement-relevante Runs erkennen.'
+  }
+};
 
 const expansionArtwork = {
   classic: { theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
@@ -95,6 +113,8 @@ function renderExpansionSelector() {
       expansionSelect.value = state.expansion;
       renderExpansionSelector();
       renderGuides();
+      renderDungeonGuides();
+      renderScopeNotes();
     });
   });
 
@@ -102,6 +122,14 @@ function renderExpansionSelector() {
   activeExpansionName.textContent = active.name;
   activeExpansionFocus.textContent = active.launchFocus;
   activeExpansionModules.innerHTML = active.modules.map((module) => `<span>${escapeHtml(module)}</span>`).join('');
+}
+
+function renderScopeNotes() {
+  const isClassic = state.selectedExpansion === 'classic';
+  classScopeNote.textContent = 'Diese Klassen-Detailguides sind aktuell nur für WoW Classic verfügbar. Weitere Erweiterungen folgen.';
+  classScopeNote.classList.toggle('hidden', isClassic);
+  professionScopeNote.textContent = 'Diese Berufs-Detailguides sind aktuell nur für WoW Classic verfügbar. Weitere Erweiterungen folgen.';
+  professionScopeNote.classList.toggle('hidden', isClassic);
 }
 
 function renderClassGuides() {
@@ -234,9 +262,32 @@ function renderClassList(title, items) {
 }
 
 
+function getActiveDungeons() {
+  return dungeonGuides[state.selectedExpansion] ?? [];
+}
+
 function renderDungeonGuides() {
-  dungeonCount.textContent = dungeonGuides.length;
-  dungeonRail.innerHTML = dungeonGuides
+  const activeDungeons = getActiveDungeons();
+  const atlasCopy = dungeonAtlasCopy[state.selectedExpansion];
+
+  dungeonEyebrow.textContent = atlasCopy?.eyebrow ?? 'Dungeon Atlas';
+  dungeonHeadingTitle.textContent = atlasCopy?.title ?? 'Für diese Erweiterung ist noch kein Dungeon Atlas verfügbar.';
+  dungeonHeadingCopy.textContent =
+    atlasCopy?.copy ?? 'Dieser Bereich wird mit dem nächsten Content-Pack für diese Erweiterung ergänzt.';
+
+  dungeonCount.textContent = activeDungeons.length;
+
+  if (!activeDungeons.some((dungeon) => dungeon.id === state.selectedDungeonId)) {
+    state.selectedDungeonId = activeDungeons[0]?.id ?? null;
+  }
+
+  if (activeDungeons.length === 0) {
+    dungeonRail.innerHTML = '';
+    dungeonDetail.innerHTML = '<p class="empty-state">Für diese Erweiterung ist noch kein Dungeon Atlas verfügbar.</p>';
+    return;
+  }
+
+  dungeonRail.innerHTML = activeDungeons
     .map(
       (dungeon) => `
         <button class="dungeon-chip ${dungeon.id === state.selectedDungeonId ? 'active' : ''}" data-dungeon="${escapeHtml(dungeon.id)}" style="--dungeon-color: ${escapeHtml(dungeon.theme)}">
@@ -254,7 +305,7 @@ function renderDungeonGuides() {
     });
   });
 
-  const dungeon = dungeonGuides.find((item) => item.id === state.selectedDungeonId) ?? dungeonGuides[0];
+  const dungeon = activeDungeons.find((item) => item.id === state.selectedDungeonId) ?? activeDungeons[0];
   if (!dungeon) {
     dungeonDetail.innerHTML = '<p class="empty-state">Keine Dungeon-Daten verfügbar.</p>';
     return;
@@ -383,7 +434,8 @@ function renderProfessionStep(step) {
 }
 
 function renderMetrics() {
-  document.querySelector('#metric-guides').textContent = guideCards.length + dungeonGuides.length + professionGuides.length;
+  const totalDungeons = Object.values(dungeonGuides).reduce((sum, list) => sum + list.length, 0);
+  document.querySelector('#metric-guides').textContent = guideCards.length + totalDungeons + professionGuides.length;
   document.querySelector('#metric-categories').textContent = categories.length;
   document.querySelector('#metric-premium').textContent = guideCards.filter((guide) => guide.premium).length;
 }
@@ -465,6 +517,8 @@ expansionSelect.addEventListener('change', (event) => {
   if (state.expansion !== 'all') {
     state.selectedExpansion = state.expansion;
     renderExpansionSelector();
+    renderDungeonGuides();
+    renderScopeNotes();
   }
   renderGuides();
 });
@@ -495,6 +549,7 @@ function init() {
   renderClassGuides();
   renderDungeonGuides();
   renderProfessionGuides();
+  renderScopeNotes();
   renderGuides();
   renderRoadmap();
   renderPricing();
