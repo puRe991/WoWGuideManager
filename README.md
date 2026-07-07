@@ -64,7 +64,11 @@ The app now includes detailed WoW Classic class cards for all nine Classic class
 
 ## The Burning Crusade guide pack
 
-The Guide Command Center now includes a first The Burning Crusade content pack (Leveling, Attunements, Heroics, Reputation, Professions, Gold, PvP and Classes) so the expansion is a live, filterable catalog rather than a roadmap placeholder. Class, dungeon and profession deep-dive pages (the format Classic has today) are the next step for this content pack; see `docs/product-roadmap.md`.
+The Guide Command Center now includes a first The Burning Crusade content pack (Leveling, Attunements, Heroics, Reputation, Professions, Gold, PvP and Classes) so the expansion is a live, filterable catalog rather than a roadmap placeholder.
+
+The Dungeon Atlas is now expansion-aware: `src/data/dungeonGuides.js` exports `dungeonGuides` keyed by expansion (`classic`, `the-burning-crusade`), and `src/app.js` switches the rail, heading copy and dungeon count to match whichever expansion tile is selected. TBC ships all 16 Outland 5-player instances (Hellfire Citadel, Coilfang Reservoir, Auchindoun, Tempest Keep, Caverns of Time, Magisters' Terrace) with the same route/boss/loot/tips/quests/composition/time depth as Classic. Expansions without dungeon data yet (Wrath of the Lich King, future packs) show an honest empty state instead of silently reusing Classic content.
+
+Class and profession deep-dive guides are still Classic-only; those sections now show an explicit scope note when a non-Classic expansion is selected instead of implying TBC coverage that doesn't exist yet. Building a TBC `classGuides`/`classBuildGuides`/`specGuides`/`professionGuides` equivalent is the next step; see `docs/product-roadmap.md`.
 
 ## Quality gates
 

@@ -51,7 +51,23 @@ export const assetManifest = {
     stratholme: './assets/wow/icons/dungeons/stratholme.png',
     scholomance: './assets/wow/icons/dungeons/scholomance.png',
     'lower-blackrock-spire': './assets/wow/icons/dungeons/lower-blackrock-spire.png',
-    'upper-blackrock-spire': './assets/wow/icons/dungeons/upper-blackrock-spire.png'
+    'upper-blackrock-spire': './assets/wow/icons/dungeons/upper-blackrock-spire.png',
+    'hellfire-ramparts': './assets/wow/icons/dungeons/hellfire-ramparts.png',
+    'the-blood-furnace': './assets/wow/icons/dungeons/the-blood-furnace.png',
+    'the-shattered-halls': './assets/wow/icons/dungeons/the-shattered-halls.png',
+    'the-slave-pens': './assets/wow/icons/dungeons/the-slave-pens.png',
+    'the-underbog': './assets/wow/icons/dungeons/the-underbog.png',
+    'the-steamvault': './assets/wow/icons/dungeons/the-steamvault.png',
+    'mana-tombs': './assets/wow/icons/dungeons/mana-tombs.png',
+    'auchenai-crypts': './assets/wow/icons/dungeons/auchenai-crypts.png',
+    'sethekk-halls': './assets/wow/icons/dungeons/sethekk-halls.png',
+    'shadow-labyrinth': './assets/wow/icons/dungeons/shadow-labyrinth.png',
+    'the-mechanar': './assets/wow/icons/dungeons/the-mechanar.png',
+    'the-botanica': './assets/wow/icons/dungeons/the-botanica.png',
+    'the-arcatraz': './assets/wow/icons/dungeons/the-arcatraz.png',
+    'old-hillsbrad-foothills': './assets/wow/icons/dungeons/old-hillsbrad-foothills.png',
+    'the-black-morass': './assets/wow/icons/dungeons/the-black-morass.png',
+    'magisters-terrace': './assets/wow/icons/dungeons/magisters-terrace.png'
   },
   dungeonMaps: {
     'ragefire-chasm': './assets/wow/maps/ragefire-chasm.jpg',
@@ -73,7 +89,23 @@ export const assetManifest = {
     stratholme: './assets/wow/maps/stratholme.jpg',
     scholomance: './assets/wow/maps/scholomance.jpg',
     'lower-blackrock-spire': './assets/wow/maps/lower-blackrock-spire.jpg',
-    'upper-blackrock-spire': './assets/wow/maps/upper-blackrock-spire.jpg'
+    'upper-blackrock-spire': './assets/wow/maps/upper-blackrock-spire.jpg',
+    'hellfire-ramparts': './assets/wow/maps/hellfire-ramparts.jpg',
+    'the-blood-furnace': './assets/wow/maps/the-blood-furnace.jpg',
+    'the-shattered-halls': './assets/wow/maps/the-shattered-halls.jpg',
+    'the-slave-pens': './assets/wow/maps/the-slave-pens.jpg',
+    'the-underbog': './assets/wow/maps/the-underbog.jpg',
+    'the-steamvault': './assets/wow/maps/the-steamvault.jpg',
+    'mana-tombs': './assets/wow/maps/mana-tombs.jpg',
+    'auchenai-crypts': './assets/wow/maps/auchenai-crypts.jpg',
+    'sethekk-halls': './assets/wow/maps/sethekk-halls.jpg',
+    'shadow-labyrinth': './assets/wow/maps/shadow-labyrinth.jpg',
+    'the-mechanar': './assets/wow/maps/the-mechanar.jpg',
+    'the-botanica': './assets/wow/maps/the-botanica.jpg',
+    'the-arcatraz': './assets/wow/maps/the-arcatraz.jpg',
+    'old-hillsbrad-foothills': './assets/wow/maps/old-hillsbrad-foothills.jpg',
+    'the-black-morass': './assets/wow/maps/the-black-morass.jpg',
+    'magisters-terrace': './assets/wow/maps/magisters-terrace.jpg'
   }
 };
 
