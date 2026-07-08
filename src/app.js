@@ -84,7 +84,11 @@ function escapeHtml(value) {
 
 
 function renderAssetImage(src, alt, className = 'asset-image') {
-  return `<span class="asset-slot ${className}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" onerror="this.parentElement.classList.add('missing-asset'); this.remove();" /></span>`;
+  const initial = escapeHtml((String(alt).trim().charAt(0) || '?').toUpperCase());
+  if (!src) {
+    return `<span class="asset-slot ${className} missing-asset"><span class="asset-fallback" aria-hidden="true">${initial}</span></span>`;
+  }
+  return `<span class="asset-slot ${className}"><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy" onerror="this.parentElement.classList.add('missing-asset'); this.remove();" /><span class="asset-fallback" aria-hidden="true">${initial}</span></span>`;
 }
 
 function getExpansionArtwork(key) {
@@ -176,25 +180,25 @@ function renderClassGuides() {
         </div>
       </header>
       <nav class="class-guide-nav" aria-label="${escapeHtml(guide.name)} Guide Schnellnavigation">
-        <a href="#class-guides">Übersicht</a>
-        <a href="#class-guides">Talente</a>
-        <a href="#class-guides">Rotation</a>
-        <a href="#class-guides">Stats</a>
-        <a href="#class-guides">BiS & Gear</a>
-        <a href="#class-guides">Berufe</a>
-        <a href="#class-guides">Specs</a>
+        <a href="#class-overview">Übersicht</a>
+        <a href="#class-talente">Talente</a>
+        <a href="#class-rotation">Rotation</a>
+        <a href="#class-stats">Stats</a>
+        <a href="#class-bis">BiS & Gear</a>
+        <a href="#class-berufe">Berufe</a>
+        <a href="#class-specs">Specs</a>
       </nav>
       <aside class="class-toc">
         <span>Inhaltsverzeichnis</span>
         <ol>
-          <li>Overview und Rollenprofil</li>
-          <li>Basis-Rotation und Prioritäten</li>
-          <li>Talente, Berufe und Power-Tipps</li>
-          <li>Content-Rotation nach Leveling, Dungeon und Raid</li>
-          <li>Best-in-Slot Ziele und Spec Guides</li>
+          <li><a href="#class-overview">Overview und Rollenprofil</a></li>
+          <li><a href="#class-stats">Basis-Rotation und Prioritäten</a></li>
+          <li><a href="#class-talente">Talente, Berufe und Power-Tipps</a></li>
+          <li><a href="#class-rotation">Content-Rotation nach Leveling, Dungeon und Raid</a></li>
+          <li><a href="#class-bis">Best-in-Slot Ziele und Spec Guides</a></li>
         </ol>
       </aside>
-      <section class="class-overview-card">
+      <section class="class-overview-card" id="class-overview">
         <div>
           <span class="eyebrow">${escapeHtml(guide.name)} Overview</span>
           <h4>Spielplan in 60 Sekunden</h4>
@@ -208,13 +212,13 @@ function renderClassGuides() {
         </div>
       </section>
       <div class="class-columns">
-        ${renderClassList('Basis-Rotation', guide.rotation)}
-        ${renderClassList('Stat-Priorität', guide.statPriority)}
-        ${renderClassList('Talente', guide.talents)}
-        ${renderClassList('Berufe', guide.professions)}
+        ${renderClassList('Basis-Rotation', guide.rotation, 'class-rotation-basic')}
+        ${renderClassList('Stat-Priorität', guide.statPriority, 'class-stats')}
+        ${renderClassList('Talente', guide.talents, 'class-talente')}
+        ${renderClassList('Berufe', guide.professions, 'class-berufe')}
         ${renderClassList('Power-Tipps', guide.powerTips)}
       </div>
-      <div class="rotation-lab">
+      <div class="rotation-lab" id="class-rotation">
         <div class="guide-section-heading"><span>Prioritätsliste</span><h4>Rotation Guide nach Content</h4></div>
         <div class="rotation-grid">
           ${renderRotationBlock('Leveling', build.rotations.leveling)}
@@ -222,11 +226,11 @@ function renderClassGuides() {
           ${renderRotationBlock('Raid / Endgame', build.rotations.raid)}
         </div>
       </div>
-      <div class="bis-panel">
+      <div class="bis-panel" id="class-bis">
         <div class="guide-section-heading"><span>Gear Planner</span><h4>Best in Slot Ziele</h4></div>
         <div class="bis-list">${build.bestInSlot.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>
       </div>
-      <div class="spec-guides">
+      <div class="spec-guides" id="class-specs">
         <div class="guide-section-heading"><span>Spezialisierungen</span><h4>Spec Guides</h4></div>
         <div class="spec-grid">${specs.map(renderSpecGuide).join('')}</div>
       </div>
@@ -254,11 +258,11 @@ function renderSpecGuide(spec) {
 }
 
 function renderRotationBlock(title, items) {
-  return `<section><h5>${escapeHtml(title)}</h5><ol>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ol></section>`;
+  return `<section><h5>${escapeHtml(title)}</h5><ol class="rank-list">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ol></section>`;
 }
 
-function renderClassList(title, items) {
-  return `<section><h4>${escapeHtml(title)}</h4><ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`;
+function renderClassList(title, items, id = '') {
+  return `<section${id ? ` id="${escapeHtml(id)}"` : ''}><h4>${escapeHtml(title)}</h4><ol class="rank-list">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ol></section>`;
 }
 
 
@@ -376,24 +380,24 @@ function renderProfessionGuides() {
         </div>
       </header>
       <nav class="profession-nav" aria-label="${escapeHtml(profession.name)} Guide Schnellnavigation">
-        <a href="#profession-guides">Allgemeines</a>
-        <a href="#profession-guides">Lehrer</a>
-        <a href="#profession-guides">Einkaufszettel</a>
-        <a href="#profession-guides">Rezepte</a>
-        <a href="#profession-guides">1-300 Route</a>
+        <a href="#profession-intro">Allgemeines</a>
+        <a href="#profession-trainers">Lehrer</a>
+        <a href="#profession-materials">Einkaufszettel</a>
+        <a href="#profession-recipes">Rezepte</a>
+        <a href="#profession-route">1-300 Route</a>
       </nav>
-      <section class="profession-intro">${profession.intro.map((item) => `<p>${escapeHtml(item)}</p>`).join('')}</section>
+      <section class="profession-intro" id="profession-intro">${profession.intro.map((item) => `<p>${escapeHtml(item)}</p>`).join('')}</section>
       <div class="profession-grid">
-        <section class="profession-card trainers-card">
+        <section class="profession-card trainers-card" id="profession-trainers">
           <div class="guide-section-heading"><span>Trainer</span><h4>Alchemie-Lehrer nach Rang</h4></div>
           <div class="trainer-list">${profession.trainers.map(renderTrainerBlock).join('')}</div>
         </section>
-        <section class="profession-card">
+        <section class="profession-card" id="profession-materials">
           <div class="guide-section-heading"><span>Materialien</span><h4>Einkaufszettel</h4></div>
           <p class="profession-note">Richtwerte für den kompletten Weg bis 300. Plane Reserven ein, wenn gelbe oder grüne Rezepte Pechsträhnen verursachen.</p>
           <div class="material-list">${profession.shoppingList.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>
         </section>
-        <section class="profession-card">
+        <section class="profession-card" id="profession-recipes">
           <div class="guide-section-heading"><span>Rezepte</span><h4>Vor dem Skillen besorgen</h4></div>
           <ul>${profession.recipes.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
         </section>
@@ -402,7 +406,7 @@ function renderProfessionGuides() {
           <ul>${profession.tips.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
         </section>
       </div>
-      <section class="profession-route">
+      <section class="profession-route" id="profession-route">
         <div class="guide-section-heading"><span>Skillroute</span><h4>Schritt für Schritt zu ${escapeHtml(profession.name)} 300</h4></div>
         <div class="profession-step-list">${profession.steps.map(renderProfessionStep).join('')}</div>
       </section>

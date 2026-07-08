@@ -8,10 +8,21 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top left, #2a1b4d 0, transparent 34rem), #070912; padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top left, #2a1b4d 0, transparent 34rem), #070912; padding-bottom: env(safe-area-inset-bottom); }
 @media (min-width: 641px) { body { min-width: 1024px; } }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
+[id] { scroll-margin-top: 84px; }
+
+.site-header { position: sticky; top: 0; z-index: 40; background: rgba(9, 10, 20, .88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 214, 143, .14); padding-top: env(safe-area-inset-top); }
+.site-header-inner { width: min(1440px, calc(100% - 48px)); margin: 0 auto; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: nowrap; }
+.site-logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -.01em; color: #f7efe0; font-size: 1.02rem; white-space: nowrap; flex-shrink: 0; }
+.site-logo-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #ffb22e, #ffe39a); color: #241204; font-size: .72rem; font-weight: 900; letter-spacing: 0; flex-shrink: 0; }
+.site-nav { display: flex; gap: 4px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.site-nav::-webkit-scrollbar { display: none; }
+.site-nav a { padding: 9px 13px; border-radius: 10px; font-weight: 800; font-size: .88rem; color: #d7d0c4; white-space: nowrap; }
+.site-nav a:hover { color: #ffe39a; background: rgba(255,255,255,.06); }
+@media (max-width: 720px) { .site-nav a { padding: 8px 10px; font-size: .8rem; } .site-logo-text { display: none; } }
 
 .app-shell { width: min(1440px, calc(100% - 48px)); margin: 0 auto; padding: 32px 0 48px; }
 .panel { border: 1px solid rgba(255, 214, 143, 0.16); background: linear-gradient(145deg, rgba(19, 24, 42, 0.94), rgba(10, 13, 24, 0.94)); border-radius: 28px; box-shadow: 0 24px 80px rgba(0,0,0,.38); }
@@ -104,6 +115,18 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
 .class-columns ul { margin: 0; padding-left: 18px; color: #ddd3c5; line-height: 1.55; }
 .class-columns section:last-child { grid-column: 1 / -1; }
 
+.rank-list { list-style: none; margin: 0; padding: 0; counter-reset: rank; display: grid; gap: 7px; }
+.rank-list li { counter-increment: rank; position: relative; padding: 5px 0 5px 30px; color: #ddd3c5; line-height: 1.45; }
+.rank-list li::before {
+  content: counter(rank);
+  position: absolute; left: 0; top: 3px;
+  width: 20px; height: 20px; border-radius: 6px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--class-color, var(--dungeon-color, #ffb22e)), transparent 68%);
+  border: 1px solid color-mix(in srgb, var(--class-color, var(--dungeon-color, #ffb22e)), transparent 40%);
+  color: #fff3d4; font-size: .68rem; font-weight: 900;
+}
+
 @media (max-width: 1200px) {
   .expansion-layout, .class-panel { grid-template-columns: 1fr; }
   .expansion-hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -124,13 +147,12 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
 .dungeon-chip.active, .dungeon-chip:hover { border-color: var(--dungeon-color); background: linear-gradient(135deg, color-mix(in srgb, var(--dungeon-color), transparent 76%), rgba(255,255,255,.06)); }
 .dungeon-panel { display: grid; grid-template-columns: 190px minmax(240px, .75fr) 1.25fr; gap: 22px; padding: 24px; min-height: 520px; border-radius: 28px; border: 1px solid color-mix(in srgb, var(--dungeon-color), transparent 55%); background: radial-gradient(circle at top left, color-mix(in srgb, var(--dungeon-color), transparent 70%), transparent 34rem), rgba(255,255,255,.045); }
 .dungeon-art { border-radius: 24px; min-height: 260px; display: grid; place-items: center; align-content: center; gap: 16px; background: linear-gradient(145deg, color-mix(in srgb, var(--dungeon-color), transparent 42%), rgba(0,0,0,.34)); border: 1px solid color-mix(in srgb, var(--dungeon-color), transparent 54%); text-align: center; }
-.dungeon-art span { font-size: 5.2rem; filter: drop-shadow(0 18px 26px rgba(0,0,0,.42)); }
+.dungeon-art .asset-fallback { font-size: 4.5rem; filter: drop-shadow(0 18px 26px rgba(0,0,0,.42)); }
 .dungeon-art strong { padding: 8px 12px; border-radius: 999px; background: rgba(0,0,0,.26); color: #fff3d4; }
 .dungeon-main h3 { font-size: 2.5rem; color: #ffe39a; }
 .dungeon-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .dungeon-guide-grid section { padding: 16px; border-radius: 18px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.09); }
 .dungeon-guide-grid h4 { margin: 0 0 10px; color: color-mix(in srgb, var(--dungeon-color), #ffffff 34%); }
-.dungeon-guide-grid ul { margin: 0; padding-left: 18px; color: #ddd3c5; line-height: 1.55; }
 
 @media (max-width: 1200px) {
   .dungeon-layout, .dungeon-panel { grid-template-columns: 1fr; }
@@ -139,8 +161,8 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
 
 .asset-slot { position: relative; display: inline-grid; place-items: center; overflow: hidden; background: rgba(0,0,0,.24); border: 1px solid rgba(255,255,255,.1); color: #c8c0b5; }
 .asset-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.asset-missing { display: none; padding: 8px; text-align: center; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
-.asset-slot.missing-asset .asset-missing { display: block; }
+.asset-fallback { display: none; width: 100%; height: 100%; place-items: center; background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(0,0,0,.3)); color: #ffd985; font-weight: 900; font-size: 1.15em; }
+.asset-slot.missing-asset .asset-fallback { display: grid; }
 .expansion-image { width: 100%; height: 88px; border-radius: 18px; margin-bottom: 12px; }
 .class-tab-image { width: 38px; height: 38px; border-radius: 12px; }
 .class-portrait-image { width: 100%; height: 100%; min-height: 220px; border-radius: 24px; }
@@ -151,7 +173,6 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
 .rotation-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .rotation-grid section { padding: 14px; border-radius: 16px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); }
 .rotation-grid h5 { margin: 0 0 10px; color: var(--class-color); }
-.rotation-grid ol { margin: 0; padding-left: 20px; color: #ddd3c5; line-height: 1.55; }
 .bis-list { display: flex; flex-wrap: wrap; gap: 10px; }
 .bis-list span { border-radius: 999px; padding: 9px 12px; background: color-mix(in srgb, var(--class-color), transparent 78%); border: 1px solid color-mix(in srgb, var(--class-color), transparent 58%); color: #f7efe0; font-weight: 800; }
 @media (max-width: 1200px) { .rotation-grid { grid-template-columns: 1fr; } }
@@ -164,6 +185,7 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
 .spec-card h5 { margin: 0 0 10px; color: var(--class-color); font-size: 1.1rem; }
 .spec-card p { margin-bottom: 12px; }
 .spec-card .class-columns section, .spec-card section { margin-top: 10px; }
+.spec-card section h4 { margin: 0 0 8px; color: #ffe39a; font-size: 1rem; }
 @media (max-width: 1200px) { .spec-grid { grid-template-columns: 1fr; } }
 
 /* Icy-style editorial class guide presentation: dense navigation, clear content hierarchy and guide cards. */
@@ -200,6 +222,15 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
 
 @media (max-width: 1200px) {
   .class-guide-hero, .class-guide-title, .class-overview-card { grid-template-columns: 1fr; }
+  .class-toc ol { columns: 1; }
+}
+
+/* Persistent left table-of-contents sidebar on wide screens, Wowhead/Icy-Veins style. */
+@media (min-width: 1201px) {
+  .class-panel { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: start; }
+  .class-guide-hero, .class-guide-nav { grid-column: 1 / -1; }
+  .class-toc { grid-column: 1; grid-row: 3 / span 5; position: sticky; top: 84px; margin-inline: 22px 0; max-height: calc(100vh - 104px); overflow-y: auto; }
+  .class-overview-card, .class-columns, .rotation-lab, .bis-panel, .spec-guides { grid-column: 2; }
   .class-toc ol { columns: 1; }
 }
 

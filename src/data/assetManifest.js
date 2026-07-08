@@ -1,3 +1,9 @@
+// Class and profession icons are hotlinked from Wowhead's public icon CDN (wow.zamimg.com),
+// the same static hosting fan sites and addons have used for years to embed Blizzard icon
+// textures without redistributing the files themselves. Every URL below was verified to
+// resolve to the correct icon (checked against Wowhead's own profession/class pages) before
+// being added here. Dungeon and expansion artwork still needs licensed local files (see
+// docs/assets.md) because no verified per-dungeon icon/screenshot source was confirmed.
 export const assetManifest = {
   expansions: {
     classic: {
@@ -18,18 +24,30 @@ export const assetManifest = {
     }
   },
   professions: {
-    alchemy: './assets/wow/icons/professions/alchemy.png'
+    alchemy: 'https://wow.zamimg.com/images/wow/icons/large/trade_alchemy.jpg',
+    blacksmithing: 'https://wow.zamimg.com/images/wow/icons/large/trade_blacksmithing.jpg',
+    leatherworking: 'https://wow.zamimg.com/images/wow/icons/large/trade_leatherworking.jpg',
+    tailoring: 'https://wow.zamimg.com/images/wow/icons/large/trade_tailoring.jpg',
+    engineering: 'https://wow.zamimg.com/images/wow/icons/large/trade_engineering.jpg',
+    enchanting: 'https://wow.zamimg.com/images/wow/icons/large/trade_engraving.jpg',
+    herbalism: 'https://wow.zamimg.com/images/wow/icons/large/spell_nature_naturetouchgrow.jpg',
+    mining: 'https://wow.zamimg.com/images/wow/icons/large/trade_mining.jpg',
+    fishing: 'https://wow.zamimg.com/images/wow/icons/large/trade_fishing.jpg',
+    cooking: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_food_15.jpg',
+    'first-aid': 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_bandage_08.jpg',
+    skinning: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_pelt_wolf_01.jpg',
+    jewelcrafting: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_gem_01.jpg'
   },
   classes: {
-    druid: './assets/wow/icons/classes/druid.png',
-    hunter: './assets/wow/icons/classes/hunter.png',
-    mage: './assets/wow/icons/classes/mage.png',
-    paladin: './assets/wow/icons/classes/paladin.png',
-    priest: './assets/wow/icons/classes/priest.png',
-    rogue: './assets/wow/icons/classes/rogue.png',
-    shaman: './assets/wow/icons/classes/shaman.png',
-    warlock: './assets/wow/icons/classes/warlock.png',
-    warrior: './assets/wow/icons/classes/warrior.png'
+    druid: 'https://wow.zamimg.com/images/wow/icons/large/classicon_druid.jpg',
+    hunter: 'https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg',
+    mage: 'https://wow.zamimg.com/images/wow/icons/large/classicon_mage.jpg',
+    paladin: 'https://wow.zamimg.com/images/wow/icons/large/classicon_paladin.jpg',
+    priest: 'https://wow.zamimg.com/images/wow/icons/large/classicon_priest.jpg',
+    rogue: 'https://wow.zamimg.com/images/wow/icons/large/classicon_rogue.jpg',
+    shaman: 'https://wow.zamimg.com/images/wow/icons/large/classicon_shaman.jpg',
+    warlock: 'https://wow.zamimg.com/images/wow/icons/large/classicon_warlock.jpg',
+    warrior: 'https://wow.zamimg.com/images/wow/icons/large/classicon_warrior.jpg'
   },
   dungeons: {
     'ragefire-chasm': './assets/wow/icons/dungeons/ragefire-chasm.png',
@@ -106,24 +124,5 @@ export const assetManifest = {
     'old-hillsbrad-foothills': './assets/wow/maps/old-hillsbrad-foothills.jpg',
     'the-black-morass': './assets/wow/maps/the-black-morass.jpg',
     'magisters-terrace': './assets/wow/maps/magisters-terrace.jpg'
-  }
-};
-
-
-export const assetSources = {
-  note: 'Optional public CDN source hints for users who have rights to use these images. Run scripts/download-assets.mjs to populate local asset slots.',
-  professions: {
-    alchemy: 'https://wow.zamimg.com/images/wow/icons/large/trade_alchemy.jpg'
-  },
-  classes: {
-    druid: 'https://wow.zamimg.com/images/wow/icons/large/classicon_druid.jpg',
-    hunter: 'https://wow.zamimg.com/images/wow/icons/large/classicon_hunter.jpg',
-    mage: 'https://wow.zamimg.com/images/wow/icons/large/classicon_mage.jpg',
-    paladin: 'https://wow.zamimg.com/images/wow/icons/large/classicon_paladin.jpg',
-    priest: 'https://wow.zamimg.com/images/wow/icons/large/classicon_priest.jpg',
-    rogue: 'https://wow.zamimg.com/images/wow/icons/large/classicon_rogue.jpg',
-    shaman: 'https://wow.zamimg.com/images/wow/icons/large/classicon_shaman.jpg',
-    warlock: 'https://wow.zamimg.com/images/wow/icons/large/classicon_warlock.jpg',
-    warrior: 'https://wow.zamimg.com/images/wow/icons/large/classicon_warrior.jpg'
   }
 };

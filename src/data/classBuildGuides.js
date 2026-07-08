@@ -67,7 +67,7 @@ export const classBuildGuides = {
     rotations: {
       leveling: ['Charge eröffnen', 'Battle Shout aktiv', 'Rend bei langen Kämpfen', 'Overpower nach Dodge', 'Hamstring gegen Runner', 'Execute zum Finish'],
       dungeon: ['Defensive Stance beim Tanken', 'Sunder Armor stapeln', 'Revenge bei Proc', 'Taunt nur bei Aggroverlust', 'Berserker Rage/Fear Break vorbereiten'],
-      raid: ['Fury: Bloodthirst/Whirlwind priorisieren', 'Heroic Strike nur bei Rage-Überschuss', 'Death Wish/Recklessness mit Cooldown-Plan', 'Tank: Shield Block vor Crush-Spikes', 'Sunder/Threat vor DPS-Burst']
+      raid: ['Fury: Whirlwind auf Cooldown, Heroic Strike/Cleave als Rage-Dump', 'Heroic Strike nur bei Rage-Überschuss', 'Death Wish/Recklessness mit Cooldown-Plan', 'Tank: Shield Block vor Crush-Spikes', 'Sunder Armor/Threat vor DPS-Burst']
     },
     bestInSlot: ['Lionheart Helm', 'Savage Gladiator Chain', 'Dal’Rend Set', 'Hand of Justice', 'Blackhand’s Breadth', 'Quel’Serrar für Tank']
   }

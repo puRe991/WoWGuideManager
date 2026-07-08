@@ -6,7 +6,7 @@ import { classBuildGuides } from '../src/data/classBuildGuides.js';
 import { specGuides } from '../src/data/specGuides.js';
 import { dungeonGuides } from '../src/data/dungeonGuides.js';
 import { professionGuides } from '../src/data/professionGuides.js';
-import { assetManifest, assetSources } from '../src/data/assetManifest.js';
+import { assetManifest } from '../src/data/assetManifest.js';
 import { filterGuides } from '../src/lib/filterGuides.js';
 
 const auction = filterGuides(guideCards, {
@@ -66,11 +66,9 @@ assert.ok(allDungeons.every((dungeon) => assetManifest.dungeons[dungeon.id] && a
 assert.equal(professionGuides.length, 1, 'Classic profession guide pack should include Alchemy');
 assert.equal(professionGuides[0].id, 'classic-alchemy', 'Alchemy guide should use a stable id');
 assert.ok(professionGuides[0].shoppingList.length >= 15 && professionGuides[0].steps.length >= 12, 'Alchemy guide should include material planning and a full 1-300 route');
-assert.ok(assetManifest.professions.alchemy, 'Alchemy profession must reference a real asset slot');
-assert.ok(assetSources.professions.alchemy, 'Alchemy profession must have an optional real icon source URL');
+assert.ok(assetManifest.professions.alchemy?.startsWith('https://wow.zamimg.com/'), 'Alchemy profession must reference a verified hotlinked icon URL');
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
-assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]), 'Each class must reference a real asset slot');
-assert.ok(classGuides.every((classGuide) => assetSources.classes[classGuide.id]), 'Each class must have an optional real icon source URL');
+assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
 
 const buildScript = readFileSync('scripts/build.mjs', 'utf8');
 assert.match(buildScript, /app\.bundle\.js/, 'build must emit a browser-safe bundle for file protocol usage');
@@ -94,9 +92,6 @@ assert.match(windowsLauncher, /-STA/, 'Windows launcher must start PowerShell in
 const handoffScript = readFileSync('scripts/package-handoff.mjs', 'utf8');
 assert.match(handoffScript, /Git tracked files unavailable/, 'handoff packaging must work without git metadata');
 assert.match(handoffScript, /listProjectFiles/, 'handoff packaging must fall back to a directory scan');
-
-const downloadScript = readFileSync('scripts/download-assets.mjs', 'utf8');
-assert.match(downloadScript, /assetSources/, 'asset downloader must use real source URLs from the asset manifest');
 
 const setupBatch = readFileSync('setup-windows.bat', 'utf8');
 assert.match(setupBatch, /:verify_node/, 'Windows setup must verify that node and npm are startable');

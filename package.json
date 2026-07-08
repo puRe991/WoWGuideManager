@@ -13,7 +13,6 @@
     "dist:win": "node scripts/build.mjs --portable",
     "package:handoff": "node scripts/package-handoff.mjs",
     "assets:check": "node scripts/validate-assets.mjs",
-    "assets:download": "node scripts/download-assets.mjs",
     "cap:sync": "node scripts/build.mjs && npx cap sync",
     "android:open": "npx cap open android",
     "ios:open": "npx cap open ios"
