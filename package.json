@@ -1,7 +1,7 @@
 {
   "name": "wow-guide-manager",
   "version": "0.1.0",
-  "description": "Dependency-free portable Windows MVP for a World of Warcraft guide manager.",
+  "description": "Portable Windows MVP for a World of Warcraft guide manager, with Android and iOS app shells.",
   "author": "WoW Guide Manager",
   "license": "UNLICENSED",
   "private": true,
@@ -13,8 +13,17 @@
     "dist:win": "node scripts/build.mjs --portable",
     "package:handoff": "node scripts/package-handoff.mjs",
     "assets:check": "node scripts/validate-assets.mjs",
-    "assets:download": "node scripts/download-assets.mjs"
+    "assets:download": "node scripts/download-assets.mjs",
+    "cap:sync": "node scripts/build.mjs && npx cap sync",
+    "android:open": "npx cap open android",
+    "ios:open": "npx cap open ios"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@capacitor/android": "^8.4.1",
+    "@capacitor/core": "^8.4.1",
+    "@capacitor/ios": "^8.4.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.4.1"
+  }
 }
