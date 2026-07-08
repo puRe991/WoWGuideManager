@@ -100,7 +100,7 @@ export const classGuides = [
   {
     id: 'warlock',
     name: 'Hexenmeister',
-    color: '#8788ee',
+    color: '#9482c9',
     roles: ['Caster DPS', 'Solo-Farmer', 'Summon Utility'],
     levelingSpec: 'Affliction/Drain Tank',
     difficulty: 'Mittel',

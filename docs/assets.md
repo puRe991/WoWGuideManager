@@ -1,25 +1,49 @@
 # WoW assets, maps and icons
 
-The app is wired for real World of Warcraft artwork, maps and icons under `assets/wow/`, but the repository does not bundle Blizzard-owned image files.
+The repository does not bundle Blizzard-owned image files. Class and profession
+icons are hotlinked instead; dungeon and expansion artwork still needs licensed
+local files.
 
 ## Why assets are not committed
 
-World of Warcraft artwork, maps, icons, logos and screenshots are protected Blizzard Entertainment content. Keep only files you are licensed to use in `assets/wow/` and preserve copyright/trademark notices required by Blizzard's rules.
+World of Warcraft artwork, maps, icons, logos and screenshots are protected
+Blizzard Entertainment content. The app never downloads or stores these files
+in the repository.
 
-## Expected folders
+## Class and profession icons: hotlinked, not committed
+
+`src/data/assetManifest.js` points `classes` and `professions` directly at
+Wowhead's public static icon CDN (`wow.zamimg.com`), the same CDN countless
+WoW fan sites, guides and addons use to embed Blizzard icon textures without
+redistributing the files themselves. No binary image ever lives in this repo
+for these — the browser just requests the icon from Wowhead at runtime.
+
+Every URL in `assetManifest.js` was checked (HTTP status + real image content,
+cross-referenced against Wowhead's own profession/class pages) before being
+added. If Wowhead ever renames or removes an icon, the `<img onerror>` handler
+in `src/app.js` falls back to a styled placeholder with the item's initial
+letter instead of a broken image — see `renderAssetImage` in `src/app.js`.
+
+## Dungeon and expansion artwork: still local-only
+
+No verified, per-dungeon icon or expansion hero screenshot source was found
+that could be confidently hotlinked (Wowhead's zone/dungeon pages render their
+media client-side, so there's no static, stable URL to link to per instance).
+These slots (`assetManifest.dungeons`, `assetManifest.dungeonMaps`,
+`assetManifest.expansions`) still expect local files under `assets/wow/`:
 
 - `assets/wow/expansions/` for expansion hero artwork.
-- `assets/wow/icons/classes/` for class icons.
 - `assets/wow/icons/dungeons/` for dungeon icons.
 - `assets/wow/maps/` for Azeroth, expansion and dungeon maps.
 
-The exact expected filenames are listed in `src/data/assetManifest.js`.
+The exact expected filenames are listed in `src/data/assetManifest.js`. Place
+only files you are licensed to use there; `npm run assets:check` reports which
+of these local slots are still empty (it does not check the hotlinked class/
+profession URLs, since those aren't local files).
 
 ## Runtime behavior
 
-The UI no longer uses emoji/demo graphics. It renders image slots from `assetManifest`. If an image file is missing, the app shows a neutral "Asset fehlt" notice for that slot instead of a fake placeholder graphic.
-
-
-## Optional icon downloader
-
-`npm run assets:download` can populate class icon slots from public Wowhead icon CDN URLs listed in `assetSources`. Use it only if your project is allowed to use those assets. Expansion art, dungeon maps and dungeon icons still require licensed files in the paths listed by `npm run assets:check`.
+`renderAssetImage` in `src/app.js` renders an `<img>` for every icon/art slot.
+If the image is missing or fails to load, the slot shows a styled fallback
+with the item's initial letter (`.asset-fallback` in `src/styles.css`) instead
+of a broken image or silent blank box.

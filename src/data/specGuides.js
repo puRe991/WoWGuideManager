@@ -7,7 +7,7 @@ export const specGuides = {
       summary: 'Feral Tank setzt auf Rüstung, Ausdauer, hohe Bedrohung über Maul/Swipe und situative Cooldowns. Ideal für Dungeons und als flexibler Offtank.',
       statPriority: ['Rüstung', 'Ausdauer', 'Beweglichkeit', 'Trefferchance', 'Stärke', 'Verteidigung situativ'],
       rotation: ['Mark of the Wild aktiv halten', 'Pull mit Faerie Fire', 'Bärform vor Kontakt', 'Maul als Rage-Dump queueen', 'Demoralizing Roar bei großen Pulls', 'Swipe bei Mehrziel-Pulls', 'Frenzied Regeneration/Barkskin defensiv planen'],
-      talents: ['Feral Kernpunkte für Thick Hide, Feral Charge und Heart of the Wild', 'Restoration-Punkte für Furor', 'Omen of Clarity wenn Hybrid-Farm wichtig ist'],
+      talents: ['Feral Kernpunkte für Thick Hide, Feral Instinct und Heart of the Wild', 'Restoration-Punkte für Furor', 'Omen of Clarity wenn Hybrid-Farm wichtig ist'],
       gear: ['Warden Staff', 'Smoking Heart of the Mountain', 'Mark of Tyranny', 'Devilsaur für Threat-Set', 'hohe Rüstungsteile für Mitigation'],
       consumables: ['Elixir of Fortitude', 'Elixir of Superior Defense', 'Rumsey Rum', 'Health Potions', 'Stoneshield Potion für harte Bosse']
     },
@@ -214,8 +214,8 @@ export const specGuides = {
       role: 'PvP / Kontrolle',
       summary: 'Subtlety maximiert Kontrolle, Stealth-Setups und Überleben. In PvE meist Nische.',
       statPriority: ['Beweglichkeit', 'Kritische Treffer', 'Ausdauer', 'Angriffskraft', 'Trefferchance'],
-      rotation: ['Cheap Shot/Kidney Shot Kette', 'Hemorrhage falls geskillt', 'Vanish für Reset', 'Blind/Sap CC-Kette', 'Preparation für zweiten Cooldown-Zyklus'],
-      talents: ['Camouflage', 'Initiative', 'Preparation', 'Hemorrhage', 'Improved Sap'],
+      rotation: ['Cheap Shot/Kidney Shot Kette', 'Ghostly Strike als Energie-Dump', 'Vanish für Reset', 'Blind/Sap CC-Kette', 'Preparation für zweiten Cooldown-Zyklus'],
+      talents: ['Camouflage', 'Initiative', 'Preparation', 'Ghostly Strike', 'Improved Sap'],
       gear: ['PvP Agility/Stamina', 'Engineering Trinkets', 'Dagger/Burst Waffen', 'Shadowcraft Mix'],
       consumables: ['Free Action Potion', 'Thistle Tea', 'Swiftness Potion', 'Blind Powder']
     }
@@ -239,7 +239,7 @@ export const specGuides = {
       summary: 'Enhancement levelt über starke Waffen, Windfury-Procs und günstige Schocks, im Raid hauptsächlich Support/Nische.',
       statPriority: ['Waffenschaden', 'Stärke', 'Beweglichkeit', 'Trefferchance', 'Kritische Treffer'],
       rotation: ['Windfury Weapon', 'Strength/Windfury Totems', 'Flame Shock bei langen Kämpfen', 'Earth Shock als Interrupt/Burst', 'Auto-Attacks respektieren', 'Healing Wave defensiv'],
-      talents: ['Ancestral Knowledge', 'Thundering Strikes', 'Flurry', 'Stormstrike'],
+      talents: ['Ancestral Knowledge', 'Thundering Strikes', 'Flurry', 'Elemental Weapons'],
       gear: ['The Unstoppable Force', 'Hand of Justice', 'Blackhand’s Breadth', 'Strength/Crit Mail'],
       consumables: ['Mongoose', 'Juju Power', 'Winterfall Firewater', 'Mana Potions']
     },
@@ -308,8 +308,8 @@ export const specGuides = {
       role: 'Raid DPS',
       summary: 'Fury ist der dominante Raid-DPS-Spec mit hoher Skalierung, World Buffs und präzisem Rage-Management.',
       statPriority: ['Trefferchance bis Softcap', 'Waffenschaden', 'Stärke/Angriffskraft', 'Kritische Treffer', 'Agility'],
-      rotation: ['Bloodthirst priorisieren', 'Whirlwind auf Cooldown', 'Heroic Strike bei Rage-Überschuss', 'Execute Phase aggressiv', 'Death Wish/Recklessness mit Burn', 'Threat beobachten'],
-      talents: ['Cruelty', 'Enrage', 'Death Wish', 'Flurry', 'Bloodthirst'],
+      rotation: ['Whirlwind auf Cooldown', 'Heroic Strike/Cleave bei Rage-Überschuss', 'Execute Phase aggressiv', 'Death Wish/Recklessness mit Burn', 'Threat beobachten'],
+      talents: ['Cruelty', 'Enrage', 'Death Wish', 'Flurry', 'Dual Wield Specialization'],
       gear: ['Lionheart Helm', 'Savage Gladiator Chain', 'Dal’Rend/Pre-Raid Weapons', 'Hand of Justice', 'Blackhand’s Breadth'],
       consumables: ['Mongoose', 'Juju Power', 'Winterfall Firewater', 'Elemental Sharpening Stone', 'Mighty Rage Potion']
     },
@@ -319,8 +319,8 @@ export const specGuides = {
       role: 'Main Tank',
       summary: 'Protection fokussiert kontrollierte Threat, Shield Block Uptime und defensive Cooldowns. Gearsets für Threat und Mitigation sind Pflicht.',
       statPriority: ['Verteidigung bis Zielwert', 'Ausdauer', 'Rüstung', 'Trefferchance/Expertise gibt es nicht in Classic', 'Block/Parry/Dodge', 'Stärke für Threat'],
-      rotation: ['Defensive Stance', 'Shield Block gegen Crushing', 'Sunder Armor/Shield Slam', 'Revenge bei Proc', 'Heroic Strike bei Rage-Überschuss', 'Taunt/Mocking Blow Notfall'],
-      talents: ['Shield Slam', 'Defiance', 'Last Stand', 'Improved Shield Block', 'Tactical Mastery optional'],
+      rotation: ['Defensive Stance', 'Shield Block gegen Crushing', 'Sunder Armor stapeln', 'Revenge bei Proc', 'Heroic Strike bei Rage-Überschuss', 'Taunt/Mocking Blow Notfall'],
+      talents: ['Anticipation', 'Defiance', 'Last Stand', 'Improved Shield Block', 'Improved Sunder Armor'],
       gear: ['Quel’Serrar', 'Draconian Deflector', 'Force of Will', 'Might/Wrath Set', 'Threat Trinkets situativ'],
       consumables: ['Stoneshield Potion', 'Flask of the Titans', 'Elixir of Superior Defense', 'Mighty Rage Potion']
     }
