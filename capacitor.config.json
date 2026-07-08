@@ -1,0 +1,12 @@
+{
+  "appId": "com.wowguidemanager.app",
+  "appName": "WoW Guide Manager",
+  "webDir": "dist",
+  "backgroundColor": "#0b0d16",
+  "android": {
+    "backgroundColor": "#0b0d16"
+  },
+  "ios": {
+    "backgroundColor": "#0b0d16"
+  }
+}
