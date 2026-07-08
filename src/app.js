@@ -533,6 +533,36 @@ premiumToggle.addEventListener('click', () => {
   renderGuides();
 });
 
+const VIEW_IDS = ['start', 'class-guides', 'profession-guides', 'dungeon-guides', 'guides', 'subscriptions'];
+const navLinks = document.querySelectorAll('.site-nav a');
+
+function setActiveView(viewId, { updateHash = true } = {}) {
+  const target = VIEW_IDS.includes(viewId) ? viewId : 'start';
+  VIEW_IDS.forEach((id) => {
+    document.getElementById(id)?.classList.toggle('active', id === target);
+  });
+  navLinks.forEach((link) => {
+    link.classList.toggle('active', link.getAttribute('href') === `#${target}`);
+  });
+  if (updateHash && window.location.hash.slice(1) !== target) {
+    window.history.replaceState(null, '', `#${target}`);
+  }
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const targetId = link.getAttribute('href').slice(1);
+  if (!VIEW_IDS.includes(targetId)) return;
+  event.preventDefault();
+  setActiveView(targetId);
+});
+
+window.addEventListener('hashchange', () => {
+  setActiveView(window.location.hash.slice(1), { updateHash: false });
+});
+
 function showFatalError(error) {
   console.error('WoW Guide Manager failed to start:', error);
   const appShell = document.querySelector('.app-shell');
@@ -557,6 +587,7 @@ function init() {
   renderGuides();
   renderRoadmap();
   renderPricing();
+  setActiveView(window.location.hash.slice(1), { updateHash: false });
 }
 
 try {

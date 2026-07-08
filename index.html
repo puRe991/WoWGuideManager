@@ -13,18 +13,20 @@
   <body>
     <header class="site-header">
       <div class="site-header-inner">
-        <a href="#top" class="site-logo"><span class="site-logo-mark">WGM</span><span class="site-logo-text">WoW Guide Manager</span></a>
+        <a href="#start" class="site-logo"><span class="site-logo-mark">WGM</span><span class="site-logo-text">WoW Guide Manager</span></a>
         <nav class="site-nav" aria-label="Hauptnavigation">
+          <a href="#start">Start</a>
           <a href="#class-guides">Klassen</a>
           <a href="#profession-guides">Berufe</a>
           <a href="#dungeon-guides">Dungeons</a>
-          <a href="#guides">Guides</a>
+          <a href="#guides">Guide-Bibliothek</a>
           <a href="#subscriptions">Preise</a>
         </nav>
       </div>
     </header>
-    <main class="app-shell" id="top">
+    <main class="app-shell">
 
+      <div class="view active" id="start">
       <section class="expansion-picker panel" id="expansion-picker">
         <div class="section-heading compact">
           <span class="eyebrow">Erweiterung auswählen</span>
@@ -66,8 +68,25 @@
         </div>
       </section>
 
+      <section class="roadmap panel">
+        <div class="section-heading">
+          <span class="eyebrow">Erweiterungsarchitektur</span>
+          <h2>Classic zuerst, jede WoW-Erweiterung später modular.</h2>
+        </div>
+        <div class="roadmap-grid" id="roadmap-grid"></div>
+      </section>
 
-      <section class="panel class-guides" id="class-guides">
+      <section class="panel portable">
+        <span></span>
+        <div>
+          <h2>Portable Windows Build</h2>
+          <p>Mit <code>npm run dist:win</code> wird ein portabler Ordner mit Windows-Startdateien ohne externe NPM-Abhängigkeiten erzeugt.</p>
+        </div>
+        <span></span>
+      </section>
+      </div>
+
+      <section class="panel class-guides view" id="class-guides">
         <div class="section-heading">
           <span class="eyebrow">Ausführliche Klassen-Guides</span>
           <h2>Classic Klassen kompakt, visuell und spielbereit.</h2>
@@ -80,7 +99,7 @@
 
 
 
-      <section class="panel profession-guides" id="profession-guides">
+      <section class="panel profession-guides view" id="profession-guides">
         <div class="section-heading">
           <span class="eyebrow">Classic Berufe</span>
           <h2>Alchemie 1-300 mit eigenständig formuliertem Guide.</h2>
@@ -91,7 +110,7 @@
         <div class="profession-detail" id="profession-detail"></div>
       </section>
 
-      <section class="panel dungeon-guides" id="dungeon-guides">
+      <section class="panel dungeon-guides view" id="dungeon-guides">
         <div class="section-heading dungeon-heading">
           <div>
             <span class="eyebrow" id="dungeon-eyebrow">Classic Dungeon Atlas</span>
@@ -106,7 +125,7 @@
         </div>
       </section>
 
-      <section class="panel command-center" id="guides">
+      <section class="panel command-center view" id="guides">
         <div class="section-heading">
           <span class="eyebrow">Guide Command Center</span>
           <h2>Suche, filtere und priorisiere Content.</h2>
@@ -123,30 +142,13 @@
         <p class="empty-state hidden" id="empty-state">Keine Guides gefunden. Passe Suche oder Filter an.</p>
       </section>
 
-      <section class="roadmap panel">
-        <div class="section-heading">
-          <span class="eyebrow">Erweiterungsarchitektur</span>
-          <h2>Classic zuerst, jede WoW-Erweiterung später modular.</h2>
-        </div>
-        <div class="roadmap-grid" id="roadmap-grid"></div>
-      </section>
-
-      <section class="panel business" id="subscriptions">
+      <section class="panel business view" id="subscriptions">
         <div class="section-heading">
           <span class="eyebrow">Monetarisierung</span>
           <h2>Abo-Modell vorbereitet, Payment später integrierbar.</h2>
           <p>Die Oberfläche trennt Free- und Premium-Content bereits sichtbar. Der nächste Schritt ist ein Lizenzserver mit Stripe- oder Paddle-Anbindung.</p>
         </div>
         <div class="pricing-grid" id="pricing-grid"></div>
-      </section>
-
-      <section class="panel portable">
-        <span></span>
-        <div>
-          <h2>Portable Windows Build</h2>
-          <p>Mit <code>npm run dist:win</code> wird ein portabler Ordner mit Windows-Startdateien ohne externe NPM-Abhängigkeiten erzeugt.</p>
-        </div>
-        <span></span>
       </section>
     </main>
     <script type="module" src="./src/app.js"></script>
