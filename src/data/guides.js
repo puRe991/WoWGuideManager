@@ -21,6 +21,13 @@ export const expansions = [
     modules: ['Northrend Leveling', 'Emblem Planner', 'Daily Rotation', 'Raid Lockouts']
   },
   {
+    key: 'mists-of-pandaria',
+    name: 'Mists of Pandaria',
+    status: 'Geplant',
+    launchFocus: 'Pandaria-Leveling, Ruf-Fraktionen, Dailies, Challenge Modes und Raid-Wings als aktivierbare Erweiterung.',
+    modules: ['Pandaria Leveling', 'Ruf-Guides', 'Challenge Modes', 'Raid Lockouts']
+  },
+  {
     key: 'future',
     name: 'Weitere Erweiterungen',
     status: 'Template',
