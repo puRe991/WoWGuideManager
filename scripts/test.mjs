@@ -63,7 +63,7 @@ const allDungeons = [...classicDungeons, ...tbcDungeons];
 assert.ok(allDungeons.every((dungeon) => dungeon.loot.length >= 3 && dungeon.tips.length >= 3 && dungeon.quests.length >= 3 && dungeon.composition.length >= 3 && dungeon.time), 'Each dungeon guide should include loot, group tips, quests, composition and time planning');
 assert.ok(allDungeons.every((dungeon) => assetManifest.dungeons[dungeon.id] && assetManifest.dungeonMaps[dungeon.id]), 'Each dungeon must reference icon and map asset slots');
 
-assert.equal(professionGuides.length, 4, 'Classic profession guide pack should include Alchemy, Enchanting, Mining and First Aid');
+assert.equal(professionGuides.length, 8, 'Classic profession guide pack should include Alchemy, Enchanting, Mining, First Aid, Cooking, Fishing, Engineering and Skinning');
 assert.equal(professionGuides[0].id, 'classic-alchemy', 'Alchemy guide should use a stable id');
 assert.ok(professionGuides[0].shoppingList.length >= 15 && professionGuides[0].steps.length >= 12, 'Alchemy guide should include material planning and a full 1-300 route');
 assert.ok(assetManifest.professions.alchemy?.startsWith('https://wow.zamimg.com/'), 'Alchemy profession must reference a verified hotlinked icon URL');
@@ -82,6 +82,27 @@ const firstAidGuide = professionGuides.find((profession) => profession.id === 'c
 assert.ok(firstAidGuide, 'Profession guide pack should include a First Aid guide');
 assert.ok(firstAidGuide.shoppingList.length >= 5 && firstAidGuide.steps.length >= 5, 'First Aid guide should include material planning and a full 1-300 route');
 assert.ok(assetManifest.professions['first-aid']?.startsWith('https://wow.zamimg.com/'), 'First Aid profession must reference a verified hotlinked icon URL');
+
+const cookingGuide = professionGuides.find((profession) => profession.id === 'classic-cooking');
+assert.ok(cookingGuide, 'Profession guide pack should include a Cooking guide');
+assert.ok(cookingGuide.shoppingList.length >= 5 && cookingGuide.steps.length >= 5, 'Cooking guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.cooking?.startsWith('https://wow.zamimg.com/'), 'Cooking profession must reference a verified hotlinked icon URL');
+
+const fishingGuide = professionGuides.find((profession) => profession.id === 'classic-fishing');
+assert.ok(fishingGuide, 'Profession guide pack should include a Fishing guide');
+assert.ok(fishingGuide.shoppingList.length >= 3 && fishingGuide.steps.length >= 4, 'Fishing guide should include gear planning and a full 1-300 route');
+assert.ok(assetManifest.professions.fishing?.startsWith('https://wow.zamimg.com/'), 'Fishing profession must reference a verified hotlinked icon URL');
+
+const engineeringGuide = professionGuides.find((profession) => profession.id === 'classic-engineering');
+assert.ok(engineeringGuide, 'Profession guide pack should include an Engineering guide');
+assert.ok(engineeringGuide.shoppingList.length >= 15 && engineeringGuide.steps.length >= 12, 'Engineering guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.engineering?.startsWith('https://wow.zamimg.com/'), 'Engineering profession must reference a verified hotlinked icon URL');
+
+const skinningGuide = professionGuides.find((profession) => profession.id === 'classic-skinning');
+assert.ok(skinningGuide, 'Profession guide pack should include a Skinning guide');
+assert.ok(skinningGuide.shoppingList.length >= 5 && skinningGuide.steps.length >= 4, 'Skinning guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.skinning?.startsWith('https://wow.zamimg.com/'), 'Skinning profession must reference a verified hotlinked icon URL');
+
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
 
