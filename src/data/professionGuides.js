@@ -347,5 +347,106 @@ export const professionGuides = [
       'Halte für jeden Rang-Wechsel den passenden Verzauberungsstab bereit (Kupfer, Silber, Gold, Echsilber, Arkanit), da du ohne ihn nicht weiterskillen kannst.',
       'Hochwertige Endgame-Verzauberungen ab Level 60 erfordern zusätzlich Ruf bei Fraktionen wie der Silbernen Morgendämmerung oder der Thorium-Bruderschaft.'
     ]
+  },
+  {
+    id: 'classic-mining',
+    name: 'Bergbau',
+    icon: 'mining',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 30,
+    theme: '#e0a24d',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Bergbau in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Aderrouten nach Zone und Schmelzrezepten.',
+    intro: [
+      'Bergbau ist ein Sammelberuf: Du baust Erzadern in der Welt ab und verarbeitest das Erz per Schmelzen direkt zu Barren, die von Schmiedekunst, Ingenieurskunst und Juwelenschleifen benötigt werden.',
+      'Anders als bei den meisten anderen Berufen lehrt in Bergbau ein einzelner Lehrer pro Fraktion alle vier Ränge – ein Trainerwechsel während des Skillens ist normalerweise nicht nötig.',
+      'Kürschnerei oder Schmiedekunst/Ingenieurskunst passen als Zweitberuf hervorragend, weil sich Fell- und Erzrouten oft in denselben Zonen überschneiden.',
+      'Die Route unten kombiniert Aderfarmen mit den passenden Schmelzrezepten, damit du auch bei knappen Erzvorkommen weiterskillen kannst.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Bergbau 1-75',
+        requirement: 'ab Charakterlevel 1',
+        alliance: ['Geofram Bouldertoe in Ironforge', 'Gelman Stonehand in Stormwind', 'Yarr Hammerstone in Dun Morogh', 'Kurdram Stonehammer in Darkshore', 'Matt Johnson in Duskwood'],
+        horde: ['Makaru in Orgrimmar', 'Brom Killian in Undercity', 'Krunn in Durotar', 'Brek Stonehoof in Thunder Bluff', 'Johan Focht in Silverpine Forest']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Bergbau 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Geofram Bouldertoe in Ironforge', 'Gelman Stonehand in Stormwind', 'Yarr Hammerstone in Dun Morogh', 'Kurdram Stonehammer in Darkshore'],
+        horde: ['Makaru in Orgrimmar', 'Brom Killian in Undercity', 'Krunn in Durotar', 'Brek Stonehoof in Thunder Bluff']
+      },
+      {
+        rank: 'Experte',
+        range: 'Bergbau 150-225',
+        requirement: 'ab Skill 125 und Level 20',
+        alliance: ['Geofram Bouldertoe in Ironforge', 'Gelman Stonehand in Stormwind'],
+        horde: ['Makaru in Orgrimmar', 'Brom Killian in Undercity']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Bergbau 225-300',
+        requirement: 'ab Skill 225 und Level 35',
+        alliance: ['Geofram Bouldertoe in Ironforge', 'Pikkle in Tanaris (neutral)'],
+        horde: ['Makaru in Orgrimmar', 'Pikkle in Tanaris (neutral)']
+      }
+    ],
+    shoppingList: [
+      '155 Kupfererz',
+      '85 Zinnerz',
+      '20 Silbererz (optional für Zwischenskillpunkte)',
+      '105 Eisenerz',
+      '15 Golderz (optional für Zwischenskillpunkte)',
+      '110 Mithrilerz',
+      '10 Echtsilbererz (optional für Zwischenskillpunkte)',
+      '155 Thoriumerz'
+    ],
+    recipes: [
+      'Alle Schmelzrezepte werden automatisch beim Rang-Aufstieg vom Bergbau-Lehrer gelehrt – ein separater Kauf ist nicht nötig.',
+      'Schmelzen: Bronzebarren (ab Skill 25) benötigt Kupfer- und Zinnerz und lässt sich auch ohne eigene Zinn-Adern durch Auktionshaus-Käufe vorziehen.'
+    ],
+    steps: [
+      {
+        range: '1-65',
+        craft: 'Kupfererz abbauen',
+        materials: 'Wald von Elwynn, Durotar, Dun Morogh, Mulgore, Tirisfal',
+        note: 'Kupfer ist in jeder Startzone dicht gesät; paralleles Sammeln beim Questen reicht meist aus.'
+      },
+      {
+        range: '65-125',
+        craft: 'Zinn- und Silbererz abbauen, dazwischen Bronze und Silber schmelzen',
+        materials: 'Westfall, Loch Modan, Brachland, Rotkammgebirge',
+        note: 'Schmelzen: Bronze (25) und Schmelzen: Silber (50) liefern zusätzliche Skillpunkte, wenn Adern gerade knapp sind.'
+      },
+      {
+        range: '125-175',
+        craft: 'Eisen- und Golderz abbauen, dazwischen Eisen und Gold schmelzen',
+        materials: 'Sumpfland, Ödland, Rotkammgebirge, Arathihochland, Tausend Nadeln, Steinkrallengebirge',
+        note: 'Schmelzen: Eisen (125) und Schmelzen: Gold (155) schließen kleinere Skilllücken ohne Ortswechsel.'
+      },
+      {
+        range: '175-230',
+        craft: 'Mithril- und Echtsilbererz abbauen, dazwischen Mithril schmelzen',
+        materials: 'Ödland, Brennende Schlucht, Arathihochland, Tausend Nadeln, Desolace, Tanaris',
+        note: 'Brennende Schlucht liefert dichte Mithril-Vorkommen, ist aber wegen Dunkeleisenzwergen gefährlicher.'
+      },
+      {
+        range: '230-300',
+        craft: 'Thoriumerz abbauen (inklusive Reicher Adern), dazwischen Echtsilber und Thorium schmelzen',
+        materials: "Un'Goro-Krater, Brennende Steppen, Winterquell, Silithus, Östliche Pestländer",
+        note: 'Schmelzen: Echtsilber und Schmelzen: Thorium (beide ab Skill 230) helfen über die letzten Skillpunkte vor 300.'
+      }
+    ],
+    tips: [
+      'Erzmengen sind Richtwerte: Verpasste Adern und Fehlversuche beim Schmelzen können zusätzliche Runden nötig machen.',
+      'Kaufe Zinnerz früh am Auktionshaus, um schon ab Skill 25 Bronze zu schmelzen, auch wenn Zinn-Adern erst ab Skill 65 abbaubar sind.',
+      'Ein Goblin-Bergarbeiterhelm oder eine +Bergbau-Verzauberung auf Handschuhen erleichtern das Auffinden von Adern spürbar.',
+      'Da alle Ränge beim selben Lehrer sitzen, brauchst du für Bergbau keinen zusätzlichen Trainer-Reiseplan einzuplanen.'
+    ]
   }
 ];
