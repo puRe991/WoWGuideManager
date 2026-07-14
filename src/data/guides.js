@@ -117,6 +117,18 @@ export const guideCards = [
     tags: ['Bergbau', 'Berufe', 'Classic']
   },
   {
+    id: 'classic-first-aid-1-300',
+    title: 'Erste Hilfe 1-300 Classic Guide',
+    category: 'Professions',
+    expansion: 'classic',
+    audience: 'Einsteiger',
+    minutes: 18,
+    summary: 'Eigenständig formulierter Erste-Hilfe-Fahrplan mit Verband-Rezepten, Trainer-Infos und der Triage-Questreihe bis Skill 300.',
+    checklist: ['Stoff nach Rang bündeln (Leinen/Woll/Seiden/Magierweb/Runenstoff)', 'Handbuch für den Experten-Rang ab Skill 125 kaufen', 'Triage-Quest ab Skill 225 und Level 35 einplanen', 'Verbände für Notfälle zurücklegen statt alles zu verbrauchen'],
+    premium: false,
+    tags: ['Erste Hilfe', 'Berufe', 'Classic']
+  },
+  {
     id: 'classic-secrets-azeroth',
     title: 'Azeroth Geheimnisse & Rare Spawns',
     category: 'Secrets',

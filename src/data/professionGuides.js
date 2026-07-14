@@ -448,5 +448,126 @@ export const professionGuides = [
       'Ein Goblin-Bergarbeiterhelm oder eine +Bergbau-Verzauberung auf Handschuhen erleichtern das Auffinden von Adern spürbar.',
       'Da alle Ränge beim selben Lehrer sitzen, brauchst du für Bergbau keinen zusätzlichen Trainer-Reiseplan einzuplanen.'
     ]
+  },
+  {
+    id: 'classic-first-aid',
+    name: 'Erste Hilfe',
+    icon: 'first-aid',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 18,
+    theme: '#e2685c',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Erste Hilfe in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Verband-Rezepten, Trainerstopps und der Triage-Questreihe.',
+    intro: [
+      'Erste Hilfe ist ein Sekundärberuf, den jeder Charakter zusätzlich zu seinen zwei Hauptberufen erlernen kann – er blockiert also keinen Berufsslot.',
+      'Das Material besteht praktisch nur aus Stoff, den du beim Questen und Farmen von Humanoiden mitnimmst oder alternativ am Auktionshaus kaufst.',
+      'Ab Skill 125 lernst du den Experten-Rang nicht bei einem Trainer, sondern kaufst das Handbuch "Experten-Erste-Hilfe – Unter Verband" bei einem Händler.',
+      'Für den Handwerker-Rang (ab Skill 225 und Level 35) musst du zusätzlich die Questreihe "Triage" abschließen, bei der du in einem Zeitlimit verwundete Soldaten rettest.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Erste Hilfe 1-75',
+        requirement: 'ab Charakterlevel 1',
+        alliance: ['Shaina Fuller in Stormwind', 'Thamner Pol in Dun Morogh', 'Michelle Belle im Wald von Elwynn', 'Nissa Firestone in Ironforge', 'Dannelor in Darnassus', 'Byancie in Teldrassil', 'Fremal Doohickey in den Sumpfländen'],
+        horde: ['Arnok in Orgrimmar', 'Pand Stonebinder in Thunder Bluff', 'Mary Edras in Undercity', 'Rawrk in Durotar', 'Nurse Neela in Tirisfal', 'Vira Younghoof in Mulgore']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Erste Hilfe 75-150',
+        requirement: 'ab Skill 50',
+        alliance: ['Shaina Fuller in Stormwind', 'Nissa Firestone in Ironforge', 'Dannelor in Darnassus'],
+        horde: ['Arnok in Orgrimmar', 'Mary Edras in Undercity', 'Pand Stonebinder in Thunder Bluff']
+      },
+      {
+        rank: 'Experte',
+        range: 'Erste Hilfe 150-225',
+        requirement: 'ab Skill 125 – kein Trainer, sondern Kauf des Handbuchs "Experten-Erste-Hilfe – Unter Verband" (1 Gold)',
+        alliance: ['Deneb Walker in Sturmgrad, Arathihochland'],
+        horde: ["Balai Lok'Wein in Brackenwall, Sumpfland von Dustwallow"]
+      },
+      {
+        rank: 'Handwerker',
+        range: 'Erste Hilfe 225-300',
+        requirement: 'ab Skill 225 und Level 35 – Abschluss der Questreihe "Triage"',
+        alliance: ['Doktor Gustaf VanHowzen in Theramore, Sumpfland von Dustwallow'],
+        horde: ['Doktor Gregory Victor in Hammerfall, Arathihochland']
+      }
+    ],
+    shoppingList: [
+      '50 Leinenstoff',
+      '100 Wollstoff',
+      '61 Seidenstoff',
+      '49 Magierweb',
+      '40 Runenstoff'
+    ],
+    recipes: [
+      'Handbuch "Experten-Erste-Hilfe – Unter Verband" (1 Gold) – Allianz: Deneb Walker in Sturmgrad, Arathihochland. Horde: Balai Lok\'Wein in Brackenwall, Sumpfland von Dustwallow.',
+      'Der Handwerker-Rang wird nicht gekauft, sondern über die Questreihe "Triage" bei Doktor Gustaf VanHowzen (Allianz) bzw. Doktor Gregory Victor (Horde) freigeschaltet.'
+    ],
+    steps: [
+      {
+        range: '1-40',
+        craft: '~40 x Leinenverband',
+        materials: '40 Leinenstoff'
+      },
+      {
+        range: '40-50',
+        craft: '~10 x Schwerer Leinenverband',
+        materials: '10 Leinenstoff',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang beim selben Erste-Hilfe-Lehrer.'
+      },
+      {
+        range: '50-80',
+        craft: '~30 x Wollverband',
+        materials: '30 Wollstoff'
+      },
+      {
+        range: '80-150',
+        craft: '~70 x Schwerer Wollverband',
+        materials: '70 Wollstoff',
+        note: 'Kaufe ab Skill 125 das Handbuch "Experten-Erste-Hilfe – Unter Verband", da es keinen klassischen Trainer für den Experten-Rang gibt.'
+      },
+      {
+        range: '150-180',
+        craft: '~30 x Seidenverband',
+        materials: '30 Seidenstoff'
+      },
+      {
+        range: '180-211',
+        craft: '~31 x Schwerer Seidenverband',
+        materials: '31 Seidenstoff'
+      },
+      {
+        range: '211-240',
+        craft: '~29 x Magierwebverband',
+        materials: '29 Magierweb',
+        note: 'Ab Skill 225 und Level 35 kannst du die Questreihe "Triage" für den Handwerker-Rang beginnen.'
+      },
+      {
+        range: '240-260',
+        craft: '~20 x Schwerer Magierwebverband',
+        materials: '20 Magierweb'
+      },
+      {
+        range: '260-290',
+        craft: '~30 x Runenstoffverband',
+        materials: '30 Runenstoff'
+      },
+      {
+        range: '290-300',
+        craft: '~10 x Schwerer Runenstoffverband',
+        materials: '10 Runenstoff'
+      }
+    ],
+    tips: [
+      'Materialmengen sind Richtwerte: Verbände bekommen ab einem bestimmten Skillpunkt eine sinkende Lernchance, sodass zusätzliche Stapel nötig sein können.',
+      'Schneiderei als Zweitberuf liefert dir automatisch den gesamten Stoffbedarf für Erste Hilfe mit, da beide Berufe dieselben Stoffarten verwenden.',
+      'Verbände teilen sich eine eigene Abklingzeit mit anderen Heilungen, sind im Kampf aber trotzdem eine kostenlose Zusatzheilung ohne Mana- oder Reagenzienkosten.',
+      'Lege dir für die Triage-Quest vorher ausreichend aktuelle Verbände zurecht, da du während der Rettungsaktion selbst keine neuen herstellen kannst.'
+    ]
   }
 ];
