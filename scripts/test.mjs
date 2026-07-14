@@ -63,10 +63,15 @@ const allDungeons = [...classicDungeons, ...tbcDungeons];
 assert.ok(allDungeons.every((dungeon) => dungeon.loot.length >= 3 && dungeon.tips.length >= 3 && dungeon.quests.length >= 3 && dungeon.composition.length >= 3 && dungeon.time), 'Each dungeon guide should include loot, group tips, quests, composition and time planning');
 assert.ok(allDungeons.every((dungeon) => assetManifest.dungeons[dungeon.id] && assetManifest.dungeonMaps[dungeon.id]), 'Each dungeon must reference icon and map asset slots');
 
-assert.equal(professionGuides.length, 1, 'Classic profession guide pack should include Alchemy');
+assert.equal(professionGuides.length, 2, 'Classic profession guide pack should include Alchemy and Enchanting');
 assert.equal(professionGuides[0].id, 'classic-alchemy', 'Alchemy guide should use a stable id');
 assert.ok(professionGuides[0].shoppingList.length >= 15 && professionGuides[0].steps.length >= 12, 'Alchemy guide should include material planning and a full 1-300 route');
 assert.ok(assetManifest.professions.alchemy?.startsWith('https://wow.zamimg.com/'), 'Alchemy profession must reference a verified hotlinked icon URL');
+
+const enchantingGuide = professionGuides.find((profession) => profession.id === 'classic-enchanting');
+assert.ok(enchantingGuide, 'Profession guide pack should include an Enchanting guide');
+assert.ok(enchantingGuide.shoppingList.length >= 15 && enchantingGuide.steps.length >= 12, 'Enchanting guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.enchanting?.startsWith('https://wow.zamimg.com/'), 'Enchanting profession must reference a verified hotlinked icon URL');
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
 

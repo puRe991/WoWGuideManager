@@ -147,5 +147,205 @@ export const professionGuides = [
       'Wenn Kräuter auf deinem Realm teuer sind, farme Friedensblume/Silberblatt in Startgebieten und Sonnengras/Golddorn in höheren Zonen selbst.',
       'Bewahre nützliche Tränke fürs Leveln, Dungeons oder Hardcore-Sicherheitsmomente auf, statt alles sofort zu verkaufen.'
     ]
+  },
+  {
+    id: 'classic-enchanting',
+    name: 'Verzauberkunst',
+    icon: 'enchanting',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 26,
+    theme: '#b98eff',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Verzauberkunst in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Trainerstopps, Stab-Rezepten und einer klaren Materialliste.',
+    intro: [
+      'Verzauberkunst ist ein Handwerksberuf, der Ausrüstung wie Waffen, Umhänge, Handschuhe oder Rüstung dauerhaft mit zusätzlichen Werten verzaubert – anders als bei den meisten Berufen brauchst du dafür keine Handwerksstation.',
+      'Deine wichtigste Materialquelle ist das Entzaubern: Zerlege grüne und blaue Gegenstände in Verzauberungsstaub, Kristalle und Essenzen, statt sie zu verkaufen.',
+      'Für mehrere Rang-Aufstiege brauchst du einen selbst hergestellten Verzauberungsstab (Kupfer, Silber, Gold, Echsilber, Arkanit) – ohne ihn stockt dein Fortschritt.',
+      'Schneiderei passt besonders gut als Zweitberuf, weil du eigene Stoffgegenstände sofort wieder entzaubern kannst und so kaum vom Auktionshaus abhängig bist.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Verzauberkunst 1-75',
+        requirement: 'ab Charakterlevel 1',
+        alliance: ['Alanna Raveneye in Teldrassil', 'Thonys Pillarstone in Ironforge', 'Betty Quin in Stormwind', 'Lalina Summermoon in Darnassus'],
+        horde: ['Teg Dawnstrider in Thunder Bluff', 'Vance Undergloom in Tirisfal', 'Jhag in Orgrimmar', 'Malcomb Wynn in Undercity']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Verzauberkunst 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Alanna Raveneye in Teldrassil', 'Thonys Pillarstone in Ironforge', 'Betty Quin in Stormwind', 'Lalina Summermoon in Darnassus'],
+        horde: ['Teg Dawnstrider in Thunder Bluff', 'Vance Undergloom in Tirisfal', 'Jhag in Orgrimmar', 'Malcomb Wynn in Undercity']
+      },
+      {
+        rank: 'Experte',
+        range: 'Verzauberkunst 150-225',
+        requirement: 'ab Skill 125 und Level 20',
+        alliance: ['Kitta Firewind im Wald von Elwynn'],
+        horde: ['Hgarth im Steinkrallengebirge']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Verzauberkunst 225-300',
+        requirement: 'ab Skill 225 und Level 35',
+        alliance: ['Annora in Uldaman, Ödland'],
+        horde: ['Annora in Uldaman, Ödland']
+      }
+    ],
+    shoppingList: [
+      '125 Seltsamer Staub',
+      '1 Kleine Magiessenz',
+      '12 Große Magiessenz',
+      '25 Kleine Astralessenz',
+      '130 Seelenstaub',
+      '2 Große Astralessenz',
+      '2 Große Mystische Essenz',
+      '240 Visionsstaub',
+      '5 Kleine Nethressenz',
+      '360 Traumstaub',
+      '40 Purpurlotus',
+      '20 Kristallfläschchen',
+      '82 Illusionsstaub',
+      '4 Große Ewige Essenz',
+      '4 Kleiner Leuchtender Splitter',
+      '2 Großer Leuchtender Splitter',
+      '9 Einfaches Holz',
+      '1 Kupferstab',
+      '1 Silberstab',
+      '1 Goldstab',
+      '1 Echsilberstab',
+      '1 Arkanitstab',
+      '1 Schattenedelstein',
+      '1 Schillernde Perle',
+      '1 Schwarze Perle',
+      '1 Goldene Perle'
+    ],
+    recipes: [
+      'Die meisten Verzauberungen dieser Route lernst du automatisch beim Rang-Aufstieg direkt beim Verzauberungslehrer – ein separater Kauf ist normalerweise nicht nötig.',
+      'Die Runenstab-Rezepte (Kupfer, Silber, Gold, Echsilber, Arkanit) sind Pflicht-Zwischenschritte und werden ebenfalls vom jeweils aktuellen Trainer gelehrt.'
+    ],
+    steps: [
+      {
+        range: '1-2',
+        craft: '1 x Runenstab aus Kupfer',
+        materials: '1 Kupferstab, 1 Seltsamer Staub, 1 Kleine Magiessenz',
+        note: 'Stelle den Stab als Allererstes her – ohne ihn kannst du keine höherwertigen Verzauberungen anwenden.'
+      },
+      {
+        range: '2-50',
+        craft: '48 x Verzauberung: Handgelenk - Kleine Gesundheit',
+        materials: '48 Seltsamer Staub'
+      },
+      {
+        range: '50-90',
+        craft: '40 x Verzauberung: Handgelenk - Kleine Gesundheit',
+        materials: '40 Seltsamer Staub'
+      },
+      {
+        range: '90-100',
+        craft: '10 x Verzauberung: Handgelenk - Kleine Ausdauer',
+        materials: '30 Seltsamer Staub'
+      },
+      {
+        range: '100-101',
+        craft: '1 x Runenstab aus Silber',
+        materials: '1 Silberstab, 6 Seltsamer Staub, 3 Große Magiessenz, 1 Schattenedelstein',
+        note: 'Der Silberstab ist Pflicht, um über Skill 100 hinauszukommen.'
+      },
+      {
+        range: '101-110',
+        craft: '9 x Großer Magiestab',
+        materials: '9 Einfaches Holz, 9 Große Magiessenz'
+      },
+      {
+        range: '110-135',
+        craft: '25 x Verzauberung: Umhang - Kleine Beweglichkeit',
+        materials: '25 Kleine Astralessenz'
+      },
+      {
+        range: '135-155',
+        craft: '20 x Verzauberung: Handgelenk - Kleine Ausdauer',
+        materials: '40 Seelenstaub'
+      },
+      {
+        range: '155-156',
+        craft: '1 x Runenstab aus Gold',
+        materials: '1 Goldstab, 1 Schillernde Perle, 2 Große Astralessenz, 2 Seelenstaub',
+        note: 'Besuche spätestens jetzt den Experten-Trainer (ab Skill 125 verfügbar), sonst stoppt dein Skillfortschritt.'
+      },
+      {
+        range: '156-185',
+        craft: '40 x Verzauberung: Handgelenk - Kleine Stärke',
+        materials: '80 Seelenstaub'
+      },
+      {
+        range: '185-200',
+        craft: '15 x Verzauberung: Handgelenk - Stärke',
+        materials: '15 Visionsstaub'
+      },
+      {
+        range: '200-201',
+        craft: '1 x Runenstab aus Echsilber',
+        materials: '1 Echsilberstab, 1 Schwarze Perle, 2 Große Mystische Essenz, 2 Visionsstaub'
+      },
+      {
+        range: '201-220',
+        craft: '25 x Verzauberung: Handgelenk - Stärke',
+        materials: '25 Visionsstaub'
+      },
+      {
+        range: '220-225',
+        craft: '5 x Verzauberung: Umhang - Große Verteidigung',
+        materials: '15 Visionsstaub',
+        note: 'Ab Skill 225 musst du zum Fachmann-Trainer wechseln (Annora, Uldaman), um weiterzuskillen.'
+      },
+      {
+        range: '225-230',
+        craft: '5 x Verzauberung: Handschuhe - Beweglichkeit',
+        materials: '5 Kleine Nethressenz, 5 Visionsstaub'
+      },
+      {
+        range: '230-235',
+        craft: '5 x Verzauberung: Stiefel - Ausdauer',
+        materials: '25 Visionsstaub'
+      },
+      {
+        range: '235-250',
+        craft: '25 x Verzauberung: Brust - Überlegene Gesundheit',
+        materials: '150 Visionsstaub'
+      },
+      {
+        range: '250-265',
+        craft: '~20 x Kleines Manaöl',
+        materials: '60 Traumstaub, 40 Purpurlotus, 20 Kristallfläschchen',
+        note: 'Dieser Abschnitt braucht Alchemie-Phiolen und Kräuter – kaufe sie rechtzeitig am Auktionshaus.'
+      },
+      {
+        range: '265-294',
+        craft: '30 x Verzauberung: Schild - Große Ausdauer',
+        materials: '300 Traumstaub'
+      },
+      {
+        range: '294-295',
+        craft: '1 x Runenstab aus Arkanit',
+        materials: '1 Arkanitstab, 1 Goldene Perle, 10 Illusionsstaub, 4 Große Ewige Essenz, 4 Kleiner Leuchtender Splitter, 2 Großer Leuchtender Splitter',
+        note: 'Der teuerste Schritt der Route – plane Splitter und Essenzen frühzeitig ein.'
+      },
+      {
+        range: '295-300',
+        craft: '5 x Verzauberung: Umhang - Überlegene Verteidigung',
+        materials: '40 Illusionsstaub'
+      }
+    ],
+    tips: [
+      'Materialmengen sind Richtwerte: Gelbe und grüne Rezepte können zusätzliche Versuche nötig machen.',
+      'Entzaubern ist deine Hauptquelle für Verzauberungsstaub, Essenzen und Kristalle – sammle grüne und blaue Gegenstände und entzaubere sie, statt sie zu verkaufen.',
+      'Halte für jeden Rang-Wechsel den passenden Verzauberungsstab bereit (Kupfer, Silber, Gold, Echsilber, Arkanit), da du ohne ihn nicht weiterskillen kannst.',
+      'Hochwertige Endgame-Verzauberungen ab Level 60 erfordern zusätzlich Ruf bei Fraktionen wie der Silbernen Morgendämmerung oder der Thorium-Bruderschaft.'
+    ]
   }
 ];
