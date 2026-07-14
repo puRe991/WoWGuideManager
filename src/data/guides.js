@@ -111,7 +111,7 @@ export const guideCards = [
     expansion: 'classic',
     audience: 'Einsteiger',
     minutes: 30,
-    summary: 'Eigenständig formulierter Bergbau-Fahrplan mit Aderrouten nach Zone, Schmelzrezepten und Trainer-Infos bis Skill 300, inklusive Link zu einem ausführlichen externen Guide.',
+    summary: 'Eigenständig formulierter Bergbau-Fahrplan mit Aderrouten nach Zone, Schmelzrezepten und Trainer-Infos bis Skill 300.',
     checklist: ['Adernrouten nach Zone bündeln', 'Bronze/Silber/Eisen/Gold/Mithril/Thorium rechtzeitig schmelzen', 'Zinnerz bei Bedarf am Auktionshaus vorziehen', 'Zweitberuf wie Kürschnerei kombinieren'],
     premium: false,
     tags: ['Bergbau', 'Berufe', 'Classic']

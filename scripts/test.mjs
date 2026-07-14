@@ -77,7 +77,6 @@ const miningGuide = professionGuides.find((profession) => profession.id === 'cla
 assert.ok(miningGuide, 'Profession guide pack should include a Mining guide');
 assert.ok(miningGuide.shoppingList.length >= 5 && miningGuide.steps.length >= 5, 'Mining guide should include ore planning and a full 1-300 route');
 assert.ok(assetManifest.professions.mining?.startsWith('https://wow.zamimg.com/'), 'Mining profession must reference a verified hotlinked icon URL');
-assert.ok(miningGuide.externalGuides?.some((link) => link.url === 'https://overgear.com/guides/de/wow-classic/guide-for-mining/'), 'Mining guide should link the Overgear Classic mining guide');
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
 

@@ -359,7 +359,7 @@ export const professionGuides = [
     minutes: 30,
     theme: '#e0a24d',
     summary:
-      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Bergbau in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Aderrouten nach Zone, Schmelzrezepten und einem Link zu einem ausführlichen externen Guide.',
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Bergbau in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Aderrouten nach Zone und Schmelzrezepten.',
     intro: [
       'Bergbau ist ein Sammelberuf: Du baust Erzadern in der Welt ab und verarbeitest das Erz per Schmelzen direkt zu Barren, die von Schmiedekunst, Ingenieurskunst und Juwelenschleifen benötigt werden.',
       'Anders als bei den meisten anderen Berufen lehrt in Bergbau ein einzelner Lehrer pro Fraktion alle vier Ränge – ein Trainerwechsel während des Skillens ist normalerweise nicht nötig.',
@@ -447,12 +447,6 @@ export const professionGuides = [
       'Kaufe Zinnerz früh am Auktionshaus, um schon ab Skill 25 Bronze zu schmelzen, auch wenn Zinn-Adern erst ab Skill 65 abbaubar sind.',
       'Ein Goblin-Bergarbeiterhelm oder eine +Bergbau-Verzauberung auf Handschuhen erleichtern das Auffinden von Adern spürbar.',
       'Da alle Ränge beim selben Lehrer sitzen, brauchst du für Bergbau keinen zusätzlichen Trainer-Reiseplan einzuplanen.'
-    ],
-    externalGuides: [
-      {
-        label: 'Overgear – Bergbau Guide (DE)',
-        url: 'https://overgear.com/guides/de/wow-classic/guide-for-mining/'
-      }
     ]
   }
 ];
