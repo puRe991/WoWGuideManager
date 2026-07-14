@@ -33,6 +33,7 @@ const expansionLabels = {
   classic: 'Classic',
   'the-burning-crusade': 'TBC',
   'wrath-of-the-lich-king': 'WotLK',
+  'mists-of-pandaria': 'MoP',
   future: 'Zukunft'
 };
 
@@ -41,6 +42,7 @@ const expansionOptions = [
   ['classic', 'WoW Classic'],
   ['the-burning-crusade', 'The Burning Crusade'],
   ['wrath-of-the-lich-king', 'Wrath of the Lich King'],
+  ['mists-of-pandaria', 'Mists of Pandaria'],
   ['future', 'Zukunft']
 ];
 
@@ -61,6 +63,7 @@ const expansionArtwork = {
   classic: { theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
   'the-burning-crusade': { theme: 'Outland', art: 'linear-gradient(135deg, rgba(73,255,125,.22), rgba(81,41,112,.38))' },
   'wrath-of-the-lich-king': { theme: 'Northrend', art: 'linear-gradient(135deg, rgba(120,206,255,.28), rgba(31,54,104,.45))' },
+  'mists-of-pandaria': { theme: 'Pandaria', art: 'linear-gradient(135deg, rgba(122,224,168,.28), rgba(20,90,74,.42))' },
   future: { theme: 'Content Packs', art: 'linear-gradient(135deg, rgba(211,181,255,.28), rgba(255,255,255,.08))' }
 };
 

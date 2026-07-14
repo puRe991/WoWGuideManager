@@ -21,6 +21,10 @@ export const assetManifest = {
       hero: './assets/wow/expansions/wrath-of-the-lich-king-hero.jpg',
       map: './assets/wow/maps/northrend.jpg'
     },
+    'mists-of-pandaria': {
+      hero: './assets/wow/expansions/mists-of-pandaria-hero.jpg',
+      map: './assets/wow/maps/pandaria.jpg'
+    },
     future: {
       hero: './assets/wow/expansions/future-content-pack-hero.jpg',
       map: './assets/wow/maps/future-content-pack.jpg'
