@@ -3,6 +3,7 @@ import { classGuides } from './data/classGuides.js';
 import { classBuildGuides } from './data/classBuildGuides.js';
 import { specGuides } from './data/specGuides.js';
 import { dungeonGuides } from './data/dungeonGuides.js';
+import { raidGuides } from './data/raidGuides.js';
 import { professionGuides } from './data/professionGuides.js';
 import { farmingGuides } from './data/farmingGuides.js';
 import { assetManifest } from './data/assetManifest.js';
@@ -27,7 +28,7 @@ const expansionPickerMount = document.querySelector('#expansion-picker');
 const viewContent = document.querySelector('#view-content');
 const viewRoot = document.querySelector('#view-root');
 
-const NAV_SECTIONS = ['start', 'class-guides', 'profession-guides', 'farming-guides', 'dungeon-guides', 'guides', 'subscriptions'];
+const NAV_SECTIONS = ['start', 'class-guides', 'profession-guides', 'farming-guides', 'dungeon-guides', 'raid-guides', 'guides', 'subscriptions'];
 
 const expansionLabels = {
   classic: 'Classic',
@@ -59,6 +60,19 @@ const dungeonAtlasCopy = {
   }
 };
 
+const raidAtlasCopy = {
+  classic: {
+    eyebrow: 'Classic Raid Atlas',
+    title: 'Alle Classic-Raids boss für boss – von Onyxia bis Naxxramas.',
+    copy: 'Jeder Classic-Raid mit Attunement, Route, Gruppen-Setup und einer eigenen Boss-für-Boss-Aufschlüsselung inklusive Mechaniken und Loot-Zielen.'
+  },
+  'the-burning-crusade': {
+    eyebrow: 'The Burning Crusade Raid Atlas',
+    title: 'Alle TBC-Raids boss für boss – von Karazhan bis Sunwell Plateau.',
+    copy: 'Von Gruul’s Lair bis zum Serienfinale in Sunwell: Attunement-Ketten, Route und Boss-für-Boss-Mechaniken für jeden Outland-Raid.'
+  }
+};
+
 const expansionArtwork = {
   classic: { theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
   'the-burning-crusade': { theme: 'Outland', art: 'linear-gradient(135deg, rgba(73,255,125,.22), rgba(81,41,112,.38))' },
@@ -78,6 +92,7 @@ const NAV_LABELS = {
   'profession-guides': 'Berufe',
   'farming-guides': 'Farmen',
   'dungeon-guides': 'Dungeons',
+  'raid-guides': 'Raids',
   guides: 'Bibliothek'
 };
 
@@ -124,6 +139,10 @@ function renderScoreCard(title, value, label) {
 
 function getActiveDungeons() {
   return dungeonGuides[state.selectedExpansion] ?? [];
+}
+
+function getActiveRaids() {
+  return raidGuides[state.selectedExpansion] ?? [];
 }
 
 function scopeNote(text) {
@@ -174,6 +193,20 @@ function dungeonTile(d) {
   };
 }
 
+function raidTile(r) {
+  return {
+    href: `#raid-guides/${r.id}`,
+    color: r.theme,
+    subtitle: `${r.size} · ${r.tier}`,
+    badge: '',
+    title: r.name,
+    summary: r.summary,
+    tags: [r.zone, `${r.bosses.length} Bosse`],
+    meta: r.levelReq,
+    hay: `${r.name} ${r.summary} ${r.zone} raid ${r.bosses.map((b) => b.name).join(' ')}`
+  };
+}
+
 function farmingTile(item, group) {
   return {
     href: `#farming-guides/${encodeURIComponent(item.id)}`,
@@ -219,11 +252,13 @@ function renderTile(tile) {
 
 function buildAllGroups(term) {
   const activeDungeons = getActiveDungeons();
+  const activeRaids = getActiveRaids();
   const groups = [
     { key: 'class-guides', label: 'Klassen', accent: '#ffb22e', tiles: classGuides.map(classTile) },
     { key: 'profession-guides', label: 'Berufe', accent: '#75d15f', tiles: professionGuides.map(professionTile) },
     { key: 'farming-guides', label: 'Farmen', accent: '#c9a86a', tiles: farmingGuides.flatMap((group) => group.items.map((item) => farmingTile(item, group))) },
     { key: 'dungeon-guides', label: 'Dungeons', accent: '#ff8a4c', tiles: activeDungeons.map(dungeonTile) },
+    { key: 'raid-guides', label: 'Raids', accent: '#ff6b6b', tiles: activeRaids.map(raidTile) },
     { key: 'guides', label: 'Bibliothek', accent: '#7bb6ff', tiles: guideCards.map(libraryTile) }
   ];
   return groups
@@ -251,8 +286,9 @@ function renderNoResults() {
 
 function renderStart() {
   const totalDungeons = Object.values(dungeonGuides).reduce((sum, list) => sum + list.length, 0);
+  const totalRaids = Object.values(raidGuides).reduce((sum, list) => sum + list.length, 0);
   const totalFarmingItems = farmingGuides.reduce((sum, group) => sum + group.items.length, 0);
-  const totalGuides = classGuides.length + professionGuides.length + totalDungeons + totalFarmingItems + guideCards.length;
+  const totalGuides = classGuides.length + professionGuides.length + totalDungeons + totalRaids + totalFarmingItems + guideCards.length;
   const groups = buildAllGroups(state.search);
 
   return `
@@ -347,6 +383,28 @@ function renderDungeonGuidesListing() {
       </div>
       ${activeDungeons.length === 0
         ? '<div class="empty-state"><b>Noch kein Dungeon Atlas</b>Für diese Erweiterung wird der Dungeon-Bereich mit dem nächsten Content-Pack ergänzt.</div>'
+        : tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
+    </section>`;
+}
+
+function renderRaidGuidesListing() {
+  const atlasCopy = raidAtlasCopy[state.selectedExpansion];
+  const activeRaids = getActiveRaids();
+  const tiles = activeRaids.map(raidTile).filter((tile) => matches(tile.hay, state.search));
+
+  return `
+    <section class="page">
+      ${renderFilterBar('raid-guides')}
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">${escapeHtml(atlasCopy?.eyebrow ?? 'Raid Atlas')}</span>
+          <h1>${escapeHtml(atlasCopy?.title ?? 'Für diese Erweiterung ist noch kein Raid Atlas verfügbar.')}</h1>
+          <p>${escapeHtml(atlasCopy?.copy ?? 'Dieser Bereich ist aktuell als "Geplant" markiert und wird mit dem nächsten Content-Pack für diese Erweiterung ergänzt.')}</p>
+        </div>
+        <div class="metric-grid"><div><b>${activeRaids.length}</b><span>Raids</span></div></div>
+      </div>
+      ${activeRaids.length === 0
+        ? '<div class="empty-state"><b>Geplant</b>Für diese Erweiterung ist der Raid-Bereich noch nicht verfügbar und wird mit dem nächsten Content-Pack ergänzt.</div>'
         : tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
     </section>`;
 }
@@ -618,6 +676,46 @@ function renderDungeonDetail(id) {
     </article>`;
 }
 
+function renderBossCard(boss, accentVar) {
+  return `
+    <article class="boss-card">
+      <h5>${escapeHtml(boss.name)}</h5>
+      ${plainList(boss.mechanics, accentVar)}
+      ${boss.loot?.length ? `<div class="boss-loot">${boss.loot.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>` : ''}
+    </article>`;
+}
+
+function renderRaidDetail(id) {
+  const raid = getActiveRaids().find((item) => item.id === id) ?? Object.values(raidGuides).flat().find((item) => item.id === id);
+  if (!raid) return null;
+
+  return `
+    <article class="page narrow detail-page">
+      ${backLink('#raid-guides')}
+      <div class="crumb">Übersicht · Raids · ${escapeHtml(raid.name)}</div>
+      <article class="raid-panel" style="--raid-color: ${escapeHtml(raid.theme)}">
+        <header class="raid-hero">
+          <div class="card-meta"><span>${escapeHtml(raid.size)}</span><span>${escapeHtml(raid.tier)}</span><span>Level ${escapeHtml(raid.levelReq)}</span></div>
+          <h3>${escapeHtml(raid.name)}</h3>
+          <p>${escapeHtml(raid.summary)}</p>
+          <div class="class-pill-row"><span>${escapeHtml(raid.zone)}</span><span>${escapeHtml(raid.wing)}</span><span>${raid.bosses.length} Bosse</span></div>
+          ${raid.subDungeons ? `<div class="sub-dungeon-row">${raid.subDungeons.map((wing) => `<span>${escapeHtml(wing)}</span>`).join('')}</div>` : ''}
+        </header>
+        <div class="raid-info-grid">
+          ${raid.attunement?.length ? renderClassList('Attunement', raid.attunement) : ''}
+          ${renderClassList('Route & Vorbereitung', raid.route)}
+          ${renderClassList('Loot-Highlights', raid.loot)}
+          ${renderClassList('Raid-Tipps', raid.tips)}
+          ${renderClassList('Gruppen-Setup', raid.composition)}
+        </div>
+        <div class="raid-boss-section">
+          <div class="guide-section-heading"><span>Boss für Boss</span><h4>${escapeHtml(raid.name)} Encounter-Guide</h4></div>
+          <div class="raid-boss-grid">${raid.bosses.map((boss) => renderBossCard(boss, '--raid-color')).join('')}</div>
+        </div>
+      </article>
+    </article>`;
+}
+
 function renderFarmingDetail(itemId) {
   let found = null;
   for (const group of farmingGuides) {
@@ -712,9 +810,12 @@ function renderExpansionSwitch() {
 
 function redirectIfDungeonMissing() {
   const [section, id] = parseHash();
-  if (section !== 'dungeon-guides' || !id) return;
-  if (!getActiveDungeons().some((dungeon) => dungeon.id === id)) {
+  if (section === 'dungeon-guides' && id && !getActiveDungeons().some((dungeon) => dungeon.id === id)) {
     window.location.hash = '#dungeon-guides';
+    return;
+  }
+  if (section === 'raid-guides' && id && !getActiveRaids().some((raid) => raid.id === id)) {
+    window.location.hash = '#raid-guides';
   }
 }
 
@@ -728,11 +829,13 @@ function renderPackageBox() {
 
 function renderNavCounts() {
   const totalDungeons = getActiveDungeons().length;
+  const totalRaids = getActiveRaids().length;
   const totalFarmingItems = farmingGuides.reduce((sum, group) => sum + group.items.length, 0);
   document.querySelector('#nav-count-class-guides').textContent = classGuides.length;
   document.querySelector('#nav-count-profession-guides').textContent = professionGuides.length;
   document.querySelector('#nav-count-farming-guides').textContent = totalFarmingItems;
   document.querySelector('#nav-count-dungeon-guides').textContent = totalDungeons;
+  document.querySelector('#nav-count-raid-guides').textContent = totalRaids;
   document.querySelector('#nav-count-guides').textContent = guideCards.length;
 }
 
@@ -862,6 +965,8 @@ function renderView() {
     html = id ? renderFarmingDetail(id) : renderFarmingGuidesListing();
   } else if (section === 'dungeon-guides') {
     html = id ? renderDungeonDetail(id) : renderDungeonGuidesListing();
+  } else if (section === 'raid-guides') {
+    html = id ? renderRaidDetail(id) : renderRaidGuidesListing();
   } else if (section === 'guides') {
     html = id ? renderLibraryDetail(id) : renderLibraryListing();
   } else if (section === 'subscriptions') {

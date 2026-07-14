@@ -388,6 +388,27 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
   .dungeon-panel { grid-template-columns: 1fr; }
 }
 
+/* ----- Raid detail page ----- */
+
+.raid-panel { border-radius: 26px; overflow: hidden; background: radial-gradient(circle at top left, color-mix(in srgb, var(--raid-color), transparent 70%), transparent 34rem), rgba(255,255,255,.045); border: 1px solid color-mix(in srgb, var(--raid-color), transparent 55%); }
+.raid-hero { padding: 24px; border-bottom: 1px solid rgba(255,255,255,.09); }
+.raid-hero h3 { margin: 10px 0; font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: .98; letter-spacing: -.05em; color: #ffe39a; }
+.raid-hero p { margin: 0 0 12px; color: #d7d0c4; line-height: 1.65; }
+.raid-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 20px; }
+.raid-info-grid section { padding: 15px; border-radius: 18px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.09); }
+.raid-info-grid h4 { margin: 0 0 10px; color: color-mix(in srgb, var(--raid-color), #ffffff 34%); }
+.raid-boss-section { margin: 20px; padding: 18px; border-radius: 20px; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.085); }
+.raid-boss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.boss-card { position: relative; overflow: hidden; padding: 16px; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+.boss-card::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--raid-color); opacity: .8; }
+.boss-card h5 { margin: 0 0 10px; color: var(--raid-color); font-size: 1.05rem; }
+.boss-loot { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.boss-loot span { padding: 6px 9px; border-radius: 999px; background: color-mix(in srgb, var(--raid-color), transparent 82%); border: 1px solid color-mix(in srgb, var(--raid-color), transparent 58%); color: #fff3d4; font-weight: 800; font-size: .74rem; }
+
+@media (max-width: 1200px) {
+  .raid-info-grid { grid-template-columns: 1fr; }
+}
+
 /* ----- Farming detail page ----- */
 
 .farming-panel { border-radius: 26px; overflow: hidden; background: radial-gradient(circle at top left, color-mix(in srgb, var(--farming-color), transparent 75%), transparent 32rem), linear-gradient(180deg, rgba(18,24,34,.97), rgba(7,9,18,.98)); border: 1px solid color-mix(in srgb, var(--farming-color), transparent 72%); }
@@ -413,7 +434,8 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
   h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
   .hero, .metric-grid { flex-direction: column; align-items: stretch; }
   .expansion-hero-grid, .roadmap-grid, .tile-grid, .class-columns, .class-score-grid,
-  .dungeon-guide-grid, .profession-intro, .rotation-grid, .spec-grid, .farming-info-grid { grid-template-columns: 1fr; }
+  .dungeon-guide-grid, .profession-intro, .rotation-grid, .spec-grid, .farming-info-grid,
+  .raid-info-grid, .raid-boss-grid { grid-template-columns: 1fr; }
   .class-guide-nav, .profession-nav { padding: 10px 14px; }
   .class-toc, .class-overview-card, .class-columns, .rotation-lab, .bis-panel, .spec-guides,
   .profession-intro, .profession-grid, .profession-route { margin-inline: 14px; }
