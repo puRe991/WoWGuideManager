@@ -105,6 +105,18 @@ export const guideCards = [
     tags: ['Alchemie', 'Berufe', 'Classic']
   },
   {
+    id: 'classic-mining-1-300',
+    title: 'Bergbau 1-300 Classic Guide',
+    category: 'Professions',
+    expansion: 'classic',
+    audience: 'Einsteiger',
+    minutes: 30,
+    summary: 'Eigenständig formulierter Bergbau-Fahrplan mit Aderrouten nach Zone, Schmelzrezepten und Trainer-Infos bis Skill 300, inklusive Link zu einem ausführlichen externen Guide.',
+    checklist: ['Adernrouten nach Zone bündeln', 'Bronze/Silber/Eisen/Gold/Mithril/Thorium rechtzeitig schmelzen', 'Zinnerz bei Bedarf am Auktionshaus vorziehen', 'Zweitberuf wie Kürschnerei kombinieren'],
+    premium: false,
+    tags: ['Bergbau', 'Berufe', 'Classic']
+  },
+  {
     id: 'classic-secrets-azeroth',
     title: 'Azeroth Geheimnisse & Rare Spawns',
     category: 'Secrets',

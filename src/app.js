@@ -551,6 +551,7 @@ function renderProfessionDetail(id) {
           <a href="#profession-materials">Einkaufszettel</a>
           <a href="#profession-recipes">Rezepte</a>
           <a href="#profession-route">1-300 Route</a>
+          ${profession.externalGuides?.length ? '<a href="#profession-links">Weiterführende Links</a>' : ''}
         </nav>
         <section class="profession-intro" id="profession-intro">${profession.intro.map((item) => `<p>${escapeHtml(item)}</p>`).join('')}</section>
         <div class="profession-grid">
@@ -576,6 +577,11 @@ function renderProfessionDetail(id) {
           <div class="guide-section-heading"><span>Skillroute</span><h4>Schritt für Schritt zu ${escapeHtml(profession.name)} 300</h4></div>
           <div class="profession-step-list">${profession.steps.map(renderProfessionStep).join('')}</div>
         </section>
+        ${profession.externalGuides?.length ? `
+        <section class="profession-card profession-links" id="profession-links">
+          <div class="guide-section-heading"><span>Weiterführend</span><h4>Externe Guides</h4></div>
+          <ul class="profession-link-list">${profession.externalGuides.map((link) => `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a></li>`).join('')}</ul>
+        </section>` : ''}
       </article>
     </article>`;
 }
