@@ -288,11 +288,39 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
   .trainers-card { grid-row: auto; }
 }
 
+/* Farming guide pages: category tabs, item grid and a per-material detail overview. */
+.farming-guides { overflow: hidden; }
+.farming-group-tabs { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+.farming-group-tab { padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.055); color: #f7efe0; cursor: pointer; text-align: left; display: grid; gap: 2px; }
+.farming-group-tab strong { font-weight: 900; }
+.farming-group-tab small { color: #a9a195; font-weight: 800; }
+.farming-group-tab.active, .farming-group-tab:hover { border-color: color-mix(in srgb, var(--farming-color), transparent 35%); background: color-mix(in srgb, var(--farming-color), transparent 84%); }
+.farming-item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 22px; }
+.farming-item-chip { display: grid; grid-template-columns: 44px 1fr; gap: 2px 12px; align-items: center; padding: 12px 14px; border-radius: 18px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.05); color: #f7efe0; cursor: pointer; text-align: left; }
+.farming-item-chip .asset-slot, .farming-item-image { grid-row: span 2; width: 44px; height: 44px; border-radius: 14px; background: color-mix(in srgb, var(--farming-color), transparent 68%); }
+.farming-item-chip strong { font-size: .95rem; }
+.farming-item-chip small { color: #bdb5aa; }
+.farming-item-chip.active, .farming-item-chip:hover { border-color: var(--farming-color); background: linear-gradient(135deg, color-mix(in srgb, var(--farming-color), transparent 76%), rgba(255,255,255,.06)); }
+.farming-panel { border-radius: 28px; overflow: hidden; background: radial-gradient(circle at top left, color-mix(in srgb, var(--farming-color), transparent 75%), transparent 32rem), linear-gradient(180deg, rgba(18,24,34,.97), rgba(7,9,18,.98)); border: 1px solid color-mix(in srgb, var(--farming-color), transparent 72%); }
+.farming-hero { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 20px; align-items: center; padding: 26px; border-bottom: 1px solid rgba(255,255,255,.09); }
+.farming-hero-icon { width: 110px; height: 110px; border-radius: 24px; border-color: color-mix(in srgb, var(--farming-color), transparent 42%); }
+.farming-hero h3 { margin: 10px 0 12px; font-size: clamp(2rem, 4vw, 3.2rem); line-height: .95; letter-spacing: -.05em; color: #f7efe0; }
+.farming-hero p { margin: 0; color: #d7d0c4; line-height: 1.65; }
+.farming-info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 22px; }
+.farming-card { padding: 18px; border-radius: 22px; background: rgba(0,0,0,.16); border: 1px solid rgba(255,255,255,.085); }
+.farming-card h4 { margin: 0 0 10px; color: var(--farming-color); font-size: 1.04rem; }
+.farming-card p, .farming-card ul { margin: 0; color: #d7d0c4; line-height: 1.65; padding-left: 18px; }
+.farming-zone-list { display: flex; flex-wrap: wrap; gap: 9px; }
+.farming-zone-list span { padding: 8px 10px; border-radius: 999px; background: color-mix(in srgb, var(--farming-color), transparent 84%); border: 1px solid color-mix(in srgb, var(--farming-color), transparent 62%); color: #f7efe0; font-weight: 850; font-size: .86rem; }
+@media (max-width: 1200px) {
+  .farming-hero { grid-template-columns: 1fr; }
+}
+
 /* Phone-sized screens (Capacitor Android/iOS shells and narrow browsers). */
 @media (max-width: 640px) {
   .app-shell { width: calc(100% - 24px); padding: 20px 0 32px; }
   .hero, .expansion-picker, .command-center, .roadmap, .business, .portable,
-  .class-guides, .dungeon-guides { padding: 20px; }
+  .class-guides, .dungeon-guides, .farming-guides { padding: 20px; }
   .hero { gap: 20px; }
   h1 { font-size: clamp(2.1rem, 9vw, 3rem); }
   h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
@@ -304,6 +332,6 @@ code { color: #ffe39a; background: rgba(255,255,255,.08); padding: 2px 7px; bord
   .dungeon-counter { justify-self: center; }
   .class-guide-nav, .profession-nav { padding: 12px 16px; }
   .class-toc, .class-overview-card, .class-columns, .rotation-lab, .bis-panel, .spec-guides,
-  .profession-intro, .profession-grid, .profession-route { margin-inline: 16px; }
+  .profession-intro, .profession-grid, .profession-route, .farming-info-grid { margin-inline: 16px; }
   .price-card.highlighted { transform: none; }
 }

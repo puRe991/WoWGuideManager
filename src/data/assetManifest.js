@@ -4,6 +4,9 @@
 // resolve to the correct icon (checked against Wowhead's own profession/class pages) before
 // being added here. Dungeon and expansion artwork still needs licensed local files (see
 // docs/assets.md) because no verified per-dungeon icon/screenshot source was confirmed.
+// Farming item icons (farmingItems) were resolved against Wowhead's Classic item tooltip
+// data (nether.wowhead.com/tooltip/item/<id>) and each icon slug was checked for a live
+// 200 response on wow.zamimg.com before being added.
 export const assetManifest = {
   expansions: {
     classic: {
@@ -37,6 +40,44 @@ export const assetManifest = {
     'first-aid': 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_bandage_08.jpg',
     skinning: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_pelt_wolf_01.jpg',
     jewelcrafting: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_gem_01.jpg'
+  },
+  farmingItems: {
+    peacebloom: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_flower_02.jpg',
+    silverleaf: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_10.jpg',
+    mageroyal: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_talisman_03.jpg',
+    briarthorn: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_root_01.jpg',
+    stranglekelp: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_11.jpg',
+    bruiseweed: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_01.jpg',
+    gravemoss: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_dust_02.jpg',
+    wildsteelbloom: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_flower_01.jpg',
+    kingsblood: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_03.jpg',
+    liferoot: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_root_02.jpg',
+    fadeleaf: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_12.jpg',
+    goldthorn: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_15.jpg',
+    khadgarswhisker: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_08.jpg',
+    sungrass: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_18.jpg',
+    firebloom: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_19.jpg',
+    purplelotus: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_17.jpg',
+    blindweed: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_14.jpg',
+    ghostmushroom: 'https://wow.zamimg.com/images/wow/icons/large/inv_mushroom_08.jpg',
+    gromsblood: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_16.jpg',
+    goldensansam: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_sansamroot.jpg',
+    dreamfoil: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_dreamfoil.jpg',
+    mountainsilversage: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_mountainsilversage.jpg',
+    icecap: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_icecap.jpg',
+    sorrowmoss: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_herb_plaguebloom.jpg',
+    copper: 'https://wow.zamimg.com/images/wow/icons/large/inv_ore_copper_01.jpg',
+    tin: 'https://wow.zamimg.com/images/wow/icons/large/inv_ore_tin_01.jpg',
+    iron: 'https://wow.zamimg.com/images/wow/icons/large/inv_ore_iron_01.jpg',
+    mithril: 'https://wow.zamimg.com/images/wow/icons/large/inv_ore_mithril_02.jpg',
+    thorium: 'https://wow.zamimg.com/images/wow/icons/large/inv_ore_thorium_02.jpg',
+    'dark iron ore': 'https://wow.zamimg.com/images/wow/icons/large/inv_ore_mithril_01.jpg',
+    light: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_leatherscrap_03.jpg',
+    medium: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_leatherscrap_05.jpg',
+    heavy: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_leatherscrap_07.jpg',
+    thick: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_leatherscrap_08.jpg',
+    rugged: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_leatherscrap_02.jpg',
+    heavyhide: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_pelt_wolf_ruin_03.jpg'
   },
   classes: {
     druid: 'https://wow.zamimg.com/images/wow/icons/large/classicon_druid.jpg',
