@@ -569,5 +569,485 @@ export const professionGuides = [
       'Verbände teilen sich eine eigene Abklingzeit mit anderen Heilungen, sind im Kampf aber trotzdem eine kostenlose Zusatzheilung ohne Mana- oder Reagenzienkosten.',
       'Lege dir für die Triage-Quest vorher ausreichend aktuelle Verbände zurecht, da du während der Rettungsaktion selbst keine neuen herstellen kannst.'
     ]
+  },
+  {
+    id: 'classic-cooking',
+    name: 'Kochkunst',
+    icon: 'cooking',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 20,
+    theme: '#f2b134',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Kochkunst in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Fischsorten nach Skillbereich, Trainerstopps und einer klaren Materialliste.',
+    intro: [
+      'Kochkunst ist ein Sekundärberuf, den jeder Charakter zusätzlich zu seinen zwei Hauptberufen erlernen kann – er blockiert also keinen Berufsslot.',
+      'Die schnellste und günstigste Route führt fast ausschließlich über gekochten Fisch, weil sich die Rohfische leicht selbst angeln oder günstig am Auktionshaus kaufen lassen.',
+      'Angeln passt hervorragend als Zweitberuf, weil du damit direkt den kompletten Fischbedarf für diese Route selbst sammeln kannst.',
+      'Wenn Fisch auf deinem Realm knapp ist, helfen "Angekohltes Wolfsfleisch" und "Gebratenes Eberfleisch" aus gefarmtem Tierfleisch als Ausweichroute in den ersten Skillbereichen.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Kochkunst 1-75',
+        requirement: 'ab Charakterlevel 5',
+        alliance: ['Alegorn in Darnassus', 'Koch Ghilm in Dun Morogh'],
+        horde: ['Aska Mistrunner in Thunder Bluff', 'Eunice Burch in Undercity']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Kochkunst 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Daryl Riknussun in Ironforge', 'Stephen Ryback in Stormwind'],
+        horde: ['Zamja in Orgrimmar']
+      },
+      {
+        rank: 'Experte',
+        range: 'Kochkunst 150-225',
+        requirement: 'ab Skill 125 – kein Trainer, sondern Kauf des Rezeptbuchs "Experten-Kochkunst" bei einem Kochkunst-Händler',
+        alliance: ['Kochkunst-Händler in den großen Allianz-Hauptstädten'],
+        horde: ['Kochkunst-Händler in den großen Horde-Hauptstädten']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Kochkunst 225-300',
+        requirement: 'ab Skill 225 und Level 35 – zusätzlich an eine Quest bei einem Kochkunst-Händler gebunden',
+        alliance: ['Vivianna in Booty Bay'],
+        horde: ['Sheendra Tallgrass in Booty Bay']
+      }
+    ],
+    shoppingList: [
+      '50 Roher Strahlender Kleinfisch',
+      '50 Roher Langkiefer-Schlammschnapper',
+      '120 Roher Borstenbart-Wels',
+      '60 Rohe Mithrilkopf-Forelle',
+      '70 Roher Getupfter Gelbschwanz',
+      '25 Roher Großer Machtfisch'
+    ],
+    recipes: [
+      'Handbuch "Experten-Kochkunst" (ab Skill 125) – bei einem Kochkunst-Händler in einer Hauptstadt erhältlich.',
+      'Rezept: Machtfisch-Steak (ab Skill 275) – Allianz: Vivianna in Booty Bay, Horde: Sheendra Tallgrass in Booty Bay.'
+    ],
+    steps: [
+      {
+        range: '1-50',
+        craft: '50 x Gebratener Strahlender Kleinfisch',
+        materials: '50 Roher Strahlender Kleinfisch'
+      },
+      {
+        range: '50-100',
+        craft: '50 x Gebratener Langkiefer-Schlammschnapper',
+        materials: '50 Roher Langkiefer-Schlammschnapper',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang beim nächsten Kochkunst-Trainer.'
+      },
+      {
+        range: '100-150',
+        craft: '50 x Gebratener Borstenbart-Wels',
+        materials: '50 Roher Borstenbart-Wels'
+      },
+      {
+        range: '150-175',
+        craft: '70 x Gebratener Borstenbart-Wels',
+        materials: '70 Roher Borstenbart-Wels',
+        note: 'Kaufe ab Skill 125 das Handbuch "Experten-Kochkunst", da es keinen klassischen Trainer für den Experten-Rang gibt.'
+      },
+      {
+        range: '175-225',
+        craft: '60 x Gebratene Mithrilkopf-Forelle',
+        materials: '60 Rohe Mithrilkopf-Forelle'
+      },
+      {
+        range: '225-275',
+        craft: '70 x Gebratener Getupfter Gelbschwanz',
+        materials: '70 Roher Getupfter Gelbschwanz',
+        note: 'Ab Skill 225 und Level 35 kannst du das Fachmann-Rezept in Booty Bay besorgen.'
+      },
+      {
+        range: '275-300',
+        craft: '25 x Machtfisch-Steak',
+        materials: '25 Roher Großer Machtfisch',
+        note: 'Das Rezept kommt aus Booty Bay. Plane den Abstecher vor dem letzten Sprint ein.'
+      }
+    ],
+    tips: [
+      'Materialmengen sind Richtwerte: Gelbe und grüne Rezepte können zusätzliche Versuche nötig machen.',
+      'Levele Kochkunst zusammen mit Angeln, damit du den Rohfisch für die gesamte Route selbst fängst statt am Auktionshaus zu kaufen.',
+      'Meide Tirisfal-Lichtungen zum Angeln für diese Route, da dort vor allem unverkäufliche Fische beißen.',
+      'Behalte Buff-Speisen wie "Geräucherte Wüstenknödel" oder "Nachtflossen-Suppe" fürs Leveln, Dungeons oder Hardcore-Sicherheitsmomente statt sie sofort zu verkaufen.'
+    ]
+  },
+  {
+    id: 'classic-fishing',
+    name: 'Angeln',
+    icon: 'fishing',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 22,
+    theme: '#4fb3d9',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Angeln in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Angelgebieten nach Skillbereich, Trainerstopps und Köder-Tipps.',
+    intro: [
+      'Angeln ist ein Sekundärberuf, den jeder Charakter zusätzlich zu seinen zwei Hauptberufen erlernen kann – er blockiert also keinen Berufsslot.',
+      'Der Beruf ist bewusst langsam und eher meditativ, liefert dir dafür aber günstige Rohfische für Kochkunst, Reagenzien für Alchemie und zusätzliches Gold über das Auktionshaus.',
+      'Ab Skill 125 lernst du den Experten-Rang nicht bei einem klassischen Trainer, sondern kaufst das Handbuch "Experten-Angeln – Der Barsch und Du" bei Alter Mann Heming in Loch Modan.',
+      'Für den Handwerker-Rang (ab Skill 225 und Level 35) musst du zusätzlich die Questreihe "Nat Pagle, Extremangler" bei Nat Pagle in den Düstermarschen abschließen.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Angeln 1-75',
+        requirement: 'ab Charakterlevel 1',
+        alliance: ['Arnold Leland in Stormwind', 'Grimnur Stonebrand in Ironforge', 'Lee Brown im Wald von Elwynn'],
+        horde: ['Lumak in Orgrimmar', "Lau'Tiki in Durotar", 'Kah Mistrunner in Thunder Bluff']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Angeln 75-150',
+        requirement: 'ab Skill 50',
+        alliance: ['Arnold Leland in Stormwind', 'Grimnur Stonebrand in Ironforge', 'Lee Brown im Wald von Elwynn'],
+        horde: ['Lumak in Orgrimmar', "Lau'Tiki in Durotar", 'Kah Mistrunner in Thunder Bluff']
+      },
+      {
+        rank: 'Experte',
+        range: 'Angeln 150-225',
+        requirement: 'ab Skill 125 und Level 20 – kein Trainer, sondern Kauf des Handbuchs "Experten-Angeln – Der Barsch und Du" (1 Gold)',
+        alliance: ['Alter Mann Heming in Loch Modan'],
+        horde: ['Alter Mann Heming in Loch Modan (neutral)']
+      },
+      {
+        rank: 'Handwerker',
+        range: 'Angeln 225-300',
+        requirement: 'ab Skill 225 und Level 35 – Abschluss der Questreihe "Nat Pagle, Extremangler"',
+        alliance: ['Nat Pagle in den Düstermarschen'],
+        horde: ['Nat Pagle in den Düstermarschen (neutral)']
+      }
+    ],
+    shoppingList: [
+      '1 Angelrute (Handelswarenhändler)',
+      '1 Glänzende Angelperle (Köder, +25 Fertigkeit)',
+      'Nachtkriecher (optionaler Köder, +50 Fertigkeit)',
+      'Leuchtende Angelperlen (optionaler Köder, +75 Fertigkeit)',
+      'Optional: Starke oder Große Eisenangelrute für höhere Skillbereiche'
+    ],
+    recipes: [
+      'Handbuch "Experten-Angeln – Der Barsch und Du" (1 Gold) – bei Alter Mann Heming in Loch Modan.',
+      'Der Handwerker-Rang wird nicht gekauft, sondern über die Questreihe "Nat Pagle, Extremangler" bei Nat Pagle in den Düstermarschen freigeschaltet.'
+    ],
+    steps: [
+      {
+        range: '1-75',
+        craft: 'In Binnengewässern und an der Küste der Startgebiete angeln',
+        materials: 'Rohe Strahlende Kleinfische in Binnengewässern, Rohe Schlangenhaut-Makrelen an der Küste',
+        note: 'Nutze die Glänzende Angelperle als Köder, um die Fangchance zu erhöhen.'
+      },
+      {
+        range: '75-150',
+        craft: 'In den Hauptstadtbecken von Stormwind oder Orgrimmar angeln',
+        materials: 'Rohe Strahlende Kleinfische, Rohe Langkiefer-Schlammschnapper, Rohe Borstenbart-Welse',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang beim selben Angel-Trainer.'
+      },
+      {
+        range: '150-225',
+        craft: 'In den Düstermarschen angeln (Binnengewässer oder Küste nördlich von Theramore)',
+        materials: 'Rohe Borstenbart-Welse, Rohe Mithrilkopf-Forellen, Roher Felsschuppendorsch',
+        note: 'Kaufe ab Skill 125 das Handbuch "Experten-Angeln – Der Barsch und Du" bei Alter Mann Heming, da es keinen klassischen Trainer für den Experten-Rang gibt.'
+      },
+      {
+        range: '225-300',
+        craft: 'Am Dampfschraubenwerk-Hafen in Tanaris angeln, alternativ Feralas oder Winterquell',
+        materials: 'Seltene Fischarten für Nat Pagles Questreihe',
+        note: 'Ab Skill 225 und Level 35 kannst du die Questreihe "Nat Pagle, Extremangler" für den Handwerker-Rang beginnen.'
+      }
+    ],
+    tips: [
+      'Levele Angeln zusammen mit Kochkunst, damit du deinen Fang direkt weiterverarbeiten kannst.',
+      'Meide die Tirisfal-Lichtungen zum Angeln – dort beißen überwiegend unverkäufliche Fische.',
+      'Köder senken das Risiko, dass ein Fisch entkommt, besonders in höheren Skillbereichen.',
+      'Fischschwärme bieten bessere Chancen auf seltene Fischarten und enthalten gelegentlich verschlossene Truhen – ein Reittier erleichtert das Absuchen großer Gewässer.'
+    ]
+  },
+  {
+    id: 'classic-engineering',
+    name: 'Ingenieurskunst',
+    icon: 'engineering',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 34,
+    theme: '#8f9bb3',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Ingenieurskunst in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Trainerstopps, Pflicht-Werkzeugen und einer klaren Materialliste.',
+    intro: [
+      'Ingenieurskunst ist ein Handwerksberuf, der aus Erzbarren, Stein und Stoff Sprengstoffe, Zielfernrohre, Gadgets und mechanische Begleiter herstellt.',
+      'Bergbau passt als Pflicht-Zweitberuf am besten, weil praktisch jede Stufe der Route Erzbarren oder Stein verlangt.',
+      'Auf dem Weg stellst du mehrfach Werkzeuge wie den Lichtbogenschlüssel oder den Gyromatischen Mikro-Justierer her – diese werden nur einmal gefertigt und danach dauerhaft behalten, nicht verbraucht.',
+      'Gnomische und Goblin-Ingenieurskunst sind optionale Spezialisierungen bei Tinkerwiz bzw. Buzzek Bracketswing in Gadgetzan, Tanaris und für die reine 1-300-Route nicht erforderlich.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Ingenieurskunst 1-75',
+        requirement: 'ab Charakterlevel 1',
+        alliance: ['Bronk Guzzlegear in Dun Morogh', 'Deek Fizzlebizz in Loch Modan', 'Sprite Jumpsprocket in Stormwind', 'Jemma Quikswitch in Ironforge'],
+        horde: ['Thund in Orgrimmar', 'Graham Van Talen in Undercity', 'Mukdrak in Durotar', 'Nogg in Orgrimmar']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Ingenieurskunst 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Bronk Guzzlegear in Dun Morogh', 'Deek Fizzlebizz in Loch Modan', 'Sprite Jumpsprocket in Stormwind', 'Jemma Quikswitch in Ironforge'],
+        horde: ['Thund in Orgrimmar', 'Graham Van Talen in Undercity', 'Mukdrak in Durotar', 'Nogg in Orgrimmar']
+      },
+      {
+        rank: 'Experte',
+        range: 'Ingenieurskunst 150-225',
+        requirement: 'ab Skill 125 und Level 20',
+        alliance: ['Sprite Jumpsprocket in Stormwind', 'Jemma Quikswitch in Ironforge'],
+        horde: ['Thund in Orgrimmar', 'Graham Van Talen in Undercity']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Ingenieurskunst 225-300',
+        requirement: 'ab Skill 225 und Level 35',
+        alliance: ['Tinkerwiz in Gadgetzan, Tanaris (neutral)', 'Buzzek Bracketswing in Gadgetzan, Tanaris (neutral)'],
+        horde: ['Tinkerwiz in Gadgetzan, Tanaris (neutral)', 'Buzzek Bracketswing in Gadgetzan, Tanaris (neutral)']
+      }
+    ],
+    shoppingList: [
+      '126 Grober Stein',
+      '72 Kupferbarren',
+      '80 Leinenstoff',
+      '5 Silberbarren',
+      '110 Bronzebarren',
+      '25 Schwaches Flussmittel',
+      '10 Moosachat',
+      '30 Schwerer Stein',
+      '30 Wollstoff',
+      '15 Mittleres Leder',
+      '4 Stahlbarren',
+      '120 Solider Stein',
+      '141 Mithrilbarren',
+      '20 Magierwirkerstoff',
+      '60 Dichter Stein',
+      '135 Thoriumbarren',
+      '35 Runenstoff'
+    ],
+    recipes: [
+      'Die meisten Rezepte dieser Route werden automatisch beim Rang-Aufstieg vom jeweils aktuellen Ingenieurslehrer gelehrt – ein separater Kauf ist normalerweise nicht nötig.',
+      'Für den Fachmann-Rang (ab Skill 225) musst du zu Tinkerwiz oder Buzzek Bracketswing nach Gadgetzan in Tanaris reisen, da es dafür keine Trainer in den Hauptstädten gibt.'
+    ],
+    steps: [
+      {
+        range: '1-30',
+        craft: '60 x Grobes Sprengpulver',
+        materials: '60 Grober Stein'
+      },
+      {
+        range: '30-50',
+        craft: '30 x Handvoll Kupferschrauben',
+        materials: '30 Kupferbarren',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang beim selben Ingenieurslehrer.'
+      },
+      {
+        range: '50-51',
+        craft: '1 x Lichtbogenschlüssel',
+        materials: '6 Kupferbarren',
+        note: 'Pflicht-Werkzeug: Wird nur einmal hergestellt und danach dauerhaft behalten.'
+      },
+      {
+        range: '51-75',
+        craft: '30 x Grobe Kupferbombe',
+        materials: '30 Kupferbarren, 30 Handvoll Kupferschrauben, 60 Grobes Sprengpulver, 30 Leinenstoff'
+      },
+      {
+        range: '75-90',
+        craft: '60 x Grobes Sprengpulver',
+        materials: '60 Grober Stein'
+      },
+      {
+        range: '90-100',
+        craft: '20 x Grobes Dynamit',
+        materials: '60 Grobes Sprengpulver, 20 Leinenstoff'
+      },
+      {
+        range: '100-105',
+        craft: '5 x Silberkontakt',
+        materials: '5 Silberbarren'
+      },
+      {
+        range: '105-125',
+        craft: '25 x Bronzerohr',
+        materials: '50 Bronzebarren, 25 Schwaches Flussmittel',
+        note: 'Besuche ab Skill 125 den Experten-Trainer, damit der Skillbalken nicht stoppt.'
+      },
+      {
+        range: '125-135',
+        craft: '10 x Standardzielfernrohr',
+        materials: '10 Bronzerohr, 10 Moosachat'
+      },
+      {
+        range: '135-150',
+        craft: '30 x Schweres Sprengpulver',
+        materials: '30 Schwerer Stein'
+      },
+      {
+        range: '150-175',
+        craft: '15 x Bronzerahmen',
+        materials: '30 Bronzebarren, 15 Mittleres Leder, 15 Wollstoff'
+      },
+      {
+        range: '175-176',
+        craft: '1 x Gyromatischer Mikro-Justierer',
+        materials: '4 Stahlbarren',
+        note: 'Pflicht-Werkzeug: Wird nur einmal hergestellt und danach dauerhaft behalten.'
+      },
+      {
+        range: '176-195',
+        craft: '60 x Solides Sprengpulver',
+        materials: '120 Solider Stein'
+      },
+      {
+        range: '195-200',
+        craft: '7 x Mithrilrohr',
+        materials: '21 Mithrilbarren'
+      },
+      {
+        range: '200-215',
+        craft: '20 x Instabiler Auslöser',
+        materials: '20 Mithrilbarren, 20 Magierwirkerstoff, 20 Solides Sprengpulver',
+        note: 'Ab Skill 225 musst du zu Tinkerwiz oder Buzzek Bracketswing nach Gadgetzan reisen, um weiterzuskillen.'
+      },
+      {
+        range: '215-238',
+        craft: '40 x Mithrilgehäuse',
+        materials: '120 Mithrilbarren'
+      },
+      {
+        range: '238-250',
+        craft: '20 x Hochexplosive Bombe',
+        materials: '40 Mithrilgehäuse, 20 Instabiler Auslöser, 40 Solides Sprengpulver'
+      },
+      {
+        range: '250-260',
+        craft: '30 x Dichtes Sprengpulver',
+        materials: '60 Dichter Stein'
+      },
+      {
+        range: '260-285',
+        craft: '35 x Thoriumteil',
+        materials: '105 Thoriumbarren, 35 Runenstoff',
+        note: 'Der teuerste Abschnitt der Route – plane Thoriumbarren und Runenstoff frühzeitig ein.'
+      },
+      {
+        range: '285-300',
+        craft: '15 x Thoriumhülsen',
+        materials: '30 Thoriumbarren, 15 Dichtes Sprengpulver'
+      }
+    ],
+    tips: [
+      'Materialmengen sind Richtwerte: Gelbe und grüne Rezepte können zusätzliche Versuche nötig machen.',
+      'Kombiniere Ingenieurskunst mit Bergbau, da fast jede Stufe der Route Erzbarren oder Stein verlangt.',
+      'Verkaufe den Lichtbogenschlüssel und den Gyromatischen Mikro-Justierer niemals – ohne sie kannst du bestimmte Folgerezepte nicht mehr herstellen.',
+      'Jäger profitieren im PvE besonders stark von Ingenieurskunst, aber auch andere Klassen genießen praktische Gadgets wie Teleportationsgeräte oder mechanische Begleiter.'
+    ]
+  },
+  {
+    id: 'classic-skinning',
+    name: 'Kürschnerei',
+    icon: 'skinning',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 19,
+    theme: '#a9713f',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Kürschnerei in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Farmzonen nach Skillbereich und Trainerstopps.',
+    intro: [
+      'Kürschnerei ist ein Sammelberuf: Du häutest erlegte Tiere und Kreaturen ab und gewinnst dabei Leder, Felle und Schuppen für Lederverarbeitung, Schneiderei und das Auktionshaus.',
+      'Anders als bei den meisten anderen Berufen brauchst du für Kürschnerei keine Rezepte – nur ein Kürschnermesser, das du bei jedem Handelswarenhändler kaufen kannst.',
+      'Die effizienteste Route läuft parallel zum Questen: Häute jede Kreatur ab, die du ohnehin für Quests oder XP tötest, statt gezielt Farmrunden zu drehen.',
+      'Lederverarbeitung passt hervorragend als Zweitberuf, weil du damit dein gesamtes gesammeltes Leder sofort selbst weiterverarbeiten kannst.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Kürschnerei 1-75',
+        requirement: 'ab Charakterlevel 1',
+        alliance: ['Helene Peltskinner im Wald von Elwynn', 'Maris Granger in Stormwind', 'Eladriel in Darnassus', 'Balthus Stoneflayer in Ironforge'],
+        horde: ['Rand Rhobart in Tirisfal', 'Yonn Deepcut in Mulgore', 'Thuwd in Orgrimmar', 'Killian Hagey in Undercity']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Kürschnerei 75-150',
+        requirement: 'ab Skill 50',
+        alliance: ['Maris Granger in Stormwind', 'Balthus Stoneflayer in Ironforge'],
+        horde: ['Thuwd in Orgrimmar', 'Killian Hagey in Undercity']
+      },
+      {
+        rank: 'Experte',
+        range: 'Kürschnerei 150-225',
+        requirement: 'ab Skill 125',
+        alliance: ['Maris Granger in Stormwind'],
+        horde: ['Mooranta in Thunder Bluff']
+      },
+      {
+        rank: 'Handwerker',
+        range: 'Kürschnerei 225-300',
+        requirement: 'ab Skill 200',
+        alliance: ['Balthus Stoneflayer in Ironforge'],
+        horde: ['Kulleg Stonehorn in Feralas']
+      }
+    ],
+    shoppingList: [
+      '1 Kürschnermesser (Handelswarenhändler)',
+      '~80 Leichtes Leder',
+      '~90 Grobes Leder',
+      '~70 Mittleres Leder',
+      '~80 Schweres Leder',
+      '~60 Dickes Leder',
+      'Diverse Schuppen (Deviate, Murloc, Skorpid) je nach Zone'
+    ],
+    recipes: [
+      'Kürschnerei benötigt kein Extra-Rezept – kaufe lediglich ein Kürschnermesser bei einem Handelswarenhändler, bevor du losziehst.',
+      'Ab Skill 300 helfen spezielle Messer wie Pips Kürschnermesser oder das Zulianische Messer (jeweils +10 Fertigkeit), um für Raid-Bosse bis Skill 315 zu kommen.'
+    ],
+    steps: [
+      {
+        range: '1-75',
+        craft: 'Eber, Wölfe und Bären in den Startgebieten abhäuten',
+        materials: 'Durotar, Wald von Elwynn, Dun Morogh, Mulgore, Tirisfal',
+        note: 'Häute jede Kreatur ab, die du ohnehin beim Questen tötest.'
+      },
+      {
+        range: '75-150',
+        craft: 'Krokodilisken, Schleicher und Raptoren abhäuten',
+        materials: 'Loch Modan, Westfall, Brachland',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang beim selben Kürschnerei-Trainer.'
+      },
+      {
+        range: '150-225',
+        craft: 'Panther, Tiger und Raptoren abhäuten',
+        materials: 'Vorgebirge von Hillsbrad, Alterac-Tal, Schlingendorntal',
+        note: 'Ab Skill 200 kannst du den Handwerker-Rang beim jeweiligen Kürschnerei-Trainer lernen.'
+      },
+      {
+        range: '225-300',
+        craft: 'Yetis und Dinosaurier abhäuten',
+        materials: 'Hinterland, Brachland, Ödland, Un\'Goro-Krater',
+        note: 'In diesen Zonen droppen zusätzlich Drachenschuppen (grün, blau, rot, schwarz) für Lederverarbeitung.'
+      }
+    ],
+    tips: [
+      'Mengenangaben sind Richtwerte: Verpasste Abhäutungen bei Gruppenkills können zusätzliche Runden nötig machen.',
+      'Häute jede abhäutbare Kreatur ab, die du sowieso tötest – das kostet kaum Zeit und liefert konstantes Nebeneinkommen.',
+      'Eine +Kürschnerei-Verzauberung auf dem Kürschnermesser (+5 Fertigkeit) beschleunigt vor allem die letzten Skillpunkte vor 300.',
+      'Leder- und Schuppenpreise bleiben nach einem Auktionshaus-Reset wie bei Classic Fresh meist lange hoch – ein guter Zeitpunkt, um Überschüsse zu verkaufen statt selbst zu verarbeiten.'
+    ]
   }
 ];
