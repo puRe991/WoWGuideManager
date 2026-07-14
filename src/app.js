@@ -4,6 +4,7 @@ import { classBuildGuides } from './data/classBuildGuides.js';
 import { specGuides } from './data/specGuides.js';
 import { dungeonGuides } from './data/dungeonGuides.js';
 import { professionGuides } from './data/professionGuides.js';
+import { farmingGuides } from './data/farmingGuides.js';
 import { assetManifest } from './data/assetManifest.js';
 import { subscriptionTiers } from './data/subscriptions.js';
 import { filterGuides } from './lib/filterGuides.js';
@@ -16,7 +17,9 @@ const state = {
   selectedExpansion: 'classic',
   selectedClassId: 'warrior',
   selectedDungeonId: 'blackrock-depths',
-  selectedProfessionId: 'classic-alchemy'
+  selectedProfessionId: 'classic-alchemy',
+  selectedFarmingGroupId: farmingGuides[0]?.id ?? null,
+  selectedFarmingItemId: farmingGuides[0]?.items[0]?.id ?? null
 };
 
 const expansionHeroGrid = document.querySelector('#expansion-hero-grid');
@@ -35,6 +38,9 @@ const dungeonHeadingCopy = document.querySelector('#dungeon-heading-copy');
 const professionTabs = document.querySelector('#profession-tabs');
 const professionDetail = document.querySelector('#profession-detail');
 const professionScopeNote = document.querySelector('#profession-guides-scope-note');
+const farmingGroupTabs = document.querySelector('#farming-group-tabs');
+const farmingItemGrid = document.querySelector('#farming-item-grid');
+const farmingDetail = document.querySelector('#farming-detail');
 const guideGrid = document.querySelector('#guide-grid');
 const roadmapGrid = document.querySelector('#roadmap-grid');
 const pricingGrid = document.querySelector('#pricing-grid');
@@ -437,9 +443,88 @@ function renderProfessionStep(step) {
     </article>`;
 }
 
+function renderFarmingGuides() {
+  farmingGroupTabs.innerHTML = farmingGuides
+    .map(
+      (group) => `
+        <button class="farming-group-tab ${group.id === state.selectedFarmingGroupId ? 'active' : ''}" data-farming-group="${escapeHtml(group.id)}" style="--farming-color: ${escapeHtml(group.theme)}">
+          <strong>${escapeHtml(group.title)}</strong>
+          <small>${escapeHtml(group.tierLabel)}</small>
+        </button>`
+    )
+    .join('');
+
+  farmingGroupTabs.querySelectorAll('[data-farming-group]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.selectedFarmingGroupId = button.dataset.farmingGroup;
+      const group = farmingGuides.find((item) => item.id === state.selectedFarmingGroupId);
+      state.selectedFarmingItemId = group?.items[0]?.id ?? null;
+      renderFarmingGuides();
+    });
+  });
+
+  const group = farmingGuides.find((item) => item.id === state.selectedFarmingGroupId) ?? farmingGuides[0];
+  if (!group) {
+    farmingItemGrid.innerHTML = '';
+    farmingDetail.innerHTML = '<p class="empty-state">Keine Farming-Daten verfügbar.</p>';
+    return;
+  }
+
+  farmingItemGrid.innerHTML = group.items
+    .map(
+      (item) => `
+        <button class="farming-item-chip ${item.id === state.selectedFarmingItemId ? 'active' : ''}" data-farming-item="${escapeHtml(item.id)}" style="--farming-color: ${escapeHtml(group.theme)}">
+          ${renderAssetImage(assetManifest.farmingItems?.[item.id], `${item.name} Icon`, 'farming-item-image')}
+          <strong>${escapeHtml(item.name)}</strong>
+          <small>${escapeHtml(item.skill)}</small>
+        </button>`
+    )
+    .join('');
+
+  farmingItemGrid.querySelectorAll('[data-farming-item]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.selectedFarmingItemId = button.dataset.farmingItem;
+      renderFarmingGuides();
+    });
+  });
+
+  const item = group.items.find((entry) => entry.id === state.selectedFarmingItemId) ?? group.items[0];
+  if (!item) {
+    farmingDetail.innerHTML = '<p class="empty-state">Keine Material-Daten verfügbar.</p>';
+    return;
+  }
+
+  farmingDetail.innerHTML = `
+    <article class="farming-panel" style="--farming-color: ${escapeHtml(group.theme)}">
+      <header class="farming-hero">
+        ${renderAssetImage(assetManifest.farmingItems?.[item.id], `${item.name} Icon`, 'farming-hero-icon')}
+        <div>
+          <div class="card-meta"><span>${escapeHtml(group.profession)}</span><span>${escapeHtml(item.skill)}</span><span>${escapeHtml(item.levelRange)}</span></div>
+          <h3>${escapeHtml(item.name)}</h3>
+          <p>${escapeHtml(item.summary)}</p>
+        </div>
+      </header>
+      <div class="farming-info-grid">
+        <section class="farming-card">
+          <h4>Fundorte</h4>
+          <div class="farming-zone-list">${item.zones.map((zone) => `<span>${escapeHtml(zone)}</span>`).join('')}</div>
+        </section>
+        <section class="farming-card">
+          <h4>Spawn-Verhalten</h4>
+          <p>${escapeHtml(item.respawn)}</p>
+        </section>
+        <section class="farming-card">
+          <h4>Farm-Tipps</h4>
+          <ul>${item.tips.map((tip) => `<li>${escapeHtml(tip)}</li>`).join('')}</ul>
+        </section>
+      </div>
+    </article>`;
+}
+
 function renderMetrics() {
   const totalDungeons = Object.values(dungeonGuides).reduce((sum, list) => sum + list.length, 0);
-  document.querySelector('#metric-guides').textContent = guideCards.length + totalDungeons + professionGuides.length;
+  const totalFarmingItems = farmingGuides.reduce((sum, group) => sum + group.items.length, 0);
+  document.querySelector('#metric-guides').textContent = guideCards.length + totalDungeons + professionGuides.length + totalFarmingItems;
   document.querySelector('#metric-categories').textContent = categories.length;
   document.querySelector('#metric-premium').textContent = guideCards.filter((guide) => guide.premium).length;
 }
@@ -533,7 +618,7 @@ premiumToggle.addEventListener('click', () => {
   renderGuides();
 });
 
-const VIEW_IDS = ['start', 'class-guides', 'profession-guides', 'dungeon-guides', 'guides', 'subscriptions'];
+const VIEW_IDS = ['start', 'class-guides', 'profession-guides', 'farming-guides', 'dungeon-guides', 'guides', 'subscriptions'];
 const navLinks = document.querySelectorAll('.site-nav a');
 
 function setActiveView(viewId, { updateHash = true } = {}) {
@@ -583,6 +668,7 @@ function init() {
   renderClassGuides();
   renderDungeonGuides();
   renderProfessionGuides();
+  renderFarmingGuides();
   renderScopeNotes();
   renderGuides();
   renderRoadmap();
