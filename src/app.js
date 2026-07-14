@@ -399,7 +399,10 @@ function renderSpecGuide(spec) {
   return `
     <article class="spec-card">
       <div class="card-meta"><span>${escapeHtml(spec.role)}</span><span>${escapeHtml(spec.name)}</span></div>
-      <h5>${escapeHtml(spec.name)}</h5>
+      <div class="spec-card-header">
+        ${renderAssetImage(assetManifest.specs?.[spec.id], `${spec.name} Icon`, 'spec-icon')}
+        <h5>${escapeHtml(spec.name)}</h5>
+      </div>
       <p>${escapeHtml(spec.summary)}</p>
       ${renderClassList('Spec-Rotation', spec.rotation)}
       ${renderClassList('Spec-Stats', spec.statPriority)}

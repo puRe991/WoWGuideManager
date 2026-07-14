@@ -294,7 +294,9 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
 .bis-list { display: flex; flex-wrap: wrap; gap: 10px; }
 .bis-list span { border-radius: 999px; padding: 9px 12px; background: color-mix(in srgb, var(--class-color), transparent 78%); border: 1px solid color-mix(in srgb, var(--class-color), transparent 58%); color: #f7efe0; font-weight: 800; }
 .spec-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
-.spec-card h5 { margin: 0 0 10px; color: var(--class-color); font-size: 1.15rem; }
+.spec-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.spec-icon { width: 36px; height: 36px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--class-color), transparent 42%); flex-shrink: 0; }
+.spec-card h5 { margin: 0; color: var(--class-color); font-size: 1.15rem; }
 .spec-card p { margin-bottom: 10px; }
 .spec-card section { margin-top: 10px; }
 .spec-card section h4 { margin: 0 0 8px; color: #ffe39a; font-size: .96rem; }
