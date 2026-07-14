@@ -136,6 +136,18 @@ export const guideCards = [
     tags: ['Erste Hilfe', 'Berufe', 'Classic']
   },
   {
+    id: 'classic-addons-essentials',
+    title: 'Essentielle Addons für Classic',
+    category: 'Addons',
+    expansion: 'classic',
+    audience: 'Einsteiger',
+    minutes: 24,
+    summary: 'Eigenständig zusammengestellte Addon-Übersicht nach Einsatzzweck: Quest-Hilfe, Encounter-Tools, Wirtschaft und Interface-Komfort für den Classic-Alltag.',
+    checklist: ['Questie für Questziele und Routenführung installieren', 'BigWigs oder Deadly Boss Mods für Dungeon-/Raid-Warnungen einrichten', 'Auctionator für schnellere Auktionshaus-Recherche nutzen', 'Bagnon und Details! für Inventarordnung und Schadensauswertung ergänzen'],
+    premium: false,
+    tags: ['Addons', 'UI', 'QoL']
+  },
+  {
     id: 'classic-secrets-azeroth',
     title: 'Azeroth Geheimnisse & Rare Spawns',
     category: 'Secrets',
