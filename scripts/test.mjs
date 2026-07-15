@@ -23,8 +23,14 @@ const premiumRaid = filterGuides(guideCards, {
   expansion: 'classic',
   showPremiumOnly: true
 });
-assert.equal(premiumRaid.length, 1);
-assert.equal(premiumRaid[0].premium, true);
+assert.equal(premiumRaid.length, 7, 'Classic raid catalog should surface all seven classic raids as guide cards');
+assert.ok(premiumRaid.every((guide) => guide.premium === true));
+
+const classicRaidCards = guideCards.filter((guide) => guide.category === 'Raids' && guide.expansion === 'classic');
+assert.equal(classicRaidCards.length, 7, 'Classic guide catalog should include a card for every Classic raid (Onyxia, MC, ZG, BWL, AQ20, AQ40, Naxxramas)');
+
+assert.ok(guideCards.some((guide) => guide.category === 'PvP' && guide.expansion === 'classic'), 'Classic guide catalog should include a PvP guide card');
+assert.ok(guideCards.some((guide) => guide.category === 'Reputation' && guide.expansion === 'classic'), 'Classic guide catalog should include a Reputation guide card');
 
 assert.ok(existsSync('index.html'), 'index.html must exist');
 const indexHtml = readFileSync('index.html', 'utf8');
@@ -63,7 +69,7 @@ const allDungeons = [...classicDungeons, ...tbcDungeons];
 assert.ok(allDungeons.every((dungeon) => dungeon.loot.length >= 3 && dungeon.tips.length >= 3 && dungeon.quests.length >= 3 && dungeon.composition.length >= 3 && dungeon.time), 'Each dungeon guide should include loot, group tips, quests, composition and time planning');
 assert.ok(allDungeons.every((dungeon) => assetManifest.dungeons[dungeon.id] && assetManifest.dungeonMaps[dungeon.id]), 'Each dungeon must reference icon and map asset slots');
 
-assert.equal(professionGuides.length, 8, 'Classic profession guide pack should include Alchemy, Enchanting, Mining, First Aid, Cooking, Fishing, Engineering and Skinning');
+assert.equal(professionGuides.length, 12, 'Classic profession guide pack should include Alchemy, Enchanting, Mining, First Aid, Cooking, Fishing, Engineering, Skinning, Blacksmithing, Leatherworking, Tailoring and Herbalism');
 assert.equal(professionGuides[0].id, 'classic-alchemy', 'Alchemy guide should use a stable id');
 assert.ok(professionGuides[0].shoppingList.length >= 15 && professionGuides[0].steps.length >= 12, 'Alchemy guide should include material planning and a full 1-300 route');
 assert.ok(assetManifest.professions.alchemy?.startsWith('https://wow.zamimg.com/'), 'Alchemy profession must reference a verified hotlinked icon URL');
@@ -102,6 +108,26 @@ const skinningGuide = professionGuides.find((profession) => profession.id === 'c
 assert.ok(skinningGuide, 'Profession guide pack should include a Skinning guide');
 assert.ok(skinningGuide.shoppingList.length >= 5 && skinningGuide.steps.length >= 4, 'Skinning guide should include material planning and a full 1-300 route');
 assert.ok(assetManifest.professions.skinning?.startsWith('https://wow.zamimg.com/'), 'Skinning profession must reference a verified hotlinked icon URL');
+
+const blacksmithingGuide = professionGuides.find((profession) => profession.id === 'classic-blacksmithing');
+assert.ok(blacksmithingGuide, 'Profession guide pack should include a Blacksmithing guide');
+assert.ok(blacksmithingGuide.shoppingList.length >= 15 && blacksmithingGuide.steps.length >= 12, 'Blacksmithing guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.blacksmithing?.startsWith('https://wow.zamimg.com/'), 'Blacksmithing profession must reference a verified hotlinked icon URL');
+
+const leatherworkingGuide = professionGuides.find((profession) => profession.id === 'classic-leatherworking');
+assert.ok(leatherworkingGuide, 'Profession guide pack should include a Leatherworking guide');
+assert.ok(leatherworkingGuide.shoppingList.length >= 15 && leatherworkingGuide.steps.length >= 12, 'Leatherworking guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.leatherworking?.startsWith('https://wow.zamimg.com/'), 'Leatherworking profession must reference a verified hotlinked icon URL');
+
+const tailoringGuide = professionGuides.find((profession) => profession.id === 'classic-tailoring');
+assert.ok(tailoringGuide, 'Profession guide pack should include a Tailoring guide');
+assert.ok(tailoringGuide.shoppingList.length >= 15 && tailoringGuide.steps.length >= 12, 'Tailoring guide should include material planning and a full 1-300 route');
+assert.ok(assetManifest.professions.tailoring?.startsWith('https://wow.zamimg.com/'), 'Tailoring profession must reference a verified hotlinked icon URL');
+
+const herbalismGuide = professionGuides.find((profession) => profession.id === 'classic-herbalism');
+assert.ok(herbalismGuide, 'Profession guide pack should include a Herbalism guide');
+assert.ok(herbalismGuide.shoppingList.length >= 5 && herbalismGuide.steps.length >= 4, 'Herbalism guide should include gathering planning and a full 1-300 route');
+assert.ok(assetManifest.professions.herbalism?.startsWith('https://wow.zamimg.com/'), 'Herbalism profession must reference a verified hotlinked icon URL');
 
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
