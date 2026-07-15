@@ -49,7 +49,31 @@ export const guideCards = [
     summary: 'Optimierte Kapitelstruktur für effizientes Leveln mit Hearthstone-Punkten, Klassenquests und Dungeon-Abstechern.',
     checklist: ['Startzone nach Klasse wählen', 'Hearthstone nur bei Routenwechsel setzen', 'Grüne Quests bündeln', 'Dungeon nur bei Questpaketen laufen'],
     premium: false,
-    tags: ['Horde', 'Solo', 'Speed']
+    tags: ['Horde', 'Solo', 'Speed'],
+    zones: [
+      { id: 'durotar-echo-isles', name: 'Durotar & Echo Isles', levelRange: '1-12', note: 'Start für Orcs und Trolle. Questreihen in Razor Hill und den Echo Isles komplett leerräumen, bevor es weitergeht.' },
+      { id: 'mulgore', name: 'Mulgore', levelRange: '1-12', note: 'Tauren-Startgebiet rund um Bloodhoof Village. Ruhige Alternative mit kurzen Laufwegen zwischen den Questgebern.' },
+      { id: 'tirisfal-glades', name: 'Tirisfal Glades', levelRange: '1-12', note: 'Untoten-Startgebiet bei Deathknell. Führt über die Ruinen von Lordaeron direkt Richtung Silverpine Forest.' },
+      { id: 'the-barrens', name: 'Das Brachland', levelRange: '10-25', note: 'Zentraler Horde-Questhub. Crossroads als Hearthstone-Punkt setzen, danach Süden und Norden nacheinander abarbeiten.' },
+      { id: 'stonetalon-mountains', name: 'Stonetalon Mountains', levelRange: '15-25', note: 'Horde-Questreihe um Sun Rock Retreat, optional parallel zu Ashenvale.' },
+      { id: 'ashenvale', name: 'Ashenvale', levelRange: '15-30', note: 'Umkämpftes Gebiet. Splintertree Post als Basis nutzen, auf Alliance-Gegner in offenen Questgebieten achten.' },
+      { id: 'thousand-needles', name: 'Thousand Needles', levelRange: '20-30', note: 'Freibrief-Gebiet mit kurzen Questketten rund um Camp Taurajo, gut zum Auffüllen zwischen größeren Zonen.' },
+      { id: 'dustwallow-marsh', name: 'Dustwallow Marsh', levelRange: '25-35', note: 'Fragmentierte Questgeber – Brackenwall Village zuerst, Theramore-Quests je nach Fraktion später ergänzen.' },
+      { id: 'stranglethorn-vale', name: 'Stranglethorn Vale', levelRange: '30-45', note: 'Größte Questzone im Level-Bereich. Grom’gol Base Camp als Hearthstone-Punkt, danach Richtung Süden vorarbeiten.' },
+      { id: 'desolace', name: 'Desolace', levelRange: '30-40', note: 'Kompakte Zone mit dichten Questpaketen um Shadowprey Village, gute Ergänzung zu Stranglethorn Vale.' },
+      { id: 'badlands', name: 'Badlands', levelRange: '35-40', note: 'Kleine Zwischenzone, nur für das lokale Questpaket lohnenswert, danach direkt weiterziehen.' },
+      { id: 'swamp-of-sorrows', name: 'Swamp of Sorrows', levelRange: '35-45', note: 'Kurzer Abstecher mit wenigen, aber effizienten Questketten in der Nähe der Blasted Lands.' },
+      { id: 'feralas', name: 'Feralas', levelRange: '40-50', note: 'Weitläufige Zone, Questpakete um Camp Mojache und Feathermoon Stronghold bündeln.' },
+      { id: 'tanaris', name: 'Tanaris', levelRange: '40-50', note: 'Gute XP-Dichte um Gadgetzan, inklusive Zugang zu Zul’Farrak-Questpaketen.' },
+      { id: 'ungoro-crater', name: 'Un’Goro Crater', levelRange: '45-53', note: 'Kompakte Zone mit hoher Questdichte, lohnt sich fast komplett vor dem Wechsel nach Felwood.' },
+      { id: 'felwood', name: 'Felwood', levelRange: '48-55', note: 'Anschluss an Un’Goro, Questpakete um Talonbranch Glade zuerst erledigen.' },
+      { id: 'searing-gorge', name: 'Searing Gorge', levelRange: '45-50', note: 'Kleine Zwischenzone mit wenigen, aber lohnenden Questketten auf dem Weg nach Burning Steppes.' },
+      { id: 'burning-steppes', name: 'Burning Steppes', levelRange: '50-58', note: 'Questpakete um Flame Crest, danach Vorbereitung für Blackrock-Instanzen.' },
+      { id: 'western-plaguelands', name: 'Western Plaguelands', levelRange: '51-58', note: 'Zusammenhängende Questketten um die Bulwark, guter Übergang zu Eastern Plaguelands.' },
+      { id: 'eastern-plaguelands', name: 'Eastern Plaguelands', levelRange: '53-60', note: 'Dichte Endgame-Questpakete um die Undercity-Außenposten, Vorbereitung auf Level 60.' },
+      { id: 'silithus', name: 'Silithus', levelRange: '55-60', note: 'Kleine Zone mit wenigen, aber schnellen Questketten, gut als Lückenfüller vor Winterspring.' },
+      { id: 'winterspring', name: 'Winterspring', levelRange: '55-60', note: 'Letzte reguläre Levelzone vor 60, Questpakete um Everlook priorisieren.' }
+    ]
   },
   {
     id: 'classic-1-60-alliance',

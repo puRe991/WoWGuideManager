@@ -787,8 +787,30 @@ function renderLibraryDetail(id) {
           ${rankList(guide.checklist)}
         </section>
       </div>
+      ${guide.zones ? renderZoneRoute(guide.zones) : ''}
       <div class="hashtags">${guide.tags.map((tag) => `<span class="hashtag">#${escapeHtml(tag)}</span>`).join('')}</div>
     </article>`;
+}
+
+function renderZoneRoute(zones) {
+  return `
+    <section class="section-card zone-route">
+      <h4>Zonen-Route</h4>
+      <ol class="zone-route-list">
+        ${zones
+          .map(
+            (zone) => `
+          <li class="zone-route-item">
+            ${renderAssetImage(assetManifest.zones?.[zone.id], `${zone.name} Icon`, 'zone-icon')}
+            <div class="zone-route-main">
+              <div class="zone-route-top"><strong>${escapeHtml(zone.name)}</strong><span class="zone-level-range">Level ${escapeHtml(zone.levelRange)}</span></div>
+              <p>${escapeHtml(zone.note)}</p>
+            </div>
+          </li>`
+          )
+          .join('')}
+      </ol>
+    </section>`;
 }
 
 /* ---------- Sidebar ---------- */

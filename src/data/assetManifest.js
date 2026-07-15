@@ -7,6 +7,11 @@
 // Farming item icons (farmingItems) were resolved against Wowhead's Classic item tooltip
 // data (nether.wowhead.com/tooltip/item/<id>) and each icon slug was checked for a live
 // 200 response on wow.zamimg.com before being added.
+// Leveling zone icons (zones) mix two verified, stable icon families from the same CDN:
+// "Explore <Zone>" achievement icons (checked per-zone for a live 200 response) and, for
+// starting zones, the matching race icon. Zones without a confirmed stable slug (mostly
+// ones reworked in later expansions, breaking the old icon URL) fall back to local files
+// under assets/wow/icons/zones/, same as the dungeon icon slots below.
 export const assetManifest = {
   expansions: {
     classic: {
@@ -161,6 +166,30 @@ export const assetManifest = {
     'old-hillsbrad-foothills': './assets/wow/icons/dungeons/old-hillsbrad-foothills.png',
     'the-black-morass': './assets/wow/icons/dungeons/the-black-morass.png',
     'magisters-terrace': './assets/wow/icons/dungeons/magisters-terrace.png'
+  },
+  zones: {
+    'durotar-echo-isles': 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_durotar.jpg',
+    mulgore: 'https://wow.zamimg.com/images/wow/icons/large/achievement_character_tauren_male.jpg',
+    'tirisfal-glades': 'https://wow.zamimg.com/images/wow/icons/large/achievement_character_undead_male.jpg',
+    'the-barrens': './assets/wow/icons/zones/the-barrens.png',
+    'stonetalon-mountains': './assets/wow/icons/zones/stonetalon-mountains.png',
+    ashenvale: './assets/wow/icons/zones/ashenvale.png',
+    'thousand-needles': './assets/wow/icons/zones/thousand-needles.png',
+    'dustwallow-marsh': 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_dustwallowmarsh.jpg',
+    'stranglethorn-vale': './assets/wow/icons/zones/stranglethorn-vale.png',
+    desolace: 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_desolace.jpg',
+    badlands: './assets/wow/icons/zones/badlands.png',
+    'swamp-of-sorrows': './assets/wow/icons/zones/swamp-of-sorrows.png',
+    feralas: 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_feralas.jpg',
+    tanaris: './assets/wow/icons/zones/tanaris.png',
+    'ungoro-crater': './assets/wow/icons/zones/ungoro-crater.png',
+    felwood: 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_felwood.jpg',
+    'searing-gorge': './assets/wow/icons/zones/searing-gorge.png',
+    'burning-steppes': './assets/wow/icons/zones/burning-steppes.png',
+    'western-plaguelands': './assets/wow/icons/zones/western-plaguelands.png',
+    'eastern-plaguelands': 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_easternplaguelands.jpg',
+    silithus: './assets/wow/icons/zones/silithus.png',
+    winterspring: 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_winterspring.jpg'
   },
   dungeonMaps: {
     'ragefire-chasm': './assets/wow/maps/ragefire-chasm.jpg',
