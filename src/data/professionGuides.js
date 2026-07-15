@@ -1049,5 +1049,594 @@ export const professionGuides = [
       'Eine +Kürschnerei-Verzauberung auf dem Kürschnermesser (+5 Fertigkeit) beschleunigt vor allem die letzten Skillpunkte vor 300.',
       'Leder- und Schuppenpreise bleiben nach einem Auktionshaus-Reset wie bei Classic Fresh meist lange hoch – ein guter Zeitpunkt, um Überschüsse zu verkaufen statt selbst zu verarbeiten.'
     ]
+  },
+  {
+    id: 'classic-blacksmithing',
+    name: 'Schmiedekunst',
+    icon: 'blacksmithing',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 33,
+    theme: '#94a3b8',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Schmiedekunst in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Trainerstopps, Barren-Progression und einer klaren Materialliste.',
+    intro: [
+      'Schmiedekunst ist ein Handwerksberuf, der aus Erzbarren Waffen, Rüstungsteile und Schleif-/Schmirgelsteine für den eigenen Skillfortschritt herstellt.',
+      'Bergbau passt als Pflicht-Zweitberuf hervorragend, weil praktisch jede Stufe der Route Erzbarren verlangt.',
+      'Ab Skill 200 und Level 40 kannst du dich optional auf Rüstungsschmied oder Waffenschmied spezialisieren – für die reine 1-300-Route ist das nicht nötig.',
+      'Der letzte Rang-Aufstieg (Fachmann) führt beide Fraktionen gemeinsam nach Booty Bay, da es dafür keine Trainer in den Hauptstädten gibt.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Schmiedekunst 1-75',
+        requirement: 'ab Charakterlevel 5',
+        alliance: ['Smith Argus in Goldshire, Wald von Elwynn', 'Tognus Flintfire in Kharanos, Dun Morogh', 'Delfrum Flintbeard in Auberdine, Dunkelküste', 'Groum Stonebeard in Ironforge', 'Dane Lindgren in Stormwind'],
+        horde: ['Dwukk in Razor Hill, Durotar', "Ug'thok in Orgrimmar", 'Basil Frye in Undercity', 'Thrag Stonehoof in Thunder Bluff']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Schmiedekunst 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Groum Stonebeard in Ironforge', 'Dane Lindgren in Stormwind'],
+        horde: ["Ug'thok in Orgrimmar", 'Basil Frye in Undercity', 'Thrag Stonehoof in Thunder Bluff']
+      },
+      {
+        rank: 'Experte',
+        range: 'Schmiedekunst 150-225',
+        requirement: 'ab Skill 125 und Level 20',
+        alliance: ['Bengus Deepforge in Ironforge'],
+        horde: ['Saru Steelfury in Orgrimmar']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Schmiedekunst 225-300',
+        requirement: 'ab Skill 225 und Level 35',
+        alliance: ['Brikk Keencraft in Booty Bay, Schlingendorntal (neutral)'],
+        horde: ['Brikk Keencraft in Booty Bay, Schlingendorntal (neutral)']
+      }
+    ],
+    shoppingList: [
+      '150 Grober Stein',
+      '35 Rauer Stein',
+      '180 Bronzebarren',
+      '180 Eisenbarren',
+      '80 Schwerer Stein',
+      '120 Stahlbarren',
+      '60 Solider Stein',
+      '210 Mithrilbarren',
+      '70 Magierwirkerstoff',
+      '80 Dichter Stein',
+      '350 Thoriumbarren',
+      '20 Robustes Leder',
+      '10 Sternenrubin',
+      '90 Kupferbarren',
+      '30 Feiner Faden'
+    ],
+    recipes: [
+      'Die meisten Rezepte dieser Route werden automatisch beim Rang-Aufstieg vom jeweils aktuellen Schmiedelehrer gelehrt – ein separater Kauf ist normalerweise nicht nötig.',
+      'Für den Fachmann-Rang (ab Skill 225) musst du zu Brikk Keencraft nach Booty Bay reisen, da es dafür keine Trainer in den Hauptstädten gibt.'
+    ],
+    steps: [
+      {
+        range: '1-30',
+        craft: '30 x Grober Schleifstein',
+        materials: '30 Grober Stein'
+      },
+      {
+        range: '30-70',
+        craft: '60 x Grober Schmirgelstein',
+        materials: '120 Grober Stein',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang, sonst stoppt der Skillfortschritt.'
+      },
+      {
+        range: '70-85',
+        craft: '15 x Rauer Schleifstein',
+        materials: '15 Rauer Stein'
+      },
+      {
+        range: '85-100',
+        craft: '15 x Grobe Bronzebeinschienen',
+        materials: '90 Bronzebarren'
+      },
+      {
+        range: '100-115',
+        craft: '15 x Bronzestulpen',
+        materials: '90 Bronzebarren'
+      },
+      {
+        range: '115-125',
+        craft: '10 x Rauer Schmirgelstein',
+        materials: '20 Rauer Stein'
+      },
+      {
+        range: '125-140',
+        craft: '15 x Grobe Eisenbeinschienen',
+        materials: '90 Eisenbarren',
+        note: 'Besuche ab Skill 125 den Experten-Trainer (Bengus Deepforge/Saru Steelfury), sonst stoppt der Skillbalken.'
+      },
+      {
+        range: '140-155',
+        craft: '20 x Schwerer Schmirgelstein',
+        materials: '80 Schwerer Stein'
+      },
+      {
+        range: '155-175',
+        craft: '15 x Eiserne Panzerhandschuhe',
+        materials: '90 Eisenbarren'
+      },
+      {
+        range: '175-195',
+        craft: '20 x Stählerne Beinschienen',
+        materials: '120 Stahlbarren'
+      },
+      {
+        range: '195-210',
+        craft: '15 x Solider Schmirgelstein',
+        materials: '60 Solider Stein'
+      },
+      {
+        range: '210-225',
+        craft: '15 x Schwere Mithril-Beinschienen',
+        materials: '90 Mithrilbarren, 30 Magierwirkerstoff',
+        note: 'Ab Skill 225 musst du zu Brikk Keencraft nach Booty Bay reisen, um weiterzuskillen.'
+      },
+      {
+        range: '225-245',
+        craft: '20 x Schwere Mithril-Handschuhe',
+        materials: '120 Mithrilbarren, 40 Magierwirkerstoff'
+      },
+      {
+        range: '245-260',
+        craft: '20 x Dichter Schmirgelstein',
+        materials: '80 Dichter Stein'
+      },
+      {
+        range: '260-285',
+        craft: '25 x Thorium-Beinschienen',
+        materials: '250 Thoriumbarren',
+        note: 'Der teuerste Abschnitt der Route – plane Thoriumbarren frühzeitig ein.'
+      },
+      {
+        range: '285-300',
+        craft: '10 x Imperiale Plattenstiefel',
+        materials: '100 Thoriumbarren, 20 Robustes Leder, 10 Sternenrubin',
+        note: 'Das Rezept kommt von Brikk Keencraft in Booty Bay. Plane den Abstecher vor dem letzten Sprint ein.'
+      }
+    ],
+    tips: [
+      'Materialmengen sind Richtwerte: Gelbe und grüne Rezepte können zusätzliche Versuche nötig machen.',
+      'Kombiniere Schmiedekunst mit Bergbau, da fast jede Stufe der Route Erzbarren verlangt.',
+      'Schleif- und Schmirgelsteine sind reine Skillfüller ohne Verwendungszweck – verkaufe sie oder entsorge sie nach dem Craften.',
+      'Ab Skill 200 und Level 40 kannst du dich dauerhaft auf Rüstungsschmied oder Waffenschmied festlegen; für das reine Skillen bis 300 ist das nicht notwendig.'
+    ]
+  },
+  {
+    id: 'classic-leatherworking',
+    name: 'Lederverarbeitung',
+    icon: 'leatherworking',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 31,
+    theme: '#78350f',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Lederverarbeitung in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Trainerstopps, Leder-Progression und einer klaren Materialliste.',
+    intro: [
+      'Lederverarbeitung ist ein Handwerksberuf, der aus abgehäutetem Leder Rüstungsteile, Rüstungskits und Zubehör herstellt.',
+      'Kürschnerei passt als Pflicht-Zweitberuf hervorragend, weil du dein gesamtes Leder direkt selbst verarbeiten kannst, statt es am Auktionshaus zu kaufen.',
+      'Ab Skill 225 und Level 40 kannst du dich optional auf Drachenschuppen-, Elementar- oder Wildlederverarbeitung spezialisieren – für die reine 1-300-Route ist das nicht nötig.',
+      'Die Route wechselt mehrfach die Ledersorte (Leicht, Mittel, Schwer, Dick, Robust) – halte für jeden Abschnitt genug Vorrat samt passendem Faden und Farbe bereit.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Lederverarbeitung 1-75',
+        requirement: 'ab Charakterlevel 5',
+        alliance: ['Randal Worth in Stormwind', 'Gretta Finespindle in Ironforge', 'Darinna in Darnassus', 'Adele Fielder im Kloster von Northshire, Wald von Elwynn', 'Nadyia Maneweaver in Dolanaar, Teldrassil'],
+        horde: ['Kamari in Orgrimmar', 'Dan Golthas in Undercity', 'Mak in Thunder Bluff', 'Chaw Stronghide in Bluthufdorf, Mulgore', 'Shelene Rhobart in Brill, Tirisfal-Lichtungen']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Lederverarbeitung 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Simon Tanner in Stormwind', 'Fimble Finespindle in Ironforge', 'Faldron in Darnassus'],
+        horde: ['Arthur Moore in Undercity', 'Karolek in Orgrimmar', 'Tarn in Thunder Bluff']
+      },
+      {
+        rank: 'Experte',
+        range: 'Lederverarbeitung 150-225',
+        requirement: 'ab Skill 125 und Level 20',
+        alliance: ['Telonis in Darnassus'],
+        horde: ['Una in Thunder Bluff']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Lederverarbeitung 225-300',
+        requirement: 'ab Skill 225 und Level 35',
+        alliance: ['Drakk Stonehand in Aerie Peak, Hinterland (Wildhammer-Feste)'],
+        horde: ['Hahrana Ironhide in Camp Mojache, Feralas']
+      }
+    ],
+    shoppingList: [
+      '1 Kürschnermesser (für den empfohlenen Zweitberuf Kürschnerei)',
+      '60 Ruinierte Lederfetzen',
+      '400 Leichtes Leder',
+      '270 Mittleres Leder',
+      '400 Schweres Leder',
+      '450 Dickes Leder',
+      '350 Robustes Leder',
+      '85 Grober Faden',
+      '40 Feiner Faden',
+      '70 Seidenfaden',
+      '30 Schwerer Seidenfaden',
+      '30 Runenfaden',
+      '20 Graue Farbe',
+      '15 Grüne Farbe',
+      '35 Schwarze Farbe'
+    ],
+    recipes: [
+      'Die meisten Rezepte dieser Route werden automatisch beim Rang-Aufstieg vom jeweils aktuellen Lederverarbeitungslehrer gelehrt – ein separater Kauf ist normalerweise nicht nötig.',
+      'Für den Fachmann-Rang (ab Skill 225) musst du zu Drakk Stonehand im Hinterland oder Hahrana Ironhide in Feralas reisen, da es dafür keine Trainer in den Hauptstädten gibt.'
+    ],
+    steps: [
+      {
+        range: '1-20',
+        craft: '20 x Leichtes Leder (aus Ruinierten Lederfetzen)',
+        materials: '60 Ruinierte Lederfetzen',
+        note: 'Dein allererstes Rezept – wandelt minderwertige Fetzen in brauchbares Leichtes Leder um.'
+      },
+      {
+        range: '20-45',
+        craft: '25 x Leichtes Rüstungskit',
+        materials: '125 Leichtes Leder'
+      },
+      {
+        range: '45-70',
+        craft: '25 x Handgenähter Lederumhang',
+        materials: '100 Leichtes Leder, 25 Grober Faden'
+      },
+      {
+        range: '70-100',
+        craft: '30 x Leichtlederstulpen',
+        materials: '180 Leichtes Leder, 60 Grober Faden',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang, sonst stoppt der Fortschritt.'
+      },
+      {
+        range: '100-125',
+        craft: '25 x Feiner Ledergürtel',
+        materials: '150 Mittleres Leder, 25 Feiner Faden'
+      },
+      {
+        range: '125-150',
+        craft: '20 x Dunkle Lederstiefel',
+        materials: '120 Mittleres Leder, 20 Graue Farbe'
+      },
+      {
+        range: '150-175',
+        craft: '20 x Schweres Rüstungskit',
+        materials: '160 Schweres Leder',
+        note: 'Ab Skill 125 kannst du den Experten-Rang lernen (Telonis/Una).'
+      },
+      {
+        range: '175-195',
+        craft: '15 x Grüne Lederstulpen',
+        materials: '90 Schweres Leder, 15 Grüne Farbe, 15 Feiner Faden'
+      },
+      {
+        range: '195-215',
+        craft: '15 x Düstere Lederstulpen',
+        materials: '150 Schweres Leder, 15 Schwarze Farbe, 30 Seidenfaden',
+        note: 'Ab Skill 225 musst du zum Fachmann-Trainer reisen (Drakk Stonehand/Hahrana Ironhide).'
+      },
+      {
+        range: '215-235',
+        craft: '20 x Dickes Rüstungskit',
+        materials: '160 Dickes Leder, 20 Seidenfaden'
+      },
+      {
+        range: '235-260',
+        craft: '20 x Nachtgeschöpf-Stirnband',
+        materials: '140 Dickes Leder, 20 Seidenfaden'
+      },
+      {
+        range: '260-280',
+        craft: '15 x Nachtgeschöpf-Stiefel',
+        materials: '150 Dickes Leder, 30 Schwerer Seidenfaden'
+      },
+      {
+        range: '280-295',
+        craft: '20 x Boshafte Lederhandschuhe',
+        materials: '200 Robustes Leder, 20 Schwarze Farbe, 20 Runenfaden'
+      },
+      {
+        range: '295-300',
+        craft: '10 x Boshafte Lederstulpen',
+        materials: '150 Robustes Leder, 10 Runenfaden',
+        note: 'Feinschliff kurz vor 300 – der Materialbedarf steigt hier am stärksten.'
+      }
+    ],
+    tips: [
+      'Materialmengen sind Richtwerte: Gelbe und grüne Rezepte können zusätzliche Versuche nötig machen.',
+      'Kürschnerei als Zweitberuf liefert dir laufend Nachschub an allen Ledersorten, sodass du kaum am Auktionshaus kaufen musst.',
+      'Halte Färbemittel (Grau/Grün/Schwarz) und Fäden (Grob/Fein/Seide/Schwerer Seide/Rune) griffbereit, da viele Rezepte sie zusätzlich zum Leder verlangen.',
+      'Ab Skill 225 und Level 40 kannst du dich dauerhaft auf eine Lederverarbeitungs-Spezialisierung festlegen; für das reine Skillen bis 300 ist das nicht notwendig.'
+    ]
+  },
+  {
+    id: 'classic-tailoring',
+    name: 'Schneiderei',
+    icon: 'tailoring',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 29,
+    theme: '#f472b6',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Schneiderei in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Trainerstopps, Stoffballen-Progression und einer klaren Materialliste.',
+    intro: [
+      'Schneiderei ist ein Handwerksberuf, der aus Stoffbahnen Umhänge, Roben, Taschen und Zubehör herstellt – ganz ohne Handwerksstation.',
+      'Da Schneiderei kaum auf Sammelrohstoffe aus der Welt zurückgreift, bist du stark auf Stoff aus Humanoiden-Beute und dem Auktionshaus angewiesen.',
+      'Verzauberkunst passt hervorragend als Zweitberuf, weil du eigene Stoffgegenstände sofort wieder entzaubern kannst.',
+      'Mehrere Zwischenschritte verlangen zuerst Stoffballen aus mehreren Stofffetzen – plane diese Umwandlung fest in deine Route ein.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Schneiderei 1-75',
+        requirement: 'ab Charakterlevel 5',
+        alliance: ['Lawrence Schneider in Stormwind, Magierviertel', 'Uthrar Threx in Ironforge, Große Schmiede', 'Trianna in Darnassus, Handwerkerterrasse', 'Eldrin im Wald von Elwynn', 'Grondal Moonbreeze in Auberdine, Dunkelküste'],
+        horde: ['Snang in Orgrimmar, Die Schlucht', 'Victor Ward in Undercity, Magierviertel', 'Vhan in Thunder Bluff', 'Bowen Brisboise in Tirisfal-Lichtungen', "Kil'hala in Camp Taurajo, Brachland"]
+      },
+      {
+        rank: 'Geselle',
+        range: 'Schneiderei 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Sellandus in Stormwind, Magierviertel', 'Jormund Stonebrow in Ironforge', "Me'lynn in Darnassus", 'Grarnik Goodstitch in Booty Bay, Schlingendorntal (neutral)'],
+        horde: ['Magar in Orgrimmar', 'Rhiannon Davis in Undercity', 'Tepa in Thunder Bluff', 'Mahani in Camp Taurajo, Brachland']
+      },
+      {
+        rank: 'Experte',
+        range: 'Schneiderei 150-225',
+        requirement: 'ab Skill 125 und Level 20',
+        alliance: ['Georgio Bolero in Stormwind, Magierviertel'],
+        horde: ['Josef Gregorian in Undercity, Magierviertel']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Schneiderei 225-300',
+        requirement: 'ab Skill 225 und Level 35',
+        alliance: ['Timothy Worthington in Theramore, Sumpfland von Dustwallow'],
+        horde: ['Daryl Stack in Tarren Mill, Vorgebirge von Hillsbrad']
+      }
+    ],
+    shoppingList: [
+      '160 Leinenstoff',
+      '75 Grober Faden',
+      '180 Wollstoff',
+      '65 Feiner Faden',
+      '10 Graue Farbe',
+      '760 Seidenstoff',
+      '30 Blaue Farbe',
+      '500 Magierwirkerstoff',
+      '60 Seidenfaden',
+      '30 Rote Farbe',
+      '900 Runenstoff',
+      '40 Schwerer Seidenfaden',
+      '30 Runenfaden',
+      '40 Robustes Leder',
+      '10 Bleiche'
+    ],
+    recipes: [
+      'Die meisten Rezepte dieser Route werden automatisch beim Rang-Aufstieg vom jeweils aktuellen Schneiderlehrer gelehrt – ein separater Kauf ist normalerweise nicht nötig.',
+      'Muster: Runenstofftasche – Händlerin Qia in Everlook, Winterspring (begrenzter, sich auffüllender Lagerbestand).'
+    ],
+    steps: [
+      {
+        range: '1-50',
+        craft: '40 x Leinenballen',
+        materials: '160 Leinenstoff'
+      },
+      {
+        range: '50-70',
+        craft: '10 x Leinentasche (6 Taschenplätze)',
+        materials: '60 Leinenballen, 60 Grober Faden',
+        note: 'Die Leinentasche verkauft sich gut und liefert nebenbei zusätzlichen Taschenplatz.'
+      },
+      {
+        range: '70-75',
+        craft: '10 x Verstärkter Leinenumhang',
+        materials: '10 Leinenballen, 15 Grober Faden'
+      },
+      {
+        range: '75-105',
+        craft: '45 x Wollballen',
+        materials: '180 Wollstoff',
+        note: 'Lerne ab Skill 50 den Gesellen-Rang, sonst stoppt der Fortschritt.'
+      },
+      {
+        range: '105-110',
+        craft: '10 x Graues Wollhemd',
+        materials: '10 Wollballen, 5 Feiner Faden, 5 Graue Farbe'
+      },
+      {
+        range: '110-125',
+        craft: '15 x Doppelt genähte Wollschultern',
+        materials: '45 Wollballen, 30 Feiner Faden'
+      },
+      {
+        range: '125-145',
+        craft: '190 x Seidenstoffballen',
+        materials: '760 Seidenstoff'
+      },
+      {
+        range: '145-160',
+        craft: '15 x Azurblaue Seidenkapuze',
+        materials: '30 Seidenstoffballen, 15 Feiner Faden, 30 Blaue Farbe'
+      },
+      {
+        range: '160-170',
+        craft: '30 x Seidenstirnband',
+        materials: '30 Seidenstoffballen, 20 Feiner Faden',
+        note: 'Ab Skill 125 kannst du den Experten-Rang lernen (Georgio Bolero/Josef Gregorian).'
+      },
+      {
+        range: '170-185',
+        craft: '100 x Magierwirkerstoffballen',
+        materials: '500 Magierwirkerstoff'
+      },
+      {
+        range: '185-200',
+        craft: '60 x Karmesinrote Seidenweste',
+        materials: '60 Seidenstoffballen, 30 Feiner Faden, 30 Rote Farbe'
+      },
+      {
+        range: '200-220',
+        craft: '15 x Schwarze Magierwirker-Beinlinge',
+        materials: '10 Magierwirkerstoffballen, 15 Seidenfaden'
+      },
+      {
+        range: '220-235',
+        craft: '20 x Schwarze Magierwirkerhandschuhe',
+        materials: '20 Magierwirkerstoffballen, 20 Schwerer Seidenfaden',
+        note: 'Ab Skill 225 musst du zum Fachmann-Trainer reisen (Timothy Worthington/Daryl Stack).'
+      },
+      {
+        range: '235-250',
+        craft: '60 x Schwarzes Magierwirkerstirnband',
+        materials: '60 Magierwirkerstoffballen, 40 Schwerer Seidenfaden'
+      },
+      {
+        range: '250-275',
+        craft: '180 x Runenstoffballen',
+        materials: '900 Runenstoff'
+      },
+      {
+        range: '275-280',
+        craft: '45 x Runenstoffgürtel',
+        materials: '45 Runenstoffballen, 15 Runenfaden'
+      },
+      {
+        range: '280-300',
+        craft: '60 x Runenstofftasche',
+        materials: '45 Runenstoffballen, 40 Robustes Leder, 5 Runenfaden',
+        note: 'Das Muster kommt von Händlerin Qia in Everlook, Winterspring. Plane den Abstecher vor dem letzten Sprint ein.'
+      }
+    ],
+    tips: [
+      'Materialmengen sind Richtwerte: Gelbe und grüne Rezepte können zusätzliche Versuche nötig machen.',
+      'Verzauberkunst als Zweitberuf lässt dich eigene Stoffgegenstände sofort wieder entzaubern, statt sie zu verkaufen.',
+      'Stoff sammelst du am schnellsten beim Questen und Farmen von Humanoiden – ergänze Lücken gezielt am Auktionshaus.',
+      'Taschen-Rezepte (Leinen-, Woll-, Seiden-, Magierwirker- und Runenstofftasche) sind gute Skillfüller, die sich zusätzlich gut verkaufen lassen.'
+    ]
+  },
+  {
+    id: 'classic-herbalism',
+    name: 'Kräuterkunde',
+    icon: 'herbalism',
+    expansion: 'classic',
+    category: 'Professions',
+    skillRange: '1-300',
+    audience: 'Einsteiger',
+    minutes: 21,
+    theme: '#22c55e',
+    summary:
+      'Dieser Classic-Berufe-Guide zeigt dir einen geradlinigen Weg, Kräuterkunde in Classic Era, Hardcore und Season of Discovery von 1 bis 300 zu steigern – mit Farmzonen nach Skillbereich und Trainerstopps.',
+    intro: [
+      'Kräuterkunde ist ein Sammelberuf: Mit der Fähigkeit "Kräuter finden" sammelst du Pflanzen in der Welt für Alchemie, Schneiderei-Färbemittel und das Auktionshaus.',
+      'Anders als bei den meisten anderen Berufen lehrt in Kräuterkunde ein einzelner Lehrer pro Fraktion alle vier Ränge – ein Trainerwechsel während des Skillens ist normalerweise nicht nötig.',
+      'Alchemie passt als Zweitberuf hervorragend, weil du deine gesammelten Kräuter direkt selbst zu Tränken und Elixieren weiterverarbeiten kannst.',
+      'Die Route unten kombiniert Zonen-Rotationen mit den passenden Kräuter-Skillstufen, damit du auch bei Konkurrenz durch andere Sammler weiterskillen kannst.'
+    ],
+    trainers: [
+      {
+        rank: 'Lehrling',
+        range: 'Kräuterkunde 1-75',
+        requirement: 'ab Charakterlevel 1',
+        alliance: ['Tannysa in Stormwind', 'Reyna Stonebranch in Ironforge', 'Firodren Mooncaller in Darnassus', 'Herbalist Pomeroy im Wald von Elwynn', 'Kali Healtouch in Loch Modan'],
+        horde: ['Jandi in Orgrimmar', 'Martha Alliestar in Undercity', 'Komin Winterhoof in Thunder Bluff', 'Faruza in Tirisfal-Lichtungen', 'Mishiki in Durotar']
+      },
+      {
+        rank: 'Geselle',
+        range: 'Kräuterkunde 75-150',
+        requirement: 'ab Skill 50 und Level 10',
+        alliance: ['Tannysa in Stormwind', 'Reyna Stonebranch in Ironforge', 'Firodren Mooncaller in Darnassus'],
+        horde: ['Jandi in Orgrimmar', 'Martha Alliestar in Undercity', 'Komin Winterhoof in Thunder Bluff']
+      },
+      {
+        rank: 'Experte',
+        range: 'Kräuterkunde 150-225',
+        requirement: 'ab Skill 125 und Level 20',
+        alliance: ['Tannysa in Stormwind', 'Reyna Stonebranch in Ironforge'],
+        horde: ['Jandi in Orgrimmar', 'Martha Alliestar in Undercity']
+      },
+      {
+        rank: 'Fachmann',
+        range: 'Kräuterkunde 225-300',
+        requirement: 'ab Skill 225 und Level 35',
+        alliance: ['Tannysa in Stormwind', 'Reyna Stonebranch in Ironforge'],
+        horde: ['Jandi in Orgrimmar', 'Martha Alliestar in Undercity']
+      }
+    ],
+    shoppingList: [
+      '155 Friedensblume & Silberblatt (Startgebiete)',
+      '40 Erdwurzel',
+      '90 Maguskönigskraut & Beulengras',
+      '60 Würgetang (Küstengewässer)',
+      '70 Wilddornrose & Königsblut',
+      '70 Lebenswurz & Golddorn',
+      '110 Purpurlotos, Feuerkraut & Arthas Tränen',
+      '90 Sonnengras, Blindkraut & Traummohn',
+      '70 Bergsilberweisling, Pestblüte & Eiskappe',
+      'Schwarzer Lotus (seltener Sonderspawn zusätzlich zum regulären Farmen)'
+    ],
+    recipes: [
+      'Kräuterkunde benötigt kein Werkzeug und kein Extra-Rezept – die Fähigkeit "Kräuter finden" wird automatisch mit dem Beruf erlernt.',
+      'Ab hohem Skill helfen zusätzliche Ausrüstungsboni (+Kräuterkunde auf Handschuhen) beim Auffinden seltener Spätgame-Kräuter wie Schwarzer Lotus.'
+    ],
+    steps: [
+      {
+        range: '1-70',
+        craft: 'Friedensblume, Silberblatt und Erdwurzel sammeln',
+        materials: 'Wald von Elwynn, Durotar, Mulgore, Tirisfal-Lichtungen, Dunkelküste',
+        note: 'Lerne ab Skill 50 den nächsten Rang beim selben Kräuterkunde-Lehrer; ein Ortswechsel ist nicht nötig.'
+      },
+      {
+        range: '70-115',
+        craft: 'Maguskönigskraut, Beulengras und Würgetang sammeln',
+        materials: 'Loch Modan, Sumpfland, Ashenvale, Brachland, Silberwald'
+      },
+      {
+        range: '115-170',
+        craft: 'Wildstahlblume, Königsblut und Lebenswurz sammeln',
+        materials: 'Vorgebirge von Hillsbrad, Arathihochland, Steinkrallengebirge, Duskwood'
+      },
+      {
+        range: '170-230',
+        craft: 'Bleichblatt, Golddorn, Khadgars Schnurrbart, Feuerkraut, Purpurlotos, Arthas Tränen und Sonnengras sammeln',
+        materials: 'Schlingendorntal, Desolace, Ödland, Sumpfland des Elends'
+      },
+      {
+        range: '230-270',
+        craft: 'Blindkraut, Geisterpilz, Gromsblut und Goldener Sansam sammeln',
+        materials: 'Feralas, Tanaris, Hinterland'
+      },
+      {
+        range: '270-300',
+        craft: 'Traummohn, Bergsilberweisling, Pestblüte und Eiskappe sammeln, Schwarzer Lotus als Bonus-Fund',
+        materials: 'Winterquell, Felwood, Östliche/Westliche Pestländer, Silithus, Brennende Steppen',
+        note: 'Schwarzer Lotus ist ein seltener Sonderspawn, der zusätzlich zu den regulären Kräutern in diesen Zonen auftaucht.'
+      }
+    ],
+    tips: [
+      'Mengenangaben sind Richtwerte: Verpasste Knoten und Konkurrenz durch andere Sammler können zusätzliche Runden nötig machen.',
+      'Sammle jedes Kraut, an dem du beim Questen oder Reisen vorbeikommst – das kostet kaum Zeit und liefert konstantes Nebeneinkommen.',
+      'Alchemie passt hervorragend als Zweitberuf, weil du deine gesammelten Kräuter direkt selbst zu Tränken verarbeiten kannst.',
+      'Schwarzer Lotus ist das mit Abstand wertvollste Classic-Kraut – ein Reittier und ein Kräuter-Tracking-Addon erleichtern das gezielte Absuchen der Spawnpunkte.'
+    ]
   }
 ];
