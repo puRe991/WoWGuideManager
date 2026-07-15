@@ -45,6 +45,26 @@ Mac.
 4. `npm run ios:open` (or open `ios/App/App.xcworkspace` in Xcode).
 5. Pick a simulator or a signed device/team, then Run. For distribution, use Xcode's Archive workflow (TestFlight/App Store) or `xcodebuild -workspace App.xcworkspace -scheme App archive`.
 
+## Automated APK downloads via GitHub Releases
+
+`.github/workflows/android-release.yml` builds a debug-signed APK (via
+`./gradlew assembleDebug`, no manual signing setup required) and attaches it
+to the GitHub Release automatically whenever a release is published on
+GitHub. It can also be triggered manually from the Actions tab
+(`workflow_dispatch`), in which case the APK is only kept as a workflow
+artifact for testing the build itself.
+
+To ship a new downloadable APK: bump `version` in `package.json` if desired,
+then publish a new GitHub Release (any tag, e.g. `v0.1.0`) from the
+repository's Releases page. The workflow picks it up, rebuilds the web
+bundle, syncs it into `android/`, builds the APK and uploads
+`WoW-Guide-Manager-<version>.apk` as a release asset.
+
+This APK is debug-signed (Gradle's auto-generated debug keystore), which is
+installable for sideloading/testing but not suitable for a Play Store
+listing. A Play Store release still needs a real upload keystore configured
+in `android/app/build.gradle` with secrets injected via GitHub Actions.
+
 ## App icons and splash screen
 
 The repo doesn't ship real WoW artwork (see `docs/assets.md`), so both
