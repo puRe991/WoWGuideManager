@@ -135,6 +135,7 @@ assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]
 const buildScript = readFileSync('scripts/build.mjs', 'utf8');
 assert.match(buildScript, /app\.bundle\.js/, 'build must emit a browser-safe bundle for file protocol usage');
 assert.match(buildScript, /dungeonGuides\.js/, 'build must include dungeon guide data in the portable bundle');
+assert.match(buildScript, /raidGuides\.js/, 'build must include raid guide data in the portable bundle');
 assert.match(buildScript, /professionGuides\.js/, 'build must include profession guide data in the portable bundle');
 assert.match(buildScript, /assetManifest\.js/, 'build must include real asset manifest data in the portable bundle');
 assert.match(buildScript, /classBuildGuides\.js/, 'build must include advanced rotation and BiS data in the portable bundle');
