@@ -26,8 +26,8 @@ letter instead of a broken image — see `renderAssetImage` in `src/app.js`.
 
 ## Leveling zone icons: hotlinked where verified, local otherwise
 
-`assetManifest.zones` powers the zone-route images on leveling guides (e.g.
-the Horde 1-60 route). Each zone was checked individually against
+`assetManifest.zones` powers the zone-route images on leveling guides (the
+Horde and Alliance 1-60 routes). Each zone was checked individually against
 `wow.zamimg.com`: zones whose "Explore <Zone>" achievement icon still
 resolves (HTTP 200, real image) are hotlinked directly; starting zones use
 the matching race icon (also verified) since Wowhead does not keep a
