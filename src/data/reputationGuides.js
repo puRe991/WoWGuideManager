@@ -1079,7 +1079,416 @@ const tbcReputationGuides = [
   }
 ];
 
+const wrathReputationGuides = [
+  {
+    id: 'the-kalu-ak',
+    name: "The Kalu'ak",
+    side: 'Beide Fraktionen',
+    type: 'Fischer-Fraktion (Howling Fjord & Dragonblight)',
+    zone: 'Howling Fjord, Dragonblight, Borean Tundra',
+    theme: '#2f6f8f',
+    audience: 'Einsteiger',
+    minutes: 18,
+    summary:
+      "Freundliche Tuskarr-Fraktion entlang der Nordend-Küsten. Ruf kommt größtenteils automatisch beim Leveln durch Howling Fjord und Dragonblight, für Exaltiert sind tägliche Angelaufträge nötig. Bekannt für das teuerste Reittier der Erweiterung.",
+    startRequirement: 'Ab Stufe 68, Kontakt über die Questreihen in Howling Fjord und Dragonblight',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime:
+      'Läuft größtenteils automatisch beim Leveln durch Howling Fjord und Dragonblight mit, für Exaltiert sind gezielte tägliche Angelaufträge über mehrere Wochen nötig',
+    howTo: [
+      "Die Kalu'ak-Questreihen rund um Kamagua und Moa'ki Harbor in Howling Fjord abschließen",
+      "Die Kalu'ak-Questreihen rund um Iskaara in Dragonblight abschließen",
+      "Tägliche Angelaufträge bei Old Man Barlo in Moa'ki Harbor bzw. bei Kaskala in Iskaara erledigen"
+    ],
+    grindTargets: [
+      "Tägliche Fischerei-Aufträge bei Moa'ki Harbor und Iskaara",
+      "Gelegentliche Sammelquests rund um die Kalu'ak-Dörfer in Borean Tundra"
+    ],
+    keyQuests: [
+      "Questreihen rund um Kamagua und Moa'ki Harbor in Howling Fjord",
+      "Questreihen rund um Iskaara in Dragonblight"
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang', 'Erste Angelausrüstung'] },
+      { rank: 'Wohlwollend', rewards: ['Verbesserte Angelausrüstung und Köder'] },
+      { rank: 'Respektvoll', rewards: ['Starke Fischerei- und Kochrezepte'] },
+      { rank: 'Ehrfürchtig', rewards: ['Kaufbare Traveler\'s Tundra Mammoth (zweisitziges Reittier)', "Volles Kalu'ak-Rezeptsortiment"] }
+    ],
+    tips: [
+      'Tägliche Angelaufträge sind der zuverlässigste Weg zu Exaltiert, sobald die Questreihen abgeschlossen sind',
+      'Die Traveler\'s Tundra Mammoth ist eines der teuersten Reittiere im Spiel – zusätzlich zum Ruf wird sehr viel Gold benötigt'
+    ]
+  },
+  {
+    id: 'wyrmrest-accord',
+    name: 'The Wyrmrest Accord',
+    side: 'Beide Fraktionen',
+    type: 'Drachen-Hub-Fraktion (Dragonblight)',
+    zone: 'Dragonblight',
+    theme: '#5b3fa8',
+    audience: 'Fortgeschritten',
+    minutes: 20,
+    summary:
+      'Zentrale Fraktion am Wyrmrest Temple, in der sich die aufrechten Drachenschwärme gegen die Geißel und Deathwings Einfluss verbünden. Liefert solide Zwischenausrüstung und eines der beliebtesten Sammlerreittiere der Erweiterung.',
+    startRequirement: 'Ab Stufe 71, Einstieg über die Hauptquestreihe am Wyrmrest Temple in Dragonblight',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei regelmäßigen The-Culling-of-Stratholme- und The-Oculus-Runs bis Respektvoll',
+    howTo: [
+      'Die Dragonblight-Hauptquestreihe rund um den Wyrmrest Temple abschließen',
+      'The-Culling-of-Stratholme-Bosskills geben zusätzlichen Ruf',
+      'The-Oculus-Bosskills geben zusätzlichen Ruf'
+    ],
+    grindTargets: [
+      'The-Culling-of-Stratholme-Bosskills',
+      'The-Oculus-Bosskills'
+    ],
+    keyQuests: [
+      'Hauptquestreihe am Wyrmrest Temple in Dragonblight'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenringe und Halsketten'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets für Tank, Heiler und DD'] },
+      { rank: 'Ehrfürchtig', rewards: ['Kaufbare Reins of the Blue Drake', 'Volles Fraktionsrezeptsortiment'] }
+    ],
+    tips: [
+      'Reins of the Blue Drake ist eines der beliebtesten Sammlerreittiere der Erweiterung',
+      'The Oculus wird von vielen Gruppen gemieden – The Culling of Stratholme ist der entspanntere Weg zu Ruf'
+    ]
+  },
+  {
+    id: 'argent-crusade',
+    name: 'The Argent Crusade',
+    side: 'Beide Fraktionen',
+    type: 'Endgame-Kriegsfraktion (Icecrown)',
+    zone: 'Icecrown',
+    theme: '#c9a13b',
+    audience: 'Fortgeschritten',
+    minutes: 22,
+    summary:
+      "Nachfolgefraktion der Argent Dawn und zentrale Endgame-Fraktion vor Icecrown Citadel. Ruf kommt aus der Icecrown-Questreihe, täglichen Turnierquests am Argent Tournament und Icecrown-Citadel-Trash sowie -Bossen.",
+    startRequirement: "Ab Stufe 77, Einstieg über die Icecrown-Questreihe am Argent Vanguard (Allianz) bzw. Death's Breach (Horde)",
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichen Turnierquests bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      "Die Icecrown-Einführungsquestreihe am Argent Vanguard bzw. Death's Breach abschließen",
+      'Tägliche Turnierquests am Argent Tournament in Icecrown abschließen',
+      'Icecrown-Citadel-Trash und -Bosse geben zusätzlichen Ruf'
+    ],
+    grindTargets: [
+      'Tägliche Argent-Tournament-Turnierquests',
+      'Icecrown-Citadel-Trash und -Bosskills'
+    ],
+    keyQuests: [
+      "Einführungskette am Argent Vanguard bzw. Death's Breach",
+      'Freischaltquestreihe für das Argent Tournament'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang', 'Tabard of the Argent Crusade'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenausrüstung mit Ausdauer'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets und Schmuck'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starkes Fraktionszubehör', 'Voraussetzung für die Ashen-Verdict-Freischaltquestreihe'] }
+    ],
+    tips: [
+      'Das Tabard of the Argent Crusade tragen, um zusätzlichen Bonus-Loot-Wurf in Icecrown Citadel zu erhalten',
+      'Turnierquests am Argent Tournament liefern gleichzeitig Ruf für die eigene Dalaran-Botschaft (Silver Covenant bzw. Sunreavers)'
+    ]
+  },
+  {
+    id: 'knights-of-the-ebon-blade',
+    name: 'The Knights of the Ebon Blade',
+    side: 'Beide Fraktionen',
+    type: 'Todesritter-Fraktion (Icecrown)',
+    zone: 'Icecrown (Ebon Hold)',
+    theme: '#4a4a52',
+    audience: 'Fortgeschritten',
+    minutes: 18,
+    summary:
+      'Abtrünnige Todesritter unter Highlord Darion Mograine, die sich gegen den Lichkönig gewandt haben. Ruf kommt aus täglichen Quests am Ebon Hold in Icecrown und ist wie die Argent Crusade Voraussetzung für die Ashen Verdict.',
+    startRequirement: 'Stufe 77, Todesritter starten bereits während der Einführungsquestreihe mit Grundruf, Einstieg am Ebon Hold in Icecrown',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichem Ebon-Hold-Questzyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Einführungsquestreihe am Ebon Hold in Icecrown abschließen',
+      'Tägliche Ebon-Hold-Quests gegen die Geißel in Icecrown abschließen',
+      'Icecrown-Citadel-Trash und -Bosse geben zusätzlichen Ruf'
+    ],
+    grindTargets: [
+      'Tägliche Ebon-Hold-Quests rund um Icecrown',
+      'Icecrown-Citadel-Trash und -Bosskills'
+    ],
+    keyQuests: [
+      'Einführungskette am Ebon Hold in Icecrown'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang', 'Tabard of the Ebon Blade'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenausrüstung mit Ausdauer'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets und Schmuck'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starkes Fraktionszubehör', 'Voraussetzung für die Ashen-Verdict-Freischaltquestreihe'] }
+    ],
+    tips: [
+      'Todesritter starten mit einem Rufvorsprung aus der Einführungsquestreihe des Starterlebnisses',
+      'Wie die Argent Crusade eine Pflichtvoraussetzung für die Ashen Verdict'
+    ]
+  },
+  {
+    id: 'ashen-verdict',
+    name: 'The Ashen Verdict',
+    side: 'Beide Fraktionen',
+    type: 'Raid-Ruf (Icecrown Citadel)',
+    zone: 'Icecrown Citadel',
+    theme: '#8f8f8f',
+    audience: 'Experte',
+    minutes: 20,
+    summary:
+      'Vereinte Fraktion aus Argent Crusade und Knights of the Ebon Blade rund um Icecrown Citadel. Liefert am Ende die begehrten Exaltiert-Fraktionswaffen, die lange zu den stärksten verfügbaren Waffen der Erweiterung zählen.',
+    startRequirement: 'Stufe 80, Ehrfürchtig bei Argent Crusade und Knights of the Ebon Blade als Voraussetzung',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichen Ashen-Verdict-Quests und regelmäßigen Icecrown-Citadel-Clears bis Ehrfürchtig',
+    howTo: [
+      'Ehrfürchtig bei Argent Crusade und Knights of the Ebon Blade erreichen',
+      'Die Ashen-Verdict-Freischaltquestreihe in Icecrown abschließen',
+      'Tägliche Ashen-Verdict-Quests rund um Icecrown Citadel abschließen',
+      'Icecrown-Citadel-Bosskills geben zusätzlichen Ruf'
+    ],
+    grindTargets: [
+      'Tägliche Ashen-Verdict-Quests bei Icecrown Citadel',
+      'Icecrown-Citadel-Bosskills'
+    ],
+    keyQuests: [
+      'Freischaltquestreihe für die Ashen Verdict'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang'] },
+      { rank: 'Wohlwollend', rewards: ['Epische Zwischenausrüstung'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte epische Ausrüstung'] },
+      { rank: 'Ehrfürchtig', rewards: ['Kaufbares episches Waffenset der Fraktion (Einhand- und Zweihandwaffen)', 'Bestes verfügbares Fraktionszubehör'] }
+    ],
+    tips: [
+      'Ohne Ehrfürchtig bei Argent Crusade und Ebon Blade lässt sich die Freischaltquestreihe nicht abschließen',
+      'Die Exaltiert-Waffen zählen bis zu den ersten Icecrown-Citadel-Hardmodes zu den stärksten verfügbaren Waffen'
+    ]
+  },
+  {
+    id: 'sons-of-hodir',
+    name: 'The Sons of Hodir',
+    side: 'Beide Fraktionen',
+    type: 'Schulterverzauberungs-Fraktion (Storm Peaks)',
+    zone: 'Storm Peaks',
+    theme: '#3f6f9f',
+    audience: 'Fortgeschritten',
+    minutes: 18,
+    summary:
+      'Fraktion der Frostriesen-Nachkommen in den Storm Peaks. Liefert wie Aldor/Scryers in TBC gestaffelte Schulterverzauberungen für alle Rollen, dazu ab Ehrfürchtig eine zusätzliche Helmverzauberung.',
+    startRequirement: 'Ab Stufe 77, Einstieg über die Storm-Peaks-Questreihe bei Brunnhildar Village',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Questzyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Storm-Peaks-Questreihe abschließen, um die täglichen Sons-of-Hodir-Quests freizuschalten',
+      'Tägliche Quests bei Brunnhildar Village und dem Sons-of-Hodir-Lager abschließen'
+    ],
+    grindTargets: [
+      'Tägliche Sons-of-Hodir-Quests rund um Brunnhildar Village'
+    ],
+    keyQuests: [
+      'Freischaltquestreihe für die täglichen Sons-of-Hodir-Quests'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundschulterverzauberung (Rang 1)'] },
+      { rank: 'Wohlwollend', rewards: ['Verbesserte Schulterverzauberung (Rang 2)'] },
+      { rank: 'Respektvoll', rewards: ['Starke Schulterverzauberung (Rang 3)'] },
+      { rank: 'Ehrfürchtig', rewards: ['Beste verfügbare Schulterverzauberung', 'Zusätzliches Helmverzauberungsrezept'] }
+    ],
+    tips: [
+      'Die tägliche Questanzahl ist begrenzt – regelmäßiges tägliches Einloggen beschleunigt den Grind erheblich',
+      'Die Helmverzauberung ist erst ab Ehrfürchtig verfügbar und erfordert zusätzliche Materialien'
+    ]
+  },
+  {
+    id: 'frenzyheart-tribe',
+    name: 'The Frenzyheart Tribe',
+    side: 'Beide Fraktionen',
+    type: 'Konkurrenz-Fraktion (Sholazar Basin)',
+    zone: 'Sholazar Basin',
+    theme: '#6e8f3f',
+    audience: 'Fortgeschritten',
+    minutes: 16,
+    summary:
+      'Wilde Trollstamm-Fraktion in Sholazar Basin, Gegenspieler der Oracles. Ruf kommt aus täglichen Quests am Frenzyheart-Lager und schaltet am Ende ein eigenes Reittier frei.',
+    startRequirement: 'Ab Stufe 77, Entscheidung fällt mit der ersten angenommenen Frenzyheart- oder Oracle-Quest in Sholazar Basin',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei täglichem Questzyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Frenzyheart-Einführungsquestreihe in Sholazar Basin annehmen',
+      'Tägliche Frenzyheart-Quests rund um das Lager abschließen'
+    ],
+    grindTargets: [
+      'Tägliche Frenzyheart-Quests in Sholazar Basin'
+    ],
+    keyQuests: [
+      'Frenzyheart-Einführungskette in Sholazar Basin'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenausrüstung'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets und Schmuck'] },
+      { rank: 'Ehrfürchtig', rewards: ['Kaufbares Hyänen-Reittier', 'Volles Frenzyheart-Rezeptsortiment'] }
+    ],
+    tips: [
+      'Ruf bei den Frenzyheart senkt gleichzeitig den Ruf bei den Oracles – nicht parallel farmen',
+      'Beide Sholazar-Fraktionen bieten unterschiedliche, aber gleichwertige Belohnungen – Entscheidung nach gewünschter Optik treffen'
+    ]
+  },
+  {
+    id: 'the-oracles',
+    name: 'The Oracles',
+    side: 'Beide Fraktionen',
+    type: 'Konkurrenz-Fraktion (Sholazar Basin)',
+    zone: 'Sholazar Basin',
+    theme: '#3f9f8f',
+    audience: 'Fortgeschritten',
+    minutes: 16,
+    summary:
+      "Rätselhafte Fraktion rund um das Sonnenaltar-Lager in Sholazar Basin, Gegenspieler der Frenzyheart Tribe. Bekannt für Mysterious Eggs, die bei jedem Rufrang gegen zufällige Begleiter und Reittiere eingetauscht werden können.",
+    startRequirement: 'Ab Stufe 77, Entscheidung fällt mit der ersten angenommenen Frenzyheart- oder Oracle-Quest in Sholazar Basin',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei täglichem Questzyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Oracle-Einführungsquestreihe in Sholazar Basin annehmen',
+      'Tägliche Oracle-Quests rund um das Lager abschließen',
+      'Gesammelte Ruf-Tokens gegen Mysterious Eggs beim Oracle-Händler eintauschen'
+    ],
+    grindTargets: [
+      'Tägliche Oracle-Quests in Sholazar Basin'
+    ],
+    keyQuests: [
+      'Oracle-Einführungskette in Sholazar Basin'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenausrüstung'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets und Schmuck'] },
+      { rank: 'Ehrfürchtig', rewards: ['Zugang zu Mysterious Eggs mit Chance auf seltene Begleiter und Reittiere', 'Volles Oracle-Rezeptsortiment'] }
+    ],
+    tips: [
+      'Mysterious Eggs lassen sich bei jedem Rufrang einmalig kaufen – seltene Begleiter und Reittiere sind reiner Zufall',
+      'Ruf bei den Oracles senkt gleichzeitig den Ruf bei der Frenzyheart Tribe – nicht parallel farmen'
+    ]
+  },
+  {
+    id: 'kirin-tor',
+    name: 'Kirin Tor',
+    side: 'Beide Fraktionen',
+    type: 'Hauptstadt-Fraktion (Dalaran)',
+    zone: 'Dalaran',
+    theme: '#7f3fa0',
+    audience: 'Einsteiger',
+    minutes: 16,
+    summary:
+      'Zauberkundige Hauptstadt-Fraktion von Dalaran. Ruf kommt hauptsächlich aus täglichen Koch- und Angelquests sowie aus Dungeon-Bossen in The Violet Hold.',
+    startRequirement: 'Ab Stufe 71, Ruf startet automatisch bei der Ankunft in Dalaran',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichem Koch- und Angelquestzyklus bis Ehrfürchtig',
+    howTo: [
+      'Tägliche Koch- und Angelquests in Dalaran abschließen',
+      'The-Violet-Hold-Bosskills geben zusätzlichen Ruf',
+      'Dalaran-bezogene Questreihen im Verlauf des Levelns abschließen'
+    ],
+    grindTargets: [
+      'Tägliche Dalaran-Koch- und Angelquests',
+      'The-Violet-Hold-Bosskills'
+    ],
+    keyQuests: [
+      'Dalaran-Questreihen im Verlauf des Levelns'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenschmuck'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Ringe und Trinkets'] },
+      { rank: 'Ehrfürchtig', rewards: ['Ring of the Kirin Tor (Teleport-Ring)', 'Volles Fraktionsrezeptsortiment'] }
+    ],
+    tips: [
+      'Tägliche Koch- und Angelquests in Dalaran sind der zuverlässigste Weg zu Exaltiert',
+      'Läuft gut nebenbei mit dem Ruf für die eigene Dalaran-Botschaft (Silver Covenant bzw. Sunreavers)'
+    ]
+  },
+  {
+    id: 'silver-covenant-sunreavers',
+    name: 'The Silver Covenant & The Sunreavers',
+    side: 'Fraktionsabhängig (Allianz/Horde)',
+    type: 'Dalaran-Botschaftsfraktionen',
+    zone: 'Dalaran',
+    theme: '#4f7fbf',
+    audience: 'Fortgeschritten',
+    minutes: 18,
+    summary:
+      "Sammel-Guide für die beiden an die Charakterfraktion gebundenen Dalaran-Botschaften: Silver Covenant für die Allianz im Silver Enclave, The Sunreavers für die Horde in der Sunreaver's Sanctuary. Beide schalten Bank, Klassentrainer und Portalraum der jeweiligen Botschaft frei.",
+    startRequirement: 'Ab Stufe 71, automatisch je nach Charakterfraktion beim Erreichen von Dalaran',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichen Argent-Tournament-Turnierquests bis Ehrfürchtig',
+    howTo: [
+      "Die Botschafts-Einführungsquestreihe im Silver Enclave (Allianz) bzw. in der Sunreaver's Sanctuary (Horde) abschließen",
+      'Tägliche Turnierquests am Argent Tournament geben zusätzlichen Ruf zur jeweiligen Botschaft',
+      'Klassentrainer- und Bankquests in der jeweiligen Botschaft nutzen'
+    ],
+    grindTargets: [
+      'Tägliche Argent-Tournament-Turnierquests'
+    ],
+    keyQuests: [
+      "Botschafts-Einführungsquests im Silver Enclave bzw. der Sunreaver's Sanctuary"
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zur jeweiligen Botschaft mit Bank und Klassentrainern'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenausrüstung'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets und Schmuck'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes verfügbares Botschaftszubehör', 'Volles Rezeptsortiment'] }
+    ],
+    tips: [
+      'Beide Botschaften sind strikt an die Charakterfraktion gebunden, ein Seitenwechsel ist nicht möglich',
+      'Turnierquests am Argent Tournament liefern gleichzeitig Ruf für die Argent Crusade und die jeweilige Botschaft'
+    ]
+  },
+  {
+    id: 'northrend-vanguard-factions',
+    name: 'Nordend-Vorhut-Fraktionen',
+    side: 'Beide Fraktionen',
+    type: 'Hub-Fraktionen (Borean Tundra & Howling Fjord)',
+    zone: 'Borean Tundra, Howling Fjord',
+    theme: '#c9a86a',
+    audience: 'Einsteiger',
+    minutes: 14,
+    summary:
+      "Sammel-Guide für die Nordend-Einstiegsfraktionen: Valiance Expedition (Allianz) und Warsong Offensive (Horde) in Borean Tundra, Explorers' League (Allianz) und The Hand of Vengeance (Horde) in Howling Fjord, sowie die übergeordnete Alliance Vanguard bzw. Horde Expedition. Ruf steigt fast ausschließlich nebenbei beim normalen Leveln.",
+    startRequirement: 'Ab Stufe 68, automatisch beim Betreten von Borean Tundra bzw. Howling Fjord',
+    grindLength: 'Nebenbei',
+    estimatedTime: 'Läuft praktisch vollständig beim normalen Durchleveln von Borean Tundra und Howling Fjord mit',
+    howTo: [
+      'Die Questreihen rund um Valiance Keep (Allianz) bzw. Warsong Hold (Horde) in Borean Tundra abschließen',
+      'Die Questreihen rund um Valgarde (Allianz) bzw. Vengeance Landing (Horde) in Howling Fjord abschließen',
+      'Fraktionsübergreifende Nordend-Quests erhöhen zusätzlich den Ruf bei Alliance Vanguard bzw. Horde Expedition'
+    ],
+    grindTargets: [
+      'Kein dedizierter Grind nötig, normale Levelquests reichen für Respektvoll bzw. Ehrfürchtig bei den meisten dieser Fraktionen'
+    ],
+    keyQuests: [
+      'Questreihen rund um Valiance Keep bzw. Warsong Hold in Borean Tundra',
+      'Questreihen rund um Valgarde bzw. Vengeance Landing in Howling Fjord'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang in den jeweiligen Vorposten'] },
+      { rank: 'Wohlwollend', rewards: ['Rabatte bei Händlern'] },
+      { rank: 'Respektvoll', rewards: ['Zwischenausrüstung und Verzauberungen'] },
+      { rank: 'Ehrfürchtig', rewards: ['Episches Fraktionszubehör bei Alliance Vanguard bzw. Horde Expedition'] }
+    ],
+    tips: [
+      'Wird praktisch automatisch beim normalen Durchleveln von Borean Tundra und Howling Fjord erreicht',
+      'Für Ehrfürchtig bei Alliance Vanguard bzw. Horde Expedition lohnt sich gezieltes Nacharbeiten übrig gebliebener Questreihen'
+    ]
+  }
+];
+
 export const reputationGuides = {
   classic: classicReputationGuides,
-  'the-burning-crusade': tbcReputationGuides
+  'the-burning-crusade': tbcReputationGuides,
+  'wrath-of-the-lich-king': wrathReputationGuides
 };
