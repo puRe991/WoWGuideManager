@@ -57,6 +57,11 @@ const dungeonAtlasCopy = {
     eyebrow: 'The Burning Crusade Dungeon Atlas',
     title: 'Alle Outland-Heroics und -Dungeons mit Route, Bossen, Loot und Gruppen-Tipps.',
     copy: 'Von Hellfeuerzitadelle bis Magierviertel: Levelbereich wählen, Route lesen, Bossziele markieren und Attunement-relevante Runs erkennen.'
+  },
+  'mists-of-pandaria': {
+    eyebrow: 'Pandaria Dungeon-Atlas',
+    title: 'Neun Prüfungen – von den Hallen des Jadeserpents bis zu den scharlachroten Ruinen.',
+    copy: 'Wähle eine Instanz für Route, Bosse, Loot-Ziele und Gruppen-Tipps. Alle neun Dungeons bilden gleichzeitig den Challenge-Mode-Pool.'
   }
 };
 
@@ -70,6 +75,11 @@ const raidAtlasCopy = {
     eyebrow: 'The Burning Crusade Raid Atlas',
     title: 'Alle TBC-Raids boss für boss – von Karazhan bis Sunwell Plateau.',
     copy: 'Von Gruul’s Lair bis zum Serienfinale in Sunwell: Attunement-Ketten, Route und Boss-für-Boss-Mechaniken für jeden Outland-Raid.'
+  },
+  'mists-of-pandaria': {
+    eyebrow: 'Pandaria Schlachtzug-Atlas',
+    title: 'Die großen Belagerungen – von der Schatzkammer der Mogu bis zum Sturz von Garrosh.',
+    copy: 'Von Mogu’shan-Schatzkammer bis zur Belagerung von Orgrimmar: jeder Schlachtzug der Erweiterung boss für boss vorbereitet.'
   }
 };
 
@@ -224,7 +234,7 @@ function farmingTile(item, group) {
 function libraryTile(g) {
   return {
     href: `#guides/${g.id}`,
-    color: categoryAccents[g.category] || '#ffb22e',
+    color: libraryDetailAccent(g),
     subtitle: g.category,
     badge: g.premium ? 'Premium' : 'Free',
     badgeClass: g.premium ? 'premium' : 'free',
@@ -644,6 +654,26 @@ function renderProfessionDetail(id) {
     </article>`;
 }
 
+function renderDungeonBossCard(boss) {
+  return `
+    <article class="dungeon-boss-card">
+      <h5>${escapeHtml(boss.name)}</h5>
+      <span class="dungeon-boss-role">${escapeHtml(boss.role)}</span>
+      <p>${escapeHtml(boss.note)}</p>
+    </article>`;
+}
+
+function renderDungeonBossSection(dungeon) {
+  if (dungeon.bosses.length > 0 && typeof dungeon.bosses[0] === 'object') {
+    return `
+      <section class="dungeon-boss-cell">
+        <h4>Bosse</h4>
+        <div class="dungeon-boss-grid">${dungeon.bosses.map(renderDungeonBossCard).join('')}</div>
+      </section>`;
+  }
+  return renderClassList('Bosse', dungeon.bosses);
+}
+
 function renderDungeonDetail(id) {
   const dungeon = getActiveDungeons().find((item) => item.id === id) ?? Object.values(dungeonGuides).flat().find((item) => item.id === id);
   if (!dungeon) return null;
@@ -665,8 +695,8 @@ function renderDungeonDetail(id) {
           ${dungeon.subDungeons ? `<div class="sub-dungeon-row">${dungeon.subDungeons.map((wing) => `<span>${escapeHtml(wing)}</span>`).join('')}</div>` : ''}
         </div>
         <div class="dungeon-guide-grid">
+          ${renderDungeonBossSection(dungeon)}
           ${renderClassList('Optimale Route', dungeon.route)}
-          ${renderClassList('Bosse', dungeon.bosses)}
           ${renderClassList('Loot-Ziele', dungeon.loot)}
           ${renderClassList('Gruppen-Tipps', dungeon.tips)}
           ${renderClassList('Quests / Vorbereitung', dungeon.quests)}
@@ -756,10 +786,65 @@ function renderFarmingDetail(itemId) {
     </article>`;
 }
 
+function renderFactionGrid(factions) {
+  return `
+    <section class="section-card faction-grid-section">
+      <h4>Fraktionen</h4>
+      <div class="faction-grid">
+        ${factions
+          .map(
+            (f) => `
+          <article class="faction-card">
+            <div class="faction-card-top">
+              <span class="faction-glyph">${escapeHtml(f.glyph)}</span>
+              <div class="faction-card-title"><strong>${escapeHtml(f.name)}</strong><span class="faction-region">${escapeHtml(f.region)}</span></div>
+            </div>
+            <p>${escapeHtml(f.reward)}</p>
+            <div class="faction-bar-track"><div class="faction-bar-fill" style="width: ${escapeHtml(f.bar)}"></div></div>
+            <span class="faction-standing">Ziel: ${escapeHtml(f.standing)}</span>
+          </article>`
+          )
+          .join('')}
+      </div>
+    </section>`;
+}
+
+function renderMedalGrid(medals) {
+  return `
+    <section class="section-card medal-grid-section">
+      <h4>Medaillen</h4>
+      <div class="medal-grid">
+        ${medals
+          .map(
+            (m) => `
+          <article class="medal-card" style="--medal-color: ${escapeHtml(m.color)}">
+            <span class="medal-icon">${escapeHtml(m.icon)}</span>
+            <h5>${escapeHtml(m.name)}</h5>
+            <p>${escapeHtml(m.desc)}</p>
+          </article>`
+          )
+          .join('')}
+      </div>
+    </section>`;
+}
+
+function renderRewardList(rewards) {
+  return `
+    <section class="section-card">
+      <h4>Belohnungen der Gold-Jäger</h4>
+      ${plainList(rewards, '--ac')}
+    </section>`;
+}
+
+function libraryDetailAccent(guide) {
+  if (guide.expansion === 'mists-of-pandaria') return '#2f8f66';
+  return categoryAccents[guide.category] || '#ffb22e';
+}
+
 function renderLibraryDetail(id) {
   const guide = guideCards.find((item) => item.id === id);
   if (!guide) return null;
-  const color = categoryAccents[guide.category] || '#ffb22e';
+  const color = libraryDetailAccent(guide);
 
   return `
     <article class="page narrow detail-page" style="--ac: ${escapeHtml(color)}">
@@ -788,6 +873,9 @@ function renderLibraryDetail(id) {
         </section>
       </div>
       ${guide.zones ? renderZoneRoute(guide.zones) : ''}
+      ${guide.factions ? renderFactionGrid(guide.factions) : ''}
+      ${guide.medals ? renderMedalGrid(guide.medals) : ''}
+      ${guide.challengeRewards ? renderRewardList(guide.challengeRewards) : ''}
       <div class="hashtags">${guide.tags.map((tag) => `<span class="hashtag">#${escapeHtml(tag)}</span>`).join('')}</div>
     </article>`;
 }
@@ -972,9 +1060,19 @@ function wireFilterBarClear() {
   });
 }
 
+function isMopContent(section, id) {
+  if (section === 'dungeon-guides' || section === 'raid-guides') return state.selectedExpansion === 'mists-of-pandaria';
+  if (section === 'guides') {
+    if (id) return guideCards.find((item) => item.id === id)?.expansion === 'mists-of-pandaria';
+    return state.expansion === 'mists-of-pandaria';
+  }
+  return false;
+}
+
 function renderView() {
   const [section, id] = parseHash();
   showExpansionPicker(section === 'start');
+  viewContent.classList.toggle('mop-content', isMopContent(section, id));
 
   let html = '';
   if (section === 'start') {
@@ -1009,6 +1107,7 @@ function renderView() {
 }
 
 function render() {
+  document.documentElement.dataset.activeExpansion = state.selectedExpansion;
   renderExpansionSwitch();
   renderPackageBox();
   renderNavCounts();

@@ -23,9 +23,9 @@ export const expansions = [
   {
     key: 'mists-of-pandaria',
     name: 'Mists of Pandaria',
-    status: 'Geplant',
-    launchFocus: 'Pandaria-Leveling, Ruf-Fraktionen, Dailies, Challenge Modes und Raid-Wings als aktivierbare Erweiterung.',
-    modules: ['Pandaria Leveling', 'Ruf-Guides', 'Challenge Modes', 'Raid Lockouts']
+    status: 'Startpaket',
+    launchFocus: 'Pandaria-Hub mit Leveling-Route, komplettem Dungeon- und Raid-Atlas, Ruf-Fraktionen und Herausforderungsmodi. Erster Guide-Satz ist live, Klassen- und Berufs-Tiefenguides folgen als nächster Ausbauschritt.',
+    modules: ['Pandaria Leveling', 'Dungeon Atlas', 'Raid Atlas', 'Ruf-Guides', 'Challenge Modes']
   },
   {
     key: 'future',
@@ -427,5 +427,71 @@ export const guideCards = [
     checklist: ['Heroic-Loot nach Rolle priorisieren', 'Rufbelohnungen mit Dungeon-Drops vergleichen', 'Verzauberungen und Sockel vor Raidstart planen', 'Lückenslots über Quests schließen'],
     premium: true,
     tags: ['BiS', 'Karazhan Prep', 'Classes']
+  },
+  {
+    id: 'mop-leveling-85-90',
+    title: 'Der Weg durch den Nebel · 85-90',
+    category: 'Leveling',
+    expansion: 'mists-of-pandaria',
+    audience: 'Einsteiger',
+    minutes: 38,
+    summary: 'Sieben Zonen, eine durchgehende Route. Vom Strandungsort im Jadewald bis in das Tal der Ewigen Blüten – in der empfohlenen Reihenfolge zum Stufengrenze-Endgame.',
+    checklist: ['Jadewald als gemeinsamen Startpunkt für beide Fraktionen nutzen', 'Wolkenserpent-Orden-Questreihe früh freischalten', 'Krasarangwildnis optional parallel zum Tal der Vier Winde einplanen', 'Ab Kun-Lai-Gipfel Shado-Pan-Kette priorisieren'],
+    premium: false,
+    tags: ['Pandaria', 'Leveling', '85-90'],
+    zones: [
+      { id: 'jadewald', name: 'Der Jadewald', levelRange: '85-86', note: 'Ankunft auf Pandaria für beide Fraktionen. Folge der Hauptquestreihe rund um den Wolkenserpent-Orden und schalte den Flugpunkt am Tempel der Jadeschlange frei.' },
+      { id: 'tal-der-vier-winde', name: 'Tal der Vier Winde', levelRange: '86-87', note: 'Ruhiges Bauernland der Ackerbauern. Sichere dir früh die Halbhügel-Farm und den Zugang zu Stormstouts Brauerei.' },
+      { id: 'krasarangwildnis', name: 'Krasarangwildnis', levelRange: '86-87', note: 'Nebelverhangene Küste mit den Anglern. Optionaler Abstecher parallel zum Tal der Vier Winde für Angel-Ruf und Ruinenquests.' },
+      { id: 'kun-lai-gipfel', name: 'Kun-Lai-Gipfel', levelRange: '87-88', note: 'Verschneite Höhen der Yaungol und Mogu. Beginn der Shado-Pan-Kette und Eingänge zu Kloster und Mogu’shan-Palast.' },
+      { id: 'tonlangsteppe', name: 'Tonlangsteppe', levelRange: '88-89', note: 'Grenzland gegen die Mantiden-Schwärme. Unterstütze die Shado-Pan-Garnison an der Serpentmauer.' },
+      { id: 'schreckensoede', name: 'Schreckensöde', levelRange: '89-90', note: 'Herz des Mantiden-Reichs. Erwecke die Klaxxi-Paragons und bereite dich auf das Stufengrenze-Endgame vor.' },
+      { id: 'tal-der-ewigen-bluten', name: 'Tal der Ewigen Blüten', levelRange: '90', note: 'Der heilige Kern Pandarias und der Goldene Lotus. Tägliche Ruf-Hubs, Weltbosse und Einstieg in die Schlachtzüge.' }
+    ]
+  },
+  {
+    id: 'mop-reputation-fraktionen',
+    title: 'Vertrauen der Völker · Pandaria-Ruf',
+    category: 'Reputation',
+    expansion: 'mists-of-pandaria',
+    audience: 'Fortgeschritten',
+    minutes: 32,
+    summary: 'Wolkenserpent-Reiter, Shado-Pan, Klaxxi und mehr. Jede Fraktion mit Region, Belohnungsschwerpunkt und empfohlenem Rufstand.',
+    checklist: ['Goldenen Lotus zuerst auf Ehrfürchtig bringen, schaltet Shado-Pan/Himmlische frei', 'Tägliche Ruf-Hubs im Tal der Ewigen Blüten bündeln', 'Tabard-Farming in Dungeons für Nebenfraktionen nutzen', 'Belohnungen pro Fraktion mit Ausrüstungslücken abgleichen'],
+    premium: false,
+    tags: ['Ruf', 'Fraktionen', 'Pandaria'],
+    factions: [
+      { name: 'Orden des Wolkenserpents', region: 'Jadewald', glyph: '◈', reward: 'Ziehe dein eigenes Wolkenserpent-Reittier auf und schalte Serpent-Reittiere und Rezepte frei.', bar: '78%', standing: 'Ehrfürchtig' },
+      { name: 'Die Ackerbauern', region: 'Tal der Vier Winde', glyph: '❀', reward: 'Baue deine Halbhügel-Farm aus und gewinne die Dorfbewohner als Freunde für tägliche Mats.', bar: '64%', standing: 'Beste Freunde' },
+      { name: 'Die Angler', region: 'Krasarangwildnis', glyph: '≋', reward: 'Angel-Belohnungen, Hüte und das Reittier „Wassersprung-Fischsattel“.', bar: '52%', standing: 'Wohlwollend' },
+      { name: 'Der Goldene Lotus', region: 'Tal der Ewigen Blüten', glyph: '❁', reward: 'Torwächter-Fraktion: schaltet Ruf bei Shado-Pan und Erhabenen Himmlischen frei.', bar: '88%', standing: 'Ehrfürchtig' },
+      { name: 'Shado-Pan', region: 'Tonlangsteppe', glyph: '⚔', reward: 'Handschuh-Verzauberungen, Wachhund-Reittiere und Plattenset-Belohnungen.', bar: '46%', standing: 'Respektvoll' },
+      { name: 'Die Erhabenen Himmlischen', region: 'Vier Tempel', glyph: '⚜', reward: 'Gürtel-Verzauberungen und PvE-Ausrüstung der vier himmlischen Wächter.', bar: '58%', standing: 'Ehrfürchtig' },
+      { name: 'Die Klaxxi', region: 'Schreckensöde', glyph: '❈', reward: 'Mächtige Waffen, ein Umhang-Upgrade und der Bernstein-Ruf der Paragons.', bar: '70%', standing: 'Ehrfürchtig' },
+      { name: 'Operation Schildwall / Dominanz-Offensive', region: 'Vale & Inseln', glyph: '☸', reward: 'Fraktionskriegs-Kampagne mit eigenem Ruf, Ausrüstung und einzigartigen Reittieren.', bar: '40%', standing: 'Respektvoll' }
+    ]
+  },
+  {
+    id: 'mop-challenge-modes',
+    title: 'Ein Rennen gegen die Zeit · Herausforderungsmodi',
+    category: 'Dungeons',
+    expansion: 'mists-of-pandaria',
+    audience: 'Experte',
+    minutes: 27,
+    summary: 'In allen neun Pandaria-Dungeons wird deine Ausrüstung auf ein festes Gegenstandsstufen-Niveau normalisiert – nur Skill und Route zählen. Räume jeden Trash-Mob, hetze von Boss zu Boss und jage die Bestzeit.',
+    checklist: ['Route und Skips vor dem Run festlegen', 'Cooldown-Einsatz pro Bosskampf absprechen', 'Trash-Pulls so bündeln, dass kein Mob übersprungen wird', 'Bestzeit nach jedem Versuch mit der Gruppe auswerten'],
+    premium: true,
+    tags: ['Challenge Mode', 'Dungeons', 'Speedrun'],
+    medals: [
+      { name: 'Bronze', icon: 'III', color: '#c67b45', desc: 'Schließe den Dungeon innerhalb der großzügigen Bronze-Zeit ab. Einstieg und Erfolge.' },
+      { name: 'Silber', icon: 'II', color: '#b7bdc4', desc: 'Straffere Route und saubere Pulls. Titel-Fortschritt und Meta-Erfolge.' },
+      { name: 'Gold', icon: 'I', color: '#d4af37', desc: 'Die Bestzeit. Nur mit perfekter Route, Cooldown-Einsatz und Skips möglich.' }
+    ],
+    challengeRewards: [
+      'Exklusive Klassen-Transmogsets „Held der Zeit“ – für Gold in allen neun Dungeons.',
+      'Account-weite Phönix-Reittiere (z. B. Zügel des purpurroten Feuerschwingen).',
+      'Der Titel und Erfolg „Herausforderungswütiger“ bei perfekter Gold-Wertung.',
+      'Ausrüstung wird auf Challenge-Item-Level normalisiert – reiner Skill-Vergleich.'
+    ]
   }
 ];

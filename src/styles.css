@@ -229,6 +229,32 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
 .zone-level-range { font-size: .78rem; font-weight: 800; color: #c2baad; }
 .zone-route-main p { margin: 4px 0 0; color: #d5cdbf; font-size: .86rem; line-height: 1.5; }
 
+/* ----- Faction grid (reputation guide cards) ----- */
+
+.faction-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-top: 4px; }
+.faction-card { padding: 16px; border-radius: 16px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.09); }
+.faction-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.faction-glyph { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: color-mix(in srgb, var(--ac), transparent 70%); border: 1px solid color-mix(in srgb, var(--ac), transparent 50%); color: #f7efe0; font-size: 1.1rem; }
+.faction-card-title { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.faction-card-title strong { color: #f7efe0; font-size: 1.02rem; }
+.faction-card-title span.faction-region { color: var(--ac); font-size: .76rem; font-weight: 800; }
+.faction-card p { margin: 0 0 12px; color: #d5cdbf; font-size: .85rem; line-height: 1.5; }
+.faction-bar-track { height: 7px; border-radius: 999px; background: rgba(255,255,255,.09); overflow: hidden; }
+.faction-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--ac), color-mix(in srgb, var(--ac), #ffffff 40%)); }
+.faction-standing { display: block; margin-top: 7px; font-size: .74rem; font-weight: 800; color: #ffc86b; }
+
+/* ----- Medal grid (challenge mode guide cards) ----- */
+
+.medal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 4px; }
+.medal-card { padding: 20px; border-radius: 16px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.09); border-top: 4px solid var(--medal-color); text-align: center; }
+.medal-icon { display: grid; place-items: center; width: 52px; height: 52px; margin: 0 auto 12px; border-radius: 50%; background: var(--medal-color); color: #241204; font-weight: 900; font-size: 1.3rem; }
+.medal-card h5 { margin: 0 0 6px; color: #f7efe0; font-size: 1.15rem; }
+.medal-card p { margin: 0; color: #a9a195; font-size: .85rem; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .faction-grid, .medal-grid, .dungeon-boss-grid { grid-template-columns: 1fr; }
+}
+
 /* ----- Bibliothek listing extra filters ----- */
 
 .library-filters { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
@@ -394,6 +420,13 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
 .dungeon-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .dungeon-guide-grid section { padding: 15px; border-radius: 18px; background: rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.09); }
 .dungeon-guide-grid h4 { margin: 0 0 10px; color: color-mix(in srgb, var(--dungeon-color), #ffffff 34%); }
+.dungeon-boss-cell { grid-column: 1 / -1; }
+.dungeon-boss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.dungeon-boss-card { position: relative; overflow: hidden; padding: 14px; border-radius: 14px; background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.09); }
+.dungeon-boss-card::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--dungeon-color); opacity: .8; }
+.dungeon-boss-card h5 { margin: 0 0 4px; color: var(--dungeon-color); font-size: 1.02rem; }
+.dungeon-boss-role { display: block; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; color: #ffe39a; margin-bottom: 6px; }
+.dungeon-boss-card p { margin: 0; color: #d5cdbf; font-size: .85rem; line-height: 1.5; }
 
 @media (max-width: 1200px) {
   .dungeon-panel { grid-template-columns: 1fr; }
@@ -452,3 +485,118 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
   .profession-intro, .profession-grid, .profession-route { margin-inline: 14px; }
   .price-card.highlighted { transform: none; }
 }
+
+/* ==========================================================================
+   Mists of Pandaria design pack — scoped jade/parchment reskin.
+   The sidebar reskins whenever MoP is the active package (html[data-active-
+   expansion]); the parchment card look is further scoped to `.mop-content`,
+   the wrapper app.js toggles on #view-content only for genuine MoP pages
+   (dungeon/raid atlas + detail, and MoP-tagged library guides). Classic/TBC
+   pages are untouched by either scope.
+   ========================================================================== */
+
+html[data-active-expansion="mists-of-pandaria"] .sidebar {
+  background: linear-gradient(180deg, rgba(19,38,30,.92), rgba(9,20,15,.96));
+  border-right-color: rgba(184,147,63,.28);
+}
+html[data-active-expansion="mists-of-pandaria"] .site-logo-mark {
+  background: linear-gradient(135deg, #2f8f66, #5cc795);
+  color: #08150f;
+  box-shadow: 0 6px 18px rgba(47,143,102,.35);
+}
+html[data-active-expansion="mists-of-pandaria"] .site-logo-text small { color: #8f9b86; }
+html[data-active-expansion="mists-of-pandaria"] .search-field { border-color: rgba(184,147,63,.22); }
+html[data-active-expansion="mists-of-pandaria"] .search-field input { color: #e9dfc6; }
+html[data-active-expansion="mists-of-pandaria"] .expansion-pill { color: #a9b3a0; }
+html[data-active-expansion="mists-of-pandaria"] .expansion-pill.active {
+  background: linear-gradient(135deg, #2f8f66, #5cc795);
+  color: #08150f;
+  box-shadow: 0 4px 12px rgba(47,143,102,.3);
+}
+html[data-active-expansion="mists-of-pandaria"] .expansion-pill:not(.active):hover { color: #bfe8d2; border-color: rgba(92,199,149,.4); }
+html[data-active-expansion="mists-of-pandaria"] .site-nav a { color: #b0a488; }
+html[data-active-expansion="mists-of-pandaria"] .site-nav a:hover { color: #9ee3bd; background: rgba(92,199,149,.08); }
+html[data-active-expansion="mists-of-pandaria"] .site-nav a.active {
+  background: linear-gradient(135deg, #2f8f66, #5cc795);
+  color: #08150f;
+}
+html[data-active-expansion="mists-of-pandaria"] .package-box { background: rgba(47,143,102,.1); border-color: rgba(47,143,102,.3); }
+html[data-active-expansion="mists-of-pandaria"] .package-dot { background: #5cc795; box-shadow: 0 0 8px #5cc795; }
+html[data-active-expansion="mists-of-pandaria"] .package-box strong { color: #f3ead2; font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: .01em; }
+html[data-active-expansion="mists-of-pandaria"] .package-box small.package-desc { color: #9aa691; }
+
+.mop-content h1, .mop-content h2, .mop-content h3, .mop-content h4, .mop-content h5,
+.mop-content .detail-title, .mop-content .package-box strong {
+  font-family: 'Cormorant Garamond', serif;
+}
+.mop-content h1 { color: #f3ead2; }
+.mop-content .eyebrow { color: #5cc795; }
+.mop-content .hero-copy p, .mop-content p { color: #b6c3ac; }
+.mop-content .filter-bar { background: rgba(47,143,102,.08); border-color: rgba(184,147,63,.25); }
+.mop-content .filter-bar span { color: #93a189; }
+.mop-content .filter-bar button { color: #d8c98c; }
+.mop-content .filter-bar button:hover { color: #f0e3ab; }
+.mop-content .metric-grid div { background: rgba(47,143,102,.08); border-color: rgba(184,147,63,.22); }
+.mop-content .metric-grid b { color: #f3ead2; }
+.mop-content .metric-grid span { color: #93a189; }
+.mop-content .empty-state { color: #b6c3ac; border-color: rgba(184,147,63,.3); }
+.mop-content .empty-state b { color: #f3ead2; }
+.mop-content .card-meta { color: #2f8f66; }
+.mop-content .back-link { color: #8f9b86; }
+.mop-content .back-link:hover { color: #2f8f66; }
+.mop-content .crumb { color: #7d8a76; }
+
+.mop-content .tile,
+.mop-content .section-card,
+.mop-content .zone-route-item,
+.mop-content .dungeon-guide-grid section,
+.mop-content .raid-info-grid section,
+.mop-content .boss-card,
+.mop-content .dungeon-boss-card,
+.mop-content .faction-card,
+.mop-content .medal-card,
+.mop-content .detail-header,
+.mop-content .dungeon-panel,
+.mop-content .raid-panel {
+  background: linear-gradient(180deg, #f2ead0, #e6d9b7);
+  border-color: rgba(70,52,26,.28);
+  box-shadow: 0 14px 34px rgba(0,0,0,.28);
+}
+.mop-content .detail-header, .mop-content .dungeon-panel, .mop-content .raid-panel {
+  background: linear-gradient(180deg, #f3ebd2, #e7dab9);
+  box-shadow: 0 24px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.mop-content .tile:hover { background: linear-gradient(180deg, #f6efd9, #ecdfc0); }
+
+.mop-content .tile h3, .mop-content .section-card h4, .mop-content .dungeon-guide-grid h4,
+.mop-content .raid-info-grid h4, .mop-content .boss-card h5, .mop-content .dungeon-boss-card h5,
+.mop-content .faction-card-title strong, .mop-content .medal-card h5,
+.mop-content .zone-route-top strong, .mop-content .dungeon-main h3, .mop-content .raid-hero h3,
+.mop-content .detail-title, .mop-content .dungeon-art strong {
+  color: #241d10;
+}
+.mop-content .tile-summary, .mop-content .plain-list li span.item-text,
+.mop-content .zone-route-main p, .mop-content .rank-list li, .mop-content .dungeon-boss-card p,
+.mop-content .boss-card p, .mop-content .faction-card p, .mop-content .medal-card p,
+.mop-content .detail-summary, .mop-content .raid-hero p, .mop-content .dungeon-main p {
+  color: #6b5f49;
+}
+.mop-content .tile-tags span.tag, .mop-content .pill, .mop-content .zone-level-range,
+.mop-content .class-pill-row span {
+  background: rgba(255,255,255,.5);
+  color: #3a3122;
+  border-color: rgba(70,52,26,.18);
+}
+.mop-content .dungeon-boss-role, .mop-content .faction-card-title span.faction-region { color: #2f8f66; }
+.mop-content .rank-list li::before { background: rgba(47,143,102,.16); border-color: rgba(47,143,102,.4); color: #1c5a41; }
+.mop-content .boss-loot span { background: rgba(47,143,102,.14); border-color: rgba(47,143,102,.3); color: #1c5a41; }
+.mop-content .dungeon-art, .mop-content .dungeon-map-image {
+  background: repeating-linear-gradient(135deg, rgba(47,143,102,.16) 0 12px, rgba(47,143,102,.05) 12px 24px), #dccda6;
+  border-color: rgba(70,52,26,.24);
+}
+.mop-content .dungeon-art strong { background: rgba(255,255,255,.5); }
+.mop-content .hashtag { background: rgba(90,66,30,.1); color: #6b5f49; }
+.mop-content .faction-bar-track { background: rgba(90,66,30,.15); }
+.mop-content .faction-bar-fill { background: linear-gradient(90deg, #2f8f66, #5cc795); }
+.mop-content .faction-standing { color: #8f2f22; }
+.mop-content .medal-icon { color: #241d10; }
