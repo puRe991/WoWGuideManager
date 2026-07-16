@@ -136,6 +136,7 @@ assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]
 
 assert.ok(reputationGuides.classic, 'reputationGuides must expose a classic expansion key');
 assert.ok(reputationGuides['the-burning-crusade'], 'reputationGuides must expose a the-burning-crusade expansion key');
+assert.ok(reputationGuides['wrath-of-the-lich-king'], 'reputationGuides must expose a wrath-of-the-lich-king expansion key');
 
 const classicReputationGuides = reputationGuides.classic;
 assert.ok(classicReputationGuides.length >= 12, 'Classic reputation almanac should cover at least twelve factions');
@@ -149,6 +150,14 @@ assert.ok(tbcReputationGuides.some((rep) => rep.id === 'aldor'), 'TBC reputation
 assert.ok(tbcReputationGuides.some((rep) => rep.id === 'scryers'), 'TBC reputation almanac should include The Scryers');
 assert.ok(tbcReputationGuides.some((rep) => rep.id === 'netherwing'), 'TBC reputation almanac should include Netherwing');
 
+const wrathReputationGuides = reputationGuides['wrath-of-the-lich-king'];
+assert.ok(wrathReputationGuides.length >= 10, 'Wrath of the Lich King reputation almanac should cover at least ten Northrend factions');
+assert.ok(wrathReputationGuides.some((rep) => rep.id === 'argent-crusade'), 'WotLK reputation almanac should include The Argent Crusade');
+assert.ok(wrathReputationGuides.some((rep) => rep.id === 'knights-of-the-ebon-blade'), 'WotLK reputation almanac should include The Knights of the Ebon Blade');
+assert.ok(wrathReputationGuides.some((rep) => rep.id === 'ashen-verdict'), 'WotLK reputation almanac should include The Ashen Verdict');
+assert.ok(wrathReputationGuides.some((rep) => rep.id === 'sons-of-hodir'), 'WotLK reputation almanac should include The Sons of Hodir');
+assert.ok(wrathReputationGuides.some((rep) => rep.id === 'the-kalu-ak'), "WotLK reputation almanac should include The Kalu'ak");
+
 assert.ok(reputationGuides['mists-of-pandaria'], 'reputationGuides must expose a mists-of-pandaria expansion key');
 
 const mopReputationGuides = reputationGuides['mists-of-pandaria'];
@@ -158,7 +167,7 @@ assert.ok(mopReputationGuides.some((rep) => rep.id === 'shado-pan'), 'MoP reputa
 assert.ok(mopReputationGuides.some((rep) => rep.id === 'the-klaxxi'), 'MoP reputation almanac should include The Klaxxi');
 assert.ok(mopReputationGuides.some((rep) => rep.id === 'order-of-the-cloud-serpent'), 'MoP reputation almanac should include the Order of the Cloud Serpent');
 
-const allReputationGuides = [...classicReputationGuides, ...tbcReputationGuides, ...mopReputationGuides];
+const allReputationGuides = [...classicReputationGuides, ...tbcReputationGuides, ...wrathReputationGuides, ...mopReputationGuides];
 assert.ok(new Set(allReputationGuides.map((rep) => rep.id)).size === allReputationGuides.length, 'Reputation guide ids must be unique across expansions');
 assert.ok(
   allReputationGuides.every((rep) => rep.howTo.length >= 2 && rep.grindTargets.length >= 1 && rep.keyQuests.length >= 1 && rep.tips.length >= 2),

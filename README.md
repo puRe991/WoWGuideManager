@@ -79,6 +79,10 @@ The Dungeon Atlas is now expansion-aware: `src/data/dungeonGuides.js` exports `d
 
 Class and profession deep-dive guides are still Classic-only; those sections now show an explicit scope note when a non-Classic expansion is selected instead of implying TBC coverage that doesn't exist yet. Building a TBC `classGuides`/`classBuildGuides`/`specGuides`/`professionGuides` equivalent is the next step; see `docs/product-roadmap.md`.
 
+## The Wrath of the Lich King reputation almanac
+
+The Guide Command Center now includes a full Wrath of the Lich King reputation pack in `src/data/reputationGuides.js` under the `wrath-of-the-lich-king` key, covering all major Northrend factions using their original English names: The Kalu'ak, The Wyrmrest Accord, The Argent Crusade, The Knights of the Ebon Blade, The Ashen Verdict, The Sons of Hodir, The Frenzyheart Tribe, The Oracles, Kirin Tor, The Silver Covenant & The Sunreavers, and the Nordend-Vorhut-Fraktionen hub-faction bundle (Valiance Expedition/Warsong Offensive, Explorers' League/The Hand of Vengeance, Alliance Vanguard/Horde Expedition). Each faction guide includes how-to-earn-rep steps, grind targets, key quests, standing-by-standing reward breakdowns and tips, matching the depth of the existing Classic and TBC reputation almanacs. Leveling, dungeon, raid and class guides for Wrath of the Lich King are not built yet; those still show the honest empty state until the next content pack.
+
 ## Quality gates
 
 - `npm run lint` runs a dependency-free syntax and style check (`scripts/lint.mjs`) over `src/` and `scripts/`.
