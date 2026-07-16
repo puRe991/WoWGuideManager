@@ -76,6 +76,11 @@ const reputationAtlasCopy = {
     eyebrow: 'The Burning Crusade Ruf-Almanach',
     title: 'Alle Outland-Ruf-Fraktionen von Honor Hold bis Ashtongue Deathsworn.',
     copy: 'Von Hellfire Peninsula bis Shadowmoon Valley: Schulter- und Umhangverzauberungen, Heroic-Schlüssel, Netherwing-Drachen und die komplette Raid-Vorbereitung mit Grind-Routen pro Fraktion.'
+  },
+  'wrath-of-the-lich-king': {
+    eyebrow: 'Wrath of the Lich King Ruf-Almanach',
+    title: "Alle Nordend-Ruf-Fraktionen von den Kalu'ak bis zur Ashen Verdict.",
+    copy: "Von Howling Fjord bis Icecrown Citadel: Schulterverzauberungen der Sons of Hodir, Dalaran-Botschaften, Sholazar-Konkurrenzfraktionen und die komplette Ashen-Verdict-Vorbereitung mit Grind-Routen pro Fraktion."
   }
 };
 

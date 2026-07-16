@@ -16,9 +16,9 @@ export const expansions = [
   {
     key: 'wrath-of-the-lich-king',
     name: 'Wrath of the Lich King',
-    status: 'Geplant',
-    launchFocus: 'Northrend-Routen, Embleme, Dailies und Raid-Wings als aktivierbare Erweiterung.',
-    modules: ['Northrend Leveling', 'Emblem Planner', 'Daily Rotation', 'Raid Lockouts']
+    status: 'Startpaket',
+    launchFocus: 'Northrend-Hub mit komplettem Ruf-Almanach für alle Nordend-Fraktionen. Erster Guide-Satz ist live, Leveling-, Dungeon-, Raid- und Klassen-Tiefenguides folgen als nächster Ausbauschritt.',
+    modules: ['Ruf-Guides', 'Northrend Leveling', 'Emblem Planner', 'Daily Rotation', 'Raid Lockouts']
   },
   {
     key: 'mists-of-pandaria',
