@@ -300,6 +300,8 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
 .card-meta { display: flex; justify-content: space-between; gap: 10px; color: #ffc86b; font-size: .76rem; font-weight: 800; margin-bottom: 14px; text-transform: uppercase; letter-spacing: .07em; }
 .class-pill-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
 .class-pill-row span { border-radius: 999px; padding: 7px 11px; background: rgba(0,0,0,.24); color: #f7efe0; font-weight: 800; font-size: .84rem; }
+.talent-planner-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; padding: 10px 18px; border-radius: 999px; background: var(--class-color); color: #17130d; font-weight: 900; font-size: .84rem; text-decoration: none; transition: filter .15s ease; }
+.talent-planner-link:hover, .talent-planner-link:focus-visible { filter: brightness(1.12); }
 .guide-update-card { align-self: stretch; padding: 16px; border-radius: 20px; background: rgba(0,0,0,.26); border: 1px solid color-mix(in srgb, var(--class-color), transparent 54%); display: grid; align-content: center; gap: 6px; }
 .guide-update-card span, .guide-update-card small, .class-toc span, .guide-section-heading span { color: #a9a195; font-size: .76rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .guide-update-card strong { color: var(--class-color); font-size: 1.1rem; }
