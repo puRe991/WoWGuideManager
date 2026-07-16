@@ -268,7 +268,7 @@ export const guideCards = [
     audience: 'Experte',
     minutes: 58,
     summary: 'Acht-Boss-Raid unter der Schwarzfelsspitze mit Ei-Event, Vaelastrasz-Burn-Phase und Nefarians Class Calls.',
-    checklist: ['Razorgore-Ei-Event-Rotation planen', 'Vael-Burn-Phase mit Cooldowns timen', 'Drachen-Trio-Reihenfolge festlegen', 'Nefarian-Class-Call-Positionen vorbereiten'],
+    checklist: ['Razorgore-Ei-Event: Ecken-Gruppen und Kontrolleur einteilen', 'Vael-Burn-Phase mit Cooldowns timen', 'Drachen-Trio-Reihenfolge festlegen', 'Nefarian-Class-Call-Positionen vorbereiten'],
     premium: true,
     tags: ['Raid', 'Blackwing Lair', '40er']
   },
