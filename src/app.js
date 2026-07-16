@@ -66,6 +66,19 @@ const dungeonAtlasCopy = {
   }
 };
 
+const reputationAtlasCopy = {
+  classic: {
+    eyebrow: 'Classic Ruf-Almanach',
+    title: 'Alle Classic-Ruf-Fraktionen mit Belohnungen, Quests und Grind-Routen.',
+    copy: 'Jede Fraktion bekommt eine eigene Seite: wie du Ruf sammelst, welche Quests und Turn-ins zählen, was du farmen solltest und welche Belohnungen pro Rang warten.'
+  },
+  'the-burning-crusade': {
+    eyebrow: 'The Burning Crusade Ruf-Almanach',
+    title: 'Alle Outland-Ruf-Fraktionen von Honor Hold bis Ashtongue Deathsworn.',
+    copy: 'Von Hellfire Peninsula bis Shadowmoon Valley: Schulter- und Umhangverzauberungen, Heroic-Schlüssel, Netherwing-Drachen und die komplette Raid-Vorbereitung mit Grind-Routen pro Fraktion.'
+  }
+};
+
 const raidAtlasCopy = {
   classic: {
     eyebrow: 'Classic Raid Atlas',
@@ -155,6 +168,10 @@ function getActiveDungeons() {
 
 function getActiveRaids() {
   return raidGuides[state.selectedExpansion] ?? [];
+}
+
+function getActiveReputationGuides() {
+  return reputationGuides[state.selectedExpansion] ?? [];
 }
 
 function scopeNote(text) {
@@ -285,7 +302,7 @@ function buildAllGroups(term) {
     { key: 'farming-guides', label: 'Farmen', accent: '#c9a86a', tiles: farmingGuides.flatMap((group) => group.items.map((item) => farmingTile(item, group))) },
     { key: 'dungeon-guides', label: 'Dungeons', accent: '#ff8a4c', tiles: activeDungeons.map(dungeonTile) },
     { key: 'raid-guides', label: 'Raids', accent: '#ff6b6b', tiles: activeRaids.map(raidTile) },
-    { key: 'reputation-guides', label: 'Ruf', accent: '#7bb6ff', tiles: reputationGuides.map(reputationTile) },
+    { key: 'reputation-guides', label: 'Ruf', accent: '#7bb6ff', tiles: getActiveReputationGuides().map(reputationTile) },
     { key: 'guides', label: 'Bibliothek', accent: '#7bb6ff', tiles: guideCards.map(libraryTile) }
   ];
   return groups
@@ -315,7 +332,8 @@ function renderStart() {
   const totalDungeons = Object.values(dungeonGuides).reduce((sum, list) => sum + list.length, 0);
   const totalRaids = Object.values(raidGuides).reduce((sum, list) => sum + list.length, 0);
   const totalFarmingItems = farmingGuides.reduce((sum, group) => sum + group.items.length, 0);
-  const totalGuides = classGuides.length + professionGuides.length + totalDungeons + totalRaids + totalFarmingItems + reputationGuides.length + guideCards.length;
+  const totalReputationGuides = Object.values(reputationGuides).reduce((sum, list) => sum + list.length, 0);
+  const totalGuides = classGuides.length + professionGuides.length + totalDungeons + totalRaids + totalFarmingItems + totalReputationGuides + guideCards.length;
   const groups = buildAllGroups(state.search);
 
   return `
@@ -437,12 +455,24 @@ function renderRaidGuidesListing() {
 }
 
 function renderReputationGuidesListing() {
-  const tiles = reputationGuides.map(reputationTile).filter((tile) => matches(tile.hay, state.search));
+  const atlasCopy = reputationAtlasCopy[state.selectedExpansion];
+  const activeReputationGuides = getActiveReputationGuides();
+  const tiles = activeReputationGuides.map(reputationTile).filter((tile) => matches(tile.hay, state.search));
+
   return `
     <section class="page">
       ${renderFilterBar('reputation-guides')}
-      <div class="hero"><div class="hero-copy"><span class="eyebrow">Classic Ruf-Almanach</span><h1>Alle Classic-Ruf-Fraktionen mit Belohnungen, Quests und Grind-Routen.</h1><p>Jede Fraktion bekommt eine eigene Seite: wie du Ruf sammelst, welche Quests und Turn-ins zählen, was du farmen solltest und welche Belohnungen pro Rang warten.</p>${scopeNote('Dieser Ruf-Almanach deckt aktuell WoW Classic ab. Weitere Erweiterungen folgen.')}</div></div>
-      ${tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">${escapeHtml(atlasCopy?.eyebrow ?? 'Ruf-Almanach')}</span>
+          <h1>${escapeHtml(atlasCopy?.title ?? 'Für diese Erweiterung ist noch kein Ruf-Almanach verfügbar.')}</h1>
+          <p>${escapeHtml(atlasCopy?.copy ?? 'Dieser Bereich wird mit dem nächsten Content-Pack für diese Erweiterung ergänzt.')}</p>
+        </div>
+        <div class="metric-grid"><div><b>${activeReputationGuides.length}</b><span>Fraktionen</span></div></div>
+      </div>
+      ${activeReputationGuides.length === 0
+        ? '<div class="empty-state"><b>Noch kein Ruf-Almanach</b>Für diese Erweiterung wird der Ruf-Bereich mit dem nächsten Content-Pack ergänzt.</div>'
+        : tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
     </section>`;
 }
 
@@ -690,7 +720,7 @@ function renderReputationRank(standing) {
 }
 
 function renderReputationDetail(id) {
-  const rep = reputationGuides.find((item) => item.id === id);
+  const rep = getActiveReputationGuides().find((item) => item.id === id) ?? Object.values(reputationGuides).flat().find((item) => item.id === id);
   if (!rep) return null;
 
   return `
@@ -1019,6 +1049,10 @@ function redirectIfDungeonMissing() {
   }
   if (section === 'raid-guides' && id && !getActiveRaids().some((raid) => raid.id === id)) {
     window.location.hash = '#raid-guides';
+    return;
+  }
+  if (section === 'reputation-guides' && id && !getActiveReputationGuides().some((rep) => rep.id === id)) {
+    window.location.hash = '#reputation-guides';
   }
 }
 
@@ -1039,7 +1073,7 @@ function renderNavCounts() {
   document.querySelector('#nav-count-farming-guides').textContent = totalFarmingItems;
   document.querySelector('#nav-count-dungeon-guides').textContent = totalDungeons;
   document.querySelector('#nav-count-raid-guides').textContent = totalRaids;
-  document.querySelector('#nav-count-reputation-guides').textContent = reputationGuides.length;
+  document.querySelector('#nav-count-reputation-guides').textContent = getActiveReputationGuides().length;
   document.querySelector('#nav-count-guides').textContent = guideCards.length;
 }
 
