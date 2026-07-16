@@ -383,7 +383,143 @@ const tbcRaidGuides = [
   }
 ];
 
+const mopRaidGuides = [
+  {
+    id: 'mogushan-vaults',
+    name: 'Mogu’shan-Schatzkammer',
+    size: '10 & 25',
+    tier: 'Stufe 14 · Patch 5.0',
+    levelReq: '90',
+    zone: 'Vier Tempel',
+    wing: 'Grabkammern der Mogu-Kaiser',
+    theme: '#b8933f',
+    summary: 'Die Grabkammern der Mogu-Kaiser – vom Steinwächter-Trio bis zum uralten Wille des Kaisers. Erster Raid der Erweiterung mit sechs Bossen.',
+    attunement: ['Kein festes Attunement, Zugang über die Pandaria-Hauptquestreihe im Tal der Ewigen Blüten'],
+    route: ['Steinwächter-Paare farbcodiert fokussieren', 'Feng-Seelenfragmente kontrolliert einsammeln', 'Geisterwelt-Team für Gara’jal vorher festlegen', 'Elegon-Überladungskugeln absorbieren lassen'],
+    loot: ['Wächter der Grabkammer-Rüstung', 'Mogu-Kaiser-Insignien', 'Elegon-Astralwaffen'],
+    tips: ['Farbcodierte Debuffs beim Steinwächter-Trio nicht überlappen lassen', 'Geisterwelt-Spieler bei Gara’jal brauchen Selbstheilung', 'Bei den Geisterkönigen rotieren die Fähigkeiten pro Phase'],
+    composition: ['1-2 Tanks', '4-6 Heiler', 'Rest DPS mit guter Fokuswechsel-Rotation'],
+    bosses: [
+      { name: 'Das Steinwächter-Trio', mechanics: ['Vier farbcodierte Wächter (Bernstein/Jade/Amethyst/Kobalt) müssen paarweise fokussiert werden', 'Farbcodierte Bodenflächen nicht überlappen lassen', 'Falscher Fokus verursacht Raid-weiten Flächenschaden'], loot: ['Wächter-Plattenschultern', 'Elementar-Ringe'] },
+      { name: 'Feng der Verfluchte', mechanics: ['Seelenfragmente spawnen Geister-Adds bei falscher Aufnahme', 'Fengs Zorn ist ein Kegelangriff bei zu vielen aktiven Fragmenten', 'Enrage-Timer verlangt konstante Fragment-Kontrolle'], loot: ['Verfluchte Klinge', 'Seelenfragment-Trinket'] },
+      { name: 'Gara’jal der Geistbinder', mechanics: ['Zwei Spieler werden periodisch in die Geisterwelt gezogen', 'Geisterwelt-Team bekämpft eine Verkörperung der Verderbnis', 'Schaden in der Geisterwelt spiegelt sich in die reale Welt'], loot: ['Voodoo-Stab', 'Geistbinder-Umhang'] },
+      { name: 'Die Geisterkönige', mechanics: ['Vier Mogu-Geister mit rotierenden Sonderfähigkeiten pro Phase', 'Tornado-, Feuerwand- und Pfeilhagel-Mechaniken abwechselnd meiden', 'Fixierungs-Charge auf zufällige Spieler beachten'], loot: ['Königs-Diadem', 'Vier-Winde-Umhang'] },
+      { name: 'Elegon', mechanics: ['Statische Überladung erfordert das Absorbieren von Energiekugeln', 'Arkanotron-Adds mit Laserstrahlen in der Zwischenphase', 'Empowerment-Stacks erhöhen Schaden bei Fehlern deutlich'], loot: ['Astral-Waffen', 'Kaiserliches Sockel-Trinket'] },
+      { name: 'Wille des Kaisers', mechanics: ['Zwei Konstrukt-Zwillinge mit geteiltem Empowerment-Balken', 'Cleave-Schaden verlangt saubere Tank-Positionierung', 'Beide Konstrukte müssen nahezu gleichzeitig fallen'], loot: ['Kaiserliches Schwert', 'Tier-15-Vorschau-Anteile'] }
+    ]
+  },
+  {
+    id: 'heart-of-fear',
+    name: 'Herz der Angst',
+    size: '10 & 25',
+    tier: 'Stufe 14 · Patch 5.0',
+    levelReq: '90',
+    zone: 'Schreckensöde',
+    wing: 'Mantiden-Reich',
+    theme: '#8f2f22',
+    summary: 'Tief im Mantiden-Reich fordert euch Kaiserin Shek’zeer und ihre Sha-verdorbene Brut heraus.',
+    attunement: ['Ruf bei den Klaxxi (Respektvoll) für Zugang zur Instanzankündigung empfohlen'],
+    route: ['Sonarblasen bei Zor’lok koordiniert platzieren', 'Wind-Tunnel-Plattformen bei Ta’yak vorher absprechen', 'Garalon-Beinpositionen klar zuweisen', 'Kor’thik/Klaxxi’va-Reihenfolge bei Mel’jarak festlegen'],
+    loot: ['Klaxxi-Chitinrüstung', 'Sha-verdorbene Waffen', 'Kaiserinnen-Insignien'],
+    tips: ['Pheromone-Stapel bei Garalon rotieren lassen', 'Bernstein-Gefängnis bei Un’sok schnell befreien', 'Regenerationsdebuff bei Shek’zeer konsequent stapeln'],
+    composition: ['1-2 Tanks', '5-6 Heiler', 'Rest DPS mit Flächenschaden für Add-Phasen'],
+    bosses: [
+      { name: 'Kaiserlicher Vizier Zor’lok', mechanics: ['Klangringe erzwingen ständige Bewegung', 'Betäubender Schrei mit Rückstoß auf den Raid', 'Greifende Mandibeln-Adds müssen schnell fallen'], loot: ['Klangresonanz-Stab', 'Vizier-Ring'] },
+      { name: 'Klingenlord Ta’yak', mechanics: ['Wirbelwind-Plattformen wechseln in fester Reihenfolge', 'Fäuste der Wut sind ein Nahkampf-Kegelangriff', 'Sprungfenster zwischen Plattformen ist eng getaktet'], loot: ['Klingenlord-Fäuste', 'Windläufer-Stiefel'] },
+      { name: 'Garalon', mechanics: ['Pheromone-Debuff stapelt sich und muss rotiert werden', 'Zermalmen verlangt klare Bein-Tank-Positionen', 'Wütender Garalon-Zustand bei niedrigem Leben erhöht Tempo'], loot: ['Panzerschild', 'Garalon-Chitin-Platten'] },
+      { name: 'Windlord Mel’jarak', mechanics: ['Kor’thik- und Klaxxi’va-Adds müssen in fester Reihenfolge sterben', 'Falsche Reihenfolge löst Raid-weiten Enrage aus', 'Gift-Flächen der Adds meiden'], loot: ['Windlord-Dolche', 'Klaxxi-Amulett'] },
+      { name: 'Bernstein-Former Un’sok', mechanics: ['Konstrukt-Add wird separat getankt', 'Bernstein-Gefängnis friert Spieler ein und muss befreit werden', 'Wirbelturm-Phase verlangt Bewegung um den Raum'], loot: ['Bernstein-Former-Stab', 'Konstrukt-Panzer'] },
+      { name: 'Große Kaiserin Shek’zeer', mechanics: ['Sha-verdorbene Adds spawnen in Wellen', 'Regenerative Käferschale reduziert eingehende Heilung', 'Überwältigender Sha-Schlag verursacht hohen Raid-Flächenschaden'], loot: ['Kaiserinnen-Krone', 'Tier-15-Vorschau-Anteile'] }
+    ]
+  },
+  {
+    id: 'terrace-of-endless-spring',
+    name: 'Terrasse des Endlosen Frühlings',
+    size: '10 & 25',
+    tier: 'Stufe 14 · Patch 5.0',
+    levelReq: '90',
+    zone: 'Tal der Ewigen Blüten',
+    wing: 'Terrasse des Endlosen Frühlings',
+    theme: '#5cc795',
+    summary: 'Ein kompakter Vier-Boss-Raid, der im Kampf gegen den entfesselten Sha der Angst gipfelt.',
+    attunement: ['Ruf beim Goldenen Lotus (Ehrfürchtig) für den Questzugang zur Terrasse empfohlen'],
+    route: ['Beschützer-Reihenfolge (Ältester zuletzt) einhalten', 'Tsulong-Tag/Nacht-Wechsel mit klaren Rollen vorbereiten', 'Lei-Shi-Tarnphase mit Streuung beantworten', 'Sha-der-Angst-Korridore vorab zuweisen'],
+    loot: ['Frühlings-Insignien', 'Nozdormus-Segen-Trinkets', 'Sha-verdorbene Reliktwaffen'],
+    tips: ['Nachtphase bei Tsulong bringt Albtraum-Adds', 'Lei-Shis Tarnung erzwingt Streuung im Raum', 'Paranoia-Strahl beim Sha der Angst nicht kreuzen'],
+    composition: ['1-2 Tanks', '4-5 Heiler', 'Rest DPS mit stabiler Movement-Disziplin'],
+    bosses: [
+      { name: 'Die Beschützer der Endlosen', mechanics: ['Drei Beschützer mit verknüpften Debuffs', 'Feste Sterbereihenfolge, Ältester Beschützer zuletzt', 'Verknüpfte Schadensteilung verlangt gleichmäßigen Fokus'], loot: ['Beschützer-Schild', 'Frühlings-Amulett'] },
+      { name: 'Tsulong', mechanics: ['Tag-/Nacht-Phasenwechsel verändert Mechaniken komplett', 'Albträume spawnen nachts zusätzliche Adds', 'Morgengrauen-Furcht trifft den gesamten Raid'], loot: ['Mondlicht-Umhang', 'Nachtschatten-Dolche'] },
+      { name: 'Lei Shi', mechanics: ['Tarnphase zwingt den Raid zur Streuung', 'Gift-Adds müssen schnell entfernt werden', 'Notfall-Enrage-Mechanik bei zu langer Kampfdauer'], loot: ['Lei-Shi-Chitin', 'Toxin-Ring'] },
+      { name: 'Sha der Angst', mechanics: ['Angst-Manifestationen spawnen als Add-Phase', 'Albtraum-Korridore teilen den Raid in getrennte Gruppen', 'Paranoia-Strahl verursacht hohen Einzelschaden'], loot: ['Angst-Reliktwaffen', 'Tier-15-Vorschau-Anteile'] }
+    ]
+  },
+  {
+    id: 'throne-of-thunder',
+    name: 'Thron des Donners',
+    size: '10 & 25',
+    tier: 'Stufe 15 · Patch 5.2',
+    levelReq: '90',
+    zone: 'Insel des Donners',
+    wing: 'Thron des Donners',
+    theme: '#3fc7eb',
+    summary: 'Die Insel des Donnerkönigs – zwölf Bosse bis zum wiederauferstandenen Lei Shen.',
+    attunement: ['Ruf bei Operation Schildwall bzw. Dominanz-Offensive für die Questreihe zur Insel des Donners nötig'],
+    route: ['Horridons Gauntlet-Tore vorher durchsprechen', 'Rat-der-Ältesten-Fokuswechsel klar zuweisen', 'Ji-Kun-Plattformsprünge einteilen', 'Lei-Shen-Endphase mit vollen Cooldowns angehen'],
+    loot: ['Donnerkönig-Insignien', 'Blitzgeladene Waffen', 'Tier-15-Sets'],
+    tips: ['Durumus Labyrinth-Strahlen verlangen präzise Bewegung', 'Iron-Qon-Elementarphasen rotieren nach festem Muster', 'Lei-Shens Diffusionskette sauber verteilen'],
+    composition: ['2 Tanks', '5-6 Heiler', 'Rest DPS mit hoher Movement-Disziplin'],
+    bosses: [
+      { name: 'Jin’rokh der Zerschmetterer', mechanics: ['Statik-/Überladungsphasen wechseln sich ab', 'Blitzsturm-Flächen wandern über die Arena', 'Erdungsstab-Mechanik bindet einzelne Spieler'], loot: ['Sturmklinge', 'Statik-Trinket'] },
+      { name: 'Horridon', mechanics: ['Gauntlet mit vier Toren und jeweils eigenen Dinosaurier-Mechaniken', 'Wachposten-Adds müssen vor dem Boss selbst fallen', 'Finalphase kombiniert Elemente aller vier Tore'], loot: ['Trolljäger-Rüstung', 'Gauntlet-Schild'] },
+      { name: 'Der Rat der Ältesten', mechanics: ['Vier Ältere mit wechselndem Fokus je nach Debuff', 'Falscher Fokus verstärkt die übrigen Ratsmitglieder', 'Flächenschaden-Fähigkeiten überlappen bei Verzögerung'], loot: ['Rats-Zepter', 'Ältesten-Amulett'] },
+      { name: 'Tortos', mechanics: ['Wirbel-Schildkröten-Adds müssen kontrolliert werden', 'Steinschlag-Schild reduziert Schaden auf ein Ziel', 'Kriechphase am Ende erhöht Schadensrhythmus'], loot: ['Schildkrötenpanzer-Platte', 'Tortos-Klaue'] },
+      { name: 'Megaera', mechanics: ['Drei Hydra-Köpfe mit eigenen Elementarleisten', 'Elementarleisten-Kappung löst Phasenwechsel aus', 'Falsche Reihenfolge erhöht den Gesamtschaden stark'], loot: ['Hydra-Schuppen', 'Elementar-Fokus'] },
+      { name: 'Ji-Kun', mechanics: ['Plattform-Sprung-Mechanik über Federn', 'Stachel-Salve verursacht Raid-weiten Flächenschaden', 'Ei-Adds müssen vor dem Schlüpfen zerstört werden'], loot: ['Federkiel-Bogen', 'Nest-Trinket'] },
+      { name: 'Durumu der Vergessene', mechanics: ['Labyrinth-Phase erfordert präzise Strahl-Navigation', 'Verderbter Blick verwandelt Sicht in Gefahr', 'Todesstrahl verlangt sofortiges Ausweichen'], loot: ['Vergessenen-Stab', 'Augen-Trinket'] },
+      { name: 'Primordius', mechanics: ['Mutations-Adds verändern die Fähigkeiten des Bosses', 'Absorptions-Reihenfolge der Mutationen entscheidet die Taktik', 'Rohe Ursuppe verursacht wachsenden Flächenschaden'], loot: ['Ursuppen-Umhang', 'Mutations-Ring'] },
+      { name: 'Dunkler Animus', mechanics: ['Statuen-Adds verstärken den Boss bei Berührung', 'Tötungsreihenfolge der Adds ist entscheidend', 'Dunkle-Materie-Explosion bei Phasenwechsel meiden'], loot: ['Animus-Kern', 'Dunkelmaterie-Waffen'] },
+      { name: 'Iron Qon', mechanics: ['Drei Phasen mit rotierenden Elementar-Adds (Sturm/Feuer/Frost)', 'Reittier-Angriffe erfordern klare Ausweich-Wege', 'Letzte Phase kombiniert alle drei Elemente'], loot: ['Reiter-Rüstung', 'Elementar-Zügel'] },
+      { name: 'Die Zwillingsgemahlinnen', mechanics: ['Tag-/Nacht-Liebespaar-Mechanik mit Portal-Management', 'Falsches Portal verursacht massiven Flächenschaden', 'Verbindungs-Debuff zwischen den Zwillingen beachten'], loot: ['Zwillings-Dolche', 'Portal-Trinket'] },
+      { name: 'Lei Shen', mechanics: ['Diffusionskette muss sauber im Raid verteilt werden', 'Statik-Schock überlädt zufällige Spieler', 'Donnerschlag betäubt bei falscher Positionierung'], loot: ['Donnerkönig-Zepter', 'Tier-15-Endgame-Sets'] }
+    ]
+  },
+  {
+    id: 'siege-of-orgrimmar',
+    name: 'Belagerung von Orgrimmar',
+    size: 'Flexibel · 10 & 25',
+    tier: 'Stufe 16 · Patch 5.4',
+    levelReq: '90',
+    zone: 'Orgrimmar',
+    wing: 'Kriegshäuptling-Festung',
+    theme: '#b5432f',
+    summary: 'Das große Finale der Erweiterung: der Sturz von Kriegshäuptling Garrosh Höllschrei.',
+    attunement: ['Fraktionskriegs-Questreihe (Operation Schildwall / Dominanz-Offensive) bis zur Belagerung abschließen'],
+    route: ['Immerseus-Blutpfützen kontrolliert aufteilen', 'Gefallene-Beschützer-Fokuspriorität festlegen', 'Galakras-Turmverteidigung vorher zuweisen', 'Garrosh-Eisenstern-Intermezzo mit klaren Rollen angehen'],
+    loot: ['Kriegshäuptling-Insignien', 'Eisensternsplitter-Trinkets', 'Tier-16-Sets'],
+    tips: ['Sha-des-Stolzes-Spiegel-Adds sofort fokussieren', 'Thok-Kite-Route vorher einüben', 'Klaxxi-Paragone einzeln nach Ansage bearbeiten'],
+    composition: ['2 Tanks', '5-6 Heiler', 'Rest DPS mit hoher Add-Kontrolle'],
+    bosses: [
+      { name: 'Immerseus', mechanics: ['Blutpfützen müssen gleichmäßig im Raid verteilt werden', 'Verdorbene Pfützen dürfen sich nicht überlappen', 'Reinigungsphase reduziert die Sha-Korruption'], loot: ['Wasserwesen-Robe', 'Sha-Korruptions-Trinket'] },
+      { name: 'Die Gefallenen Beschützer', mechanics: ['Drei verbundene Bosse mit rotierenden Fokusdebuffs', 'Falscher Fokus verstärkt die übrigen Beschützer', 'Flächeneffekte der drei Bosse überlappen bei Verzögerung'], loot: ['Beschützer-Plattenschild', 'Wächter-Amulett'] },
+      { name: 'Norushen', mechanics: ['Prüfung-der-Korruption-Phase mit persönlichem Debuff', 'Reinigungs-Adds müssen zügig entfernt werden', 'Korruptions-Stapel bei Fehlern erhöhen Folgeschaden'], loot: ['Reinheits-Amulett', 'Norushen-Splitter'] },
+      { name: 'Sha des Stolzes', mechanics: ['Spiegel-Adds reflektieren Spielerverhalten', 'Anschwellender Stolz steigert Schaden bei Untätigkeit', 'Explosions-Phase erfordert Streuung im Raum'], loot: ['Stolz-Reliktwaffen', 'Sha-Kristall-Trinket'] },
+      { name: 'Galakras', mechanics: ['Turmverteidigung gegen Belagerungsmaschinen', 'Drachen-Add-Phase auf dem Turmdach', 'Kanonen-Bedienung entscheidet über Tempo'], loot: ['Belagerungs-Rüstung', 'Turmwächter-Waffen'] },
+      { name: 'Eiserner Dreadnought', mechanics: ['Minen-Verlegung erfordert saubere Tank-Bewegung', 'Dampfablass-Zwischenphase unterbricht den Angriff', 'Bohrer-Phase verursacht hohen Flächenschaden'], loot: ['Dreadnought-Panzerung', 'Minenleger-Trinket'] },
+      { name: 'Kor’kron-Schwarzschamanen', mechanics: ['Zwei Schamanen mit geteilter Totem-Mechanik', 'Fokuswechsel zwischen beiden Bossen nötig', 'Elementar-Totems müssen priorisiert zerstört werden'], loot: ['Schamanen-Totemstab', 'Kor’kron-Rüstung'] },
+      { name: 'General Nazgrim', mechanics: ['Add-Wellen mit Bannerbuffs für die Verteidiger', 'Falsche Banner-Priorität verstärkt den General', 'Enrage bei zu langer Kampfdauer'], loot: ['General-Klinge', 'Kriegsbanner-Trinket'] },
+      { name: 'Malkorok', mechanics: ['Blutrausch-Stapel erhöhen den Tankschaden stetig', 'Überwältigender Schlag erfordert Tankwechsel', 'Y’Shaarj-Blut-Flächen meiden'], loot: ['Blutrausch-Amulett', 'Malkorok-Streitkolben'] },
+      { name: 'Die Schätze Pandarias', mechanics: ['Rätsel-Tresor-Mechanik mit bewachten Kisten', 'Wächter-Adds verteidigen einzelne Schätze', 'Falsche Reihenfolge verlängert den Kampf erheblich'], loot: ['Schatztruhen-Beute', 'Seltene Sockelschmuck-Drops'] },
+      { name: 'Thok der Blutdurstige', mechanics: ['Kite-Phase mit steigendem Enrage-Tempo', 'Frostatem-Kegel muss konsequent gemieden werden', 'Käfig-Phase reduziert den Enrage-Fortschritt'], loot: ['Blutdurst-Klauen', 'Kite-Trinket'] },
+      { name: 'Belagerungsschmied Blackfuse', mechanics: ['Förderband-Mechanik deaktiviert gefährliche Add-Stationen', 'Sägeblatt-Fallen im Boden meiden', 'Wachsende Add-Zahl verlangt klare Prioritäten'], loot: ['Schmied-Werkzeuge', 'Sägeblatt-Waffen'] },
+      { name: 'Die Paragone der Klaxxi', mechanics: ['Neun einzigartige Klaxxi-Bosse mit eigenen Fähigkeiten', 'Fokuspriorität nach Ansage strikt einhalten', 'Kombinierte Fähigkeiten verlangen hohe Raid-Koordination'], loot: ['Klaxxi-Paragon-Waffen', 'Bernstein-Ruf-Belohnung'] },
+      { name: 'Garrosh Höllschrei', mechanics: ['Wirbelnde-Korruption-Phase mit steigendem Flächenschaden', 'Eisenstern-Intermezzo erfordert präzise Stern-Zerstörung', 'Zorn-Manifestationen spawnen in der Finalphase'], loot: ['Kriegshäuptling-Trophäen', 'Tier-16-Endgame-Sets'] }
+    ]
+  }
+];
+
 export const raidGuides = {
   classic: classicRaidGuides,
-  'the-burning-crusade': tbcRaidGuides
+  'the-burning-crusade': tbcRaidGuides,
+  'mists-of-pandaria': mopRaidGuides
 };

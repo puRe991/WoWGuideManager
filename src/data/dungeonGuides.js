@@ -620,7 +620,206 @@ const tbcDungeonGuides = [
   }
 ];
 
+const mopDungeonGuides = [
+  {
+    id: 'jade-serpent',
+    name: 'Tempel der Jadeschlange',
+    faction: 'Neutral',
+    levelRange: '85-87',
+    zone: 'Jadewald',
+    wing: 'Bibliothek des Wolkenserpents',
+    theme: '#2f8f66',
+    summary: 'Die entweihte Bibliothek des Wolkenserpents – reinige das Wasser und stelle dich dem Sha des Zweifels.',
+    route: ['Reinige das Wasser durch die Bibliothekshallen bis zu Wise Mari.', 'Folge dem Wandelgang zu Stonestep und räumt die Geister-Packs.', 'Klettert die Terrasse hinauf zu Liu Flameheart.', 'Betretet das Sanktum für den Sha des Zweifels.'],
+    bosses: [
+      { name: 'Wise Mari', role: 'Wassergeist', note: 'Weiche den Wasserstrahl-Kegeln aus und nutzt die Deckung der Säulen gegen den Wirbel.' },
+      { name: 'Lorewalker Stonestep', role: 'Beschwörer', note: 'Tötet die beschworenen Geister schnell, bevor sie den Boss und die Gruppe verstärken.' },
+      { name: 'Liu Flameheart', role: 'Jadeschlangen-Beschwörerin', note: 'Phasenwechsel zwischen Liu und dem Jadeserpent Yu’lon – Feueratem seitlich meiden.' },
+      { name: 'Sha des Zweifels', role: 'Endboss', note: 'Fokussiert die manifestierten Zweifel-Adds; haltet Zauber am Laufen, um euer Verstärkungsdebuff niedrig zu halten.' }
+    ],
+    loot: ['Jadeserpent-Rückenhülle', 'Stab der reinigenden Flut', 'Wolkenserpent-Schließe'],
+    tips: ['Unterbrecht Wise Maris Zauber konsequent.', 'Haltet die Gruppe bei Liu gestapelt für Heilung.', 'Beim Sha nicht in Panik geraten – dauerhafte Aktion senkt das Zweifel-Debuff.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS mit Interrupt'],
+    quests: ['Jadewald-Questreihe bis zum Tempel-Questgeber abschließen', 'Gruppenquest am Dungeon-Eingang mitnehmen', 'Wolkenserpent-Tabard für Bonus-Ruf anlegen'],
+    time: '25-35 Minuten'
+  },
+  {
+    id: 'brewery',
+    name: 'Stormstouts Brauerei',
+    faction: 'Neutral',
+    levelRange: '85-87',
+    zone: 'Tal der Vier Winde',
+    wing: 'Familienbrauerei',
+    theme: '#b8860b',
+    summary: 'Rüpel-Hopser und trunkene Elementare haben die Familienbrauerei gekapert.',
+    route: ['Kämpft euch durch den Fasskeller zu Ook-Ook.', 'Säubert die Hopfenfelder bis Hoptallus.', 'Steigt in die Gärhalle zu Yan-Zhu hinab.'],
+    bosses: [
+      { name: 'Ook-Ook', role: 'Rüpel-Häuptling', note: 'Rollt Fässer in seine Bahn, damit er beim Ansturm betäubt wird.' },
+      { name: 'Hoptallus', role: 'Hasen-Bestie', note: 'Tötet die Hopser-Wellen, bevor die Arena überrannt wird.' },
+      { name: 'Yan-Zhu der Ungezapfte', role: 'Bier-Elementar', note: 'Verteilt die Bier-, Gär- und Schaum-Pfützen und stapelt euch nicht.' }
+    ],
+    loot: ['Braumeister-Kappe', 'Fasstreiber-Streitkolben', 'Hopfen-getränkte Schärpe'],
+    tips: ['Nutzt die Fässer aktiv als Waffe.', 'Ranged sollten Hopser-Wellen aufsammeln.', 'Achtet bei Yan-Zhu auf die Boden-Pfützen.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS'],
+    quests: ['Halbhügel-Questreihe bis zur Brauerei abschließen', 'Gruppenquest am Dungeon-Eingang mitnehmen', 'Ackerbauern-Tabard für Bonus-Ruf anlegen'],
+    time: '25-35 Minuten'
+  },
+  {
+    id: 'shadopan',
+    name: 'Shado-Pan-Kloster',
+    faction: 'Neutral',
+    levelRange: '87-88',
+    zone: 'Kun-Lai-Gipfel',
+    wing: 'Ausbildungshallen des Shado-Pan',
+    theme: '#4b5320',
+    summary: 'Die Ausbildungshallen des Shado-Pan, von Sha-Energie verdorben.',
+    route: ['Durchquert den Übungshof zu Gu Cloudstrike.', 'Betretet die Kampfhalle zu Meister Snowdrift.', 'Reinigt das innere Sanktum bis zum Sha der Gewalt.'],
+    bosses: [
+      { name: 'Gu Cloudstrike', role: 'Sturmreiter', note: 'Meidet die Blitzschlag-Flächen und tötet den beschworenen Serpent.' },
+      { name: 'Meister Snowdrift', role: 'Kampfmeister', note: 'Unterbrecht seinen Wirbelsturm und weicht den Schnellschritt-Attacken aus.' },
+      { name: 'Sha der Gewalt', role: 'Endboss', note: 'Fokusschaden auf den Boss, weicht den kreisenden Klingen aus.' }
+    ],
+    loot: ['Shado-Pan-Schulterstücke', 'Klinge des inneren Auges', 'Meditationsgürtel'],
+    tips: ['Interrupt-Rotation für Snowdrift festlegen.', 'Bewegung ist beim Sha entscheidend.', 'Sammelt die Adds kontrolliert ein.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS mit Interrupt'],
+    quests: ['Kun-Lai-Gipfel-Questreihe bis zum Kloster abschließen', 'Gruppenquest am Dungeon-Eingang mitnehmen', 'Shado-Pan-Tabard für Bonus-Ruf anlegen'],
+    time: '30-40 Minuten'
+  },
+  {
+    id: 'mogu-palace',
+    name: 'Mogu’shan-Palast',
+    faction: 'Neutral',
+    levelRange: '87-88',
+    zone: 'Kun-Lai-Gipfel',
+    wing: 'Thronsaal der Mogu-Kaiser',
+    theme: '#b8933f',
+    summary: 'Der uralte Thronsaal der Mogu-Kaiser mit ihren mächtigsten Wächtern.',
+    route: ['Löst das Wächter-Event der Prüfung des Königs.', 'Kämpft euch zum Söldner Gekkan.', 'Stellt euch Xin im Waffensaal.'],
+    bosses: [
+      { name: 'Prüfung des Königs', role: 'Wächter-Event', note: 'Besiegt die Champions in der richtigen Reihenfolge und nutzt ihre hinterlassenen Fähigkeiten.' },
+      { name: 'Gekkan', role: 'Söldnerführer', note: 'Schaltet seine Leibwachen aus, bevor ihr den Boss fokussiert.' },
+      { name: 'Xin der Waffenmeister', role: 'Endboss', note: 'Zerstört die aktivierten Waffengestelle und meidet die rotierenden Klingen.' }
+    ],
+    loot: ['Mogu-Runenschild', 'Waffenmeister-Griff', 'Thronsaal-Siegelring'],
+    tips: ['Reihenfolge der Champions beachten.', 'Adds bei Gekkan zuerst.', 'Positioniert euch weg von den Waffengestellen.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS'],
+    quests: ['Kun-Lai-Gipfel-Questreihe bis zum Palast abschließen', 'Gruppenquest am Dungeon-Eingang mitnehmen', 'Shado-Pan-Tabard für Bonus-Ruf anlegen'],
+    time: '25-35 Minuten'
+  },
+  {
+    id: 'setting-sun',
+    name: 'Tor der Untergehenden Sonne',
+    faction: 'Neutral',
+    levelRange: '88-89',
+    zone: 'Tonlangsteppe',
+    wing: 'Die Große Mauer',
+    theme: '#c2410c',
+    summary: 'Die Große Mauer wird von den Mantiden-Schwärmen belagert.',
+    route: ['Verteidigt die Mauer gegen Kip’tilak.', 'Erklimmt die Zinnen zu Ga’dok.', 'Haltet die Bresche gegen Ri’mok.', 'Nutzt die Mörser gegen Raigonn.'],
+    bosses: [
+      { name: 'Saboteur Kip’tilak', role: 'Sprengmeister', note: 'Entschärft bzw. meidet die platzierten Sprengladungen.' },
+      { name: 'Striker Ga’dok', role: 'Flieger', note: 'Ranged-Fokus während der Luftphase, meidet die Bombenabwürfe.' },
+      { name: 'Commander Ri’mok', role: 'Schwarmführer', note: 'Kontrolliert die endlosen Add-Wellen mit Flächenschaden.' },
+      { name: 'Raigonn', role: 'Riesenkäfer', note: 'Reitet die Mörser auf sein schwaches Auge und wechselt zwischen Kopf und Körper.' }
+    ],
+    loot: ['Mauerwächter-Brustplatte', 'Mörser-Zünder', 'Serpentmauer-Wappenrock'],
+    tips: ['Sprengladungen früh erkennen.', 'AoE bereit für Ri’mok.', 'Klare Mörser-Rollen für Raigonn.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS mit AoE'],
+    quests: ['Tonlangsteppe-Questreihe bis zum Tor abschließen', 'Gruppenquest am Dungeon-Eingang mitnehmen', 'Shado-Pan-Tabard für Bonus-Ruf anlegen'],
+    time: '25-35 Minuten'
+  },
+  {
+    id: 'niuzao',
+    name: 'Belagerung des Niuzao-Tempels',
+    faction: 'Neutral',
+    levelRange: '89-90',
+    zone: 'Tonlangsteppe',
+    wing: 'Tempel des Schwarzen Ochsen',
+    theme: '#1c5a41',
+    summary: 'Der Tempel des Schwarzen Ochsen ist in die Hände des Verräters gefallen.',
+    route: ['Stürmt das Tor gegen Jin’bak.', 'Durchbrecht die Linie von Vo’jak.', 'Besiegt General Pa’valak im Hof.', 'Nutzt die Falltüren gegen Ner’onok.'],
+    bosses: [
+      { name: 'Vizier Jin’bak', role: 'Harz-Beschwörer', note: 'Verlasst die Harz-Pfützen, sonst werdet ihr festgehalten.' },
+      { name: 'Commander Vo’jak', role: 'Belagerer', note: 'Unterbrecht Verstärkungsrufe und meidet die Katapult-Einschläge.' },
+      { name: 'General Pa’valak', role: 'Kriegsherr', note: 'Wechsel zwischen Nah- und Fernkampfphase, Adds konsequent töten.' },
+      { name: 'Wing Leader Ner’onok', role: 'Endboss', note: 'Öffnet die Falltüren gegen den Boss während der Flugphase.' }
+    ],
+    loot: ['Ochsenherz-Plattenhelm', 'Niuzao-Kriegsklinge', 'Standarte des Schwarzen Ochsen'],
+    tips: ['Harz-Pfützen sofort verlassen.', 'Katapult-Warnungen ansagen.', 'Falltür-Bediener bei Ner’onok bestimmen.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS mit Interrupt'],
+    quests: ['Tonlangsteppe-Questreihe bis zum Tempel abschließen', 'Gruppenquest am Dungeon-Eingang mitnehmen', 'Shado-Pan-Tabard für Bonus-Ruf anlegen'],
+    time: '30-40 Minuten'
+  },
+  {
+    id: 'scholomance-cataclysm',
+    name: 'Scholomance',
+    faction: 'Neutral',
+    levelRange: '88-90',
+    zone: 'Westliche Pestländer',
+    wing: 'Nekromanten-Akademie',
+    theme: '#7c3aed',
+    summary: 'Die überarbeitete Nekromanten-Akademie mit fünf Meistern des Todes.',
+    route: ['Startet im Frostsaal bei Chillheart.', 'Durchschaut Jandice’ Illusionen.', 'Zermürbt Rattlegore.', 'Eskortiert Lilian Voss.', 'Stellt euch Gandling im Finale.'],
+    bosses: [
+      { name: 'Instructor Chillheart', role: 'Frost-Lehrerin', note: 'Zerstört ihr Phylakterium und meidet die Frostzonen.' },
+      { name: 'Jandice Barov', role: 'Illusionistin', note: 'Findet das echte Abbild zwischen den Klonen.' },
+      { name: 'Rattlegore', role: 'Knochengolem', note: 'Reduziert seine Rüstungsstapel, bevor der Enrage kommt.' },
+      { name: 'Lilian Voss', role: 'Untote Rächerin', note: 'Eskorten-Kampf – haltet sie am Leben durch die Räume.' },
+      { name: 'Darkmaster Gandling', role: 'Schulleiter', note: 'Rettet eingesperrte Spieler aus den verriegelten Klassenräumen.' }
+    ],
+    loot: ['Nekromanten-Kapuze', 'Rattlegore-Knochenbrecher', 'Voss-Racheschwert'],
+    tips: ['Phylakterium-Priorität festlegen.', 'Rattlegore-Stapel im Auge behalten.', 'Bei Gandling schnell Gefangene befreien.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS'],
+    quests: ['Keine Attunement-Quest nötig – ab Stufe 90 direkt betretbar', 'Tägliche Heroic-Quest beim Fraktionsvertreter abholen', 'Gegenstandsstufen-Normalisierung im Challenge-Modus beachten'],
+    time: '30-40 Minuten'
+  },
+  {
+    id: 'scarlet-halls',
+    name: 'Scharlachrote Hallen',
+    faction: 'Neutral',
+    levelRange: '87-89',
+    zone: 'Tirisfal',
+    wing: 'Waffenkammern des Kreuzzugs',
+    theme: '#b5432f',
+    summary: 'Die Waffenkammern und Bibliothek des Scharlachroten Kreuzzugs.',
+    route: ['Zwinger räumen bis Houndmaster Braun.', 'Waffenhof durchqueren zu Harlan.', 'Bibliothek erklimmen zu Koegler.'],
+    bosses: [
+      { name: 'Houndmaster Braun', role: 'Hundeführer', note: 'Tötet die Hunde und meidet den Ansturm entlang der Bänke.' },
+      { name: 'Armsmaster Harlan', role: 'Waffenmeister', note: 'Weicht dem geworfenen Waffen-Regen aus.' },
+      { name: 'Flameweaver Koegler', role: 'Feuermagier', note: 'Nutzt die Bücherregale als Deckung gegen die Feuerbahn.' }
+    ],
+    loot: ['Kreuzfahrer-Kettenhaube', 'Harlans Zwillingsklinge', 'Feuerweber-Zauberstab'],
+    tips: ['Hunde-CC bereithalten.', 'Bewegung bei Harlans Wurfphase.', 'Deckung bei Koegler nutzen.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS'],
+    quests: ['Keine Attunement-Quest nötig – ab Stufe 90 direkt betretbar', 'Tägliche Heroic-Quest beim Fraktionsvertreter abholen', 'Gegenstandsstufen-Normalisierung im Challenge-Modus beachten'],
+    time: '20-30 Minuten'
+  },
+  {
+    id: 'scarlet-monastery-cataclysm',
+    name: 'Scharlachrotes Kloster',
+    faction: 'Neutral',
+    levelRange: '88-90',
+    zone: 'Tirisfal',
+    wing: 'Kathedrale des Kreuzzugs',
+    theme: '#dc2626',
+    summary: 'Die geweihte Kathedrale des Kreuzzugs mit Whitemane und Durand.',
+    route: ['Reinigt den Vorhof bei Thalnos.', 'Durchquert die Brennkammer zu Korloff.', 'Stellt euch Whitemane in der Kapelle.', 'Beendet mit Kommandant Durand.'],
+    bosses: [
+      { name: 'Thalnos der Seelenschinder', role: 'Untoter Magier', note: 'Unterbrecht seine Zauber und meidet die Seelenflammen.' },
+      { name: 'Bruder Korloff', role: 'Feuerausbilder', note: 'Verteilt die Feuer-Stapel und bewegt euch aus den Flammen.' },
+      { name: 'Hochinquisitor Whitemane', role: 'Heilerin', note: 'Kickt ihre Wiederbelebung und ihre Heilzauber.' },
+      { name: 'Kommandant Durand', role: 'Endboss', note: 'Versteckt euch hinter Säulen bei seinem Licht-Ansturm.' }
+    ],
+    loot: ['Whitemanes Reliktmantel', 'Durands Lichtklinge', 'Inquisitor-Siegel'],
+    tips: ['Interrupts auf Thalnos und Whitemane.', 'Feuer-Stapel bei Korloff spreizen.', 'Säulendeckung bei Durand.'],
+    composition: ['1 Tank', '1 Heiler', '3 DPS mit Interrupt'],
+    quests: ['Keine Attunement-Quest nötig – ab Stufe 90 direkt betretbar', 'Tägliche Heroic-Quest beim Fraktionsvertreter abholen', 'Gegenstandsstufen-Normalisierung im Challenge-Modus beachten'],
+    time: '25-35 Minuten'
+  }
+];
+
 export const dungeonGuides = {
   classic: classicDungeonGuides,
-  'the-burning-crusade': tbcDungeonGuides
+  'the-burning-crusade': tbcDungeonGuides,
+  'mists-of-pandaria': mopDungeonGuides
 };

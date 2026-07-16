@@ -165,7 +165,16 @@ export const assetManifest = {
     'the-arcatraz': './assets/wow/icons/dungeons/the-arcatraz.png',
     'old-hillsbrad-foothills': './assets/wow/icons/dungeons/old-hillsbrad-foothills.png',
     'the-black-morass': './assets/wow/icons/dungeons/the-black-morass.png',
-    'magisters-terrace': './assets/wow/icons/dungeons/magisters-terrace.png'
+    'magisters-terrace': './assets/wow/icons/dungeons/magisters-terrace.png',
+    'jade-serpent': './assets/wow/icons/dungeons/jade-serpent.png',
+    brewery: './assets/wow/icons/dungeons/brewery.png',
+    shadopan: './assets/wow/icons/dungeons/shadopan.png',
+    'mogu-palace': './assets/wow/icons/dungeons/mogu-palace.png',
+    'setting-sun': './assets/wow/icons/dungeons/setting-sun.png',
+    niuzao: './assets/wow/icons/dungeons/niuzao.png',
+    'scholomance-cataclysm': './assets/wow/icons/dungeons/scholomance-cataclysm.png',
+    'scarlet-halls': './assets/wow/icons/dungeons/scarlet-halls.png',
+    'scarlet-monastery-cataclysm': './assets/wow/icons/dungeons/scarlet-monastery-cataclysm.png'
   },
   zones: {
     'durotar-echo-isles': 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_durotar.jpg',
@@ -200,7 +209,14 @@ export const assetManifest = {
     'western-plaguelands': './assets/wow/icons/zones/western-plaguelands.png',
     'eastern-plaguelands': 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_easternplaguelands.jpg',
     silithus: './assets/wow/icons/zones/silithus.png',
-    winterspring: 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_winterspring.jpg'
+    winterspring: 'https://wow.zamimg.com/images/wow/icons/large/achievement_zone_winterspring.jpg',
+    jadewald: './assets/wow/icons/zones/jadewald.png',
+    'tal-der-vier-winde': './assets/wow/icons/zones/tal-der-vier-winde.png',
+    krasarangwildnis: './assets/wow/icons/zones/krasarangwildnis.png',
+    'kun-lai-gipfel': './assets/wow/icons/zones/kun-lai-gipfel.png',
+    tonlangsteppe: './assets/wow/icons/zones/tonlangsteppe.png',
+    schreckensoede: './assets/wow/icons/zones/schreckensoede.png',
+    'tal-der-ewigen-bluten': './assets/wow/icons/zones/tal-der-ewigen-bluten.png'
   },
   dungeonMaps: {
     'ragefire-chasm': './assets/wow/maps/ragefire-chasm.jpg',
@@ -238,6 +254,15 @@ export const assetManifest = {
     'the-arcatraz': './assets/wow/maps/the-arcatraz.jpg',
     'old-hillsbrad-foothills': './assets/wow/maps/old-hillsbrad-foothills.jpg',
     'the-black-morass': './assets/wow/maps/the-black-morass.jpg',
-    'magisters-terrace': './assets/wow/maps/magisters-terrace.jpg'
+    'magisters-terrace': './assets/wow/maps/magisters-terrace.jpg',
+    'jade-serpent': './assets/wow/maps/jade-serpent.jpg',
+    brewery: './assets/wow/maps/brewery.jpg',
+    shadopan: './assets/wow/maps/shadopan.jpg',
+    'mogu-palace': './assets/wow/maps/mogu-palace.jpg',
+    'setting-sun': './assets/wow/maps/setting-sun.jpg',
+    niuzao: './assets/wow/maps/niuzao.jpg',
+    'scholomance-cataclysm': './assets/wow/maps/scholomance-cataclysm.jpg',
+    'scarlet-halls': './assets/wow/maps/scarlet-halls.jpg',
+    'scarlet-monastery-cataclysm': './assets/wow/maps/scarlet-monastery-cataclysm.jpg'
   }
 };
