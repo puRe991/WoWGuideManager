@@ -6,6 +6,7 @@ import { dungeonGuides } from './data/dungeonGuides.js';
 import { raidGuides } from './data/raidGuides.js';
 import { professionGuides } from './data/professionGuides.js';
 import { farmingGuides } from './data/farmingGuides.js';
+import { reputationGuides } from './data/reputationGuides.js';
 import { assetManifest } from './data/assetManifest.js';
 import { subscriptionTiers } from './data/subscriptions.js';
 import { filterGuides } from './lib/filterGuides.js';
@@ -28,7 +29,7 @@ const expansionPickerMount = document.querySelector('#expansion-picker');
 const viewContent = document.querySelector('#view-content');
 const viewRoot = document.querySelector('#view-root');
 
-const NAV_SECTIONS = ['start', 'class-guides', 'profession-guides', 'farming-guides', 'dungeon-guides', 'raid-guides', 'guides', 'subscriptions'];
+const NAV_SECTIONS = ['start', 'class-guides', 'profession-guides', 'farming-guides', 'dungeon-guides', 'raid-guides', 'reputation-guides', 'guides', 'subscriptions'];
 
 const expansionLabels = {
   classic: 'Classic',
@@ -103,6 +104,7 @@ const NAV_LABELS = {
   'farming-guides': 'Farmen',
   'dungeon-guides': 'Dungeons',
   'raid-guides': 'Raids',
+  'reputation-guides': 'Ruf',
   guides: 'Bibliothek'
 };
 
@@ -189,6 +191,20 @@ function professionTile(p) {
   };
 }
 
+function reputationTile(r) {
+  return {
+    href: `#reputation-guides/${r.id}`,
+    color: r.theme,
+    subtitle: r.type,
+    badge: '',
+    title: r.name,
+    summary: r.summary,
+    tags: [r.side],
+    meta: r.estimatedTime.split(',')[0],
+    hay: `${r.name} ${r.summary} ${r.zone} ${r.type} ${r.side} ruf reputation fraktion`
+  };
+}
+
 function dungeonTile(d) {
   return {
     href: `#dungeon-guides/${d.id}`,
@@ -269,6 +285,7 @@ function buildAllGroups(term) {
     { key: 'farming-guides', label: 'Farmen', accent: '#c9a86a', tiles: farmingGuides.flatMap((group) => group.items.map((item) => farmingTile(item, group))) },
     { key: 'dungeon-guides', label: 'Dungeons', accent: '#ff8a4c', tiles: activeDungeons.map(dungeonTile) },
     { key: 'raid-guides', label: 'Raids', accent: '#ff6b6b', tiles: activeRaids.map(raidTile) },
+    { key: 'reputation-guides', label: 'Ruf', accent: '#7bb6ff', tiles: reputationGuides.map(reputationTile) },
     { key: 'guides', label: 'Bibliothek', accent: '#7bb6ff', tiles: guideCards.map(libraryTile) }
   ];
   return groups
@@ -298,7 +315,7 @@ function renderStart() {
   const totalDungeons = Object.values(dungeonGuides).reduce((sum, list) => sum + list.length, 0);
   const totalRaids = Object.values(raidGuides).reduce((sum, list) => sum + list.length, 0);
   const totalFarmingItems = farmingGuides.reduce((sum, group) => sum + group.items.length, 0);
-  const totalGuides = classGuides.length + professionGuides.length + totalDungeons + totalRaids + totalFarmingItems + guideCards.length;
+  const totalGuides = classGuides.length + professionGuides.length + totalDungeons + totalRaids + totalFarmingItems + reputationGuides.length + guideCards.length;
   const groups = buildAllGroups(state.search);
 
   return `
@@ -416,6 +433,16 @@ function renderRaidGuidesListing() {
       ${activeRaids.length === 0
         ? '<div class="empty-state"><b>Geplant</b>Für diese Erweiterung ist der Raid-Bereich noch nicht verfügbar und wird mit dem nächsten Content-Pack ergänzt.</div>'
         : tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
+    </section>`;
+}
+
+function renderReputationGuidesListing() {
+  const tiles = reputationGuides.map(reputationTile).filter((tile) => matches(tile.hay, state.search));
+  return `
+    <section class="page">
+      ${renderFilterBar('reputation-guides')}
+      <div class="hero"><div class="hero-copy"><span class="eyebrow">Classic Ruf-Almanach</span><h1>Alle Classic-Ruf-Fraktionen mit Belohnungen, Quests und Grind-Routen.</h1><p>Jede Fraktion bekommt eine eigene Seite: wie du Ruf sammelst, welche Quests und Turn-ins zählen, was du farmen solltest und welche Belohnungen pro Rang warten.</p>${scopeNote('Dieser Ruf-Almanach deckt aktuell WoW Classic ab. Weitere Erweiterungen folgen.')}</div></div>
+      ${tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
     </section>`;
 }
 
@@ -649,6 +676,72 @@ function renderProfessionDetail(id) {
         <section class="profession-route" id="profession-route">
           <div class="guide-section-heading"><span>Skillroute</span><h4>Schritt für Schritt zu ${escapeHtml(profession.name)} 300</h4></div>
           <div class="profession-step-list">${profession.steps.map(renderProfessionStep).join('')}</div>
+        </section>
+      </article>
+    </article>`;
+}
+
+function renderReputationRank(standing) {
+  return `
+    <article>
+      <h5>${escapeHtml(standing.rank)}</h5>
+      ${plainList(standing.rewards, '--profession-color')}
+    </article>`;
+}
+
+function renderReputationDetail(id) {
+  const rep = reputationGuides.find((item) => item.id === id);
+  if (!rep) return null;
+
+  return `
+    <article class="page narrow detail-page">
+      ${backLink('#reputation-guides')}
+      <div class="crumb">Übersicht · Ruf · ${escapeHtml(rep.name)}</div>
+      <article class="profession-panel" style="--profession-color: ${escapeHtml(rep.theme)}">
+        <header class="profession-hero">
+          <div class="profession-title">
+            ${renderAssetImage(undefined, rep.name, 'profession-hero-icon')}
+            <div>
+              <div class="card-meta"><span>${escapeHtml(rep.side)}</span><span>${escapeHtml(rep.type)}</span><span>${escapeHtml(rep.zone)}</span></div>
+              <h3>${escapeHtml(rep.name)}</h3>
+              <p>${escapeHtml(rep.summary)}</p>
+            </div>
+          </div>
+          <div class="profession-stat-card">
+            <span>Grind-Dauer</span>
+            <strong>${escapeHtml(rep.grindLength)}</strong>
+            <small>${escapeHtml(rep.startRequirement)}</small>
+          </div>
+        </header>
+        <nav class="profession-nav" aria-label="${escapeHtml(rep.name)} Guide Schnellnavigation">
+          <a href="#reputation-howto">Ruf sammeln</a>
+          <a href="#reputation-grind">Grind-Ziele</a>
+          <a href="#reputation-quests">Quests</a>
+          <a href="#reputation-tips">Tipps</a>
+          <a href="#reputation-standings">Belohnungen</a>
+        </nav>
+        <section class="profession-intro"><p>${escapeHtml(rep.estimatedTime)}</p></section>
+        <div class="profession-grid">
+          <section class="profession-card trainers-card" id="reputation-howto">
+            <div class="guide-section-heading"><span>Ruf sammeln</span><h4>So steigt dein Ruf</h4></div>
+            <ul>${rep.howTo.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+          </section>
+          <section class="profession-card" id="reputation-grind">
+            <div class="guide-section-heading"><span>Grind</span><h4>Farm- &amp; Turn-in-Ziele</h4></div>
+            <ul>${rep.grindTargets.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+          </section>
+          <section class="profession-card" id="reputation-quests">
+            <div class="guide-section-heading"><span>Quests</span><h4>Wichtige Questreihen</h4></div>
+            <ul>${rep.keyQuests.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+          </section>
+          <section class="profession-card" id="reputation-tips">
+            <div class="guide-section-heading"><span>Tipps</span><h4>Effizient Ruf farmen</h4></div>
+            <ul>${rep.tips.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+          </section>
+        </div>
+        <section class="profession-route" id="reputation-standings">
+          <div class="guide-section-heading"><span>Belohnungen</span><h4>Ruf-Ränge &amp; Rewards</h4></div>
+          <div class="trainer-list">${rep.standings.map(renderReputationRank).join('')}</div>
         </section>
       </article>
     </article>`;
@@ -946,6 +1039,7 @@ function renderNavCounts() {
   document.querySelector('#nav-count-farming-guides').textContent = totalFarmingItems;
   document.querySelector('#nav-count-dungeon-guides').textContent = totalDungeons;
   document.querySelector('#nav-count-raid-guides').textContent = totalRaids;
+  document.querySelector('#nav-count-reputation-guides').textContent = reputationGuides.length;
   document.querySelector('#nav-count-guides').textContent = guideCards.length;
 }
 
@@ -1087,6 +1181,8 @@ function renderView() {
     html = id ? renderDungeonDetail(id) : renderDungeonGuidesListing();
   } else if (section === 'raid-guides') {
     html = id ? renderRaidDetail(id) : renderRaidGuidesListing();
+  } else if (section === 'reputation-guides') {
+    html = id ? renderReputationDetail(id) : renderReputationGuidesListing();
   } else if (section === 'guides') {
     html = id ? renderLibraryDetail(id) : renderLibraryListing();
   } else if (section === 'subscriptions') {
