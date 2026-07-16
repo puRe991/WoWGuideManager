@@ -6,6 +6,7 @@ import { classBuildGuides } from '../src/data/classBuildGuides.js';
 import { specGuides } from '../src/data/specGuides.js';
 import { dungeonGuides } from '../src/data/dungeonGuides.js';
 import { professionGuides } from '../src/data/professionGuides.js';
+import { reputationGuides } from '../src/data/reputationGuides.js';
 import { assetManifest } from '../src/data/assetManifest.js';
 import { filterGuides } from '../src/lib/filterGuides.js';
 
@@ -38,6 +39,7 @@ assert.match(indexHtml, /expansion-picker/, 'home screen must include an expansi
 assert.match(indexHtml, /class-guides/, 'home screen must include class guide navigation');
 assert.match(indexHtml, /dungeon-guides/, 'home screen must include the Classic dungeon atlas');
 assert.match(indexHtml, /profession-guides/, 'home screen must include Classic profession guides');
+assert.match(indexHtml, /reputation-guides/, 'home screen must include the Classic reputation almanac');
 assert.ok(guideCards.length >= 8, 'MVP should include at least eight guide cards');
 
 const tbcGuides = guideCards.filter((guide) => guide.expansion === 'the-burning-crusade');
@@ -132,11 +134,25 @@ assert.ok(assetManifest.professions.herbalism?.startsWith('https://wow.zamimg.co
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
 
+assert.ok(reputationGuides.length >= 12, 'Classic reputation almanac should cover at least twelve factions');
+assert.ok(new Set(reputationGuides.map((rep) => rep.id)).size === reputationGuides.length, 'Reputation guide ids must be unique');
+assert.ok(
+  reputationGuides.every((rep) => rep.howTo.length >= 2 && rep.grindTargets.length >= 1 && rep.keyQuests.length >= 1 && rep.tips.length >= 2),
+  'Each reputation guide should explain how to gain rep, what to grind, key quests and tips'
+);
+assert.ok(
+  reputationGuides.every((rep) => rep.standings.length === 4 && rep.standings.every((standing) => standing.rewards.length >= 1)),
+  'Each reputation guide should list Friendly/Honored/Revered/Exalted standings with rewards'
+);
+assert.ok(reputationGuides.some((rep) => rep.id === 'argent-dawn'), 'Reputation almanac should include Argent Dawn');
+assert.ok(reputationGuides.some((rep) => rep.id === 'zandalar-tribe'), 'Reputation almanac should include the Zandalar Tribe');
+
 const buildScript = readFileSync('scripts/build.mjs', 'utf8');
 assert.match(buildScript, /app\.bundle\.js/, 'build must emit a browser-safe bundle for file protocol usage');
 assert.match(buildScript, /dungeonGuides\.js/, 'build must include dungeon guide data in the portable bundle');
 assert.match(buildScript, /raidGuides\.js/, 'build must include raid guide data in the portable bundle');
 assert.match(buildScript, /professionGuides\.js/, 'build must include profession guide data in the portable bundle');
+assert.match(buildScript, /reputationGuides\.js/, 'build must include reputation guide data in the portable bundle');
 assert.match(buildScript, /assetManifest\.js/, 'build must include real asset manifest data in the portable bundle');
 assert.match(buildScript, /classBuildGuides\.js/, 'build must include advanced rotation and BiS data in the portable bundle');
 assert.match(buildScript, /specGuides\.js/, 'build must include per-spec guide data in the portable bundle');
