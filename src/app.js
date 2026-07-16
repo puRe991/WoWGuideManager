@@ -89,6 +89,29 @@ const reputationAtlasCopy = {
   }
 };
 
+const classAtlasCopy = {
+  classic: {
+    eyebrow: 'Classic Klassen-Guides',
+    title: 'Classic Klassen kompakt, visuell und spielbereit.',
+    copy: 'Leveling-Specs, Rollen, Stat-Prioritäten, Rotationen, Berufe und Power-Tipps für alle neun Classic-Klassen.'
+  },
+  'the-burning-crusade': {
+    eyebrow: 'The Burning Crusade Klassen-Guides',
+    title: 'Alle neun TBC-Klassen mit Rotation, Talenten und der aktuell genutzten Meta-Spec.',
+    copy: 'Original Blizzard-Bezeichnungen für Talente und Fähigkeiten, dazu Stat-Prioritäten, Best-in-Slot-Ziele und ein direkter Link zum Wowhead-Talentrechner pro Klasse.'
+  },
+  'wrath-of-the-lich-king': {
+    eyebrow: 'Wrath of the Lich King Klassen-Guides',
+    title: 'Alle zehn WotLK-Klassen inklusive Death Knight mit Rotation, Talenten und Meta-Spec.',
+    copy: 'Original Blizzard-Bezeichnungen für Talente und Fähigkeiten, dazu Stat-Prioritäten, Best-in-Slot-Ziele und ein direkter Link zum Wowhead-Talentrechner pro Klasse.'
+  },
+  'mists-of-pandaria': {
+    eyebrow: 'Mists of Pandaria Klassen-Guides',
+    title: 'Alle elf MoP-Klassen inklusive Monk mit Rotation, Talenten und Meta-Spec.',
+    copy: 'Original Blizzard-Bezeichnungen für Talente und Fähigkeiten, dazu Stat-Prioritäten, Best-in-Slot-Ziele und ein direkter Link zum Wowhead-Talentrechner pro Klasse.'
+  }
+};
+
 const raidAtlasCopy = {
   classic: {
     eyebrow: 'Classic Raid Atlas',
@@ -170,6 +193,18 @@ function renderClassList(title, items, id = '') {
 function renderScoreCard(title, value, label) {
   const score = Math.min(5, Math.max(3, value - 1));
   return `<section><strong>${escapeHtml(title)}</strong><span>${'★'.repeat(score)}${'☆'.repeat(5 - score)}</span><small>${escapeHtml(label)}</small></section>`;
+}
+
+function getActiveClassGuides() {
+  return classGuides[state.selectedExpansion] ?? [];
+}
+
+function getActiveClassBuildGuides() {
+  return classBuildGuides[state.selectedExpansion] ?? {};
+}
+
+function getActiveSpecGuides() {
+  return specGuides[state.selectedExpansion] ?? {};
 }
 
 function getActiveDungeons() {
@@ -307,7 +342,7 @@ function buildAllGroups(term) {
   const activeDungeons = getActiveDungeons();
   const activeRaids = getActiveRaids();
   const groups = [
-    { key: 'class-guides', label: 'Klassen', accent: '#ffb22e', tiles: classGuides.map(classTile) },
+    { key: 'class-guides', label: 'Klassen', accent: '#ffb22e', tiles: getActiveClassGuides().map(classTile) },
     { key: 'profession-guides', label: 'Berufe', accent: '#75d15f', tiles: professionGuides.map(professionTile) },
     { key: 'farming-guides', label: 'Farmen', accent: '#c9a86a', tiles: farmingGuides.flatMap((group) => group.items.map((item) => farmingTile(item, group))) },
     { key: 'dungeon-guides', label: 'Dungeons', accent: '#ff8a4c', tiles: activeDungeons.map(dungeonTile) },
@@ -343,7 +378,8 @@ function renderStart() {
   const totalRaids = Object.values(raidGuides).reduce((sum, list) => sum + list.length, 0);
   const totalFarmingItems = farmingGuides.reduce((sum, group) => sum + group.items.length, 0);
   const totalReputationGuides = Object.values(reputationGuides).reduce((sum, list) => sum + list.length, 0);
-  const totalGuides = classGuides.length + professionGuides.length + totalDungeons + totalRaids + totalFarmingItems + totalReputationGuides + guideCards.length;
+  const totalClassGuides = Object.values(classGuides).reduce((sum, list) => sum + list.length, 0);
+  const totalGuides = totalClassGuides + professionGuides.length + totalDungeons + totalRaids + totalFarmingItems + totalReputationGuides + guideCards.length;
   const groups = buildAllGroups(state.search);
 
   return `
@@ -381,12 +417,23 @@ function renderFilterBar(sectionKey) {
 }
 
 function renderClassGuidesListing() {
-  const tiles = classGuides.map(classTile).filter((tile) => matches(tile.hay, state.search));
+  const atlasCopy = classAtlasCopy[state.selectedExpansion];
+  const activeClassGuides = getActiveClassGuides();
+  const tiles = activeClassGuides.map(classTile).filter((tile) => matches(tile.hay, state.search));
   return `
     <section class="page">
       ${renderFilterBar('class-guides')}
-      <div class="hero"><div class="hero-copy"><span class="eyebrow">Ausführliche Klassen-Guides</span><h1>Classic Klassen kompakt, visuell und spielbereit.</h1><p>Leveling-Specs, Rollen, Stat-Prioritäten, Rotationen, Berufe und Power-Tipps für alle neun Classic-Klassen.</p>${scopeNote('Diese Klassen-Detailguides sind aktuell nur für WoW Classic verfügbar. Weitere Erweiterungen folgen.')}</div></div>
-      ${tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">${escapeHtml(atlasCopy?.eyebrow ?? 'Klassen-Guides')}</span>
+          <h1>${escapeHtml(atlasCopy?.title ?? 'Für diese Erweiterung sind noch keine Klassen-Guides verfügbar.')}</h1>
+          <p>${escapeHtml(atlasCopy?.copy ?? 'Dieser Bereich wird mit dem nächsten Content-Pack für diese Erweiterung ergänzt.')}</p>
+        </div>
+        <div class="metric-grid"><div><b>${activeClassGuides.length}</b><span>Klassen</span></div></div>
+      </div>
+      ${activeClassGuides.length === 0
+        ? '<div class="empty-state"><b>Noch keine Klassen-Guides</b>Für diese Erweiterung wird der Klassen-Bereich mit dem nächsten Content-Pack ergänzt.</div>'
+        : tiles.length > 0 ? `<div class="tile-grid">${tiles.map(renderTile).join('')}</div>` : renderNoResults()}
     </section>`;
 }
 
@@ -552,10 +599,11 @@ function renderRotationBlock(title, items) {
 }
 
 function renderClassDetail(id) {
-  const guide = classGuides.find((item) => item.id === id);
+  const guide = getActiveClassGuides().find((item) => item.id === id);
   if (!guide) return null;
-  const build = classBuildGuides[guide.id] ?? { rotations: { leveling: [], dungeon: [], raid: [] }, bestInSlot: [] };
-  const specs = specGuides[guide.id] ?? [];
+  const build = getActiveClassBuildGuides()[guide.id] ?? { rotations: { leveling: [], dungeon: [], raid: [] }, bestInSlot: [] };
+  const specs = getActiveSpecGuides()[guide.id] ?? [];
+  const expansionName = expansions.find((item) => item.key === state.selectedExpansion)?.name ?? 'WoW Classic';
 
   return `
     <article class="page narrow detail-page">
@@ -567,15 +615,16 @@ function renderClassDetail(id) {
           <div class="class-guide-title">
             <div class="class-portrait">${renderAssetImage(assetManifest.classes[guide.id], guide.name, 'class-portrait-image')}</div>
             <div class="class-copy">
-              <div class="card-meta"><span>${escapeHtml(guide.levelingSpec)}</span><span>${escapeHtml(guide.difficulty)}</span></div>
-              <h3>${escapeHtml(guide.name)} Classic Class Guide</h3>
+              <div class="card-meta"><span>${escapeHtml(guide.levelingSpec)}</span>${guide.metaSpec ? `<span>${escapeHtml(guide.metaSpec)}</span>` : ''}<span>${escapeHtml(guide.difficulty)}</span></div>
+              <h3>${escapeHtml(guide.name)} ${escapeHtml(expansionName)} Class Guide</h3>
               <p>${escapeHtml(guide.summary)}</p>
               <div class="class-pill-row">${guide.roles.map((role) => `<span>${escapeHtml(role)}</span>`).join('')}</div>
+              ${guide.talentPlannerUrl ? `<a class="talent-planner-link" href="${escapeHtml(guide.talentPlannerUrl)}" target="_blank" rel="noopener noreferrer">Talente im Wowhead-Talentrechner planen ↗</a>` : ''}
             </div>
           </div>
           <div class="guide-update-card">
             <span>Zuletzt geprüft</span>
-            <strong>Classic Launch-Katalog</strong>
+            <strong>${escapeHtml(expansionName)}</strong>
             <small>Eigene Guide-Seite mit Overview, Rotation, Talenten, Rotation-Lab, BiS und Spec Guides.</small>
           </div>
         </header>
@@ -1063,6 +1112,10 @@ function redirectIfDungeonMissing() {
   }
   if (section === 'reputation-guides' && id && !getActiveReputationGuides().some((rep) => rep.id === id)) {
     window.location.hash = '#reputation-guides';
+    return;
+  }
+  if (section === 'class-guides' && id && !getActiveClassGuides().some((guide) => guide.id === id)) {
+    window.location.hash = '#class-guides';
   }
 }
 
@@ -1078,7 +1131,7 @@ function renderNavCounts() {
   const totalDungeons = getActiveDungeons().length;
   const totalRaids = getActiveRaids().length;
   const totalFarmingItems = farmingGuides.reduce((sum, group) => sum + group.items.length, 0);
-  document.querySelector('#nav-count-class-guides').textContent = classGuides.length;
+  document.querySelector('#nav-count-class-guides').textContent = getActiveClassGuides().length;
   document.querySelector('#nav-count-profession-guides').textContent = professionGuides.length;
   document.querySelector('#nav-count-farming-guides').textContent = totalFarmingItems;
   document.querySelector('#nav-count-dungeon-guides').textContent = totalDungeons;

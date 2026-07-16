@@ -52,7 +52,7 @@ assert.ok(
   tbcGuides.every((guide) => guide.checklist.length >= 4 && guide.summary.length > 0),
   'Every The Burning Crusade guide card should include a summary and a full checklist'
 );
-assert.equal(classGuides.length, 9, 'Classic should include all nine original classes');
+assert.equal(classGuides.classic.length, 9, 'Classic should include all nine original classes');
 
 assert.ok(dungeonGuides.classic, 'dungeonGuides must expose a classic expansion key');
 assert.ok(dungeonGuides['the-burning-crusade'], 'dungeonGuides must expose a the-burning-crusade expansion key');
@@ -131,8 +131,61 @@ assert.ok(herbalismGuide, 'Profession guide pack should include a Herbalism guid
 assert.ok(herbalismGuide.shoppingList.length >= 5 && herbalismGuide.steps.length >= 4, 'Herbalism guide should include gathering planning and a full 1-300 route');
 assert.ok(assetManifest.professions.herbalism?.startsWith('https://wow.zamimg.com/'), 'Herbalism profession must reference a verified hotlinked icon URL');
 
-assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
-assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
+assert.ok(classGuides.classic.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
+assert.ok(classGuides.classic.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
+
+assert.ok(classGuides['the-burning-crusade'], 'classGuides must expose a the-burning-crusade expansion key');
+assert.ok(classGuides['wrath-of-the-lich-king'], 'classGuides must expose a wrath-of-the-lich-king expansion key');
+assert.ok(classGuides['mists-of-pandaria'], 'classGuides must expose a mists-of-pandaria expansion key');
+
+const tbcClassGuides = classGuides['the-burning-crusade'];
+assert.equal(tbcClassGuides.length, 9, 'TBC should include all nine classes (no Death Knight yet)');
+assert.ok(!tbcClassGuides.some((c) => c.id === 'death-knight'), 'TBC must not include the Death Knight, which launches in Wrath');
+assert.ok(!tbcClassGuides.some((c) => c.id === 'monk'), 'TBC must not include the Monk, which launches in Mists of Pandaria');
+
+const wrathClassGuides = classGuides['wrath-of-the-lich-king'];
+assert.equal(wrathClassGuides.length, 10, 'Wrath should include all nine original classes plus the Death Knight');
+assert.ok(wrathClassGuides.some((c) => c.id === 'death-knight'), 'Wrath class guide pack should include the Death Knight');
+assert.ok(!wrathClassGuides.some((c) => c.id === 'monk'), 'Wrath must not include the Monk, which launches in Mists of Pandaria');
+
+const mopClassGuidesList = classGuides['mists-of-pandaria'];
+assert.equal(mopClassGuidesList.length, 11, 'Mists of Pandaria should include all ten prior classes plus the Monk');
+assert.ok(mopClassGuidesList.some((c) => c.id === 'monk'), 'MoP class guide pack should include the Monk');
+
+const allExpansionClassGuides = [...tbcClassGuides, ...wrathClassGuides, ...mopClassGuidesList];
+assert.ok(
+  allExpansionClassGuides.every((c) => c.rotation.length >= 5 && c.talents.length >= 2 && c.metaSpec && c.talentPlannerUrl?.startsWith('https://www.wowhead.com/')),
+  'Every TBC/Wrath/MoP class guide should include a rotation, talents, the currently used meta spec and a Wowhead talent planner link'
+);
+assert.ok(
+  allExpansionClassGuides.every((c) => assetManifest.classes[c.id]?.startsWith('https://wow.zamimg.com/')),
+  'Every TBC/Wrath/MoP class must reference a verified hotlinked icon URL'
+);
+
+for (const expansionKey of ['the-burning-crusade', 'wrath-of-the-lich-king', 'mists-of-pandaria']) {
+  const guides = classGuides[expansionKey];
+  const builds = classBuildGuides[expansionKey];
+  const specs = specGuides[expansionKey];
+  assert.ok(builds, `classBuildGuides must expose a ${expansionKey} expansion key`);
+  assert.ok(specs, `specGuides must expose a ${expansionKey} expansion key`);
+  for (const guide of guides) {
+    const build = builds[guide.id];
+    assert.ok(build, `classBuildGuides.${expansionKey} is missing an entry for ${guide.id}`);
+    assert.ok(
+      build.rotations.leveling.length >= 3 && build.rotations.dungeon.length >= 3 && build.rotations.raid.length >= 3 && build.bestInSlot.length >= 3,
+      `classBuildGuides.${expansionKey}.${guide.id} should cover leveling/dungeon/raid rotations and BiS targets`
+    );
+    const classSpecs = specs[guide.id];
+    assert.ok(classSpecs && classSpecs.length >= 2, `specGuides.${expansionKey}.${guide.id} should include at least two spec guides`);
+    for (const spec of classSpecs) {
+      assert.ok(
+        spec.rotation.length >= 4 && spec.statPriority.length >= 3 && spec.talents.length >= 2 && spec.gear.length >= 2 && spec.consumables.length >= 2,
+        `${spec.id} should include a full rotation, stat priority, talents, gear and consumables`
+      );
+      assert.ok(assetManifest.specs[spec.id]?.startsWith('https://wow.zamimg.com/'), `${spec.id} must reference a verified hotlinked icon URL`);
+    }
+  }
+}
 
 assert.ok(reputationGuides.classic, 'reputationGuides must expose a classic expansion key');
 assert.ok(reputationGuides['the-burning-crusade'], 'reputationGuides must expose a the-burning-crusade expansion key');
