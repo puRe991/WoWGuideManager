@@ -440,13 +440,13 @@ export const guideCards = [
     premium: false,
     tags: ['Pandaria', 'Leveling', '85-90'],
     zones: [
-      { id: 'jadewald', name: 'Der Jadewald', levelRange: '85-86', note: 'Ankunft auf Pandaria für beide Fraktionen. Folge der Hauptquestreihe rund um den Wolkenserpent-Orden und schalte den Flugpunkt am Tempel der Jadeschlange frei.' },
-      { id: 'tal-der-vier-winde', name: 'Tal der Vier Winde', levelRange: '86-87', note: 'Ruhiges Bauernland der Ackerbauern. Sichere dir früh die Halbhügel-Farm und den Zugang zu Stormstouts Brauerei.' },
-      { id: 'krasarangwildnis', name: 'Krasarangwildnis', levelRange: '86-87', note: 'Nebelverhangene Küste mit den Anglern. Optionaler Abstecher parallel zum Tal der Vier Winde für Angel-Ruf und Ruinenquests.' },
-      { id: 'kun-lai-gipfel', name: 'Kun-Lai-Gipfel', levelRange: '87-88', note: 'Verschneite Höhen der Yaungol und Mogu. Beginn der Shado-Pan-Kette und Eingänge zu Kloster und Mogu’shan-Palast.' },
-      { id: 'tonlangsteppe', name: 'Tonlangsteppe', levelRange: '88-89', note: 'Grenzland gegen die Mantiden-Schwärme. Unterstütze die Shado-Pan-Garnison an der Serpentmauer.' },
-      { id: 'schreckensoede', name: 'Schreckensöde', levelRange: '89-90', note: 'Herz des Mantiden-Reichs. Erwecke die Klaxxi-Paragons und bereite dich auf das Stufengrenze-Endgame vor.' },
-      { id: 'tal-der-ewigen-bluten', name: 'Tal der Ewigen Blüten', levelRange: '90', note: 'Der heilige Kern Pandarias und der Goldene Lotus. Tägliche Ruf-Hubs, Weltbosse und Einstieg in die Schlachtzüge.' }
+      { id: 'jadewald', numeral: '一', name: 'Der Jadewald', levelRange: '85-86', note: 'Ankunft auf Pandaria für beide Fraktionen. Folge der Hauptquestreihe rund um den Wolkenserpent-Orden und schalte den Flugpunkt am Tempel der Jadeschlange frei.' },
+      { id: 'tal-der-vier-winde', numeral: '二', name: 'Tal der Vier Winde', levelRange: '86-87', note: 'Ruhiges Bauernland der Ackerbauern. Sichere dir früh die Halbhügel-Farm und den Zugang zu Stormstouts Brauerei.' },
+      { id: 'krasarangwildnis', numeral: '三', name: 'Krasarangwildnis', levelRange: '86-87', note: 'Nebelverhangene Küste mit den Anglern. Optionaler Abstecher parallel zum Tal der Vier Winde für Angel-Ruf und Ruinenquests.' },
+      { id: 'kun-lai-gipfel', numeral: '四', name: 'Kun-Lai-Gipfel', levelRange: '87-88', note: 'Verschneite Höhen der Yaungol und Mogu. Beginn der Shado-Pan-Kette und Eingänge zu Kloster und Mogu’shan-Palast.' },
+      { id: 'tonlangsteppe', numeral: '五', name: 'Tonlangsteppe', levelRange: '88-89', note: 'Grenzland gegen die Mantiden-Schwärme. Unterstütze die Shado-Pan-Garnison an der Serpentmauer.' },
+      { id: 'schreckensoede', numeral: '六', name: 'Schreckensöde', levelRange: '89-90', note: 'Herz des Mantiden-Reichs. Erwecke die Klaxxi-Paragons und bereite dich auf das Stufengrenze-Endgame vor.' },
+      { id: 'tal-der-ewigen-bluten', numeral: '七', name: 'Tal der Ewigen Blüten', levelRange: '90', note: 'Der heilige Kern Pandarias und der Goldene Lotus. Tägliche Ruf-Hubs, Weltbosse und Einstieg in die Schlachtzüge.' }
     ]
   },
   {

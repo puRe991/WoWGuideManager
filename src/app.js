@@ -845,13 +845,14 @@ function renderLibraryDetail(id) {
   const guide = guideCards.find((item) => item.id === id);
   if (!guide) return null;
   const color = libraryDetailAccent(guide);
+  const isMop = guide.expansion === 'mists-of-pandaria';
 
   return `
     <article class="page narrow detail-page" style="--ac: ${escapeHtml(color)}">
       ${backLink('#guides')}
       <div class="crumb">Übersicht · Bibliothek · ${escapeHtml(guide.title)}</div>
       <header class="detail-header">
-        <div class="detail-icon">${escapeHtml(guide.category.charAt(0))}</div>
+        <div class="detail-icon${isMop ? ' mop-medallion' : ''}">${isMop ? '眷' : escapeHtml(guide.category.charAt(0))}</div>
         <div class="detail-main">
           <div class="detail-topline">
             <span class="detail-subline">${escapeHtml(guide.category)} · ${guide.minutes} Min.</span>
@@ -888,8 +889,8 @@ function renderZoneRoute(zones) {
         ${zones
           .map(
             (zone) => `
-          <li class="zone-route-item">
-            ${renderAssetImage(assetManifest.zones?.[zone.id], `${zone.name} Icon`, 'zone-icon')}
+          <li class="zone-route-item${zone.numeral ? ' zone-route-item--numeral' : ''}">
+            ${zone.numeral ? `<span class="zone-numeral-badge">${escapeHtml(zone.numeral)}</span>` : renderAssetImage(assetManifest.zones?.[zone.id], `${zone.name} Icon`, 'zone-icon')}
             <div class="zone-route-main">
               <div class="zone-route-top"><strong>${escapeHtml(zone.name)}</strong><span class="zone-level-range">Level ${escapeHtml(zone.levelRange)}</span></div>
               <p>${escapeHtml(zone.note)}</p>
