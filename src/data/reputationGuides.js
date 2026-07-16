@@ -1,4 +1,4 @@
-export const reputationGuides = [
+const classicReputationGuides = [
   {
     id: 'argent-dawn',
     name: 'Argentum-Dämmerung',
@@ -527,3 +527,559 @@ export const reputationGuides = [
     ]
   }
 ];
+
+const tbcReputationGuides = [
+  {
+    id: 'honor-hold-thrallmar',
+    name: 'Honor Hold & Thrallmar',
+    side: 'Beide Fraktionen',
+    type: 'Hub-Fraktion (Hellfire Peninsula)',
+    zone: 'Hellfire Peninsula',
+    theme: '#b33a2e',
+    audience: 'Einsteiger',
+    minutes: 18,
+    summary:
+      'Die ersten Fraktionen nach dem Dark Portal: Honor Hold für die Allianz, Thrallmar für die Horde. Der komplette Levelweg durch Hellfire Peninsula füllt den Ruf fast von allein, zusätzlich gibt es wiederholbare Beute-Turn-ins für Nachzügler.',
+    startRequirement: 'Ab Stufe 58, Einstieg direkt am Dark Portal in Hellfire Peninsula',
+    grindLength: '1 Levelphase',
+    estimatedTime: 'Läuft meist automatisch während des Levelns von 58-63 in Hellfire Peninsula mit, Respektvoll braucht meist etwas gezieltes Nacharbeiten',
+    howTo: [
+      'Die komplette Hellfire-Peninsula-Questreihe rund um Honor Hold bzw. Thrallmar abschließen',
+      'Wiederholbare Beuteabgaben (erbeutete Fel-Orc-Kriegspläne) beim Quartiermeister einreichen',
+      'Hellfire-Citadel-Dungeons (Ramparts, The Blood Furnace, The Shattered Halls) laufen für zusätzlichen Ruf mit'
+    ],
+    grindTargets: [
+      'Fel-Orc-Lager in Hellfire Peninsula für wiederholbare Kriegsplan-Turn-ins',
+      'Ramparts-, Blood-Furnace- und Shattered-Halls-Bosskills'
+    ],
+    keyQuests: [
+      'Einführungskette am Honor Hold bzw. Thrallmar direkt nach dem Dark Portal',
+      'Zonenabschluss-Questreihe rund um The Shattered Halls und die Magtheridon’s-Lair-Vorbereitung'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundausrüstung und Reagenzien beim Fraktionshändler'] },
+      { rank: 'Wohlwollend', rewards: ['Verbesserte Ringe und Schmuckstücke mit Ausdauer'] },
+      { rank: 'Respektvoll', rewards: ['Flamewrought Key für alle drei Hellfire-Citadel-Heroics (Ramparts, The Blood Furnace, The Shattered Halls)', 'Episches Zwischen-Zubehör'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes verfügbares Fraktionszubehör (Ringe, Halsketten, Schultern)', 'Voller Zugang zum kompletten Rezept- und Ausrüstungskatalog'] }
+    ],
+    tips: [
+      'Der Flamewrought Key ab Respektvoll ist Pflicht für alle Hellfire-Citadel-Heroics – möglichst früh im Levelprozess mitnehmen',
+      'Beide Fraktionen laufen strikt parallel, nur die eigene Charakterfraktion zählt',
+      'Kriegsplan-Turn-ins sind ein guter Lückenfüller, falls der Zonen-Ruf allein nicht für Respektvoll reicht'
+    ]
+  },
+  {
+    id: 'cenarion-expedition',
+    name: 'Cenarion Expedition',
+    side: 'Beide Fraktionen',
+    type: 'Hub-Fraktion (Zangarmarsh)',
+    zone: 'Zangarmarsh',
+    theme: '#2f9e6e',
+    audience: 'Fortgeschritten',
+    minutes: 20,
+    summary:
+      'Naturschutz-Fraktion rund um Cenarion Refuge in Zangarmarsh. Liefert den Schlüssel für alle Coilfang-Reservoir-Heroics und solide Heiler-/Tank-Ausrüstung für die frühe Levelphase 60-64.',
+    startRequirement: 'Ab Stufe 60, Einstieg am Cenarion Refuge in Zangarmarsh',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei regelmäßigem Zonen-Leveln und Coilfang-Runs bis Respektvoll',
+    howTo: [
+      'Die Zangarmarsh-Questreihe rund um Cenarion Refuge abschließen',
+      'Wiederholbare Turn-ins von Bog-Lord- und Sporebat-Beute beim Quartiermeister abgeben',
+      'The-Slave-Pens-, Underbog- und Steamvault-Bosskills geben zusätzlichen Ruf'
+    ],
+    grindTargets: [
+      'Bog Lords in Zangarmarsh für wiederholbare Turn-ins',
+      'The-Slave-Pens-, Underbog- und Steamvault-Bosskills'
+    ],
+    keyQuests: [
+      'Einführungskette am Cenarion Refuge',
+      'Zonenabschluss-Questreihe rund um die Coilfang-Vorbereitung'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang und Reagenzien'] },
+      { rank: 'Wohlwollend', rewards: ['Naturschutz-Ringe mit Ausdauer- und Zaubermacht-Boni'] },
+      { rank: 'Respektvoll', rewards: ['Reservoir Key für alle drei Coilfang-Heroics (The Slave Pens, Underbog, Steamvault)', 'Verbesserte Heiler- und Tank-Trinkets'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starke Zwischenausrüstung für die Karazhan-Vorbereitung', 'Voller Zugang zu allen Fraktionsrezepten'] }
+    ],
+    tips: [
+      'Der Reservoir Key ist Pflicht für Coilfang-Heroics – vor dem ersten Heroic-Run auf Respektvoll zielen',
+      'Zangarmarsh-Leveling und Coilfang-Runs kombinieren, um den Grind nebenbei zu erledigen'
+    ]
+  },
+  {
+    id: 'sporeggar',
+    name: 'Sporeggar',
+    side: 'Beide Fraktionen',
+    type: 'Neben-Fraktion (Zangarmarsh)',
+    zone: 'Zangarmarsh',
+    theme: '#a569bd',
+    audience: 'Einsteiger',
+    minutes: 14,
+    summary:
+      'Kleine, freundliche Pilzwesen-Siedlung in Zangarmarsh. Ruf kommt aus dem Sammeln von Zangarmarsh-Sporen und liefert frühe Levelausrüstung sowie einen Flugpunkt mitten in der Zone.',
+    startRequirement: 'Ab Stufe 60, Einstieg am Sporeggar-Lager in Zangarmarsh',
+    grindLength: 'Wenige Tage',
+    estimatedTime: 'Wenige Tage bei regelmäßigem Sporen-Sammeln bis Respektvoll',
+    howTo: [
+      'Die Einführungsquest bei Sporeggar annehmen',
+      'Zangarmarsh-Sporen von Pilzwesen und Sporebats einsammeln und abgeben',
+      'Gelegentliche Zusatzquests rund um Sporeggar abschließen'
+    ],
+    grindTargets: [
+      'Sporebats und andere Pilzwesen in Zangarmarsh für Sporen-Drops'
+    ],
+    keyQuests: [
+      'Einführungsquest am Sporeggar-Lager'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Flugpunkt-Zugang bei Sporeggar', 'Grundausrüstung'] },
+      { rank: 'Wohlwollend', rewards: ['Frühe Levelringe mit Ausdauer'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets und Waffen für die Levelphase'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes Sporeggar-Zubehör inklusive seltener Sammlerbelohnung'] }
+    ],
+    tips: [
+      'Guter Nebeneffekt-Ruf beim normalen Zangarmarsh-Leveling',
+      'Für Twinks und Sammler nett, aber kein Pflichtziel für den Endgame-Progress'
+    ]
+  },
+  {
+    id: 'sha-tar',
+    name: 'The Sha’tar',
+    side: 'Beide Fraktionen',
+    type: 'Zugangs-Fraktion (Auchindoun & Tempest Keep)',
+    zone: 'Shattrath City',
+    theme: '#e8c547',
+    audience: 'Fortgeschritten',
+    minutes: 22,
+    summary:
+      'Zentrale Naaru-Fraktion in Shattrath City. Steuert den Zugang zu allen Auchindoun- und Tempest-Keep-Heroics und liefert wichtige Zwischenausrüstung vor Karazhan.',
+    startRequirement: 'Ab Stufe 64, Einstieg über die Shattrath-Questreihe in Terokkar Forest',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei regelmäßigen Auchindoun- und Tempest-Keep-Runs bis Respektvoll',
+    howTo: [
+      'Die Einführungs-Questreihe nach Shattrath City abschließen',
+      'Mana-Tombs-, Auchenai-Crypts-, Sethekk-Halls- und Shadow-Labyrinth-Bosskills geben Ruf',
+      'The-Mechanar-, The-Botanica- und The-Arcatraz-Bosskills in Tempest Keep geben ebenfalls Ruf',
+      'The-Eye-Raidbosse in Tempest Keep liefern zusätzlichen Ruf im Endgame'
+    ],
+    grindTargets: [
+      'Auchindoun-Dungeons: Mana-Tombs, Auchenai Crypts, Sethekk Halls, Shadow Labyrinth',
+      'Tempest-Keep-Dungeons: The Mechanar, The Botanica, The Arcatraz'
+    ],
+    keyQuests: [
+      'Einführungskette zur Entdeckung von Shattrath City',
+      'Vorquests für den Zugang zu Auchindoun und Tempest Keep'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zu Shattrath-Flugpunkt und Grundhändlern'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenringe und Trinkets für alle Rollen'] },
+      { rank: 'Respektvoll', rewards: ['Auchenai Key für alle Auchindoun-Heroics', 'Warpforged Key für alle Tempest-Keep-Heroics'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starke Vorbereitungsausrüstung für Karazhan und Tempest Keep', 'Voller Zugang zum kompletten Rezeptkatalog'] }
+    ],
+    tips: [
+      'Beide Schlüssel ab Respektvoll sind Pflicht für alle acht zugehörigen Heroics',
+      'Auchindoun- und Tempest-Keep-Runs so früh wie möglich in die wöchentliche Routine einbauen'
+    ]
+  },
+  {
+    id: 'aldor',
+    name: 'The Aldor',
+    side: 'Beide Fraktionen',
+    type: 'Schulterverzauberungs-Fraktion (Shattrath City)',
+    zone: 'Shattrath City',
+    theme: '#3a6ea5',
+    audience: 'Fortgeschritten',
+    minutes: 18,
+    summary:
+      'Naaru-treue Fraktion auf der Terrace of Light in Shattrath City. Steht in direkter Konkurrenz zu den Scryers – Ruf bei den Aldor senkt automatisch den Ruf bei den Scryers und umgekehrt.',
+    startRequirement: 'Ab Stufe 64, Entscheidung fällt mit der ersten angenommenen Aldor- oder Scryer-Quest in Shattrath City',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei regelmäßigem Turn-in-Farmen bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Aldor-Einführungsquest auf der Terrace of Light annehmen',
+      'Gesammelte Beutestücke gefallener Dämonen und Fel-Orcs beim Aldor-Questgeber abgeben',
+      'Aldor-Tagesquests rund um Shattrath und Shadowmoon Valley abschließen, sobald verfügbar'
+    ],
+    grindTargets: [
+      'Dämonische und Fel-Orc-Gegner in Hellfire Peninsula, Zangarmarsh und Shadowmoon Valley für Trophäen-Turn-ins'
+    ],
+    keyQuests: [
+      'Aldor-Einführungskette auf der Terrace of Light'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Erste Schulterverzauberung mit Grundwert'] },
+      { rank: 'Wohlwollend', rewards: ['Verbesserte Schulterverzauberung', 'Grundhändler-Zugang'] },
+      { rank: 'Respektvoll', rewards: ['Starke Schulterverzauberung für die jeweilige Rolle'] },
+      { rank: 'Ehrfürchtig', rewards: ['Beste verfügbare Schulterverzauberung der Fraktion', 'Zugang zu allen Aldor-Reagenzien und Trinkets'] }
+    ],
+    tips: [
+      'Die Entscheidung Aldor vs. Scryers ist nicht endgültig, aber ein Wechsel kostet viel Zeit – vorher Gilde/Rollenbedarf abklären',
+      'Schulterverzauberungen bleiben bis weit in Tier-5-Content hinein relevant'
+    ]
+  },
+  {
+    id: 'scryers',
+    name: 'The Scryers',
+    side: 'Beide Fraktionen',
+    type: 'Schulterverzauberungs-Fraktion (Shattrath City)',
+    zone: 'Shattrath City',
+    theme: '#f1c40f',
+    audience: 'Fortgeschritten',
+    minutes: 18,
+    summary:
+      'Blutelfen-nahe Fraktion auf der Scryers’ Tier in Shattrath City. Gegenspieler der Aldor, ebenfalls über Schulterverzauberungen für alle Rollen relevant.',
+    startRequirement: 'Ab Stufe 64, Entscheidung fällt mit der ersten angenommenen Aldor- oder Scryer-Quest in Shattrath City',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei regelmäßigem Turn-in-Farmen bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Scryer-Einführungsquest auf der Scryers’ Tier annehmen',
+      'Gesammelte arkane Trophäen von Ethereals und Blutelfen-Abtrünnigen beim Scryer-Questgeber abgeben',
+      'Scryer-Tagesquests rund um Shattrath und Shadowmoon Valley abschließen, sobald verfügbar'
+    ],
+    grindTargets: [
+      'Ethereal- und Blutelfen-Gegner in Netherstorm und Terokkar Forest für Trophäen-Turn-ins'
+    ],
+    keyQuests: [
+      'Scryer-Einführungskette auf der Scryers’ Tier'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Erste Schulterverzauberung mit Grundwert'] },
+      { rank: 'Wohlwollend', rewards: ['Verbesserte Schulterverzauberung', 'Grundhändler-Zugang'] },
+      { rank: 'Respektvoll', rewards: ['Starke Schulterverzauberung für die jeweilige Rolle'] },
+      { rank: 'Ehrfürchtig', rewards: ['Beste verfügbare Schulterverzauberung der Fraktion', 'Zugang zu allen Scryer-Reagenzien und Trinkets'] }
+    ],
+    tips: [
+      'Die Schulterverzauberungen von Aldor und Scryers unterscheiden sich optisch, sind vom Effekt her aber meist gleichwertig',
+      'Rufgewinn bei den Scryers senkt automatisch den Ruf bei den Aldor – nicht parallel farmen'
+    ]
+  },
+  {
+    id: 'lower-city',
+    name: 'Lower City',
+    side: 'Beide Fraktionen',
+    type: 'Umhangverzauberungs-Fraktion (Shattrath City)',
+    zone: 'Shattrath City',
+    theme: '#16a085',
+    audience: 'Fortgeschritten',
+    minutes: 16,
+    summary:
+      'Fraktion der Flüchtlinge im ärmeren Stadtteil von Shattrath City. Liefert Umhangverzauberungen für alle Rollen und ist eng mit den Auchindoun-Dungeons verbunden.',
+    startRequirement: 'Ab Stufe 64, Einstieg über die Shattrath-Questreihe im unteren Stadtviertel',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei regelmäßigen Auchindoun-Runs und Turn-ins bis Respektvoll',
+    howTo: [
+      'Die Einführungs-Questreihe im unteren Stadtviertel von Shattrath City abschließen',
+      'Bonusquests bei Auchindoun-Bossen (Mana-Tombs, Auchenai Crypts, Sethekk Halls, Shadow Labyrinth) abgeben',
+      'Wiederholbare Sammelquests rund um Terokkar Forest erledigen'
+    ],
+    grindTargets: [
+      'Auchindoun-Bosskills für Bonus-Ruf-Quests',
+      'Wiederholbare Sammelziele in Terokkar Forest'
+    ],
+    keyQuests: [
+      'Einführungskette im unteren Stadtviertel von Shattrath City'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Erste Umhangverzauberung mit Grundwert'] },
+      { rank: 'Wohlwollend', rewards: ['Verbesserte Umhangverzauberung'] },
+      { rank: 'Respektvoll', rewards: ['Starke Umhangverzauberung für die jeweilige Rolle'] },
+      { rank: 'Ehrfürchtig', rewards: ['Beste verfügbare Umhangverzauberung der Fraktion', 'Zugang zu seltenen Reagenzien und einem starken Trinket'] }
+    ],
+    tips: [
+      'Lässt sich hervorragend mit dem Sha’tar-Ruf kombinieren, da beide über Auchindoun laufen',
+      'Umhangverzauberungen bleiben bis weit ins Endgame hinein konkurrenzfähig'
+    ]
+  },
+  {
+    id: 'keepers-of-time',
+    name: 'Keepers of Time',
+    side: 'Beide Fraktionen',
+    type: 'Raid-Ruf (Caverns of Time)',
+    zone: 'Caverns of Time (Tanaris)',
+    theme: '#cd7f32',
+    audience: 'Fortgeschritten',
+    minutes: 18,
+    summary:
+      'Zeitwächter-Fraktion in den Caverns of Time. Ruf kommt aus Old Hillsbrad Foothills und The Black Morass und liefert solide Zwischenausrüstung mit Fokus auf die Verteidigung des Dark Portals.',
+    startRequirement: 'Ab Stufe 66, Einstieg über die Questreihe in den Caverns of Time in Tanaris',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei regelmäßigen Old-Hillsbrad- und Black-Morass-Runs bis Respektvoll',
+    howTo: [
+      'Die Einführungs-Questreihe in den Caverns of Time abschließen',
+      'Old-Hillsbrad-Foothills-Bosskills geben Ruf',
+      'The-Black-Morass-Läufe (Verteidigung des Dark Portals gegen Aeonus’ Wellen) geben zusätzlichen Ruf'
+    ],
+    grindTargets: [
+      'Old-Hillsbrad-Foothills-Bosskills',
+      'The-Black-Morass-Portalverteidigung bis Aeonus'
+    ],
+    keyQuests: [
+      'Einführungskette in den Caverns of Time'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundhändler-Zugang'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenringe mit Ausdauer- und Angriffswert'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets für Tank und DPS'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starke Vorbereitungsausrüstung für Karazhan', 'Zugang zum kompletten Fraktionsrezeptkatalog'] }
+    ],
+    tips: [
+      'The Black Morass ist zeitkritisch – eine geübte Gruppe beschleunigt sowohl den Run als auch den Ruf-Ertrag',
+      'Guter Nebenschauplatz für Spieler, die ohnehin Heroic-Erfahrung gegen Aeonus sammeln'
+    ]
+  },
+  {
+    id: 'violet-eye',
+    name: 'The Violet Eye',
+    side: 'Beide Fraktionen',
+    type: 'Raid-Ruf (Karazhan)',
+    zone: 'Deadwind Pass (Karazhan)',
+    theme: '#8e44ad',
+    audience: 'Experte',
+    minutes: 18,
+    summary:
+      'Kirin-Tor-Wächter-Fraktion rund um Karazhan. Ruf kommt ausschließlich aus Trash- und Bosskills im Turm und schaltet am Ende einen Trash-Skip-Schlüssel frei.',
+    startRequirement: 'Stufe 70, Karazhan-Attunement erforderlich',
+    grindLength: 'Mehrere Karazhan-Wochen',
+    estimatedTime: 'Mehrere Wochen wöchentlicher Karazhan-Clears bis Respektvoll, Ehrfürchtig erfordert deutlich mehr Runs',
+    howTo: [
+      'Karazhan-Trash und -Bosse regelmäßig im wöchentlichen Reset clearen',
+      'Jeder Bosskill von Attumen the Huntsman bis Prince Malchezaar gibt spürbaren Ruf'
+    ],
+    grindTargets: [
+      'Wöchentliche Karazhan-Clears (Trash und alle regulären Bosse)'
+    ],
+    keyQuests: [
+      'Keine klassische Questreihe – reiner Raid-Trash- und Bosskill-Ruf'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundzugang zum Fraktionshändler'] },
+      { rank: 'Wohlwollend', rewards: ['Erste epische Ringe und Trinkets'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Karazhan-Vorbereitungsausrüstung'] },
+      { rank: 'Ehrfürchtig', rewards: ['Master’s Key zum Überspringen von Trash-Abschnitten in Karazhan', 'Bestes verfügbares Fraktionszubehör'] }
+    ],
+    tips: [
+      'Der Master’s Key ab Ehrfürchtig spart wöchentlich viel Zeit auf dem Weg zu Curator und Prince Malchezaar',
+      'Ruf steigt automatisch mit jedem regulären Raidabend – kein separater Grind nötig'
+    ]
+  },
+  {
+    id: 'kurenai-maghar',
+    name: 'Kurenai & The Mag’har',
+    side: 'Beide Fraktionen',
+    type: 'Hub-Fraktion (Nagrand)',
+    zone: 'Nagrand',
+    theme: '#e67e22',
+    audience: 'Einsteiger',
+    minutes: 18,
+    summary:
+      'Nagrand-Hub-Fraktionen: Kurenai für die Allianz (versprengte Draenei), The Mag’har für die Horde (unverdorbene Orcs). Ruf füllt sich größtenteils automatisch beim Durchleveln der Zone.',
+    startRequirement: 'Ab Stufe 64, Einstieg über die Nagrand-Questreihe',
+    grindLength: '1 Levelphase',
+    estimatedTime: 'Läuft meist automatisch während des Levelns von 64-67 in Nagrand mit',
+    howTo: [
+      'Die komplette Nagrand-Questreihe rund um Telaar bzw. Garadar abschließen',
+      'Wiederholbare Jagd- und Sammelquests im jeweiligen Fraktionslager erledigen'
+    ],
+    grindTargets: [
+      'Standard-Levelquests und wiederholbare Turn-ins rund um Telaar (Allianz) bzw. Garadar (Horde)'
+    ],
+    keyQuests: [
+      'Einführungskette am jeweiligen Fraktionslager in Nagrand'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundausrüstung beim Fraktionshändler'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenringe mit Ausdauer'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Waffen und Trinkets für die Levelphase'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes verfügbares Zwischenzubehör vor Stufe 70', 'Voller Fraktionshändlerzugang'] }
+    ],
+    tips: [
+      'Wird meist automatisch beim normalen Nagrand-Leveln erreicht',
+      'Für Ehrfürchtig lohnt sich gezieltes Wiederholen der Lager-Turn-ins nach Zonenabschluss'
+    ]
+  },
+  {
+    id: 'ogrila',
+    name: 'Ogri’la',
+    side: 'Beide Fraktionen',
+    type: 'Tagesquest-Fraktion (Blade’s Edge Mountains)',
+    zone: 'Blade’s Edge Mountains',
+    theme: '#8b5a2b',
+    audience: 'Experte',
+    minutes: 16,
+    summary:
+      'Arakkoa-Fraktion auf dem schwebenden Felsen Ogri’la in den Blade’s Edge Mountains. Tagesquests liefern Ruf und Apexis Shards für epische Zwischenbelohnungen.',
+    startRequirement: 'Stufe 70, Zugang über eine Vorquestreihe in den Blade’s Edge Mountains',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Vorquestreihe abschließen, um Ogri’la freizuschalten',
+      'Täglich verfügbare Ogri’la-Tagesquests in den Blade’s Edge Mountains abschließen',
+      'Apexis Shards aus den Tagesquests sammeln und bei Bedarf gegen Zwischenausrüstung eintauschen'
+    ],
+    grindTargets: [
+      'Tägliche Ogri’la-Quests (Bombenläufe, Ei-Sammeln, Elementar- und Netherdrachen-Ziele)'
+    ],
+    keyQuests: [
+      'Freischalt-Questreihe für Ogri’la in den Blade’s Edge Mountains'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Ogri’la-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Epische Bündel-Rezepte gegen Apexis Shards'] },
+      { rank: 'Respektvoll', rewards: ['Epische Armschienen (BoE) beim Fraktionshändler'] },
+      { rank: 'Ehrfürchtig', rewards: ['Volles Ogri’la-Rezept- und Ausrüstungssortiment', 'Bestes verfügbares Apexis-Zubehör'] }
+    ],
+    tips: [
+      'Apexis Shards lassen sich am selben Tag mit den Sha’tari-Skyguard-Tagesquests kombinieren',
+      'Tagesquests sind zeitlich limitiert – regelmäßige tägliche Logins beschleunigen den Grind erheblich'
+    ]
+  },
+  {
+    id: 'shatari-skyguard',
+    name: 'Sha’tari Skyguard',
+    side: 'Beide Fraktionen',
+    type: 'Tagesquest-Fraktion (Skettis)',
+    zone: 'Blade’s Edge Mountains (Skettis)',
+    theme: '#3498db',
+    audience: 'Experte',
+    minutes: 16,
+    summary:
+      'Luftwacht-Fraktion, die gegen die Arakkoa von Skettis kämpft. Tagesquests rund um Skettis liefern Ruf, Apexis Shards und starkes Zwischen-Zubehör.',
+    startRequirement: 'Stufe 70, Zugang über eine Vorquestreihe bei Skettis',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Vorquestreihe abschließen, um die Sha’tari-Skyguard-Tagesquests freizuschalten',
+      'Täglich verfügbare Skettis-Tagesquests (Arakkoa bekämpfen, Käfige befreien, Eier zerstören) abschließen',
+      'Apexis Shards aus den Tagesquests sammeln und bei Bedarf gegen Ausrüstung eintauschen'
+    ],
+    grindTargets: [
+      'Tägliche Skettis-Quests rund um Arakkoa-Ziele und Gefangenenbefreiung'
+    ],
+    keyQuests: [
+      'Freischalt-Questreihe für die Sha’tari-Skyguard-Tagesquests bei Skettis'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Skyguard-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenschmuck gegen Apexis Shards'] },
+      { rank: 'Respektvoll', rewards: ['Starke Umhänge und Halsketten beim Fraktionshändler'] },
+      { rank: 'Ehrfürchtig', rewards: ['Volles Skyguard-Rezept- und Ausrüstungssortiment', 'Bestes verfügbares Apexis-Zubehör'] }
+    ],
+    tips: [
+      'Lässt sich effizient mit den Ogri’la-Tagesquests am selben Tag kombinieren',
+      'Käfig- und Ei-Quests sind meist am schnellsten erledigt – zuerst einplanen'
+    ]
+  },
+  {
+    id: 'netherwing',
+    name: 'Netherwing',
+    side: 'Beide Fraktionen',
+    type: 'Tagesquest- & Reittier-Fraktion (Shadowmoon Valley)',
+    zone: 'Shadowmoon Valley',
+    theme: '#6c3483',
+    audience: 'Experte',
+    minutes: 20,
+    summary:
+      'Berühmter Drachen-Grind am Netherwing Ledge in Shadowmoon Valley. Tägliche Quests füllen den Ruf und schalten am Ende die zehn Netherwing-Drachen-Reittiere zum Kauf frei.',
+    startRequirement: 'Stufe 70, Zugang über eine Vorquestreihe inklusive Verkleidung als Fel Orc',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei täglichem Tagesquest-Zyklus, meist 3-4 Wochen bis Ehrfürchtig',
+    howTo: [
+      'Die Vorquestreihe inklusive Fel-Orc-Verkleidung am Netherwing Ledge abschließen',
+      'Täglich verfügbare Netherwing-Tagesquests abschließen, unter anderem das Aufziehen eines eigenen Netherdrachen-Eis',
+      'Gelegentliche Zusatzquests rund um Shadowmoon Valley für Bonus-Ruf mitnehmen'
+    ],
+    grindTargets: [
+      'Tägliche Netherwing-Quests am Netherwing Ledge (Ei-Aufzucht, Patrouillen, Sammelziele)'
+    ],
+    keyQuests: [
+      'Freischalt-Questreihe mit Fel-Orc-Verkleidung für den Zugang zum Netherwing Ledge'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Netherwing-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenschmuck und Reagenzien'] },
+      { rank: 'Respektvoll', rewards: ['Starke Umhänge und Halsketten mit Fel-Thema'] },
+      { rank: 'Ehrfürchtig', rewards: ['Alle zehn Netherwing-Drachen-Reittiere käuflich', 'Volles Netherwing-Rezeptsortiment'] }
+    ],
+    tips: [
+      'Für die Drachen-Reittiere ist Ehrfürchtig zwingend nötig – tägliches Einloggen beschleunigt den Grind erheblich',
+      'Die Ei-Aufzuchtquest ist an einen festen täglichen Rhythmus gebunden und lässt sich nicht vorziehen'
+    ]
+  },
+  {
+    id: 'scale-of-the-sands',
+    name: 'The Scale of the Sands',
+    side: 'Beide Fraktionen',
+    type: 'Raid-Ruf (Caverns of Time)',
+    zone: 'Caverns of Time (Tanaris)',
+    theme: '#d2b48c',
+    audience: 'Experte',
+    minutes: 16,
+    summary:
+      'Bronzedrachen-Fraktion rund um The Black Morass. Ruf kommt aus wiederholbaren Turn-ins nach erfolgreicher Portalverteidigung und liefert klassenspezifische Trinkets.',
+    startRequirement: 'Stufe 70, Zugang über abgeschlossene The-Black-Morass-Läufe',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei regelmäßigen Black-Morass-Runs und Turn-ins bis Ehrfürchtig',
+    howTo: [
+      'The Black Morass erfolgreich abschließen (Aeonus besiegen)',
+      'Erhaltene Insignien beim Questgeber der Caverns of Time gegen Ruf eintauschen',
+      'Runs regelmäßig wiederholen, um den Ruf-Turn-in erneut freizuschalten'
+    ],
+    grindTargets: [
+      'Wiederholte The-Black-Morass-Läufe (normal oder heroisch) für Insignien-Turn-ins'
+    ],
+    keyQuests: [
+      'Keine klassische Questreihe – reiner Turn-in-basierter Ruf nach Black-Morass-Clears'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Grundzugang zum Fraktionshändler'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenschmuck mit Klassenattributen'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte klassenspezifische Trinkets'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starke klassenspezifische Trinkets für Tank, Heiler, Melee- und Caster-DPS'] }
+    ],
+    tips: [
+      'Gut mit dem Keepers-of-Time-Ruf kombinierbar, da beide über die Caverns of Time laufen',
+      'Heroische Black-Morass-Läufe sind zeitkritisch, geben aber denselben Ruf-Turn-in wie der normale Modus'
+    ]
+  },
+  {
+    id: 'ashtongue-deathsworn',
+    name: 'Ashtongue Deathsworn',
+    side: 'Beide Fraktionen',
+    type: 'Raid-Vorbereitungs-Fraktion (Black Temple)',
+    zone: 'Shadowmoon Valley (Bash’ir Landing)',
+    theme: '#7a1f1f',
+    audience: 'Experte',
+    minutes: 18,
+    summary:
+      'Ehemalige Illidari-Elite unter Akama, die sich gegen Illidan gewandt hat. Ruf kommt aus wiederholbaren Turn-ins bei Bash’ir Landing und ist zentrale Vorbereitung für die Black-Temple-Attunement-Kette.',
+    startRequirement: 'Stufe 70, Zugang über die Akama-Questreihe in Shadowmoon Valley',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen bei regelmäßigem Turn-in-Farmen bis Ehrfürchtig',
+    howTo: [
+      'Die Akama-Questreihe in Shadowmoon Valley bis Bash’ir Landing abschließen',
+      'Ashtongue Corpse Dust von Illidari- und Shadow-Council-Gegnern in Shadowmoon Valley sammeln und abgeben',
+      'Fortlaufende Turn-in-Runde bei Bash’ir Landing regelmäßig wiederholen'
+    ],
+    grindTargets: [
+      'Illidari- und Shadow-Council-Gegner in Shadowmoon Valley für Ashtongue-Corpse-Dust-Drops'
+    ],
+    keyQuests: [
+      'Akama-Questreihe in Shadowmoon Valley als Vorbereitung auf Black Temple'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Ashtongue-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Erste Ashtongue-Talisman-Trinkets mit Grundwert'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte klassenspezifische Ashtongue-Talismane'] },
+      { rank: 'Ehrfürchtig', rewards: ['Beste verfügbare Ashtongue-Talisman-Trinkets für die jeweilige Rolle', 'Voraussetzung für den weiteren Verlauf der Black-Temple-Attunement-Kette'] }
+    ],
+    tips: [
+      'Die Ashtongue-Talismane zählen bis weit in Black Temple hinein zu den stärksten verfügbaren Trinkets',
+      'Corpse-Dust-Turn-ins lassen sich gut mit normalem Dailies-Farmen in Shadowmoon Valley kombinieren'
+    ]
+  }
+];
+
+export const reputationGuides = {
+  classic: classicReputationGuides,
+  'the-burning-crusade': tbcReputationGuides
+};

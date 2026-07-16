@@ -134,18 +134,31 @@ assert.ok(assetManifest.professions.herbalism?.startsWith('https://wow.zamimg.co
 assert.ok(classGuides.every((classGuide) => classGuide.rotation.length >= 5), 'Each class guide should include a detailed rotation checklist');
 assert.ok(classGuides.every((classGuide) => assetManifest.classes[classGuide.id]?.startsWith('https://wow.zamimg.com/')), 'Each class must reference a verified hotlinked icon URL');
 
-assert.ok(reputationGuides.length >= 12, 'Classic reputation almanac should cover at least twelve factions');
-assert.ok(new Set(reputationGuides.map((rep) => rep.id)).size === reputationGuides.length, 'Reputation guide ids must be unique');
+assert.ok(reputationGuides.classic, 'reputationGuides must expose a classic expansion key');
+assert.ok(reputationGuides['the-burning-crusade'], 'reputationGuides must expose a the-burning-crusade expansion key');
+
+const classicReputationGuides = reputationGuides.classic;
+assert.ok(classicReputationGuides.length >= 12, 'Classic reputation almanac should cover at least twelve factions');
+assert.ok(classicReputationGuides.some((rep) => rep.id === 'argent-dawn'), 'Reputation almanac should include Argent Dawn');
+assert.ok(classicReputationGuides.some((rep) => rep.id === 'zandalar-tribe'), 'Reputation almanac should include the Zandalar Tribe');
+
+const tbcReputationGuides = reputationGuides['the-burning-crusade'];
+assert.ok(tbcReputationGuides.length >= 12, 'The Burning Crusade reputation almanac should cover at least twelve Outland factions');
+assert.ok(tbcReputationGuides.some((rep) => rep.id === 'sha-tar'), 'TBC reputation almanac should include The Sha\'tar');
+assert.ok(tbcReputationGuides.some((rep) => rep.id === 'aldor'), 'TBC reputation almanac should include The Aldor');
+assert.ok(tbcReputationGuides.some((rep) => rep.id === 'scryers'), 'TBC reputation almanac should include The Scryers');
+assert.ok(tbcReputationGuides.some((rep) => rep.id === 'netherwing'), 'TBC reputation almanac should include Netherwing');
+
+const allReputationGuides = [...classicReputationGuides, ...tbcReputationGuides];
+assert.ok(new Set(allReputationGuides.map((rep) => rep.id)).size === allReputationGuides.length, 'Reputation guide ids must be unique across expansions');
 assert.ok(
-  reputationGuides.every((rep) => rep.howTo.length >= 2 && rep.grindTargets.length >= 1 && rep.keyQuests.length >= 1 && rep.tips.length >= 2),
+  allReputationGuides.every((rep) => rep.howTo.length >= 2 && rep.grindTargets.length >= 1 && rep.keyQuests.length >= 1 && rep.tips.length >= 2),
   'Each reputation guide should explain how to gain rep, what to grind, key quests and tips'
 );
 assert.ok(
-  reputationGuides.every((rep) => rep.standings.length === 4 && rep.standings.every((standing) => standing.rewards.length >= 1)),
+  allReputationGuides.every((rep) => rep.standings.length === 4 && rep.standings.every((standing) => standing.rewards.length >= 1)),
   'Each reputation guide should list Friendly/Honored/Revered/Exalted standings with rewards'
 );
-assert.ok(reputationGuides.some((rep) => rep.id === 'argent-dawn'), 'Reputation almanac should include Argent Dawn');
-assert.ok(reputationGuides.some((rep) => rep.id === 'zandalar-tribe'), 'Reputation almanac should include the Zandalar Tribe');
 
 const buildScript = readFileSync('scripts/build.mjs', 'utf8');
 assert.match(buildScript, /app\.bundle\.js/, 'build must emit a browser-safe bundle for file protocol usage');

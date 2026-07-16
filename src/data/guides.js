@@ -375,7 +375,7 @@ export const guideCards = [
     expansion: 'the-burning-crusade',
     audience: 'Einsteiger',
     minutes: 29,
-    summary: 'Priorisierte Ruf-Reihenfolge für Aldor/Scryer, Cenarion Expedition, Sha\'tari Schlittschuh und Ashtongue für Enchants und Rezepte.',
+    summary: 'Priorisierte Ruf-Reihenfolge für Aldor/Scryer, Cenarion Expedition, Sha\'tari Skyguard und Ashtongue Deathsworn für Enchants und Rezepte.',
     checklist: ['Aldor oder Scryer vor Stufe 70 entscheiden', 'Tages- und Ruf-Quests bündeln', 'Belohnungen pro Ruf-Stufe abgleichen', 'Fraktions-Tabard für Dungeon-Grinding nutzen'],
     premium: false,
     tags: ['Ruf', 'Fraktionen', 'Outland']
