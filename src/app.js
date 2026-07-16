@@ -76,6 +76,11 @@ const reputationAtlasCopy = {
     eyebrow: 'The Burning Crusade Ruf-Almanach',
     title: 'Alle Outland-Ruf-Fraktionen von Honor Hold bis Ashtongue Deathsworn.',
     copy: 'Von Hellfire Peninsula bis Shadowmoon Valley: Schulter- und Umhangverzauberungen, Heroic-Schlüssel, Netherwing-Drachen und die komplette Raid-Vorbereitung mit Grind-Routen pro Fraktion.'
+  },
+  'mists-of-pandaria': {
+    eyebrow: 'Mists of Pandaria Ruf-Almanach',
+    title: 'Alle Pandaria-Ruf-Fraktionen von The Tillers bis Shado-Pan Assault.',
+    copy: 'Vom Jade Forest bis zur Isle of Thunder: Torwächter-Fraktionen im Vale of Eternal Blossoms, Reittier- und Angel-Grinds, Kriegskampagnen und die komplette Raid-Vorbereitung mit Grind-Routen pro Fraktion.'
   }
 };
 
