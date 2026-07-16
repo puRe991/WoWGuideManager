@@ -81,6 +81,11 @@ const reputationAtlasCopy = {
     eyebrow: 'Wrath of the Lich King Ruf-Almanach',
     title: "Alle Nordend-Ruf-Fraktionen von den Kalu'ak bis zur Ashen Verdict.",
     copy: "Von Howling Fjord bis Icecrown Citadel: Schulterverzauberungen der Sons of Hodir, Dalaran-Botschaften, Sholazar-Konkurrenzfraktionen und die komplette Ashen-Verdict-Vorbereitung mit Grind-Routen pro Fraktion."
+  },
+  'mists-of-pandaria': {
+    eyebrow: 'Mists of Pandaria Ruf-Almanach',
+    title: 'Alle Pandaria-Ruf-Fraktionen von The Tillers bis Shado-Pan Assault.',
+    copy: 'Vom Jade Forest bis zur Isle of Thunder: Torwächter-Fraktionen im Vale of Eternal Blossoms, Reittier- und Angel-Grinds, Kriegskampagnen und die komplette Raid-Vorbereitung mit Grind-Routen pro Fraktion.'
   }
 };
 

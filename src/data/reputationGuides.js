@@ -1487,8 +1487,387 @@ const wrathReputationGuides = [
   }
 ];
 
+const mopReputationGuides = [
+  {
+    id: 'the-tillers',
+    name: 'The Tillers',
+    side: 'Beide Fraktionen',
+    type: 'Farm-Fraktion (Halfhill)',
+    zone: 'Valley of the Four Winds',
+    theme: '#7fae4f',
+    audience: 'Einsteiger',
+    minutes: 18,
+    summary:
+      'Deine eigene Farm in Halfhill. Ruf kommt aus täglichen Erntequests für die Dorfbewohner und läuft parallel zu einem separaten Freundschaftssystem, das eigene Kochrezepte und Farm-Ausbauten freischaltet.',
+    startRequirement: 'Ab Stufe 85, Einstieg über die Halfhill-Questreihe im Valley of the Four Winds',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Farmbesuch bis Respektvoll, Bester Freund bei jedem Dorfbewohner ist ein Langzeitziel über mehrere Monate',
+    howTo: [
+      'Die Einführungsquest bei Old Man Oakpaw annehmen und die eigene Parzelle in Halfhill übernehmen',
+      'Täglich Samen pflanzen und für die sechs Dorfbewohner ernten – jede erledigte Bestellung gibt Ruf und Freundschaftspunkte beim jeweiligen Dorfbewohner',
+      'Gelegentlich Geschenke (Delikatessen, seltene Tees) an einzelne Dorfbewohner verteilen, um deren persönliche Freundschaft schneller zu steigern'
+    ],
+    grindTargets: [
+      'Tägliche Erntebestellungen auf der eigenen Farm in Halfhill',
+      'Seltene Saatgut- und Geschenkquests der einzelnen Dorfbewohner'
+    ],
+    keyQuests: [
+      'Einführungskette bei Old Man Oakpaw in Halfhill',
+      'Tägliche Ernte- und Lieferquests der Dorfbewohner'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zur eigenen Farmparzelle und Grundsaatgut'] },
+      { rank: 'Wohlwollend', rewards: ['Zusätzliche Ackerreihen und mehr Saatgutauswahl'] },
+      { rank: 'Respektvoll', rewards: ['Seltenes Saatgut wie Green Tea Leaf und Songbell Seed'] },
+      { rank: 'Ehrfürchtig', rewards: ['Voller Zugang zu allen Feldfrüchten', 'Freundschafts-Kochrezepte wie Mogu Fish Stew und Sea Mist Rice Noodles bei genügend Einzel-Freundschaft'] }
+    ],
+    tips: [
+      'Das Freundschaftssystem läuft getrennt vom normalen Ruf – gezielt Geschenke an den Lieblings-Dorfbewohner für Köche verteilen',
+      'Guter Dauerbrenner für Kochen und Kräuterkunde, da viele Farmpflanzen direkt weiterverarbeitet werden können'
+    ]
+  },
+  {
+    id: 'order-of-the-cloud-serpent',
+    name: 'Order of the Cloud Serpent',
+    side: 'Beide Fraktionen',
+    type: 'Reittier-Fraktion (Jade Forest)',
+    zone: 'Jade Forest',
+    theme: '#3fa796',
+    audience: 'Einsteiger',
+    minutes: 20,
+    summary:
+      'Die Wolkenserpent-Reiter am Temple of the Jade Serpent. Ruf kommt aus dem Aufziehen eines eigenen Cloud-Serpent-Jungtiers und wiederholbaren Flugquests, am Ende warten vier Reittier-Farben zum Kauf.',
+    startRequirement: 'Ab Stufe 85, Einstieg über die Questreihe am Temple of the Jade Serpent im Jade Forest',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Fütterungs- und Flugquest-Zyklus bis Respektvoll, Ehrfürchtig braucht deutlich längeres Farmen',
+    howTo: [
+      'Die Aufzuchtquestreihe für das eigene Cloud-Serpent-Jungtier am Temple of the Jade Serpent abschließen',
+      'Tägliche Fütterungs- und Flugtrainingsquests mit dem eigenen Jungtier erledigen',
+      'Wiederholbare Erkundungsflüge und Sammelquests im Jade Forest annehmen, sobald verfügbar'
+    ],
+    grindTargets: [
+      'Tägliche Fütterungs- und Trainingsquests des eigenen Cloud-Serpent-Jungtiers',
+      'Wiederholbare Flug- und Sammelquests rund um den Temple of the Jade Serpent'
+    ],
+    keyQuests: [
+      'Aufzuchtkette für das Cloud-Serpent-Jungtier am Temple of the Jade Serpent',
+      'Tägliche Fütterungs- und Flugtrainingsquests'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Eigenes Cloud-Serpent-Jungtier als Begleiter'] },
+      { rank: 'Wohlwollend', rewards: ['Zugang zum Fraktionshändler für Grundausrüstung'] },
+      { rank: 'Respektvoll', rewards: ['Zwischenschmuck und Verzauberungsmaterial'] },
+      { rank: 'Ehrfürchtig', rewards: ['Alle vier Cloud-Serpent-Reittiere käuflich (Azure, Golden, Jade und Onyx Cloud Serpent)'] }
+    ],
+    tips: [
+      'Die Fütterungsquests sind an einen täglichen Rhythmus gebunden – lässt sich nicht durch Vorratshaltung beschleunigen',
+      'Guter Nebeneffekt-Ruf beim normalen Jade-Forest-Leveling in der Startphase'
+    ]
+  },
+  {
+    id: 'the-anglers',
+    name: 'The Anglers',
+    side: 'Beide Fraktionen',
+    type: 'Angel-Fraktion (Krasarang Wilds)',
+    zone: 'Krasarang Wilds',
+    theme: '#2f7ac9',
+    audience: 'Einsteiger',
+    minutes: 16,
+    summary:
+      'Angel-Fraktion am Fisherman’s Point in den Krasarang Wilds. Ruf kommt aus täglichen Angelquests und liefert einzigartige Angel-Ausrüstung, Begleiter und Titel für Sammler.',
+    startRequirement: 'Ab Stufe 85, Einstieg am Fisherman’s Point in den Krasarang Wilds',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Angelquest-Zyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Einführungsquest am Fisherman’s Point annehmen',
+      'Täglich verfügbare Angelquests rund um die Krasarang Wilds abschließen',
+      'Gelegentliche Zusatzquests und Angelwettbewerbe für Bonus-Ruf mitnehmen'
+    ],
+    grindTargets: [
+      'Tägliche Angelquests am Fisherman’s Point und den umliegenden Küsten der Krasarang Wilds'
+    ],
+    keyQuests: [
+      'Einführungskette am Fisherman’s Point',
+      'Tägliche Angel- und Sammelquests der Fraktion'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Anglers-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Verbesserte Angelruten und Köder'] },
+      { rank: 'Respektvoll', rewards: ['Angel-Hüte und Begleiter wie den Giant Fishing Chair'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes verfügbares Anglers-Zubehör', 'Titel „the Angler“ und exklusive Angel-Transmog-Teile'] }
+    ],
+    tips: [
+      'Reiner Sammel- und Berufsgrind ohne Kampf – ideal als Nebenbeschäftigung beim Angeln-Skillen',
+      'Angelwettbewerbe laufen zeitlich begrenzt – bei Verfügbarkeit sofort mitnehmen'
+    ]
+  },
+  {
+    id: 'golden-lotus',
+    name: 'The Golden Lotus',
+    side: 'Beide Fraktionen',
+    type: 'Torwächter-Fraktion (Vale of Eternal Blossoms)',
+    zone: 'Vale of Eternal Blossoms',
+    theme: '#d4af37',
+    audience: 'Fortgeschritten',
+    minutes: 24,
+    summary:
+      'Zentrale Tagesquest-Fraktion im Vale of Eternal Blossoms, erreichbar über Shrine of Seven Stars (Allianz) bzw. Shrine of Two Moons (Horde). Torwächter-Fraktion: Respektvoll schaltet die Tagesquests von Shado-Pan und The August Celestials frei.',
+    startRequirement: 'Ab Stufe 90, Einstieg über die Hauptquestreihe am Shrine of Seven Stars bzw. Shrine of Two Moons',
+    grindLength: '1-2 Wochen',
+    estimatedTime: '1-2 Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig braucht mehrere weitere Wochen',
+    howTo: [
+      'Die Hauptquestreihe im Vale of Eternal Blossoms rund um Shrine of Seven Stars bzw. Shrine of Two Moons abschließen',
+      'Täglich verfügbare Golden-Lotus-Tagesquests im Vale erledigen',
+      'Sobald Respektvoll erreicht ist: Shado-Pan- und August-Celestials-Tagesquests zusätzlich freischalten und mitnehmen'
+    ],
+    grindTargets: [
+      'Tägliche Golden-Lotus-Quests im Vale of Eternal Blossoms (Sha-Bekämpfung, Eskorten, Sammelziele)'
+    ],
+    keyQuests: [
+      'Hauptquestreihe am Shrine of Seven Stars bzw. Shrine of Two Moons',
+      'Freischalt-Questreihe für Shado-Pan und The August Celestials'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Golden-Lotus-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenschmuck mit Grundstats'] },
+      { rank: 'Respektvoll', rewards: ['Freischaltung der Shado-Pan- und August-Celestials-Tagesquests', 'Epische Berufsrezepte'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starke Trinkets und Umhänge für die Karazhan-Nachfolge Mogu’shan Vaults', 'Voller Zugang zum kompletten Rezeptkatalog'] }
+    ],
+    tips: [
+      'Golden Lotus zuerst auf Respektvoll bringen – erst dann öffnen sich die Tagesquest-Hubs von Shado-Pan und den August Celestials',
+      'Alle drei Vale-Fraktionen lassen sich am selben Tagesquest-Hub effizient kombinieren'
+    ]
+  },
+  {
+    id: 'shado-pan',
+    name: 'Shado-Pan',
+    side: 'Beide Fraktionen',
+    type: 'Tagesquest-Fraktion (Townlong Steppes)',
+    zone: 'Townlong Steppes',
+    theme: '#4a4a4a',
+    audience: 'Fortgeschritten',
+    minutes: 22,
+    summary:
+      'Kampffraktion der Mönchskrieger am Shado-Pan Garrison in den Townlong Steppes. Verteidigt die Grenze gegen die Mantis-Schwärme und liefert Plattensets, Wachhund-Reittiere und starke Zwischenausrüstung.',
+    startRequirement: 'Respektvoll bei Golden Lotus erforderlich, Einstieg am Shado-Pan Garrison in den Townlong Steppes',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig braucht deutlich längeres Farmen',
+    howTo: [
+      'Die Freischalt-Questreihe über Golden Lotus abschließen, um Zugang zum Shado-Pan Garrison zu erhalten',
+      'Täglich verfügbare Shado-Pan-Tagesquests in den Townlong Steppes abschließen',
+      'Gelegentliche Verteidigungs-Weltevents gegen die Mantis geben zusätzlichen Ruf'
+    ],
+    grindTargets: [
+      'Tägliche Shado-Pan-Quests rund um den Shado-Pan Garrison (Mantis-Bekämpfung, Sammelziele, Sabotage)'
+    ],
+    keyQuests: [
+      'Freischalt-Questreihe für den Shado-Pan Garrison über Golden Lotus',
+      'Tägliche Verteidigungs- und Sabotagequests der Townlong Steppes'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Shado-Pan-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Handschuh-Verzauberungen mit Grundwert'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Handschuh-Verzauberungen und Plattenset-Teile'] },
+      { rank: 'Ehrfürchtig', rewards: ['Grey Riding Tiger als käufliches Reittier', 'Bestes verfügbares Shado-Pan-Zubehör'] }
+    ],
+    tips: [
+      'Erst Golden Lotus auf Respektvoll bringen, sonst bleibt der Garrison verschlossen',
+      'Gut mit dem August-Celestials-Ruf am selben Tagesquest-Hub kombinierbar'
+    ]
+  },
+  {
+    id: 'august-celestials',
+    name: 'The August Celestials',
+    side: 'Beide Fraktionen',
+    type: 'Tempel-Fraktion (Vale of Eternal Blossoms)',
+    zone: 'Vale of Eternal Blossoms',
+    theme: '#c9a4e0',
+    audience: 'Fortgeschritten',
+    minutes: 22,
+    summary:
+      'Fraktion der vier himmlischen Wächter Chi-Ji, Xuen, Yu’lon und Niuzao. Tagesquests im Vale of Eternal Blossoms liefern rollenspezifische Trinkets, die zu den stärksten verfügbaren Zwischen-Items der frühen Mogu’shan-Vaults-Progression zählen.',
+    startRequirement: 'Respektvoll bei Golden Lotus erforderlich, Einstieg im Vale of Eternal Blossoms',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig braucht deutlich längeres Farmen',
+    howTo: [
+      'Die Freischalt-Questreihe über Golden Lotus abschließen, um die August-Celestials-Tagesquests freizuschalten',
+      'Täglich verfügbare Tagesquests im Vale of Eternal Blossoms abschließen',
+      'Rollenspezifische Trinkets (Relic of Chi-Ji, Relic of Xuen, Relic of Yu’lon, Relic of Niuzao) beim Fraktionshändler gegen Ruf und Valor eintauschen'
+    ],
+    grindTargets: [
+      'Tägliche August-Celestials-Quests im Vale of Eternal Blossoms'
+    ],
+    keyQuests: [
+      'Freischalt-Questreihe für die August-Celestials-Tagesquests über Golden Lotus',
+      'Tägliche Quests rund um die vier Tempel der Celestials'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Fraktionshändler'] },
+      { rank: 'Wohlwollend', rewards: ['Gürtelverzauberungen mit Grundwert'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Gürtelverzauberungen'] },
+      { rank: 'Ehrfürchtig', rewards: ['Rollenspezifisches Relic-Trinket (Chi-Ji/Xuen/Yu’lon/Niuzao)', 'Bestes verfügbares August-Celestials-Zubehör'] }
+    ],
+    tips: [
+      'Erst Golden Lotus auf Respektvoll bringen, sonst bleiben die Tempel-Tagesquests verschlossen',
+      'Die Relic-Trinkets bleiben bis in die ersten Mogu’shan-Vaults-Wochen hinein konkurrenzfähig'
+    ]
+  },
+  {
+    id: 'the-klaxxi',
+    name: 'The Klaxxi',
+    side: 'Beide Fraktionen',
+    type: 'Mantis-Fraktion (Dread Wastes)',
+    zone: 'Dread Wastes',
+    theme: '#8b6b2f',
+    audience: 'Fortgeschritten',
+    minutes: 22,
+    summary:
+      'Uralte Mantis-Weisen am Lager Klaxxi’vess in den Dread Wastes. Tagesquests liefern Ruf, Waffen und ein Umhang-Upgrade, außerdem ist Ehrfürchtig eine Pflichtvoraussetzung für einen Schritt der Legendary-Cloak-Questreihe.',
+    startRequirement: 'Ab Stufe 90, Einstieg am Lager Klaxxi’vess in den Dread Wastes',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig braucht mehrere weitere Wochen',
+    howTo: [
+      'Die Einführungsquestreihe am Lager Klaxxi’vess abschließen',
+      'Täglich verfügbare Klaxxi-Tagesquests in den Dread Wastes abschließen',
+      'Für die Legendary-Cloak-Questreihe: Ehrfürchtig bei den Klaxxi als Zwischenschritt einplanen'
+    ],
+    grindTargets: [
+      'Tägliche Klaxxi-Quests in den Dread Wastes (Mantis-Bekämpfung, Sammelziele, Paragon-Prüfungen)'
+    ],
+    keyQuests: [
+      'Einführungskette am Lager Klaxxi’vess',
+      'Paragon-Prüfungsquests der einzelnen Klaxxi-Weisen',
+      'Zwischenschritt der Legendary-Cloak-Questreihe ab Ehrfürchtig'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Klaxxi-Händler'] },
+      { rank: 'Wohlwollend', rewards: ['Waffen mit Grundstats'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Waffen und Umhang-Zwischenupgrade'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes verfügbares Klaxxi-Waffenset', 'Voraussetzung für den nächsten Schritt der Legendary-Cloak-Questreihe'] }
+    ],
+    tips: [
+      'Für die Legendary-Questreihe frühzeitig auf Ehrfürchtig hinarbeiten, da spätere Schritte darauf aufbauen',
+      'Paragon-Prüfungsquests schalten sich einzeln nacheinander frei – nicht alle sind sofort verfügbar'
+    ]
+  },
+  {
+    id: 'shieldwall-dominance-offensive',
+    name: 'Operation: Shieldwall & Dominance Offensive',
+    side: 'Fraktionsspezifisch',
+    type: 'Kriegskampagnen-Fraktion (Krasarang Wilds / Dread Wastes)',
+    zone: 'Krasarang Wilds, Dread Wastes',
+    theme: '#b33a2e',
+    audience: 'Fortgeschritten',
+    minutes: 20,
+    summary:
+      'Operation: Shieldwall (Allianz, Basis Lion’s Landing) und Dominance Offensive (Horde, Basis Domination Point) sind die parallelen Fraktionskriegs-Kampagnen der Krasarang Wilds und Dread Wastes aus Patch 5.1.',
+    startRequirement: 'Ab Stufe 90, Einstieg über die jeweilige Landfall-Questreihe an Lion’s Landing bzw. Domination Point',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Landfall-Questreihe am jeweiligen Stützpunkt (Lion’s Landing bzw. Domination Point) abschließen',
+      'Täglich verfügbare Tagesquests in den Krasarang Wilds und Dread Wastes abschließen',
+      'Gelegentliche Bonusquests rund um Zandalari-Trolle und Mantis-Ziele mitnehmen'
+    ],
+    grindTargets: [
+      'Tägliche Tagesquests rund um Lion’s Landing bzw. Domination Point in den Krasarang Wilds',
+      'Erweiterte Tagesquests in den Dread Wastes nach Fortschritt der Kampagne'
+    ],
+    keyQuests: [
+      'Landfall-Einführungskette an Lion’s Landing bzw. Domination Point',
+      'Fortlaufende Fraktionskriegs-Tagesquestreihen'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Fraktionshändler und Tabard'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenausrüstung mit Grundstats'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Waffen und Schmuckstücke'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes verfügbares Fraktionszubehör der Kampagne', 'Voller Zugang zum kompletten Rezeptkatalog'] }
+    ],
+    tips: [
+      'Nur die eigene Charakterfraktion zählt – Allianz farmt ausschließlich Shieldwall, Horde ausschließlich Dominance Offensive',
+      'Guter Dailies-Hub für Valor-Farming parallel zum Ruf-Fortschritt'
+    ]
+  },
+  {
+    id: 'kirin-tor-offensive-sunreaver-onslaught',
+    name: 'Kirin Tor Offensive & Sunreaver Onslaught',
+    side: 'Fraktionsspezifisch',
+    type: 'Tagesquest-Fraktion (Isle of Thunder)',
+    zone: 'Isle of Thunder',
+    theme: '#4fa3d9',
+    audience: 'Experte',
+    minutes: 20,
+    summary:
+      'Kirin Tor Offensive (Allianz) und Sunreaver Onslaught (Horde) sind die Landungsfraktionen der Isle of Thunder aus Patch 5.2, die den Vormarsch gegen den Thunder King begleiten und Valor-Zwischenausrüstung liefern.',
+    startRequirement: 'Ab Stufe 90, Einstieg über die Invasions-Questreihe auf der Isle of Thunder',
+    grindLength: '2-3 Wochen',
+    estimatedTime: '2-3 Wochen bei täglichem Tagesquest-Zyklus bis Respektvoll, Ehrfürchtig ist ein Langzeitziel',
+    howTo: [
+      'Die Invasions-Einführungsquestreihe am jeweiligen Strandkopf der Isle of Thunder abschließen',
+      'Täglich verfügbare Tagesquests auf der Isle of Thunder abschließen',
+      'Fortschritt der Insel-Phasen freischalten, um weitere Tagesquest-Hubs zu erreichen'
+    ],
+    grindTargets: [
+      'Tägliche Invasions-Tagesquests auf der Isle of Thunder (Zandalari- und Mogu-Ziele)'
+    ],
+    keyQuests: [
+      'Invasions-Einführungskette am Strandkopf der Isle of Thunder',
+      'Fortlaufende Insel-Phasen-Tagesquestreihen'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Fraktionshändler'] },
+      { rank: 'Wohlwollend', rewards: ['Zwischenschmuck mit Grundstats'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Trinkets und Waffen'] },
+      { rank: 'Ehrfürchtig', rewards: ['Starke Vorbereitungsausrüstung für Throne of Thunder', 'Voller Zugang zum kompletten Rezeptkatalog'] }
+    ],
+    tips: [
+      'Nur die eigene Charakterfraktion zählt – Allianz farmt Kirin Tor Offensive, Horde Sunreaver Onslaught',
+      'Guter Nebeneffekt für Shado-Pan-Assault-Ruf, da beide Tagesquest-Hubs auf derselben Insel liegen'
+    ]
+  },
+  {
+    id: 'shado-pan-assault',
+    name: 'Shado-Pan Assault',
+    side: 'Beide Fraktionen',
+    type: 'Raid-Ruf (Throne of Thunder)',
+    zone: 'Throne of Thunder (Isle of Thunder)',
+    theme: '#5c3a8f',
+    audience: 'Experte',
+    minutes: 20,
+    summary:
+      'Kampffraktion der Shado-Pan-Elite auf der Isle of Thunder. Ruf kommt aus Throne-of-Thunder-Bosskills und wiederholbaren Turn-ins, Ehrfürchtig ist außerdem eine Voraussetzung für die Legendary-Cloak-Questreihe.',
+    startRequirement: 'Stufe 90, Zugang über die Invasions-Questreihe der Isle of Thunder',
+    grindLength: 'Mehrere Wochen',
+    estimatedTime: 'Mehrere Wochen wöchentlicher Throne-of-Thunder-Clears bis Respektvoll, Ehrfürchtig erfordert deutlich mehr Runs',
+    howTo: [
+      'Throne-of-Thunder-Bosse regelmäßig im wöchentlichen Reset besiegen – jeder Bosskill gibt Ruf',
+      'Wiederholbare Turn-ins von Kriegstrophäen bei den Shado-Pan-Assault-Questgebern auf der Isle of Thunder abgeben',
+      'Für die Legendary-Cloak-Questreihe: Ehrfürchtig bei Shado-Pan Assault als Zwischenschritt einplanen'
+    ],
+    grindTargets: [
+      'Wöchentliche Throne-of-Thunder-Bosskills',
+      'Wiederholbare Trophäen-Turn-ins auf der Isle of Thunder'
+    ],
+    keyQuests: [
+      'Keine klassische Questreihe – reiner Raid- und Turn-in-basierter Ruf',
+      'Zwischenschritt der Legendary-Cloak-Questreihe ab Ehrfürchtig'
+    ],
+    standings: [
+      { rank: 'Freundlich', rewards: ['Zugang zum Fraktionshändler'] },
+      { rank: 'Wohlwollend', rewards: ['Erste epische Ringe und Trinkets'] },
+      { rank: 'Respektvoll', rewards: ['Verbesserte Throne-of-Thunder-Vorbereitungsausrüstung'] },
+      { rank: 'Ehrfürchtig', rewards: ['Bestes verfügbares Shado-Pan-Assault-Zubehör', 'Voraussetzung für den nächsten Schritt der Legendary-Cloak-Questreihe'] }
+    ],
+    tips: [
+      'Ruf steigt automatisch mit jedem regulären Throne-of-Thunder-Raidabend – kein separater Grind nötig',
+      'Für die Legendary-Questreihe frühzeitig priorisieren, da spätere Schritte auf Ehrfürchtig aufbauen'
+    ]
+  }
+];
+
 export const reputationGuides = {
   classic: classicReputationGuides,
   'the-burning-crusade': tbcReputationGuides,
-  'wrath-of-the-lich-king': wrathReputationGuides
+  'wrath-of-the-lich-king': wrathReputationGuides,
+  'mists-of-pandaria': mopReputationGuides
 };
