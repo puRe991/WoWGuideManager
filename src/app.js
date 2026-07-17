@@ -46,6 +46,7 @@ function redirectIfDungeonMissing() {
 function selectExpansion(key) {
   state.selectedExpansion = key;
   state.expansion = key;
+  state.expansionConfirmed = true;
   redirectIfDungeonMissing();
   render();
 }
@@ -89,7 +90,14 @@ function wireFilterBarClear() {
 
 function renderView() {
   const [section, id] = parseHash(window.location.hash);
-  showExpansionPicker(refs, state, section === 'start', selectExpansion);
+  document.body.classList.toggle('pre-launch', !state.expansionConfirmed);
+  showExpansionPicker(refs, state, !state.expansionConfirmed || section === 'start', selectExpansion);
+
+  if (!state.expansionConfirmed) {
+    refs.viewContent.innerHTML = '';
+    return;
+  }
+
   refs.viewContent.classList.toggle('mop-content', isMopContent(state, section, id));
 
   let html = '';
