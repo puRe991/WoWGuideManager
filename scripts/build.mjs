@@ -55,40 +55,6 @@ async function createBundle(target) {
   await writeFile(path.join(target, 'src/app.bundle.js'), bundle, 'utf8');
 }
 
-async function createWindowsData(target) {
-  const [guidesModule, classModule, buildModule, specModule, dungeonModule, professionModule, farmingModule, reputationModule, subscriptionModule, assetModule] = await Promise.all([
-    import('../src/data/guides.js'),
-    import('../src/data/classGuides.js'),
-    import('../src/data/classBuildGuides.js'),
-    import('../src/data/specGuides.js'),
-    import('../src/data/dungeonGuides.js'),
-    import('../src/data/professionGuides.js'),
-    import('../src/data/farmingGuides.js'),
-    import('../src/data/reputationGuides.js'),
-    import('../src/data/subscriptions.js'),
-    import('../src/data/assetManifest.js')
-  ]);
-
-  const data = {
-    generatedAt: new Date().toISOString(),
-    expansions: guidesModule.expansions,
-    categories: guidesModule.categories,
-    guideCards: guidesModule.guideCards,
-    classGuides: classModule.classGuides,
-    classBuildGuides: buildModule.classBuildGuides,
-    specGuides: specModule.specGuides,
-    dungeonGuides: dungeonModule.dungeonGuides,
-    professionGuides: professionModule.professionGuides,
-    farmingGuides: farmingModule.farmingGuides,
-    reputationGuides: reputationModule.reputationGuides,
-    subscriptionTiers: subscriptionModule.subscriptionTiers,
-    assetManifest: assetModule.assetManifest
-  };
-
-  await mkdir(target, { recursive: true });
-  await writeFile(path.join(target, 'app-data.json'), JSON.stringify(data, null, 2), 'utf8');
-}
-
 async function copyApp(target, { bundleForFileProtocol } = { bundleForFileProtocol: false }) {
   await mkdir(target, { recursive: true });
   await cp(path.join(root, 'index.html'), path.join(target, 'index.html'));
@@ -115,7 +81,6 @@ async function main() {
     await rm(portable, { recursive: true, force: true });
     await copyApp(path.join(portable, 'app'), { bundleForFileProtocol: true });
     await cp(path.join(root, 'windows'), path.join(portable, 'windows'), { recursive: true });
-    await createWindowsData(path.join(portable, 'windows'));
     await writeFile(
       path.join(portable, 'WoW Guide Manager.cmd'),
       '@echo off\r\nsetlocal\r\ncall "%~dp0windows\\Start-WoWGuideManager.cmd"\r\n',
@@ -123,7 +88,7 @@ async function main() {
     );
     await writeFile(
       path.join(portable, 'README-PORTABLE.txt'),
-      'WoW Guide Manager portable MVP\r\n\r\nStart: Doppelklicke "WoW Guide Manager.cmd". Die Windows-App startet ueber PowerShell/WPF. Der Browser-Build liegt zusaetzlich in app\\index.html.\r\nAlle Dateien bleiben im portablen Ordner.\r\n',
+      'WoW Guide Manager portable MVP\r\n\r\nStart: Doppelklicke "WoW Guide Manager.cmd". Die App oeffnet sich in einem fensterlosen Microsoft-Edge-Fenster (Fallback: Standardbrowser) direkt aus app\\index.html, also mit dem echten Design.\r\nAlle Dateien bleiben im portablen Ordner.\r\n',
       'utf8'
     );
   }

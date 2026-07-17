@@ -26,6 +26,9 @@ if errorlevel 1 goto :failed
 
 call :run_optional "npm run package:handoff" npm run package:handoff
 
+set "PORTABLE_DIR=%~dp0release\WoW-Guide-Manager-0.1.0-portable"
+set "PORTABLE_LAUNCHER=%PORTABLE_DIR%\WoW Guide Manager.cmd"
+
 echo.
 echo ============================================================
 echo  Fertig!
@@ -37,6 +40,15 @@ echo.
 echo  Tipp: Falls GitHub Push in der Cloud blockiert ist, lade die
 echo  ZIP-Datei aus handoff\ im Browser bei GitHub hoch.
 echo.
+
+if exist "%PORTABLE_LAUNCHER%" (
+  set "START_NOW="
+  set /p "START_NOW=WoW Guide Manager jetzt starten? (J/N): "
+  if /I "!START_NOW!"=="J" (
+    start "" "%PORTABLE_LAUNCHER%"
+  )
+)
+
 pause
 exit /b 0
 

@@ -1,6 +1,6 @@
 # WoW Guide Manager
 
-Portable Windows desktop MVP for a World of Warcraft guide platform, now also packaged as native Android and iOS apps. The primary portable release starts a native Windows PowerShell/WPF shell; the browser bundle remains as a fallback preview. The first content pack focuses on WoW Classic; the data model is prepared for later expansions and subscription-gated premium content.
+Portable Windows desktop MVP for a World of Warcraft guide platform, now also packaged as native Android and iOS apps. The portable Windows release opens the real web app UI in a chromeless Microsoft Edge window, so it always looks exactly like the browser preview and mobile apps. The first content pack focuses on WoW Classic; the data model is prepared for later expansions and subscription-gated premium content.
 
 ## Product goals
 
@@ -18,7 +18,7 @@ Portable Windows desktop MVP for a World of Warcraft guide platform, now also pa
 
 ## One-click Windows setup
 
-On Windows, double-click `setup-windows.bat`. The batch file verifies that Node.js/npm are actually startable, tries `winget`, and if that fails downloads the official Node.js LTS portable ZIP into `.tools/node` without MSI/admin rights. It refreshes PATH and then runs install, tests, build, portable packaging and source handoff packaging.
+On Windows, double-click `setup-windows.bat`. The batch file verifies that Node.js/npm are actually startable, tries `winget`, and if that fails downloads the official Node.js LTS portable ZIP into `.tools/node` without MSI/admin rights. It refreshes PATH and then runs install, tests, build, portable packaging and source handoff packaging. When it finishes, it offers to launch the portable app right away.
 
 ## Getting started
 
@@ -31,7 +31,7 @@ Open `dist/index.html` in a modern browser.
 
 ## Windows desktop app
 
-`npm run dist:win` now creates `release/WoW-Guide-Manager-0.1.0-portable/` with `WoW Guide Manager.cmd`, which launches a native Windows WPF/PowerShell shell from `windows/WoWGuideManager.ps1` and `windows/app-data.json`. The file-protocol browser bundle is still copied as a fallback preview, but the intended user entry point is the Windows launcher.
+`npm run dist:win` creates `release/WoW-Guide-Manager-0.1.0-portable/` with `WoW Guide Manager.cmd`, which calls `windows/Start-WoWGuideManager.cmd`. That launcher opens `app/index.html` (the same bundle as the browser preview) in a chromeless Microsoft Edge window (`msedge.exe --app=...`), so the portable app renders the exact same sidebar, fonts and layout as the real UI instead of a hand-built reimplementation. If Edge isn't found, it falls back to opening the app in the default browser. A previous PowerShell/WPF shell (`windows/WoWGuideManager.ps1`) redrew the guide content with plain WPF controls and never matched the real design — it has been removed in favor of this approach.
 
 ## Android and iOS apps
 

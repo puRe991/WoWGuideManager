@@ -3,8 +3,8 @@
 The Android and iOS apps are Capacitor wrappers around the same dependency-light
 web bundle used by the browser preview and the Windows portable build. There is
 one guide UI (`src/`, built to `dist/`); Capacitor loads that bundle inside a
-native WebView shell per platform, the same way `windows/WoWGuideManager.ps1`
-wraps it for a native Windows shell.
+native WebView shell per platform, the same way `windows/Start-WoWGuideManager.cmd`
+opens it in a chromeless Microsoft Edge window on the Windows portable build.
 
 ## Layout
 
