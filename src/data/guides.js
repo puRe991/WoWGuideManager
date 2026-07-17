@@ -22,6 +22,34 @@ export const expansions = [
     modules: ['Safe-Spot-Guides', 'Überlebens-Routen', 'Gruppen-Empfehlungen', 'Gefahrenwarnungen']
   },
   {
+    key: 'season-of-mastery',
+    name: 'Season of Mastery',
+    status: 'Geplant',
+    launchFocus: 'Historische Classic-Season mit verschärften Boss-Mechaniken, angepassten Loot-Tabellen und beschleunigtem Content-Rollout. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Verschärfte Boss-Mechaniken', 'Season-Fortschritt', 'Angepasste Loot-Tabellen', 'Community-Rennen']
+  },
+  {
+    key: 'classic-anniversary',
+    name: 'Classic Anniversary',
+    status: 'Geplant',
+    launchFocus: 'Fresh-Start-Realms zum WoW-Jubiläum mit Layering, Hardcore-Option und schnellem Early-Game-Wettlauf. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Fresh-Start-Routen', 'Layering-Infos', 'Hardcore-Option', 'Community-Rennen']
+  },
+  {
+    key: 'mop-remix',
+    name: 'Pandaria Remix',
+    status: 'Geplant',
+    launchFocus: 'Zeitlich begrenztes Alt-Leveling-Event auf Pandaria mit Cloud-Serpent-Fortschritt, Threat-Level-System und Transmog-Belohnungen. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Cloud-Serpent-Progress', 'Threat-Level-System', 'Transmog-Belohnungen', 'Schnell-Leveling']
+  },
+  {
+    key: 'plunderstorm',
+    name: 'Plunderstorm',
+    status: 'Geplant',
+    launchFocus: 'Zeitlich begrenzter Battle-Royale-Modus mit eigenem Talentsystem, Landing-Spot-Strategien und kosmetischen Belohnungen. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Battle-Royale-Guides', 'Talent-Builds', 'Landing-Spots', 'Kosmetik-Belohnungen']
+  },
+  {
     key: 'the-burning-crusade',
     name: 'The Burning Crusade',
     status: 'Startpaket',
