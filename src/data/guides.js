@@ -8,6 +8,20 @@ export const expansions = [
     modules: ['1-60 Leveling-Routen', 'Dungeon-Flügel', 'Berufe 1-300', 'Pre-Raid BiS', 'Seltene Spawns']
   },
   {
+    key: 'season-of-discovery',
+    name: 'Season of Discovery',
+    status: 'Geplant',
+    launchFocus: 'Limitierte Classic-Season mit klassenspezifischen Runen, neuen Dungeons und phasenweise steigendem Level-Cap. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Runen-Guides', 'Phasen-Fortschritt', 'Season-Dungeons', 'Level-Cap-Content']
+  },
+  {
+    key: 'hardcore',
+    name: 'Hardcore',
+    status: 'Geplant',
+    launchFocus: 'Permadeath-Regelwerk für WoW Classic mit Fokus auf sichere Leveling-Routen, Gefahrenwarnungen und Gruppenspiel. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Safe-Spot-Guides', 'Überlebens-Routen', 'Gruppen-Empfehlungen', 'Gefahrenwarnungen']
+  },
+  {
     key: 'the-burning-crusade',
     name: 'The Burning Crusade',
     status: 'Startpaket',

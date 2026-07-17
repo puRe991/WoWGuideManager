@@ -5,7 +5,7 @@
  */
 
 /**
- * @typedef {'classic'|'the-burning-crusade'|'wrath-of-the-lich-king'|'cataclysm'|'mists-of-pandaria'|'warlords-of-draenor'|'legion'|'battle-for-azeroth'|'shadowlands'|'dragonflight'|'the-war-within'|'midnight'|'future'} ExpansionKey
+ * @typedef {'classic'|'season-of-discovery'|'hardcore'|'the-burning-crusade'|'wrath-of-the-lich-king'|'cataclysm'|'mists-of-pandaria'|'warlords-of-draenor'|'legion'|'battle-for-azeroth'|'shadowlands'|'dragonflight'|'the-war-within'|'midnight'|'future'} ExpansionKey
  */
 
 /**

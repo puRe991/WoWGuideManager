@@ -7,6 +7,8 @@ import { escapeHtml } from './shared.js';
 
 export const expansionLabels = {
   classic: 'Classic',
+  'season-of-discovery': 'SoD',
+  hardcore: 'Hardcore',
   'the-burning-crusade': 'TBC',
   'wrath-of-the-lich-king': 'WotLK',
   cataclysm: 'Cata',
@@ -24,6 +26,8 @@ export const expansionLabels = {
 export const expansionOptions = [
   ['all', 'Alle Erweiterungen'],
   ['classic', 'WoW Classic'],
+  ['season-of-discovery', 'Season of Discovery'],
+  ['hardcore', 'Hardcore'],
   ['the-burning-crusade', 'The Burning Crusade'],
   ['wrath-of-the-lich-king', 'Wrath of the Lich King'],
   ['cataclysm', 'Cataclysm'],
@@ -40,6 +44,8 @@ export const expansionOptions = [
 
 export const expansionArtwork = {
   classic: { theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
+  'season-of-discovery': { theme: 'Rune Discovery', art: 'linear-gradient(135deg, rgba(255,215,90,.26), rgba(90,60,20,.42))' },
+  hardcore: { theme: 'Permadeath', art: 'linear-gradient(135deg, rgba(255,70,70,.28), rgba(40,10,10,.42))' },
   'the-burning-crusade': { theme: 'Outland', art: 'linear-gradient(135deg, rgba(73,255,125,.22), rgba(81,41,112,.38))' },
   'wrath-of-the-lich-king': { theme: 'Northrend', art: 'linear-gradient(135deg, rgba(120,206,255,.28), rgba(31,54,104,.45))' },
   cataclysm: { theme: 'Deepholm', art: 'linear-gradient(135deg, rgba(255,120,64,.28), rgba(92,32,20,.42))' },
