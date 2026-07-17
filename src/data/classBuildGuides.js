@@ -1,3 +1,4 @@
+/** @type {Record<string, import('../types.js').ClassBuildGuide>} */
 const classicClassBuildGuides = {
   druid: {
     rotations: {
@@ -73,6 +74,7 @@ const classicClassBuildGuides = {
   }
 };
 
+/** @type {Record<string, import('../types.js').ClassBuildGuide>} */
 const tbcClassBuildGuides = {
   druid: {
     rotations: {
@@ -148,6 +150,7 @@ const tbcClassBuildGuides = {
   }
 };
 
+/** @type {Record<string, import('../types.js').ClassBuildGuide>} */
 const wrathClassBuildGuides = {
   'death-knight': {
     rotations: {
@@ -231,6 +234,7 @@ const wrathClassBuildGuides = {
   }
 };
 
+/** @type {Record<string, import('../types.js').ClassBuildGuide>} */
 const mopClassBuildGuides = {
   'death-knight': {
     rotations: {
@@ -322,6 +326,7 @@ const mopClassBuildGuides = {
   }
 };
 
+/** @type {Partial<Record<import('../types.js').ExpansionKey, Record<string, import('../types.js').ClassBuildGuide>>>} */
 export const classBuildGuides = {
   classic: classicClassBuildGuides,
   'the-burning-crusade': tbcClassBuildGuides,

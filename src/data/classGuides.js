@@ -1,3 +1,4 @@
+/** @type {import('../types.js').ClassGuide[]} */
 const classicClassGuides = [
   {
     id: 'druid',
@@ -127,6 +128,7 @@ const classicClassGuides = [
   }
 ];
 
+/** @type {import('../types.js').ClassGuide[]} */
 const tbcClassGuides = [
   {
     id: 'druid',
@@ -274,6 +276,7 @@ const tbcClassGuides = [
   }
 ];
 
+/** @type {import('../types.js').ClassGuide[]} */
 const wrathClassGuides = [
   {
     id: 'death-knight',
@@ -437,6 +440,7 @@ const wrathClassGuides = [
   }
 ];
 
+/** @type {import('../types.js').ClassGuide[]} */
 const mopClassGuides = [
   {
     id: 'death-knight',
@@ -616,6 +620,7 @@ const mopClassGuides = [
   }
 ];
 
+/** @type {Partial<Record<import('../types.js').ExpansionKey, import('../types.js').ClassGuide[]>>} */
 export const classGuides = {
   classic: classicClassGuides,
   'the-burning-crusade': tbcClassGuides,

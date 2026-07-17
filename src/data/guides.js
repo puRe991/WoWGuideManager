@@ -1,3 +1,4 @@
+/** @type {import('../types.js').Expansion[]} */
 export const expansions = [
   {
     key: 'classic',
@@ -38,6 +39,7 @@ export const expansions = [
 
 export const categories = ['Leveling', 'Dungeons', 'Raids', 'Professions', 'Gold', 'PvP', 'Classes', 'Secrets', 'Reputation', 'Addons'];
 
+/** @type {import('../types.js').Guide[]} */
 export const guideCards = [
   {
     id: 'classic-1-60-horde',

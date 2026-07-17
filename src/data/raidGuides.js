@@ -1,3 +1,4 @@
+/** @type {import('../types.js').RaidGuide[]} */
 const classicRaidGuides = [
   {
     id: 'onyxias-lair',
@@ -193,6 +194,7 @@ const classicRaidGuides = [
   }
 ];
 
+/** @type {import('../types.js').RaidGuide[]} */
 const tbcRaidGuides = [
   {
     id: 'karazhan',
@@ -383,6 +385,7 @@ const tbcRaidGuides = [
   }
 ];
 
+/** @type {import('../types.js').RaidGuide[]} */
 const mopRaidGuides = [
   {
     id: 'mogushan-vaults',
@@ -518,6 +521,7 @@ const mopRaidGuides = [
   }
 ];
 
+/** @type {Partial<Record<import('../types.js').ExpansionKey, import('../types.js').RaidGuide[]>>} */
 export const raidGuides = {
   classic: classicRaidGuides,
   'the-burning-crusade': tbcRaidGuides,

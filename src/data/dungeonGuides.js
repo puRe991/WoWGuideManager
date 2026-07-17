@@ -1,3 +1,4 @@
+/** @type {import('../types.js').DungeonGuide[]} */
 const classicDungeonGuides = [
   {
     id: 'ragefire-chasm',
@@ -345,6 +346,7 @@ const classicDungeonGuides = [
   }
 ];
 
+/** @type {import('../types.js').DungeonGuide[]} */
 const tbcDungeonGuides = [
   {
     id: 'hellfire-ramparts',
@@ -620,6 +622,7 @@ const tbcDungeonGuides = [
   }
 ];
 
+/** @type {import('../types.js').DungeonGuide[]} */
 const mopDungeonGuides = [
   {
     id: 'jade-serpent',
@@ -818,6 +821,7 @@ const mopDungeonGuides = [
   }
 ];
 
+/** @type {Partial<Record<import('../types.js').ExpansionKey, import('../types.js').DungeonGuide[]>>} */
 export const dungeonGuides = {
   classic: classicDungeonGuides,
   'the-burning-crusade': tbcDungeonGuides,

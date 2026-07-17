@@ -1,3 +1,4 @@
+/** @type {import('../types.js').ReputationGuide[]} */
 const classicReputationGuides = [
   {
     id: 'argent-dawn',
@@ -528,6 +529,7 @@ const classicReputationGuides = [
   }
 ];
 
+/** @type {import('../types.js').ReputationGuide[]} */
 const tbcReputationGuides = [
   {
     id: 'honor-hold-thrallmar',
@@ -1079,6 +1081,7 @@ const tbcReputationGuides = [
   }
 ];
 
+/** @type {import('../types.js').ReputationGuide[]} */
 const wrathReputationGuides = [
   {
     id: 'the-kalu-ak',
@@ -1487,6 +1490,7 @@ const wrathReputationGuides = [
   }
 ];
 
+/** @type {import('../types.js').ReputationGuide[]} */
 const mopReputationGuides = [
   {
     id: 'the-tillers',
@@ -1865,6 +1869,7 @@ const mopReputationGuides = [
   }
 ];
 
+/** @type {Partial<Record<import('../types.js').ExpansionKey, import('../types.js').ReputationGuide[]>>} */
 export const reputationGuides = {
   classic: classicReputationGuides,
   'the-burning-crusade': tbcReputationGuides,

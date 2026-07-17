@@ -1,3 +1,4 @@
+/** @type {import('../types.js').FarmingGroup[]} */
 export const farmingGuides = [
   {
     id: 'classic-herbs-tier1',
