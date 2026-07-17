@@ -1,22 +1,31 @@
 @echo off
-setlocal
+setlocal EnableExtensions
 cd /d "%~dp0"
 
-where powershell >nul 2>nul
-if errorlevel 1 (
-  echo WoW Guide Manager konnte nicht gestartet werden: Windows PowerShell wurde nicht gefunden.
-  echo Bitte stelle sicher, dass Windows PowerShell installiert und im PATH verfuegbar ist.
+set "APP_INDEX=%~dp0..\app\index.html"
+if not exist "%APP_INDEX%" (
+  echo WoW Guide Manager: App-Dateien wurden nicht gefunden ^(%APP_INDEX%^).
+  echo Bitte fuehre zuerst "npm run dist:win" aus, um das portable Build zu erzeugen.
   pause
   exit /b 1
 )
 
-powershell -NoProfile -STA -ExecutionPolicy Bypass -File "%~dp0WoWGuideManager.ps1" -DataPath "%~dp0app-data.json"
-if errorlevel 1 (
-  echo.
-  echo WoW Guide Manager konnte nicht gestartet werden ^(Fehlercode %errorlevel%^).
-  echo Pruefe, ob Windows PowerShell und .NET Framework 4.8+ ^(fuer WPF^) installiert sind.
-  pause
-  exit /b 1
+set "EDGE_EXE="
+if exist "%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" set "EDGE_EXE=%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"
+if not defined EDGE_EXE if exist "%ProgramFiles%\Microsoft\Edge\Application\msedge.exe" set "EDGE_EXE=%ProgramFiles%\Microsoft\Edge\Application\msedge.exe"
+if not defined EDGE_EXE (
+  where msedge >nul 2>nul
+  if not errorlevel 1 set "EDGE_EXE=msedge"
+)
+
+set "APP_URL=file:///%APP_INDEX:\=/%"
+
+if defined EDGE_EXE (
+  rem --app opens a chromeless window so the real app UI (styles.css, fonts, layout) shows exactly as designed.
+  start "" "%EDGE_EXE%" --app="%APP_URL%"
+) else (
+  echo Microsoft Edge wurde nicht gefunden, oeffne die App im Standardbrowser ...
+  start "" "%APP_URL%"
 )
 
 exit /b 0
