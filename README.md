@@ -18,7 +18,7 @@ Portable Windows desktop MVP for a World of Warcraft guide platform, now also pa
 
 ## One-click Windows setup
 
-On Windows, double-click `setup-windows.bat`. The batch file verifies that Node.js/npm are actually startable, tries `winget`, and if that fails downloads the official Node.js LTS portable ZIP into `.tools/node` without MSI/admin rights. It refreshes PATH and then runs install, tests, build, portable packaging and source handoff packaging.
+On Windows, double-click `setup-windows.bat`. The batch file verifies that Node.js/npm are actually startable, tries `winget`, and if that fails downloads the official Node.js LTS portable ZIP into `.tools/node` without MSI/admin rights. It refreshes PATH and then runs install, tests, build, portable packaging and source handoff packaging. When it finishes, it offers to launch the portable app right away.
 
 ## Getting started
 
@@ -31,7 +31,7 @@ Open `dist/index.html` in a modern browser.
 
 ## Windows desktop app
 
-`npm run dist:win` now creates `release/WoW-Guide-Manager-0.1.0-portable/` with `WoW Guide Manager.cmd`, which launches a native Windows WPF/PowerShell shell from `windows/WoWGuideManager.ps1` and `windows/app-data.json`. The file-protocol browser bundle is still copied as a fallback preview, but the intended user entry point is the Windows launcher.
+`npm run dist:win` now creates `release/WoW-Guide-Manager-0.1.0-portable/` with `WoW Guide Manager.cmd`, which launches a native Windows WPF/PowerShell shell from `windows/WoWGuideManager.ps1` and `windows/app-data.json`. The file-protocol browser bundle is still copied as a fallback preview, but the intended user entry point is the Windows launcher. The launcher now checks that PowerShell is available and reports a clear error dialog with a pause instead of silently closing if the shell fails to start.
 
 ## Android and iOS apps
 
