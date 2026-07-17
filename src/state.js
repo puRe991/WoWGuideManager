@@ -14,7 +14,8 @@ export function createState() {
     category: 'Alle',
     expansion: 'classic',
     showPremiumOnly: false,
-    selectedExpansion: 'classic'
+    selectedExpansion: 'classic',
+    expansionConfirmed: false
   };
 }
 

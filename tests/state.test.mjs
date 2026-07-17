@@ -18,7 +18,8 @@ test('createState returns the classic-scoped default state', () => {
     category: 'Alle',
     expansion: 'classic',
     showPremiumOnly: false,
-    selectedExpansion: 'classic'
+    selectedExpansion: 'classic',
+    expansionConfirmed: false
   });
 });
 

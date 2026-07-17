@@ -138,6 +138,13 @@ h1 { font-size: clamp(2.3rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -
 .portable { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 26px; margin-top: 30px; border-radius: 20px; background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.09); }
 .portable p { margin-bottom: 0; }
 
+/* ----- Startup gate: only the expansion picker until one is chosen ----- */
+
+body.pre-launch .sidebar { display: none; }
+body.pre-launch #view-content { display: none; }
+body.pre-launch .view-root { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 34px 24px; }
+body.pre-launch #expansion-picker { width: 100%; max-width: 1180px; margin-bottom: 0; }
+
 /* ----- Expansion picker (home only) ----- */
 
 #expansion-picker { margin-bottom: 30px; position: relative; }

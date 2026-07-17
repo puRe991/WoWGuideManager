@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { confirmExpansion } from './helpers.js';
 
 test('searching narrows the raid listing to matching tiles', async ({ page }) => {
   await page.goto('/#raid-guides');
+  await confirmExpansion(page);
   const totalCount = await page.locator('.tile').count();
 
   await page.locator('#search').fill('onyxias hort');
@@ -12,6 +14,7 @@ test('searching narrows the raid listing to matching tiles', async ({ page }) =>
 
 test('a search term with no matches shows the empty state', async ({ page }) => {
   await page.goto('/');
+  await confirmExpansion(page);
   await page.locator('#search').fill('zzzzzzz-no-such-guide-zzzzzzz');
   await expect(page.locator('.empty-state')).toBeVisible();
   await expect(page.locator('.tile')).toHaveCount(0);
@@ -19,6 +22,7 @@ test('a search term with no matches shows the empty state', async ({ page }) => 
 
 test('the logo link clears an active search', async ({ page }) => {
   await page.goto('/#raid-guides');
+  await confirmExpansion(page);
   await page.locator('#search').fill('onyxias hort');
   await expect(page.locator('.tile')).toHaveCount(1);
 
