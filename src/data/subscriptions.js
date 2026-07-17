@@ -1,3 +1,4 @@
+/** @type {import('../types.js').SubscriptionTier[]} */
 export const subscriptionTiers = [
   {
     id: 'free',

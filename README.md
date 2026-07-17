@@ -89,13 +89,26 @@ The Guide Command Center now includes a full Wrath of the Lich King reputation p
 
 ## Quality gates
 
-- `npm run lint` runs a dependency-free syntax and style check (`scripts/lint.mjs`) over `src/` and `scripts/`.
-- `npm test` runs `scripts/test.mjs`, which asserts content coverage (guide counts, categories, checklist depth) and build/script wiring.
-- `.github/workflows/ci.yml` runs lint, test, build and the asset check on every push and pull request.
+- `npm run lint` runs a dependency-free syntax and style check (`scripts/lint.mjs`) over `src/`, `scripts/` and `tests/`, then ESLint (`eslint.config.js`) for deeper static analysis (unused vars, unsafe comparisons, etc).
+- `npm run typecheck` runs `tsc --checkJs` (`tsconfig.json`) against the JSDoc-typed data layer (`src/types.js` + `@type` annotations in `src/data/*.js`) and the app modules, catching structural drift in guide entries without adopting TypeScript source files.
+- `npm test` runs `scripts/test.mjs` (content coverage: guide counts, categories, checklist depth, build/script wiring) followed by `node --test`, which runs real unit tests in `tests/` for the extracted state, render and tile-builder modules.
+- `npm run test:e2e` runs the Playwright browser suite in `e2e/` against a local static server (`npm run serve`), covering search, filters, expansion switching and navigation through every detail page type end to end. Set `PLAYWRIGHT_CHROMIUM_PATH` to point at a local Chromium binary to skip the browser download.
+- `.github/workflows/ci.yml` runs lint, typecheck, test, build, the asset check and the Playwright suite on every push and pull request.
+
+## Architecture
+
+`src/app.js` is a thin DOM/event orchestrator. It wires `#id` element references, routes hash changes and delegates rendering to:
+
+- `src/state.js` — app state factory, the hash router (`parseHash`), and expansion-scoped data selectors (`getActiveClassGuides`, `getActiveDungeons`, ...).
+- `src/render/shared.js` and `src/render/tiles.js` — reusable, pure HTML-string builders (`escapeHtml`, tile builders, list renderers) shared across pages.
+- `src/render/sidebar.js` — the expansion switcher, package box, nav counts and the expansion picker.
+- `src/views/*.js` — one module per top-level section (start, class guides, professions, farming, dungeons, raids, reputation, library, pricing), each exporting a listing and/or detail page renderer.
+
+`scripts/build.mjs` still produces a single-file, dependency-free `app.bundle.js` for the portable `file://` build by concatenating these modules (stripping `import`/`export`) in dependency order — the module split does not add a runtime bundler dependency.
 
 ## Content model
 
-Guide content currently lives in `src/data/guides.js`. Each guide has an expansion key, category, audience level, estimated reading time, checklist items, premium flag and tags. New expansions can be added by extending the `expansions` roadmap array and guide data.
+Guide content currently lives in `src/data/guides.js`. Each guide has an expansion key, category, audience level, estimated reading time, checklist items, premium flag and tags. New expansions can be added by extending the `expansions` roadmap array and guide data. Every data file's main export is annotated with a JSDoc `@type` referencing a shape in `src/types.js`; `npm run typecheck` checks new or edited entries against those shapes.
 
 ## Subscription roadmap
 

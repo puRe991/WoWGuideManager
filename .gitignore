@@ -5,3 +5,7 @@ npm-debug.log*
 .DS_Store
 handoff/
 .tools/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/

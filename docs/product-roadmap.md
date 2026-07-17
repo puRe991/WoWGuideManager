@@ -37,7 +37,10 @@
 
 ## Software quality (ongoing)
 
-- CI workflow (`.github/workflows/ci.yml`) runs lint, test, build and asset checks on every push/PR.
-- Dependency-free lint script (`scripts/lint.mjs`) enforces basic syntax and style hygiene.
+- CI workflow (`.github/workflows/ci.yml`) runs lint, typecheck, test, build, asset checks and the Playwright e2e suite on every push/PR.
+- Dependency-free lint script (`scripts/lint.mjs`) enforces basic syntax and style hygiene; ESLint (`eslint.config.js`) adds deeper static analysis on top.
+- `src/app.js` was split into `src/state.js`, `src/render/*.js` and `src/views/*.js` (see README "Architecture") so state handling, shared rendering and per-section pages are separately testable instead of living in one ~1360-line file.
+- The data layer (`src/data/*.js`) is JSDoc-typed against shapes in `src/types.js` and checked with `npm run typecheck` (`tsc --checkJs`), catching missing/mistyped fields in new guide entries.
+- `node --test` (`tests/`) covers the extracted state selectors, router and pure render/tile-builder functions; Playwright (`e2e/`) covers real browser flows (search, filters, expansion switching, navigation through every detail page type).
 - `src/app.js` fails gracefully: missing data falls back to an empty state instead of a blank crashed page, and a top-level error boundary shows a banner if initialization throws.
-- Still open: automated UI/browser tests (current tests are data- and string-assertion based), TypeScript or JSDoc typing for the data layer, and an accessibility pass (keyboard navigation, ARIA roles for the tab/rail components).
+- Still open: an accessibility pass (keyboard navigation, ARIA roles for the tab/rail components).

@@ -1,3 +1,4 @@
+/** @type {import('../types.js').ProfessionGuide[]} */
 export const professionGuides = [
   {
     id: 'classic-alchemy',

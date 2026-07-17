@@ -1,3 +1,4 @@
+/** @type {Record<string, import('../types.js').SpecGuide[]>} */
 const classicSpecGuides = {
   druid: [
     {
@@ -327,6 +328,7 @@ const classicSpecGuides = {
   ]
 };
 
+/** @type {Record<string, import('../types.js').SpecGuide[]>} */
 const tbcSpecGuides = {
   druid: [
     {
@@ -656,6 +658,7 @@ const tbcSpecGuides = {
   ]
 };
 
+/** @type {Record<string, import('../types.js').SpecGuide[]>} */
 const wrathSpecGuides = {
   'death-knight': [
     {
@@ -1020,6 +1023,7 @@ const wrathSpecGuides = {
   ]
 };
 
+/** @type {Record<string, import('../types.js').SpecGuide[]>} */
 const mopSpecGuides = {
   'death-knight': [
     {
@@ -1419,6 +1423,7 @@ const mopSpecGuides = {
   ]
 };
 
+/** @type {Partial<Record<import('../types.js').ExpansionKey, Record<string, import('../types.js').SpecGuide[]>>>} */
 export const specGuides = {
   classic: classicSpecGuides,
   'the-burning-crusade': tbcSpecGuides,
