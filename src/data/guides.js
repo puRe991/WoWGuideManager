@@ -22,11 +22,67 @@ export const expansions = [
     modules: ['Ruf-Guides', 'Northrend Leveling', 'Emblem Planner', 'Daily Rotation', 'Raid Lockouts']
   },
   {
+    key: 'cataclysm',
+    name: 'Cataclysm',
+    status: 'Geplant',
+    launchFocus: 'Azeroths neu geformte Welt mit überarbeiteten Zonen, Flugmonturen ab Level 1 und den Feuerlanden. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Level-Redesign', 'Flugmontur-Start', 'Feuerlande', 'Berufe-Update']
+  },
+  {
     key: 'mists-of-pandaria',
     name: 'Mists of Pandaria',
     status: 'Startpaket',
     launchFocus: 'Pandaria-Hub mit Leveling-Route, komplettem Dungeon- und Raid-Atlas, Ruf-Fraktionen und Herausforderungsmodi. Erster Guide-Satz ist live, Klassen- und Berufs-Tiefenguides folgen als nächster Ausbauschritt.',
     modules: ['Pandaria Leveling', 'Dungeon Atlas', 'Raid Atlas', 'Ruf-Guides', 'Challenge Modes']
+  },
+  {
+    key: 'warlords-of-draenor',
+    name: 'Warlords of Draenor',
+    status: 'Geplant',
+    launchFocus: 'Draenors Vergangenheit mit Garnisonen, Ork-Clans und den Schlachtzügen Highmaul und Hellfeuerzitadelle. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Garnisonen', 'Ork-Clans', 'Schlachtzug-Guides', 'Champions-System']
+  },
+  {
+    key: 'legion',
+    name: 'Legion',
+    status: 'Geplant',
+    launchFocus: 'Invasion der Brennenden Legion mit Artefaktwaffen, Ordenshallen und der Suche nach Sargeras. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Artefaktwaffen', 'Ordenshallen', 'Weltquests', 'Mythisch+']
+  },
+  {
+    key: 'battle-for-azeroth',
+    name: 'Battle for Azeroth',
+    status: 'Geplant',
+    launchFocus: 'Fraktionskrieg zwischen Allianz und Horde um Kul Tiras und Zandalar. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Kriegsfront', 'Insel-Expeditionen', 'Allied Races', 'Ruf-Guides']
+  },
+  {
+    key: 'shadowlands',
+    name: 'Shadowlands',
+    status: 'Geplant',
+    launchFocus: 'Jenseits von Azeroth mit Pakten, Seelenbindungen und dem Kampf gegen Sylvanas. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Pakt-Guides', 'Seelenbindungen', 'Torghast', 'Kovenant-Ruf']
+  },
+  {
+    key: 'dragonflight',
+    name: 'Dragonflight',
+    status: 'Geplant',
+    launchFocus: 'Rückkehr der Drachenschwärme auf die Dragon Isles mit Talentbäumen 2.0 und überarbeiteten Berufen. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Dracthyr-Guides', 'Talentbäume 2.0', 'Berufe-Überarbeitung', 'Dragonriding']
+  },
+  {
+    key: 'the-war-within',
+    name: 'The War Within',
+    status: 'Geplant',
+    launchFocus: 'Abstieg unter die Oberfläche Khaz Algars mit Delves, Warbands und dem Kampf gegen die Nerubianer. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Delves', 'Warband-System', 'Hero-Talente', 'Ruf-Guides']
+  },
+  {
+    key: 'midnight',
+    name: 'Midnight',
+    status: 'Geplant',
+    launchFocus: 'Rückkehr nach Quel’Thalas und in die Verwüsteten Lande – die aktuell angekündigte nächste Erweiterung. Guide-Inhalte sind für einen kommenden Ausbauschritt geplant.',
+    modules: ['Housing-System', 'Neue Zonen', 'Story-Guides', 'Release-Vorbereitung']
   },
   {
     key: 'future',

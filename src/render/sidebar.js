@@ -9,7 +9,15 @@ export const expansionLabels = {
   classic: 'Classic',
   'the-burning-crusade': 'TBC',
   'wrath-of-the-lich-king': 'WotLK',
+  cataclysm: 'Cata',
   'mists-of-pandaria': 'MoP',
+  'warlords-of-draenor': 'WoD',
+  legion: 'Legion',
+  'battle-for-azeroth': 'BfA',
+  shadowlands: 'SL',
+  dragonflight: 'DF',
+  'the-war-within': 'TWW',
+  midnight: 'Midnight',
   future: 'Zukunft'
 };
 
@@ -18,7 +26,15 @@ export const expansionOptions = [
   ['classic', 'WoW Classic'],
   ['the-burning-crusade', 'The Burning Crusade'],
   ['wrath-of-the-lich-king', 'Wrath of the Lich King'],
+  ['cataclysm', 'Cataclysm'],
   ['mists-of-pandaria', 'Mists of Pandaria'],
+  ['warlords-of-draenor', 'Warlords of Draenor'],
+  ['legion', 'Legion'],
+  ['battle-for-azeroth', 'Battle for Azeroth'],
+  ['shadowlands', 'Shadowlands'],
+  ['dragonflight', 'Dragonflight'],
+  ['the-war-within', 'The War Within'],
+  ['midnight', 'Midnight'],
   ['future', 'Zukunft']
 ];
 
@@ -26,7 +42,15 @@ export const expansionArtwork = {
   classic: { theme: 'Azeroth', art: 'linear-gradient(135deg, rgba(255,178,46,.25), rgba(40,92,58,.35))' },
   'the-burning-crusade': { theme: 'Outland', art: 'linear-gradient(135deg, rgba(73,255,125,.22), rgba(81,41,112,.38))' },
   'wrath-of-the-lich-king': { theme: 'Northrend', art: 'linear-gradient(135deg, rgba(120,206,255,.28), rgba(31,54,104,.45))' },
+  cataclysm: { theme: 'Deepholm', art: 'linear-gradient(135deg, rgba(255,120,64,.28), rgba(92,32,20,.42))' },
   'mists-of-pandaria': { theme: 'Pandaria', art: 'linear-gradient(135deg, rgba(122,224,168,.28), rgba(20,90,74,.42))' },
+  'warlords-of-draenor': { theme: 'Draenor', art: 'linear-gradient(135deg, rgba(198,140,90,.28), rgba(60,38,20,.42))' },
+  legion: { theme: 'Argus', art: 'linear-gradient(135deg, rgba(120,255,180,.26), rgba(20,80,60,.42))' },
+  'battle-for-azeroth': { theme: 'Kul Tiras', art: 'linear-gradient(135deg, rgba(90,150,255,.26), rgba(20,40,90,.42))' },
+  shadowlands: { theme: 'Bastion', art: 'linear-gradient(135deg, rgba(200,180,255,.26), rgba(40,20,60,.42))' },
+  dragonflight: { theme: 'Dragon Isles', art: 'linear-gradient(135deg, rgba(90,220,255,.26), rgba(20,60,90,.42))' },
+  'the-war-within': { theme: 'Khaz Algar', art: 'linear-gradient(135deg, rgba(180,90,220,.26), rgba(40,20,60,.42))' },
+  midnight: { theme: 'Quel’Thalas', art: 'linear-gradient(135deg, rgba(255,90,140,.26), rgba(60,20,40,.42))' },
   future: { theme: 'Content Packs', art: 'linear-gradient(135deg, rgba(211,181,255,.28), rgba(255,255,255,.08))' }
 };
 
